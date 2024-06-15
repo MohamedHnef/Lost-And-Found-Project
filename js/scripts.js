@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     fetch('data/reports.json')
         .then(response => response.json())
@@ -27,3 +28,4 @@ function populateReportsTable(data) {
         tbody.appendChild(tr);
     });
 }
+
