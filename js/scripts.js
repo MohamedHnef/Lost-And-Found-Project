@@ -44,3 +44,38 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+
+//chart 
+document.addEventListener('DOMContentLoaded', function() {
+    const ctx = document.getElementById('itemsChart').getContext('2d');
+    const itemsChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Phones', 'Wallets', 'Keys', 'Purses', 'Computers', 'Others'],
+            datasets: [{
+                label: 'Found Items Count',
+                data: [40, 88, 60, 45, 10, 6],
+                backgroundColor: 'rgba(10, 162, 192, 0.6)',
+                borderColor: 'rgba(10, 162, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            scales: {
+                x: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+});
+
