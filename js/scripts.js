@@ -1,46 +1,31 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // Define the breadcrumb structure
-    const breadcrumbStructure = {
-        "index.html": {
-            "Home": "index.html"
-        },
-        "report_lost.html": {
-            "Home": "index.html",
-            "Report Lost": "report_lost.html"
-        },
-        "profile.html": {
-            "Home": "index.html",
-            "Report Lost": "report_lost.html",
-            "My Profile": "profile.html"
-        }
-        // Add more page structures as needed
-    };
 
-    // Get the current page
-    const currentPage = window.location.pathname.split("/").pop();
-
-    // Get the breadcrumb container
-    const breadcrumbContainer = document.getElementById("breadcrumb");
-
-    // Build the breadcrumb trail
-    if (breadcrumbStructure[currentPage]) {
-        const trail = breadcrumbStructure[currentPage];
-        Object.keys(trail).forEach((key, index, array) => {
-            const li = document.createElement("li");
-            li.classList.add("breadcrumb-item");
-
-            if (index === array.length - 1) {
-                li.classList.add("active");
-                li.setAttribute("aria-current", "page");
-                li.textContent = key;
-            } else {
-                const a = document.createElement("a");
-                a.href = trail[key];
-                a.textContent = key;
-                li.appendChild(a);
-            }
-
-            breadcrumbContainer.appendChild(li);
-        });
-    }
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('data/reports.json')
+        .then(response => response.json())
+        .then(data => populateReportsTable(data))
+        .catch(error => console.error('Error fetching JSON:', error));
 });
+
+function populateReportsTable(data) {
+    const tbody = document.getElementById('reports-tbody');
+    data.forEach(item => {
+        const tr = document.createElement('tr');
+
+        tr.innerHTML = `
+            <td>${item.itemName}</td>
+            <td>${item.category}</td>
+            <td>${item.color}</td>
+            <td>${item.dateFound}</td>
+            <td>${item.location}</td>
+            <td class="${item.statusClass}">${item.status}</td>
+            <td class="actions">
+                <i class="bi bi-eye"></i>
+                <i class="bi bi-pencil"></i>
+                <i class="bi bi-trash"></i>
+            </td>
+        `;
+
+        tbody.appendChild(tr);
+    });
+}
+
