@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 header,
 main,
 footer,
@@ -16,48 +17,64 @@ div {
 body {
     background-color: #f4f4f4;
 }
+
 nav {
     height: 121px;
 }
+
 .container-fluid {
     padding: 0;
 }
+
 .navbar .nav-link {
     font-size: 24px;
     color: #0AA2C0;
-    
+    display: flex;
+    align-items: center;
+    height: 100%;
 }
+
 .navbar .nav-link:hover {
-    font-size: 24px;
     color: #0AA2C0;
 }
+
 .navbar .nav-link.activee {
     font-weight: bold;
-    color: #0AA2C0; 
+    color: #0AA2C0;
 }
+
 .logo {
     height: 90px;
     margin-left: 65px;
 }
+
 .navbar .navbar-brand {
     color: #0AA2C0;
     font-size: 24px;
-    font-weight: bold;   
+    font-weight: bold;
+    align-items: center;
 }
+
 .navbar .navbar-brand:hover {
     color: #0AA2C0;
 }
-.navbar ul li{
+
+.navbar ul li {
     padding-right: 40px;
-} 
-.profile-dropdown .profile-img {
-    width: 50px;
-    height: 50px;
 }
+
+.profile-dropdown .profile-img {
+    width: 82px;
+    height: 88px;
+}
+
 .profile-dropdown .profile-info {
     display: flex;
     flex-direction: column;
+    margin-top: 10px;
+    font-size: 24px;
 }
+
 .profile-dropdown .text-muted {
     font-size: 12px;
     opacity: 0.6;
@@ -71,6 +88,9 @@ nav {
 
 .wrapper {
     margin: 0 65px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .breadcrumb a {
@@ -85,23 +105,24 @@ nav {
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
-    color: #0AA2C0; 
+    color: #0AA2C0;
     content: "/";
 }
 
 .custom-card {
-    width:405px ;
+    width: 405px;
     height: 167px;
     border-radius: 15px;
     background: #FFF;
     box-shadow: 0px 4px 4px 0px #000;
-    
 }
+
 .custom-card .card-body {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .custom-card .card-title {
     color: #0AA2C0;
     font-family: Inter;
@@ -109,8 +130,8 @@ nav {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    
 }
+
 .custom-card .card-subtitle {
     color: #0AA2C0;
     font-family: Inter;
@@ -119,15 +140,110 @@ nav {
     font-weight: 400;
     line-height: normal;
 }
+
 .arrow-icon {
-    width: 55px; 
-    height: 44px; 
+    width: 55px;
+    height: 44px;
     margin-top: 80px;
     margin-right: 20px;
 }
+
 .container-fluid.d-flex {
     display: flex;
-    flex-wrap: nowrap; 
+    flex-wrap: nowrap;
     justify-content: start;
     gap: 57px;
+}
+
+.container {
+    width: 636px;
+    height: 340px;
+    margin-top: 118px;
+    margin-left: 0px;
+    flex-shrink: 0;
+}
+
+canvas {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    padding-right: 0px;
+    padding-left: 0px;
+} /* align the graph with the cards */
+
+.container-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 118px;
+    gap: 57px;
+}
+
+.graph-container {
+    width: 636px;
+    height: 340px;
+    flex-shrink: 0;
+}
+
+.my-reports {
+    flex-grow: 1;
+    margin-top: 0px;
+    margin-left: 20px; /* Align the reports section */
+}
+
+.reports-title {
+    font-size: 24px;
+    color: #0AA2C0;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.table.reports-table {
+    width: 100%;
+    border-radius: 15px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px #000;
+}
+
+.table.reports-table th,
+.table.reports-table td {
+    padding: 10px 15px;
+    text-align: left;
+    color: #333;
+}
+
+.table.reports-table th {
+    background-color: #f4f4f4;
+    color: #0AA2C0;
+    font-weight: bold;
+}
+
+.table.reports-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table.reports-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.table.reports-table .status-lost {
+    color: #fff;
+    background-color: #ff4b5c;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.table.reports-table .actions i {
+    margin-right: 10px;
+    cursor: pointer;
+    color: #0AA2C0;
+}
+
+.table.reports-table .actions i:hover {
+    color: #007bff;
 }

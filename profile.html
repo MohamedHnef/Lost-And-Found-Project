@@ -8,6 +8,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
     <script src="../Lost-And-Found-Project/js/breadcrumbs.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../Lost-And-Found-Project/js/chart.js"></script>
+    <script src="../Lost-And-Found-Project/js/scripts.js"></script>
 </head>
 <body>
     <header>
@@ -109,6 +112,29 @@
                             <a href="#" class="card-link"><img src="images/arrow.png" alt="Arrow" class="arrow-icon"></a>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="container-flex">
+                <div class="graph-container">
+                    <canvas id="myChart"></canvas>
+                </div>
+                <div class="container my-reports">
+                    <h3 class="reports-title">My Reports</h3>
+                    <table class="table reports-table">
+                        <thead>
+                            <tr>
+                                <th>Item Name</th>
+                                <th>Category</th>
+                                <th>Color</th>
+                                <th>Date Found</th>
+                                <th>Location</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reports-tbody">
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </section> 
