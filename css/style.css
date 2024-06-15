@@ -1,4 +1,133 @@
-*{
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+header,
+main,
+footer,
+nav,
+aside,
+section,
+div {
+    display: block;
+}
+
+body {
+    background-color: #f4f4f4;
+}
+nav {
+    height: 121px;
+}
+.container-fluid {
+    padding: 0;
+}
+.navbar .nav-link {
+    font-size: 24px;
+    color: #0AA2C0;
+    
+}
+.navbar .nav-link:hover {
+    font-size: 24px;
+    color: #0AA2C0;
+}
+.navbar .nav-link.activee {
+    font-weight: bold;
+    color: #0AA2C0; 
+}
+.logo {
+    height: 90px;
+    margin-left: 65px;
+}
+.navbar .navbar-brand {
+    color: #0AA2C0;
+    font-size: 24px;
+    font-weight: bold;   
+}
+.navbar .navbar-brand:hover {
+    color: #0AA2C0;
+}
+.navbar ul li{
+    padding-right: 40px;
+} 
+.profile-dropdown .profile-img {
+    width: 50px;
+    height: 50px;
+}
+.profile-dropdown .profile-info {
+    display: flex;
+    flex-direction: column;
+}
+.profile-dropdown .text-muted {
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+.breadcrumb {
+    margin-top: 5px;
+    font-size: 24px;
+    background-color: transparent;
+}
+
+.wrapper {
+    margin: 0 65px;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #0AA2C0;
+    opacity: 0.6;
+}
+
+.breadcrumb .breadcrumb-item.active {
+    font-weight: bold;
+    color: #0AA2C0;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: #0AA2C0; 
+    content: "/";
+}
+
+.custom-card {
+    width:405px ;
+    height: 167px;
+    border-radius: 15px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px #000;
+    
+}
+.custom-card .card-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.custom-card .card-title {
+    color: #0AA2C0;
+    font-family: Inter;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    
+}
+.custom-card .card-subtitle {
+    color: #0AA2C0;
+    font-family: Inter;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.arrow-icon {
+    width: 55px; 
+    height: 44px; 
+    margin-top: 80px;
+    margin-right: 20px;
+}
+.container-fluid.d-flex {
+    display: flex;
+    flex-wrap: nowrap; 
+    justify-content: start;
+    gap: 57px;
 }
