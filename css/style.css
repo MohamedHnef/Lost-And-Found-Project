@@ -3,17 +3,22 @@
     padding: 0;
     box-sizing: border-box;
 }
+header,main,footer,nav,aside,section,article,div {
+    display: block;
+}
 body {
     background-color: #f4f4f4;
     color: #0AA2C0; 
-font-family: Inter;
-font-size: 18px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    
 }
 nav {
     height: 121px;
+    
 }
 .container-fluid{
     padding: 0;
@@ -21,7 +26,6 @@ nav {
 .navbar .nav-link {
     font-size: 24px;
     color: #0AA2C0;
-    
 }
 .navbar .nav-link:hover {
     font-size: 24px;
@@ -39,16 +43,27 @@ nav {
     color: #0AA2C0;
     font-size: 24px;
     font-weight: bold;  
+    
 }
 .navbar .navbar-brand:hover {
     color: #0AA2C0;
 }
 .navbar ul li{
     padding-right: 40px;
+    
 } 
+.profile-dropdown {
+    margin-right: 60px;  /* Adds 60px margin to the right */
+    list-style-type: none; /* Removes markers */
+    margin-top: 20px;
+}
+
 .profile-dropdown .profile-img {
-    width: 50px;
-    height: 50px;
+    width: 82px;
+    height: 88px;
+    flex-shrink: 0;
+    margin-bottom: 16px;
+    margin-right: 60px;
 }
 .profile-dropdown .profile-info {
     display: flex;
@@ -58,10 +73,20 @@ nav {
     font-size: 12px;
     opacity: 0.6;
 }
+.dropdown-icon {
+    flex-direction: column;
+    
+}
+.profile-info{
+    margin-top: 10px;
+}
+
 .breadcrumb{
     height: auto;
     margin: 0;
     margin-bottom: 26px; 
+    margin-top: 5px;
+    font-size: 24px;
 }
 .breadcrumb a {
     text-decoration: none;
