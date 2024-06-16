@@ -4,155 +4,137 @@
     box-sizing: border-box;
 }
 
-header,
-main,
-footer,
-nav,
-aside,
-section,
-div {
-    display: block;
-}
-
 body {
     background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-size: 16px; 
 }
-
 nav {
-    height: 121px;
+    height: 7.5rem; 
 }
-
-.container-fluid {
-    padding: 0;
+.wrapper {
+    margin: 0 4rem; 
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
-
+.main-content {
+    flex: 1;
+}
+.footer {
+    height: 5rem; 
+    background-color: #f4f4f4;
+    border-top: 1px solid #000;
+    display: flex;
+    padding-top: 1.625rem; 
+    margin-top: 5.25rem; 
+}
+.footer-icons {
+    display: flex;
+    gap: 1.625rem; 
+}
+.footer-icon {
+    width: 2.0625rem; 
+    height: 2.0625rem; 
+}
 .navbar .nav-link {
-    font-size: 24px;
+    font-size: 1.5rem; 
     color: #0AA2C0;
     display: flex;
     align-items: center;
     height: 100%;
 }
-
 .navbar .nav-link:hover {
     color: #0AA2C0;
 }
-
 .navbar .nav-link.activee {
     font-weight: bold;
     color: #0AA2C0;
 }
-
 .logo {
-    height: 90px;
-    margin-left: 65px;
+    height: 5.625rem; 
+    margin-left: 4rem; 
 }
-
 .navbar .navbar-brand {
     color: #0AA2C0;
-    font-size: 24px;
+    font-size: 1.5rem; 
     font-weight: bold;
     align-items: center;
 }
-
 .navbar .navbar-brand:hover {
     color: #0AA2C0;
 }
-
 .navbar ul li {
-    padding-right: 40px;
+    padding-right: 2.5rem; 
 }
-
 .profile-dropdown .profile-img {
-    width: 82px;
-    height: 88px;
+    width: 5.125rem; 
+    height: 5.5rem; 
 }
-
 .profile-dropdown .profile-info {
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
-    font-size: 24px;
+    margin-top: 0.625rem; 
+    font-size: 1.5rem; 
 }
-
 .profile-dropdown .text-muted {
-    font-size: 12px;
+    font-size: 0.75rem; 
     opacity: 0.6;
 }
-
 .breadcrumb {
-    margin-top: 5px;
-    font-size: 24px;
-    background-color: transparent;
+    height: auto;
+    margin: 0;
+    margin-bottom: 1.625rem; 
 }
-
-.wrapper {
-    margin: 0 65px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
 .breadcrumb a {
     text-decoration: none;
     color: #0AA2C0;
     opacity: 0.6;
 }
-
-.breadcrumb .breadcrumb-item.active {
-    font-weight: bold;
-    color: #0AA2C0;
-}
-
 .breadcrumb-item + .breadcrumb-item::before {
     color: #0AA2C0;
     content: "/";
 }
-
-.custom-card {
-    width: 405px;
-    height: 167px;
-    border-radius: 15px;
-    background: #FFF;
-    box-shadow: 0px 4px 4px 0px #000;
+.breadcrumb-item.active {
+    color: #0AA2C0;
+    text-align: center;
+    font-family: "Fira Sans";
+    font-size: 1.5rem; 
+    font-weight: 700;
+    line-height: 1.75rem; 
 }
-
+.custom-card {
+    width: 100%;
+    height: 10.4375rem; 
+    border-radius: 0.9375rem; 
+    background: #FFF;
+    box-shadow: 0px 0.25rem 0.25rem 0px #000; 
+}
 .custom-card .card-body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 56px;
 }
-
 .custom-card .card-title {
     color: #0AA2C0;
     font-family: Inter;
-    font-size: 32px;
-    font-style: normal;
+    font-size: 2.25rem; 
     font-weight: 400;
     line-height: normal;
 }
-
 .custom-card .card-subtitle {
     color: #0AA2C0;
     font-family: Inter;
-    font-size: 32px;
-    font-style: normal;
+    font-size: 2.25rem; 
     font-weight: 400;
     line-height: normal;
 }
-
 .arrow-icon {
-    width: 55px;
-    height: 44px;
-    margin-top: 80px;
-    margin-right: 20px;
-}
-
-.container-fluid.d-flex {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: start;
-    gap: 57px;
+    width: 3.4375rem; 
+    height: 2.75rem; 
 }
 
 .container {
@@ -189,7 +171,7 @@ canvas {
     height: 340px;
     flex-shrink: 0;
 }
-
+/*My reports */
 .my-reports {
     flex-grow: 1;
     margin-top: 0px;
@@ -261,4 +243,128 @@ canvas {
 
 .table.reports-table .actions img:hover {
     opacity: 0.7;
+}
+/*chart-homepage*/
+
+
+
+.chart-background, .data-background {
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 0.9375rem; 
+    background: #FFF;
+    box-shadow: 0px 0.25rem 0.25rem 0px rgba(0, 0, 0, 0.98); 
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    padding: 1.25rem; 
+    box-sizing: border-box;
+}
+.chart-container {
+    position: relative;
+    height: 549px;
+    width: 100%;
+    /* max-width: 100%; */
+}
+.chart-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+    height: auto;
+}
+.chart-container p {
+    padding-top: 0.625rem; 
+    text-align: center;
+    color: #000;
+    font-family: Roboto;
+    font-size: 1.125rem; 
+    font-weight: 400;
+}
+.data-container {
+    padding: 1.25rem; 
+    width: 100%;
+    position: relative;
+}
+.data-container h3 {
+    color: #0AA2C0;
+    font-family: Inter;
+    font-size: 1.875rem; 
+    font-weight: 700;
+}
+.table {
+    width: 100%;
+    margin-top: 1.25rem; 
+}
+.table-responsive {
+    overflow-x: auto;
+}
+.table th, .table td {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.table th {
+    font-size: 1rem;
+    color: #0AA2C0;
+
+}
+.table td {
+    font-size: 0.875rem;
+}
+.view-all-link {
+    position: absolute;
+    top: 1.25rem; 
+    right: 1.25rem; 
+    color: #0AA2C0;
+    text-decoration: none;
+}
+.view-all-link:hover {
+    text-decoration: underline;
+}
+    
+@media (max-width: 1200px) {
+    .custom-card .card-title,
+    .custom-card .card-subtitle {
+        font-size: 2rem; 
+    }
+    .chart-background, .data-background {
+        height: auto;
+    }
+    .wrapper {
+        margin: 0 2rem; 
+    }
+}
+@media (max-width: 768px) {
+    .custom-card .card-title,
+    .custom-card .card-subtitle {
+        font-size: 1.5rem; 
+    }
+    .wrapper {
+        margin: 0 1rem; 
+    }
+    .footer {
+        padding-top: 1rem;
+    }
+    .table th, .table td {
+        font-size: 0.75rem;
+    }
+    .data-container h3 {
+        font-size: 1.25rem;
+    }
+    .view-all-link {
+        font-size: 0.875rem;
+    }
+}
+@media (max-width: 576px) {
+    .custom-card .card-title,
+    .custom-card .card-subtitle {
+        font-size: 1.25rem; 
+    }
+    .wrapper {
+        margin: 0 0.5rem; 
+    }
+    .footer {
+        padding-top: 0.5rem;
+    }
 }
