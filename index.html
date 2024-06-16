@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/scripts.js"></script>
+    <script src="js/scripts.js" defer></script>
 </head>
 <body>
     <header>
@@ -61,8 +61,8 @@
             </div>
         </nav>
     </header>
-    <main>
-        <section class="wrapper">
+    <section class="wrapper">
+        <main class="main-content">
             <nav class="breadcrumb" aria-label="breadcrumb">
                 <ol class="breadcrumb" id="breadcrumb"></ol>
             </nav>
@@ -134,7 +134,7 @@
                     <div class="chart-background">
                         <div class="chart-container">
                             <canvas id="itemsChart"></canvas>
-                            <p >found items count</p>
+                            <p>Found Items Count</p>
                         </div>
                     </div>
                 </div>
@@ -143,25 +143,32 @@
                         <div class="data-container">
                             <a href="list_Item.html" class="view-all-link">View All</a>
                             <h3>Display Nearby Items</h3>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>item name</th>
-                                        <th>Date Reported</th>
-                                        <th>Location</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="itemsTable">
-                                    <!-- Table rows will be populated from JSON -->
-                                </tbody>
-                            </table>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Item Name</th>
+                                            <th>Date Reported</th>
+                                            <th>Location</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="itemsTable">
+                                        <!-- Table rows will be populated from JSON -->
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </div>                
+                </div>                                
             </div>
-        </section>
-    </main>
-    <footer></footer>
+        </main>
+        <footer class="footer">
+            <div class="footer-icons">
+                <img src="images/Facebook_Icon.png" alt="Facebook" class="footer-icon">
+                <img src="images/insta_icon.png" alt="Instagram" class="footer-icon">
+            </div>
+        </footer>
+    </section>
 </body>
 </html>
