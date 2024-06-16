@@ -193,7 +193,7 @@ canvas {
 .my-reports {
     flex-grow: 1;
     margin-top: 0px;
-    margin-left: 20px; /* Align the reports section */
+    margin-left: 57px; /* Align the reports section */
 }
 
 .reports-title {
@@ -246,4 +246,19 @@ canvas {
 
 .table.reports-table .actions i:hover {
     color: #007bff;
+}
+
+.table.reports-table .actions {
+    display: flex;
+    gap: 10px;
+}
+
+.table.reports-table .actions img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.table.reports-table .actions img:hover {
+    opacity: 0.7;
 }
