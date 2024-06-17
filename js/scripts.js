@@ -1,40 +1,69 @@
 window.onload = () => {
-    populateTableWithData();
+    populateItemsTable();
+    adjustHeights();
 };
+// window.onresize = () => {
+//     adjustHeights();
+// };
 
-const populateTableWithData = () => {
-    fetch('data/data.json')
+function adjustHeights() {
+    const chartBackground = document.querySelector('.chart-background');
+    const dataBackground = document.querySelector('.data-background');
+
+    // Reset heights
+    chartBackground.style.height = 'auto';
+    dataBackground.style.height = 'auto';
+
+    const chartHeight = chartBackground.offsetHeight;
+    const dataHeight = dataBackground.offsetHeight;
+
+    const maxHeight = Math.max(chartHeight, dataHeight);
+
+    chartBackground.style.height = `${maxHeight}px`;
+    dataBackground.style.height = `${maxHeight}px`;
+}
+
+const populateItemsTable = () => {
+    fetch('data/NearbyItems.json')
         .then(response => response.json())
         .then(data => {
             const itemsTable = document.getElementById('itemsTable');
-            itemsTable.innerHTML = ''; // Clear any existing rows
+            itemsTable.innerHTML = '';
 
             data.forEach(item => {
                 const row = document.createElement('tr');
 
-                const nameCell = document.createElement('td');
-                nameCell.textContent = item.itemName;
-                row.appendChild(nameCell);
+                const itemNameCell = document.createElement('td');
+                itemNameCell.textContent = item.itemName;
+                row.appendChild(itemNameCell);
 
-                const dateCell = document.createElement('td');
-                dateCell.textContent = item.lostDate;
-                row.appendChild(dateCell);
+                const dateReportedCell = document.createElement('td');
+                dateReportedCell.textContent = new Date(item.lostDate).toLocaleDateString();
+                row.appendChild(dateReportedCell);
 
                 const locationCell = document.createElement('td');
                 locationCell.textContent = item.location;
                 row.appendChild(locationCell);
 
                 const statusCell = document.createElement('td');
-                statusCell.textContent = item.status;
+                const statusSpan = document.createElement('span');
+                statusSpan.textContent = item.status;
+                if (item.status === 'Found') {
+                    statusSpan.classList.add('status-found');
+                } else {
+                    statusSpan.classList.add('status-lost');
+                }
+                statusCell.appendChild(statusSpan);
                 row.appendChild(statusCell);
 
                 itemsTable.appendChild(row);
             });
         })
         .catch(error => {
-            console.error('Error fetching data:', error);
+            console.error('Error fetching items:', error);
         });
-};
+}
+
 
 
 

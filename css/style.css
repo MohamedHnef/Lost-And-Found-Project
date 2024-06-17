@@ -3,6 +3,10 @@
     padding: 0;
     box-sizing: border-box;
 }
+html, body {
+    height: 100%;
+}
+
 body {
     background-color: #f4f4f4;
     display: flex;
@@ -22,13 +26,22 @@ nav {
 .main-content {
     flex: 1;
 }
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
 .footer {
-    height: 5rem; 
+    height: 91px; 
     background-color: #f4f4f4;
     border-top: 1px solid #000;
     display: flex;
-    padding-top: 1.625rem; 
-    margin-top: 5.25rem; 
+    margin-top: 5.25rem;  
+    align-items: center;
+    justify-content: left;
+    padding: 1rem;
+    position: relative;
+    width: 100%;
 }
 .footer-icons {
     display: flex;
@@ -115,6 +128,8 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* margin-top: 56px; */
+    padding: 1rem;
 }
 .custom-card .card-title {
     color: #0AA2C0;
@@ -134,9 +149,118 @@ nav {
     width: 3.4375rem; 
     height: 2.75rem; 
 }
+
+.container {
+    width: 636px;
+    height: 340px;
+    margin-top: 118px;
+    margin-left: 0px;
+    flex-shrink: 0;
+}
+
+canvas {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    padding-right: 0px;
+    padding-left: 0px;
+} /* align the graph with the cards */
+
+.container-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 118px;
+    gap: 57px;
+}
+
+.graph-container {
+    width: 636px;
+    height: 340px;
+    flex-shrink: 0;
+}
+/*My reports */
+.my-reports {
+    flex-grow: 1;
+    margin-top: 0px;
+    margin-left: 57px; /* Align the reports section */
+}
+
+.reports-title {
+    font-size: 24px;
+    color: #0AA2C0;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.table.reports-table {
+    width: 100%;
+    border-radius: 15px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px #000;
+}
+
+.table.reports-table th,
+.table.reports-table td {
+    padding: 10px 15px;
+    text-align: left;
+    color: #333;
+}
+
+.table.reports-table th {
+    background-color: #f4f4f4;
+    color: #0AA2C0;
+    font-weight: bold;
+}
+
+.table.reports-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table.reports-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.table.reports-table .status-lost {
+    color: #fff;
+    background-color: #ff4b5c;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.table.reports-table .actions i {
+    margin-right: 10px;
+    cursor: pointer;
+    color: #0AA2C0;
+}
+
+.table.reports-table .actions i:hover {
+    color: #007bff;
+}
+
+.table.reports-table .actions {
+    display: flex;
+    gap: 10px;
+}
+
+.table.reports-table .actions img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.table.reports-table .actions img:hover {
+    opacity: 0.7;
+}
+/*chart-homepage*/
 .chart-background, .data-background {
     width: 100%;
-    height: auto;
+    /* height: auto; */
     flex-shrink: 0;
     border-radius: 0.9375rem; 
     background: #FFF;
@@ -145,26 +269,21 @@ nav {
     flex-direction: column;
     justify-content: start;
     align-items: flex-start;
-    padding: 1.25rem; 
     box-sizing: border-box;
+    min-height: auto 459px;
 }
 .chart-container {
     position: relative;
-    height: auto;
+    height: 549px;
     width: 100%;
-    max-width: 100%;
+    /* max-width: 100%; */
+    height: 100%;
+    height: auto;
 }
 .chart-container canvas {
-    max-width: 100%;
+    width: 100% !important;
+    height: 100% !important;
     height: auto;
-}
-.chart-container p {
-    padding-top: 0.625rem; 
-    text-align: center;
-    color: #000;
-    font-family: Roboto;
-    font-size: 1.125rem; 
-    font-weight: 400;
 }
 .data-container {
     padding: 1.25rem; 
@@ -188,35 +307,53 @@ nav {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    color: #0AA2C0;
 }
 .table th {
     font-size: 1rem;
     color: #0AA2C0;
-
 }
 .table td {
     font-size: 0.875rem;
 }
 .view-all-link {
     position: absolute;
-    top: 1.25rem; /* 20px */
-    right: 1.25rem; /* 20px */
+    top: 1.25rem; 
+    right: 1.25rem; 
     color: #0AA2C0;
     text-decoration: none;
 }
 .view-all-link:hover {
     text-decoration: underline;
 }
+.status-found, .status-lost {
+    display: inline-block;
+    padding: 5px 10px;
+    width: 70px; 
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+}
+.status-found {
+    background-color: #0AA2C0;
+}
+.status-lost {
+    background-color: #D9534F;
+}  
 @media (max-width: 1200px) {
     .custom-card .card-title,
     .custom-card .card-subtitle {
-        font-size: 2rem; /* 32px */
+        font-size: 2rem; 
     }
     .chart-background, .data-background {
         height: auto;
     }
     .wrapper {
-        margin: 0 2rem; /* 32px */
+        margin: 0 2rem; 
+    }
+    .footer {
+        height: 70px;
+        padding: 0.5rem;
     }
 }
 @media (max-width: 768px) {
@@ -228,7 +365,9 @@ nav {
         margin: 0 1rem; 
     }
     .footer {
-        padding-top: 1rem;
+        /* padding-top: 1rem; */
+        height: 50px;
+        padding: 0.25rem;
     }
     .table th, .table td {
         font-size: 0.75rem;
@@ -252,3 +391,4 @@ nav {
         padding-top: 0.5rem;
     }
 }
+/* .......................*/
