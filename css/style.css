@@ -36,8 +36,7 @@ main {
     background-color: #f4f4f4;
     border-top: 1px solid #000;
     display: flex;
-    /* adding-top: 1.625rem; 
-    margin-top: 5.25rem; */ 
+    margin-top: 5.25rem; /* */
     align-items: center;
     justify-content: left;
     padding: 1rem;
@@ -100,6 +99,8 @@ main {
     height: auto;
     margin: 0;
     margin-bottom: 1.625rem; 
+    margin-top: 5px;
+    font-size: 24px;
 }
 .breadcrumb a {
     text-decoration: none;
@@ -114,9 +115,10 @@ main {
     color: #0AA2C0;
     text-align: center;
     font-family: "Fira Sans";
-    font-size: 1.5rem; 
+    font-size: 24px; 
     font-weight: 700;
     line-height: 1.75rem; 
+    margin-top: 5px;
 }
 .custom-card {
     width: 100%;
@@ -129,7 +131,6 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* margin-top: 56px; */
     padding: 1rem;
 }
 .custom-card .card-title {
@@ -264,7 +265,7 @@ canvas {
 
 .chart-background, .data-background {
     width: 100%;
-    height: auto;
+    /* height: auto; */  /* */
     flex-shrink: 0;
     border-radius: 0.9375rem; 
     background: #FFF;
@@ -273,28 +274,33 @@ canvas {
     flex-direction: column;
     justify-content: start;
     align-items: flex-start;
-    padding: 1.25rem; 
+    /* padding: 1.25rem; */  /* */
     box-sizing: border-box;
+    min-height: auto 459px;
 }
 .chart-container {
     position: relative;
     height: 549px;
     width: 100%;
     /* max-width: 100%; */
+    height: 100%; /* */
+    height: auto; /* */
 }
 .chart-container canvas {
     width: 100% !important;
     height: 100% !important;
     height: auto;
 }
-.chart-container p {
-    padding-top: 0.625rem; 
+/* .chart-container p {
+    
     text-align: center;
     color: #000;
     font-family: Roboto;
     font-size: 1.125rem; 
     font-weight: 400;
-}
+    padding: 0px;
+    margin-bottom: 1px;
+} */
 .data-container {
     padding: 1.25rem; 
     width: 100%;
@@ -317,6 +323,7 @@ canvas {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    color: #0AA2C0;
 }
 .table th {
     font-size: 1rem;
@@ -336,6 +343,20 @@ canvas {
 .view-all-link:hover {
     text-decoration: underline;
 }
+.status-found, .status-lost {
+    display: inline-block;
+    padding: 5px 10px;
+    width: 70px; 
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+}
+.status-found {
+    background-color: #0AA2C0;
+}
+.status-lost {
+    background-color: #D9534F;
+}  
     
 @media (max-width: 1200px) {
     .custom-card .card-title,
