@@ -392,3 +392,59 @@ canvas {
     }
 }
 /* .......................*/
+/* reportLost page */
+.page-title {
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Inter', sans-serif;
+    color: #0AA2C0;
+    margin-bottom: 30px; 
+}
+.form-container {
+    background-color: white;
+    border-radius: 15px;
+    padding-top: 16px;
+    margin-bottom: 41px;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    min-height: 70vh; 
+    max-width: 876px; 
+    margin: 0 auto; 
+    margin-bottom: 41px;
+}
+.form-label {
+    color: #0AA2C0;
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 400;     
+}
+.form-control {
+    border-radius: 5px;
+    box-shadow: 0px 2px 3px 0px #000;
+}
+.form-select {
+    border-radius: 5px;
+    box-shadow: 0px 2px 3px 0px #000; 
+}
+textarea.form-control {
+    resize: none;    
+}
+.btn-primary {
+    background-color: #0AA2C0;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+.btn-primary:hover {
+    background-color: #088ca3;
+}
+.col-12.text-center{
+    padding-top: 93px;
+    padding-bottom: 13px;
+}
+.col-lg-6.mb-3{
+    padding: 0 74px;
+}

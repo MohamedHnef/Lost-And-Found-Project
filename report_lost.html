@@ -60,13 +60,54 @@
     <section class="wrapper">
         <main>
             <nav class="breadcrumb" aria-label="breadcrumb">
-                <ol class="breadcrumb" id="breadcrumb">
-                </ol>
+                <ol class="breadcrumb" id="breadcrumb"></ol>
             </nav>
-            
+            <h1 class="page-title">Report Lost Item</h1>
+            <section class="form-container mt-5">
+                <div class="row form">
+                    <div class="col-lg-6 mb-3">
+                        <label for="itemName" class="form-label">Item Name</label>
+                        <input type="text" class="form-control" id="itemName" placeholder="Please Enter Item Name">
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="locationLost" class="form-label">Location Lost</label>
+                        <input type="text" class="form-control" id="locationLost" placeholder="Please Enter Location">
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="lostDate" class="form-label">Lost Date</label>
+                        <input type="date" class="form-control" id="lostDate">
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="category" class="form-label">Category</label>
+                        <select class="form-select" id="category">
+                            <option selected>Please Select Category</option>
+                            <!-- Add more categories as needed -->
+                        </select>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="itemColor" class="form-label">Item Color</label>
+                        <input type="text" class="form-control" id="itemColor" placeholder="Please Enter Item Color">
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="description" class="form-label">Description <span class="text-muted">(Optional)</span></label>
+                        <textarea class="form-control" id="description" rows="3" placeholder="Please Enter Description"></textarea>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="contactEmail" class="form-label">Contact Information</label>
+                        <input type="email" class="form-control" id="contactEmail" placeholder="Please Enter Your Email">
+                        <input type="text" class="form-control mt-2" id="contactPhone" placeholder="Please Enter Phone Number">
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="addImage" class="form-label">Add Image</label>
+                        <input type="file" class="form-control" id="addImage">
+                    </div>
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </section>
         </main>
-        
-        <footer class="footer">
+        <footer class="footer mt-auto">
             <div class="footer-icons">
                 <img src="images/Facebook_Icon.png" alt="Facebook" class="footer-icon">
                 <img src="images/insta_icon.png" alt="Instagram" class="footer-icon">
