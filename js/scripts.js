@@ -2,17 +2,22 @@ window.onload = () => {
     populateItemsTable();
     adjustHeights();
 };
-// window.onresize = () => {
-//     adjustHeights();
-// };
+
+window.onresize = () => {
+    adjustHeights();
+};
 
 function adjustHeights() {
     const chartBackground = document.querySelector('.chart-background');
     const dataBackground = document.querySelector('.data-background');
+    const tableResponsive = document.querySelector('.table-responsive');
 
     // Reset heights
     chartBackground.style.height = 'auto';
     dataBackground.style.height = 'auto';
+
+    // Ensure the data background fits the table height
+    tableResponsive.style.height = 'auto';
 
     const chartHeight = chartBackground.offsetHeight;
     const dataHeight = dataBackground.offsetHeight;
@@ -22,6 +27,7 @@ function adjustHeights() {
     chartBackground.style.height = `${maxHeight}px`;
     dataBackground.style.height = `${maxHeight}px`;
 }
+
 
 const populateItemsTable = () => {
     fetch('data/NearbyItems.json')
@@ -131,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }]
         },
         options: {
-            maintainAspectRatio: true,
+            maintainAspectRatio: false,
             responsive: true,
             scales: {
                 x: {
