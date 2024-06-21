@@ -87,6 +87,10 @@ document.addEventListener("DOMContentLoaded", function () {
             "Home": "index.html",
             "Report Lost": "report_lost.html",
             "My Profile": "profile.html"
+        },
+        "list_Item.html": {
+            "Home": "index.html",
+            "Items List": "",
         }
         // Add more page structures as needed
     };
@@ -150,5 +154,44 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('data/itemsList.json')
+        .then(response => response.json())
+        .then(data => {
+            const container = document.querySelector('.row');
+            container.innerHTML = '';
+            data.forEach(item => {
+                const card = `
+                    <div class="col">
+                        <div class="card list-item-card">
+                            <img src="${item.imageUrl}" class="card-img-top" alt="${item.itemName}">
+                            <div class="card-body">
+                                <h5 class="card-title">${item.itemName}</h5>
+                                <div class="card-details">
+                                    <div class="card-detail">
+                                        <i class="bi bi-calendar"></i> <span>${item.lostDate}</span>
+                                    </div>
+                                    <div class="card-detail">
+                                        <i class="bi bi-tag"></i> <span>${item.category}</span>
+                                    </div>
+                                    <div class="card-detail">
+                                        <i class="bi bi-clock"></i> <span>${item.timeLost}</span>
+                                    </div>
+                                    <div class="card-detail">
+                                        <i class="bi bi-geo-alt"></i> <span>${item.locationLost}</span>
+                                    </div>
+                                </div>
+                                <a href="#" class="status-btn status-${item.status.toLowerCase()}">${item.status}</a>
+                            </div>
+                        </div>
+                    </div>`;
+                container.innerHTML += card;
+            });
+        })
+        .catch(error => console.error('Error fetching data:', error));
+});
+
 
 

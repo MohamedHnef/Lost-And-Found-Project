@@ -1,0 +1,38 @@
+[
+    {
+        "itemName": "Backpack",
+        "lostDate": "2023-06-01",
+        "timeLost": "11:00 AM",
+        "locationLost": "Subway Station",
+        "category": "Bags",
+        "status": "Found",
+        "imageUrl": "https://img.freepik.com/premium-photo/one-lost-bag-backpack-lie-bus-seat_8595-26070.jpg"
+    },
+    {
+        "itemName": "Umbrella",
+        "lostDate": "2023-06-05",
+        "timeLost": "01:00 PM",
+        "locationLost": "Coffee Shop",
+        "category": "Accessories",
+        "status": "Lost",
+        "imageUrl": "images/umbrella.jpg"
+    },
+    {
+        "itemName": "Smartphone",
+        "lostDate": "2023-06-10",
+        "timeLost": "03:30 PM",
+        "locationLost": "Shopping Mall",
+        "category": "Electronics",
+        "status": "Found",
+        "imageUrl": "images/iphone.jpg"
+    },
+    {
+        "itemName": "Smartphone",
+        "lostDate": "2023-06-10",
+        "timeLost": "03:30 PM",
+        "locationLost": "Shopping Mall",
+        "category": "Electronics",
+        "status": "Found",
+        "imageUrl": "images/iphone.jpg"
+    }
+]
