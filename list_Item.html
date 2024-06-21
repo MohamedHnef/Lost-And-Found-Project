@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="js/scripts.js" defer></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"><!-- icons -->
-
 </head>
 <body>
     <header>
@@ -66,33 +65,37 @@
             </div>
         </nav>
     </header>
-        <section id="wrapper">
-           <main>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb" id="breadcrumb">
+    <section id="wrapper">
+        <main>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb" id="breadcrumb">
                    <!-- Breadcrumb items -->
-                    </ol>
-                </nav>
-                <div class="header-controls">
-                    <h3 class="items-list-title">Items List</h3>
-                    <button type="button" id="searchButton" class="btn">
-                        <img src="images/search-icon.png" alt="search-icon">
-                        Search
-                    </button>
-                    <button type="button" id="filterButton" class="btn">
-                        <img src="images/filter-icon.png" alt="filter-icon" >
-                        
-                        Filter
-                    </button>
-                    <button type="button" id="sortByButton" class="btn">
-                        <img src="images/sortby-icon.png" alt="sortBy-icon" >
+                </ol>
+            </nav>
+            <div class="header-controls">
+                <h3 class="items-list-title">Items List</h3>
+                <button type="button" id="searchButton" class="btn">
+                    <img src="images/search-icon.png" alt="search-icon">
+                    Search
+                </button>
+                <button type="button" id="filterButton" class="btn" data-bs-toggle="modal" data-bs-target="#filterModal">
+                    <img src="images/filter-icon.png" alt="filter-icon">
+                    Filter
+                </button>
+                <div class="btn-group">
+                    <button type="button" id="sortByButton" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="images/sortby-icon.png" alt="sortBy-icon">
                         Sort By
                     </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#" id="sortByFound">Found</a></li>
+                        <li><a class="dropdown-item" href="#" id="sortByLost">Lost</a></li>
+                    </ul>
                 </div>
-                
-                <section class="items-container">
-                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"></div>
-                </section>
+            </div>
+            <section class="items-container">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"></div>
+            </section>
         </main>
         <footer class="footer">
             <div class="footer-icons">
@@ -105,5 +108,54 @@
             </div>
         </footer>
     </section>
+
+    <!-- Filter Modal -->
+    <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="filterModalLabel">Filter your data</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="filterForm">
+                        <div class="form-group mb-3">
+                            <label for="fromDate">From Date</label>
+                            <input type="date" id="fromDate" name="fromDate" class="form-control">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="toDate">To Date</label>
+                            <input type="date" id="toDate" name="toDate" class="form-control">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="location">Select Location</label>
+                            <select id="location" name="location" class="form-select">
+                                <option value="">Select Location</option>
+                                <!-- Options will be populated dynamically -->
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="category">Select Category</label>
+                            <select id="category" name="category" class="form-select">
+                                <option value="">Select Category</option>
+                                <!-- Options will be populated dynamically -->
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="status">Select Status</label>
+                            <select id="status" name="status" class="form-select">
+                                <option value="">Select Status</option>
+                                <!-- Options will be populated dynamically -->
+                            </select>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button type="button" id="applyFilter" class="btn btn-primary">Apply Filter</button>
+                            <button type="button" id="clearFilter" class="btn btn-secondary">Clear Filter</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
