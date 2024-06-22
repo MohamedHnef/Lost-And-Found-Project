@@ -1,16 +1,23 @@
-/*Breadcrumb Navigation*/
 document.addEventListener("DOMContentLoaded", function () {
+    initBreadcrumbs();
+    initDataFetching();
+    initFilters();
+    initSorting();
+    initSearch();
+});
+
+function initBreadcrumbs() {
     const breadcrumbContainer = document.getElementById("breadcrumb");
     const currentPage = document.title.split(' - ')[1];
     let breadcrumbTrail = JSON.parse(sessionStorage.getItem('breadcrumbTrail')) || ["Home"];
-    
+
     if (!breadcrumbTrail.includes(currentPage)) {
         breadcrumbTrail.push(currentPage);
     } else {
         breadcrumbTrail = breadcrumbTrail.slice(0, breadcrumbTrail.indexOf(currentPage) + 1);
     }
     sessionStorage.setItem('breadcrumbTrail', JSON.stringify(breadcrumbTrail));
-    
+
     breadcrumbContainer.innerHTML = '';
     breadcrumbTrail.forEach((crumb, index) => {
         const li = document.createElement("li");
@@ -27,77 +34,112 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         breadcrumbContainer.appendChild(li);
     });
-});
-document.addEventListener('DOMContentLoaded', function() {
+}
+
+function initDataFetching() {
     fetch('data/items.json')
         .then(response => response.json())
         .then(data => {
-            const container = document.querySelector('.row');
-            container.innerHTML = '';
-            data.forEach(item => {
-                const card = `
-                    <div class="col">
-                        <div class="card list-item-card">
-                            <img src="${item.imageUrl}" class="card-img-top" alt="${item.itemName}">
-                            <div class="card-body">
-                                <h5 class="card-title">${item.itemName}</h5>
-                                <div class="card-details">
-                                    <div class="card-detail"><i class="bi bi-calendar"></i> <span>${item.lostDate}</span></div>
-                                    <div class="card-detail"><i class="bi bi-tag"></i> <span>${item.category}</span></div>
-                                    <div class="card-detail"><i class="bi bi-clock"></i> <span>${item.timeLost}</span></div>
-                                    <div class="card-detail"><i class="bi bi-geo-alt"></i> <span>${item.locationLost}</span></div>
-                                </div>
-                                <a href="#" class="status-btn status-${item.status.toLowerCase()}">${item.status}</a>
-                            </div>
-                        </div>
-                    </div>`;
-                container.innerHTML += card;
-            });
+            originalData = data;
+            displayItems(data);
+            populateFilters(data);
         })
         .catch(error => console.error('Error fetching data:', error));
-});
-/* filter function */
-document.addEventListener('DOMContentLoaded', function() {
-    const data = [{date: '2023-06-01', location: 'New York', category: 'Electronics', status: 'Lost'},
-                  {date: '2023-06-05', location: 'San Francisco', category: 'Clothing', status: 'Found'}];
+}
 
-    const locations = [...new Set(data.map(item => item.location))];
+function displayItems(data) {
+    const container = document.getElementById('itemsRow');
+    container.innerHTML = '';
+
+    data.forEach(item => {
+        const card = createCard(item);
+        container.innerHTML += card;
+    });
+}
+
+function createCard(item) {
+    return `
+        <div class="col">
+            <div class="card list-item-card">
+                <img src="${item.imageUrl}" class="card-img-top" alt="${item.itemName}">
+                <div class="card-body">
+                    <h5 class="card-title">${item.itemName}</h5>
+                    <div class="card-details">
+                        <div class="card-detail"><i class="bi bi-calendar"></i> <span>${item.lostDate}</span></div>
+                        <div class="card-detail"><i class="bi bi-tag"></i> <span>${item.category}</span></div>
+                        <div class="card-detail"><i class="bi bi-clock"></i> <span>${item.timeLost}</span></div>
+                        <div class="card-detail"><i class="bi bi-geo-alt"></i> <span>${item.locationLost}</span></div>
+                    </div>
+                    <a href="#" class="status-btn status-${item.status.toLowerCase()}">${item.status}</a>
+                </div>
+            </div>
+        </div>`;
+}
+
+function populateFilters(data) {
+    const locations = [...new Set(data.map(item => item.locationLost))];
     const categories = [...new Set(data.map(item => item.category))];
     const statuses = [...new Set(data.map(item => item.status))];
 
-    locations.forEach(loc => locationSelect.add(new Option(loc, loc)));
-    categories.forEach(cat => categorySelect.add(new Option(cat, cat)));
-    statuses.forEach(stat => statusSelect.add(new Option(stat, stat)));
+    populateSelect('location', locations);
+    populateSelect('category', categories);
+    populateSelect('status', statuses);
+}
 
-    document.getElementById('applyFilter').addEventListener('click', () => {
-        const filteredData = data.filter(item => 
-            (!fromDate.value || new Date(item.date) >= new Date(fromDate.value)) &&
-            (!toDate.value || new Date(item.date) <= new Date(toDate.value)) &&
-            (!location.value || item.location === location.value) &&
-            (!category.value || item.category === category.value) &&
-            (!status.value || item.status === status.value)
-        );
-        console.log('Filtered Data:', filteredData);
-        // Update items list with filtered data
-    });
+function populateSelect(selectId, options) {
+    const select = document.getElementById(selectId);
+    options.forEach(option => select.add(new Option(option, option)));
+}
 
-    document.getElementById('clearFilter').addEventListener('click', () => {
-        document.getElementById('filterForm').reset();
-    });
-});
+function initFilters() {
+    document.getElementById('applyFilter').addEventListener('click', applyFilters);
+    document.getElementById('clearFilter').addEventListener('click', clearFilters);
+}
 
-/*Sorting Items function*/
+function applyFilters() {
+    const fromDate = document.getElementById('fromDate').value;
+    const toDate = document.getElementById('toDate').value;
+    const location = document.getElementById('location').value;
+    const category = document.getElementById('category').value;
+    const status = document.getElementById('status').value;
 
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('sortByFound').addEventListener('click', () => {
-        const sortedData = [...data].sort((a, b) => a.status.localeCompare(b.status));
-        console.log('Sorted by Found:', sortedData);
-        // Update items list with sorted data
-    });
+    const filteredData = originalData.filter(item =>
+        (!fromDate || new Date(item.lostDate) >= new Date(fromDate)) &&
+        (!toDate || new Date(item.lostDate) <= new Date(toDate)) &&
+        (!location || item.locationLost === location) &&
+        (!category || item.category === category) &&
+        (!status || item.status === status)
+    );
+    displayItems(filteredData);
+}
 
-    document.getElementById('sortByLost').addEventListener('click', () => {
-        const sortedData = [...data].sort((a, b) => b.status.localeCompare(a.status));
-        console.log('Sorted by Lost:', sortedData);
-        // Update items list with sorted data
-    });
-});
+function clearFilters() {
+    document.getElementById('filterForm').reset();
+    displayItems(originalData);
+}
+
+function initSorting() {
+    document.getElementById('sortByFound').addEventListener('click', () => sortItems('Found'));
+    document.getElementById('sortByLost').addEventListener('click', () => sortItems('Lost'));
+}
+
+function sortItems(status) {
+    const sortedData = originalData.filter(item => item.status === status);
+    displayItems(sortedData);
+}
+
+function initSearch() {
+    document.getElementById('performSearch').addEventListener('click', performSearch);
+}
+
+function performSearch() {
+    const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+    const searchResults = originalData.filter(item => item.itemName.toLowerCase().includes(searchQuery));
+    displayItems(searchResults);
+    closeSearchModal();
+}
+
+function closeSearchModal() {
+    const searchModal = bootstrap.Modal.getInstance(document.getElementById('searchModal'));
+    searchModal.hide();
+}

@@ -318,7 +318,6 @@ main {
     font-weight: 700;
     line-height: normal;
 }
-
 .card-details {
     display: grid;
     grid-template-columns: auto auto;

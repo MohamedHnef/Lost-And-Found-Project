@@ -74,7 +74,7 @@
             </nav>
             <div class="header-controls">
                 <h3 class="items-list-title">Items List</h3>
-                <button type="button" id="searchButton" class="btn">
+                <button type="button" id="searchButton" class="btn" data-bs-toggle="modal" data-bs-target="#searchModal">
                     <img src="images/search-icon.png" alt="search-icon">
                     Search
                 </button>
@@ -94,7 +94,7 @@
                 </div>
             </div>
             <section class="items-container">
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"></div>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="itemsRow"></div>
             </section>
         </main>
         <footer class="footer">
@@ -108,6 +108,25 @@
             </div>
         </footer>
     </section>
+
+    <!-- Search Modal -->
+    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="searchModalLabel">Search for Items</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Enter item name">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="performSearch">Search</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Filter Modal -->
     <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
