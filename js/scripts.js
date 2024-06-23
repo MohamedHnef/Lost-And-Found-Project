@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
     initSearch();
 });
 
+let originalData = [];
+
 function initBreadcrumbs() {
     const breadcrumbContainer = document.getElementById("breadcrumb");
     const currentPage = document.title.split(' - ')[1];
@@ -41,8 +43,9 @@ function initDataFetching() {
         .then(response => response.json())
         .then(data => {
             originalData = data;
-            displayItems(data);
-            populateFilters(data);
+            const reportedItems = JSON.parse(sessionStorage.getItem('addedItems')) || [];
+            displayItems([...originalData, ...reportedItems]);
+            populateFilters(originalData);
         })
         .catch(error => console.error('Error fetching data:', error));
 }
