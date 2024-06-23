@@ -1,0 +1,12 @@
+[
+    {
+        "itemName": "Del Laptop",
+        "category": "Electronics",
+        "color": "Gray",
+        "dateFound": "5, Feb, 2023",
+        "location": "Train Station Hadera",
+        "status": "Lost",
+        "statusClass": "status-lost"
+    }
+    
+]
