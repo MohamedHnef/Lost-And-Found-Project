@@ -15,7 +15,7 @@
         "itemName": "Smartphone",
         "lostDate": "2023-06-10",
         "location": "Shopping Mall",
-        "status": "Lost"
+        "status": "Found"
     },
     {
         "itemName": "Wallet",
@@ -27,6 +27,7 @@
         "itemName": "Watch",
         "lostDate": "2023-06-20",
         "location": "Gym",
-        "status": "Lost"
+        "status": "Found"
     }
+    
 ]
