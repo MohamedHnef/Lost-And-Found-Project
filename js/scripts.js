@@ -37,21 +37,55 @@ function displayItems(data) {
 function createCard(item) {
     return `
         <div class="col">
-            <div class="card list-item-card">
-                <img src="${item.imageUrl}" class="card-img-top" alt="${item.itemName}">
-                <div class="card-body">
-                    <h5 class="card-title">${item.itemName}</h5>
-                    <div class="card-details">
-                        <div class="card-detail"><i class="bi bi-calendar"></i> <span>${item.lostDate}</span></div>
-                        <div class="card-detail"><i class="bi bi-tag"></i> <span>${item.category}</span></div>
-                        <div class="card-detail"><i class="bi bi-clock"></i> <span>${item.timeLost}</span></div>
-                        <div class="card-detail"><i class="bi bi-geo-alt"></i> <span>${item.locationLost}</span></div>
+            <a href="item.html" class="card-link" data-item-name="${item.itemName}">
+                <div class="card list-item-card">
+                    <img src="${item.imageUrl}" class="card-img-top" alt="${item.itemName}">
+                    <div class="card-body">
+                        <h5 class="card-title">${item.itemName}</h5>
+                        <div class="card-details">
+                            <div class="card-detail"><i class="bi bi-calendar"></i> <span>${item.lostDate}</span></div>
+                            <div class="card-detail"><i class="bi bi-tag"></i> <span>${item.category}</span></div>
+                            <div class="card-detail"><i class="bi bi-clock"></i> <span>${item.timeLost}</span></div>
+                            <div class="card-detail"><i class="bi bi-geo-alt"></i> <span>${item.locationLost}</span></div>
+                        </div>
+                        <a href="#" class="status-btn status-${item.status.toLowerCase()}">${item.status}</a>
                     </div>
-                    <a href="#" class="status-btn status-${item.status.toLowerCase()}">${item.status}</a>
                 </div>
-            </div>
+            </a>
         </div>`;
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('data/items.json')
+        .then(response => response.json())
+        .then(data => {
+            const container = document.querySelector('.row-cols-1');
+            container.innerHTML = '';
+            data.forEach(item => {
+                const card = createCard(item);
+                container.innerHTML += card;
+            });
+
+            // Add click event listener to each card link
+            const cardLinks = document.querySelectorAll('.card-link');
+            cardLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent default anchor behavior
+                    const itemName = this.getAttribute('data-item-name');
+                    localStorage.removeItem('selectedItemName');//clear
+                    localStorage.setItem('selectedItemName', itemName);
+                    window.location.href = this.href; // Navigate to item.html
+                });
+            });
+        })
+        .catch(error => console.error('Error fetching data:', error));
+});
+
+
+
+
+
+
 
 function populateFilters(data) {
     const locations = [...new Set(data.map(item => item.locationLost))];

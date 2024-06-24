@@ -556,7 +556,9 @@ canvas {
     height: 273px;
     object-fit: cover;
 }
-
+.card-link{
+    text-decoration: none;
+}
 .card-title {
     margin: 36px 0 25px 16px;
     color: #0AA2C0;
@@ -774,4 +776,106 @@ textarea.form-control {
 }
 .col-lg-6.mb-3.form{
     padding: 0 74px;
+}
+/* Item page styles */
+/* Style for item page boxes */
+.item-box {
+    width: 643px;
+    height: 483px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    padding: 40px;
+}
+
+/* Flex container for the item boxes */
+.item-page-container {
+    display: flex;
+    gap: 274px;
+    flex-wrap: wrap;
+}
+
+/* Style for the report information details */
+.item-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+}
+.item-details .item-detail {
+    display: flex;
+    flex-direction: column;
+}
+.item-details .item-detail strong {
+    color: #0AA2C0;
+    font-size: 24px;
+}
+.item-details .item-detail span {
+    color: #0AA2C0;
+    font-size: 18px;
+    padding-bottom: 77px;
+}
+h3 {
+    color: #0AA2C0;
+    font-size: 30px;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 39px;
+}
+p {
+    font-size: 18px;
+    color: #0AA2C0;
+    overflow-wrap: break-word;
+}
+img.img-fluid {
+    width: 288px;
+    height: 194px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    align-self: center; /* Center the image horizontally */
+}
+.mt-4 {
+    margin-left: 513px;  
+    
+}
+.mt-4 .btn.btn-primary{
+    width: 538px;
+    height: 79px;
+    border-radius: 15px;
+    margin-top: 70px;
+}
+/* Responsive styles */
+@media (max-width: 1200px) {
+    .item-box {
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+    .item-page-container {
+        gap: 20px;
+        justify-content: center;
+    }
+}
+@media (max-width: 768px) {
+    .item-details {
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 576px) {
+    .item-box {
+        padding: 10px;
+    }
+    .item-details .item-detail strong {
+        font-size: 20px;
+    }
+    .item-details .item-detail span {
+        font-size: 16px;
+    }
+    h3 {
+        font-size: 24px;
+    }
+    p {
+        font-size: 16px;
+    }
 }
