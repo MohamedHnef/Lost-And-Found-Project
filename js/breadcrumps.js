@@ -2,18 +2,24 @@ document.addEventListener("DOMContentLoaded", function () {
     initBreadcrumbs();
 });
 
-
-
 function initBreadcrumbs() {
     const breadcrumbContainer = document.getElementById("breadcrumb");
     const currentPage = document.title.split(' - ')[1];
     let breadcrumbTrail = JSON.parse(sessionStorage.getItem('breadcrumbTrail')) || ["Home"];
 
-    if (!breadcrumbTrail.includes(currentPage)) {
-        breadcrumbTrail.push(currentPage);
-    } else {
-        breadcrumbTrail = breadcrumbTrail.slice(0, breadcrumbTrail.indexOf(currentPage) + 1);
+    let itemName = null;
+    if (currentPage === "Item") { 
+        itemName = localStorage.getItem('selectedItemName');
     }
+
+    const displayName = itemName || currentPage;
+
+    if (!breadcrumbTrail.includes(displayName)) {
+        breadcrumbTrail.push(displayName);
+    } else {
+        breadcrumbTrail = breadcrumbTrail.slice(0, breadcrumbTrail.indexOf(displayName) + 1);
+    }
+
     sessionStorage.setItem('breadcrumbTrail', JSON.stringify(breadcrumbTrail));
 
     breadcrumbContainer.innerHTML = '';
