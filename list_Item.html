@@ -17,19 +17,17 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-white shadow">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="index.html">
                     <img src="images/logo.jpeg" alt="Logo" class="logo">
                 </a>
                 <span class="navbar-brand">Lost And Found</span>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link activee" aria-current="page" href="index.html">Home</a>
+                            <a class="nav-link activee" aria-current="page" href="#">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="report_lost.html">Report Lost</a>
@@ -47,14 +45,12 @@
                             <a class="nav-link" href="#"><img src="images/bell-icon.png" alt=""></a>
                         </li>
                         <li class="nav-item dropdown profile-dropdown">
-                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="images/profilepic.jpeg" alt="Profile" class="profile-img rounded-circle me-2">
                                 <div class="profile-info">
                                     <div>Roni Bozaglo</div>
                                     <div class="text-muted">Connected</div>
                                 </div>
-                                <i class="bi bi-caret-down-fill ms-2"></i>
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Settings</a></li>
@@ -66,6 +62,57 @@
                 </div>
             </div>
         </nav>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item profile-dropdown">
+                        <div class="profile-info">
+                            <img src="images/profilepic.jpeg" alt="Profile" class="profile-img rounded-circle side">
+                            <div>Roni Bozaglo</div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link side" aria-current="page" href="index.html">
+                            <i class="bi bi-house"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link side" href="report_lost.html">
+                            <i class="bi bi-search"></i> Report Lost
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link side" href="#">
+                            <i class="bi bi-bell"></i> Report Found
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link side" href="#">
+                            <i class="bi bi-clock"></i> Set Reminders
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link side" href="#">
+                            <i class="bi bi-chat"></i> Add Feedback
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link side" href="profile.html">
+                            <i class="bi bi-person"></i> My Profile
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link side" href="#">
+                            <i class="bi bi-box-arrow-right"></i> Log Out
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </header>
     <section class="wrapper">
         <main>
