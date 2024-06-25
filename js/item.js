@@ -2,10 +2,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const selectedItemName = localStorage.getItem('selectedItemName');
 
     if (selectedItemName) {
-        fetch('data/items.json')
+        fetch(`http://localhost:3000/api/items/${selectedItemName}`)
             .then(response => response.json())
             .then(data => {
-                const selectedItem = data.find(item => item.itemName === selectedItemName);
+                const selectedItem = data;
 
                 if (selectedItem) {
                     document.getElementById('item-details-box').innerHTML = `

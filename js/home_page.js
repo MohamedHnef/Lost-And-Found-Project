@@ -1,41 +1,15 @@
 window.onload = () => {
     populateItemsTable();
-    adjustHeights();
+
 };
-
-window.onresize = () => {
-    adjustHeights();
-};
-
-function adjustHeights() {
-    const chartBackground = document.querySelector('.chart-background');
-    const dataBackground = document.querySelector('.data-background');
-    const tableResponsive = document.querySelector('.table-responsive');
-
-    // Reset heights
-    chartBackground.style.height = 'auto';
-    dataBackground.style.height = 'auto';
-
-    // Ensure the data background fits the table height
-    tableResponsive.style.height = 'auto';
-
-    const chartHeight = chartBackground.offsetHeight;
-    const dataHeight = dataBackground.offsetHeight;
-
-    const maxHeight = Math.max(chartHeight, dataHeight);
-
-    chartBackground.style.height = `${maxHeight}px`;
-    dataBackground.style.height = `${maxHeight}px`;
-}
-
-
 const populateItemsTable = () => {
-    fetch('data/NearbyItems.json')
+    fetch('http://localhost:3000/api/items') // Adjust the URL if needed
         .then(response => response.json())
         .then(data => {
             const itemsTable = document.getElementById('itemsTable');
             itemsTable.innerHTML = '';
 
+            // Assuming the backend already limits to 4 items, no need for random selection
             data.forEach(item => {
                 const row = document.createElement('tr');
 
@@ -48,7 +22,7 @@ const populateItemsTable = () => {
                 row.appendChild(dateReportedCell);
 
                 const locationCell = document.createElement('td');
-                locationCell.textContent = item.location;
+                locationCell.textContent = item.locationLost;
                 row.appendChild(locationCell);
 
                 const statusCell = document.createElement('td');
@@ -70,7 +44,7 @@ const populateItemsTable = () => {
         });
 }
 
-//chart 
+// Chart
 document.addEventListener('DOMContentLoaded', function () {
     const ctx = document.getElementById('itemsChart').getContext('2d');
     const itemsChart = new Chart(ctx, {
@@ -99,5 +73,3 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
-
-

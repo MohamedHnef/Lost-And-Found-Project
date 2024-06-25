@@ -7,18 +7,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 let originalData = [];
 
-
-
-
-
-// items list cards
 function initDataFetching() {
-    fetch('data/items.json')
-        .then(response => response.json())
+    fetch('http://localhost:3000/api/all-items') // Use /all-items to fetch all items
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
-            originalData = data;
-            const reportedItems = JSON.parse(sessionStorage.getItem('addedItems')) || [];
-            displayItems([...originalData, ...reportedItems]);
+            originalData = data || [];
+            displayItems(originalData);
             populateFilters(originalData);
         })
         .catch(error => console.error('Error fetching data:', error));
@@ -26,15 +25,33 @@ function initDataFetching() {
 
 function displayItems(data) {
     const container = document.getElementById('itemsRow');
+    if (!container) {
+        console.error('Items container element not found');
+        return;
+    }
     container.innerHTML = '';
 
     data.forEach(item => {
         const card = createCard(item);
         container.innerHTML += card;
     });
+
+    const cardLinks = document.querySelectorAll('.card-link');
+    cardLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            const itemName = this.getAttribute('data-item-name');
+            localStorage.removeItem('selectedItemName');
+            localStorage.setItem('selectedItemName', itemName);
+            window.location.href = this.href;
+        });
+    });
 }
 
 function createCard(item) {
+    const formattedDate = formatDate(item.lostDate);
+    const formattedTime = formatTime(item.timeLost);
+
     return `
         <div class="col">
             <a href="item.html" class="card-link" data-item-name="${item.itemName}">
@@ -43,9 +60,9 @@ function createCard(item) {
                     <div class="card-body">
                         <h5 class="card-title">${item.itemName}</h5>
                         <div class="card-details">
-                            <div class="card-detail"><i class="bi bi-calendar"></i> <span>${item.lostDate}</span></div>
+                            <div class="card-detail"><i class="bi bi-calendar"></i> <span>${formattedDate}</span></div>
                             <div class="card-detail"><i class="bi bi-tag"></i> <span>${item.category}</span></div>
-                            <div class="card-detail"><i class="bi bi-clock"></i> <span>${item.timeLost}</span></div>
+                            <div class="card-detail"><i class="bi bi-clock"></i> <span>${formattedTime}</span></div>
                             <div class="card-detail"><i class="bi bi-geo-alt"></i> <span>${item.locationLost}</span></div>
                         </div>
                         <a href="#" class="status-btn status-${item.status.toLowerCase()}">${item.status}</a>
@@ -55,37 +72,18 @@ function createCard(item) {
         </div>`;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    fetch('data/items.json')
-        .then(response => response.json())
-        .then(data => {
-            const container = document.querySelector('.row-cols-1');
-            container.innerHTML = '';
-            data.forEach(item => {
-                const card = createCard(item);
-                container.innerHTML += card;
-            });
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
 
-            // Add click event listener to each card link
-            const cardLinks = document.querySelectorAll('.card-link');
-            cardLinks.forEach(link => {
-                link.addEventListener('click', function(event) {
-                    event.preventDefault(); // Prevent default anchor behavior
-                    const itemName = this.getAttribute('data-item-name');
-                    localStorage.removeItem('selectedItemName');//clear
-                    localStorage.setItem('selectedItemName', itemName);
-                    window.location.href = this.href; // Navigate to item.html
-                });
-            });
-        })
-        .catch(error => console.error('Error fetching data:', error));
-});
-
-
-
-
-
-
+function formatTime(timeString) {
+    const [hour, minute] = timeString.split(':');
+    return `${hour}:${minute}`;
+}
 
 function populateFilters(data) {
     const locations = [...new Set(data.map(item => item.locationLost))];
@@ -99,12 +97,23 @@ function populateFilters(data) {
 
 function populateSelect(selectId, options) {
     const select = document.getElementById(selectId);
+    if (!select) {
+        console.error(`Select element with id ${selectId} not found`);
+        return;
+    }
     options.forEach(option => select.add(new Option(option, option)));
 }
 
 function initFilters() {
-    document.getElementById('applyFilter').addEventListener('click', applyFilters);
-    document.getElementById('clearFilter').addEventListener('click', clearFilters);
+    const applyFilterButton = document.getElementById('applyFilter');
+    if (applyFilterButton) {
+        applyFilterButton.addEventListener('click', applyFilters);
+    }
+
+    const clearFilterButton = document.getElementById('clearFilter');
+    if (clearFilterButton) {
+        clearFilterButton.addEventListener('click', clearFilters);
+    }
 }
 
 function applyFilters() {
@@ -130,8 +139,15 @@ function clearFilters() {
 }
 
 function initSorting() {
-    document.getElementById('sortByFound').addEventListener('click', () => sortItems('Found'));
-    document.getElementById('sortByLost').addEventListener('click', () => sortItems('Lost'));
+    const sortByFoundButton = document.getElementById('sortByFound');
+    if (sortByFoundButton) {
+        sortByFoundButton.addEventListener('click', () => sortItems('Found'));
+    }
+
+    const sortByLostButton = document.getElementById('sortByLost');
+    if (sortByLostButton) {
+        sortByLostButton.addEventListener('click', () => sortItems('Lost'));
+    }
 }
 
 function sortItems(status) {
@@ -140,7 +156,10 @@ function sortItems(status) {
 }
 
 function initSearch() {
-    document.getElementById('performSearch').addEventListener('click', performSearch);
+    const performSearchButton = document.getElementById('performSearch');
+    if (performSearchButton) {
+        performSearchButton.addEventListener('click', performSearch);
+    }
 }
 
 function performSearch() {
@@ -152,8 +171,7 @@ function performSearch() {
 
 function closeSearchModal() {
     const searchModal = bootstrap.Modal.getInstance(document.getElementById('searchModal'));
-    searchModal.hide();
+    if (searchModal) {
+        searchModal.hide();
+    }
 }
-
-
-

@@ -1,10 +1,22 @@
-// profile page table
-const populateTableWithData = () => {
-    fetch('data/items.json')
+document.addEventListener("DOMContentLoaded", function () {
+    const userId = 1; // Replace with actual user ID
+    if (!userId) {
+        console.error('User ID is missing');
+        return;
+    }
+    populateTableWithData(userId);
+});
+
+const populateTableWithData = (userId) => {
+    fetch(`http://localhost:3000/api/user-items?userId=${userId}`)
         .then(response => response.json())
         .then(data => {
-            const itemsTable = document.getElementById('itemsTable');
-            itemsTable.innerHTML = ''; // Clear any existing rows
+            const reportsTbody = document.getElementById('reports-tbody');
+            if (!reportsTbody) {
+                console.error('Reports tbody element not found');
+                return;
+            }
+            reportsTbody.innerHTML = ''; // Clear any existing rows
 
             data.forEach(item => {
                 const row = document.createElement('tr');
@@ -13,19 +25,57 @@ const populateTableWithData = () => {
                 nameCell.textContent = item.itemName;
                 row.appendChild(nameCell);
 
+                const categoryCell = document.createElement('td');
+                categoryCell.textContent = item.category;
+                row.appendChild(categoryCell);
+
+                const colorCell = document.createElement('td');
+                colorCell.textContent = item.color;
+                row.appendChild(colorCell);
+
                 const dateCell = document.createElement('td');
-                dateCell.textContent = item.lostDate;
+                const formattedDate = new Date(item.lostDate).toLocaleDateString('en-CA'); // Format date as YYYY-MM-DD
+                dateCell.textContent = formattedDate;
                 row.appendChild(dateCell);
 
                 const locationCell = document.createElement('td');
-                locationCell.textContent = item.location;
+                locationCell.textContent = item.locationLost;
                 row.appendChild(locationCell);
 
                 const statusCell = document.createElement('td');
-                statusCell.textContent = item.status;
+                const statusButton = document.createElement('button');
+                statusButton.textContent = item.status;
+                statusButton.className = `statusProfile-btn statusProfile-${item.status.toLowerCase()}`;
+                statusButton.style.fontSize = '12px'; // Make the button smaller
+                statusCell.appendChild(statusButton);
                 row.appendChild(statusCell);
 
-                itemsTable.appendChild(row);
+                const actionsCell = document.createElement('td');
+                actionsCell.classList.add('actions');
+
+                const viewIcon = document.createElement('img');
+                viewIcon.src = 'images/view-icon.png';
+                viewIcon.alt = 'View';
+                viewIcon.classList.add('action-icon');
+                viewIcon.addEventListener('click', () => viewItem(item.id));
+                actionsCell.appendChild(viewIcon);
+
+                const editIcon = document.createElement('img');
+                editIcon.src = 'images/edit-icon.png';
+                editIcon.alt = 'Edit';
+                editIcon.classList.add('action-icon');
+                editIcon.addEventListener('click', () => editItem(item.id));
+                actionsCell.appendChild(editIcon);
+
+                const deleteIcon = document.createElement('img');
+                deleteIcon.src = 'images/delete-icon.png';
+                deleteIcon.alt = 'Delete';
+                deleteIcon.classList.add('action-icon');
+                deleteIcon.addEventListener('click', () => deleteItem(item.id));
+                actionsCell.appendChild(deleteIcon);
+
+                row.appendChild(actionsCell);
+                reportsTbody.appendChild(row);
             });
         })
         .catch(error => {
@@ -33,42 +83,36 @@ const populateTableWithData = () => {
         });
 };
 
-document.addEventListener("DOMContentLoaded", function () {
-    fetch("data/reports.json")
+const viewItem = (id) => {
+    window.location.href = `item.html?id=${id}`;
+};
+
+const editItem = (id) => {
+    window.location.href = `edit_item.html?id=${id}`;
+};
+
+const deleteItem = (id) => {
+    if (confirm('Are you sure you want to delete this item?')) {
+        fetch(`http://localhost:3000/api/items/${id}`, {
+            method: 'DELETE'
+        })
         .then(response => {
             if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
+                throw new Error('Failed to delete item');
             }
             return response.json();
         })
-        .then(data => {
-            const reportsTbody = document.getElementById("reports-tbody");
-            data.forEach(report => {
-                const row = document.createElement("tr");
-
-                row.innerHTML = `
-                    <td>${report.itemName}</td>
-                    <td>${report.category}</td>
-                    <td>${report.color}</td>
-                    <td>${report.dateFound}</td>
-                    <td>${report.location}</td>
-                    <td><span class="badge bg-danger">${report.status}</span></td>
-                    <td class="actions">
-                        <img src="images/view-icon.png" alt="View" class="action-icon">
-                        <img src="images/edit-icon.png" alt="Edit" class="action-icon">
-                        <img src="images/delete-icon.png" alt="Delete" class="action-icon">
-                    </td>
-                `;
-
-                reportsTbody.appendChild(row);
-            });
+        .then(() => {
+            alert('Item deleted successfully');
+            window.location.reload();
         })
         .catch(error => {
-            console.error('Error fetching JSON:', error);
+            console.error('Error deleting item:', error);
+            alert('Failed to delete item. Please try again.');
         });
-});
+    }
+};
 
-//chart profile page
 document.addEventListener("DOMContentLoaded", function () {
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
@@ -94,4 +138,3 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-

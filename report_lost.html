@@ -120,7 +120,7 @@
             </nav>
             <h1 class="page-title">Report Lost Item</h1>
             <section class="form-container mt-5">
-                <form id="reportLostForm" class="row form">
+                <form id="reportLostForm" class="row form" enctype="multipart/form-data">
                     <div class="col-lg-6 mb-3 form">
                         <label for="itemName" class="form-label">Item Name</label>
                         <input type="text" class="form-control" id="itemName" name="itemName" placeholder="Please Enter Item Name" required>
@@ -152,7 +152,7 @@
                     </div>
                     <div class="col-lg-6 mb-3 form">
                         <label for="itemColor" class="form-label">Item Color</label>
-                        <input type="text" class="form-control" id="itemColor" name="itemColor" placeholder="Please Enter Item Color" required>
+                        <input type="text" class="form-control" id="itemColor" name="color" placeholder="Please Enter Item Color" required>
                     </div>
                     <div class="col-lg-6 mb-3 form">
                         <label for="description" class="form-label">Description <span class="text-muted">(Optional)</span></label>
@@ -172,7 +172,7 @@
                     <div class="col-12 text-center">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
-                </form>
+                </form>                
             </section>
         </main>
         <footer class="footer mt-auto">
