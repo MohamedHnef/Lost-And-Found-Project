@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <div class="item-detail"><strong>Item Name</strong><span>${selectedItem.itemName}</span></div>
                             <div class="item-detail"><strong>Category</strong><span>${selectedItem.category}</span></div>
                             <div class="item-detail"><strong>Color</strong><span>${selectedItem.color}</span></div>
-                            <div class="item-detail"><strong>Date</strong><span>${selectedItem.lostDate}</span></div>
+                            <div class="item-detail"><strong>Date</strong><span>${formatDate(selectedItem.lostDate)}</span></div>
                             <div class="item-detail"><strong>Status</strong><span>${selectedItem.status}</span></div>
                             <div class="item-detail"><strong>Location</strong><span>${selectedItem.locationLost}</span></div>
                         </div>
@@ -36,3 +36,11 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('item-description-box').innerHTML = '<p>No item selected.</p>';
     }
 });
+
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
