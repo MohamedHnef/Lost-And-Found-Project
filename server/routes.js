@@ -3,11 +3,12 @@ const router = express.Router();
 const pool = require('./db');
 const multer = require('multer');
 const path = require('path');
+const fs = require('fs');
 
 // Multer setup for file uploads
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'uploads/');
+        cb(null, path.join(__dirname, 'uploads/'));
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + '-' + file.originalname);
@@ -95,15 +96,40 @@ router.put('/items/:id', (req, res) => {
     });
 });
 
-// Endpoint to delete an item
+// Endpoint to delete an item and its image
 router.delete('/items/:id', (req, res) => {
     const itemId = req.params.id;
-    pool.query('DELETE FROM tbl_123_posts WHERE id = ?', [itemId], (err) => {
+    // First, fetch the item to get the image URL
+    pool.query('SELECT imageUrl FROM tbl_123_posts WHERE id = ?', [itemId], (err, results) => {
         if (err) {
-            console.error('Error deleting item:', err);
+            console.error('Error fetching item for deletion:', err);
             return res.status(500).json({ error: err.message });
         }
-        res.json({ success: true });
+        if (results.length === 0) {
+            return res.status(404).json({ error: 'Item not found' });
+        }
+
+        const imageUrl = results[0].imageUrl;
+        const imagePath = path.join(__dirname, 'uploads', path.basename(imageUrl));
+
+        // Delete the item from the database
+        pool.query('DELETE FROM tbl_123_posts WHERE id = ?', [itemId], (err) => {
+            if (err) {
+                console.error('Error deleting item:', err);
+                return res.status(500).json({ error: err.message });
+            }
+
+            // Delete the image file if it exists
+            fs.unlink(imagePath, (err) => {
+                if (err) {
+                    console.error('Error deleting image file:', err);
+                } else {
+                    console.log('Image file deleted successfully');
+                }
+            });
+
+            res.json({ success: true });
+        });
     });
 });
 
