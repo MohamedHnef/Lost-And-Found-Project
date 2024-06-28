@@ -77,6 +77,7 @@ function handleFormSubmit(event) {
         .catch(error => console.error('Failed to report item:', error));
 }
 
+
 function handleResponse(response) {
     console.log('Handling response:', response);
     if (!response.ok) {
