@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
   
-  function uploadImage(file) {
+function uploadImage(file) {
     const formData = new FormData();
     formData.append('image', file);
     return fetch(`${API_URL}/upload`, {
