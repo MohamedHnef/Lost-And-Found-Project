@@ -31,15 +31,20 @@ app.use(cors({
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
-// Serve static files from the current directory
-app.use(express.static(path.join(__dirname, '.')));
+// Serve static files from the main directory
+app.use(express.static(path.join(__dirname, '..')));
 
 // Serve uploads directory
-const uploadsDir = path.join(__dirname, 'server', 'uploads');
+const uploadsDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir, { recursive: true });
 }
 app.use('/uploads', express.static(uploadsDir));
+
+// Serve index.html for the root URL
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'index.html'));
+});
 
 // API routes
 app.use('/api', routes);
