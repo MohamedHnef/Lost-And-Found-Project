@@ -6,6 +6,10 @@ const path = require('path');
 const fs = require('fs');
 const logger = require('./logger'); // Import the logger
 
+// Determine if the environment is production
+const isProduction = process.env.NODE_ENV === 'production';
+const baseUrl = isProduction ? 'https://lost-and-found-project.onrender.com' : 'http://localhost:3000';
+
 // Multer setup for file uploads
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -148,7 +152,7 @@ router.post('/upload', upload.single('image'), (req, res) => {
             logger.warn('No file uploaded');
             return res.status(400).json({ error: 'No file uploaded' });
         }
-        const imageUrl = `https://lost-and-found-project-3.onrender.com/uploads/${req.file.filename}`;
+        const imageUrl = `${baseUrl}/uploads/${req.file.filename}`;
         logger.info(`Image uploaded: ${imageUrl}`);
         res.json({ imageUrl });
     } catch (err) {
@@ -156,23 +160,16 @@ router.post('/upload', upload.single('image'), (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
-router.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    next();
-});
-
-// Example endpoint
-router.get('/items', (req, res) => {
-    pool.query('SELECT * FROM tbl_123_posts LIMIT 4', (err, results) => {
+router.get('/all-items', (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Set CORS headers manually if needed
+    pool.query('SELECT * FROM tbl_123_posts', (err, results) => {
         if (err) {
-            logger.error(`Error fetching limited items: ${err.message}`);
+            logger.error(`Error fetching all items: ${err.message}`);
             return res.status(500).json({ error: err.message });
         }
-        logger.info('Fetched limited items');
+        logger.info('Fetched all items');
         res.json(results);
     });
 });
-
 
 module.exports = router;
