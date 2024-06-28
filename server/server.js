@@ -57,10 +57,10 @@ app.use((req, res, next) => {
 
 // Error handling middleware
 app.use((err, req, res, next) => {
-    logger.error(err.stack);
-    res.status(500).send('Something broke!');
-  });
-  
+  logger.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+
 app.listen(port, () => {
   console.log(`Server is running on ${process.env.NODE_ENV === 'production' ? 'https://lost-and-found-project-3.onrender.com' : `http://localhost:${port}`}`);
 });
