@@ -19,37 +19,34 @@ const baseUrl = isProduction ? 'https://lost-and-found-project.onrender.com' : '
 
 // Multer setup for file uploads
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        const uploadPath = path.join(__dirname, 'uploads');
-        if (!fs.existsSync(uploadPath)) {
-            fs.mkdirSync(uploadPath, { recursive: true });
-        }
-        cb(null, uploadPath);
-    },
-    filename: function (req, file, cb) {
-        cb(null, Date.now() + '-' + file.originalname);
+  destination: function (req, file, cb) {
+    const uploadPath = path.join(__dirname, 'uploads');
+    if (!fs.existsSync(uploadPath)) {
+      fs.mkdirSync(uploadPath, { recursive: true });
     }
+    cb(null, uploadPath);
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname);
+  }
 });
 const upload = multer({ storage: storage });
 
 // Endpoint to upload an image
 router.post('/upload', upload.single('image'), (req, res) => {
-    try {
-        if (!req.file) {
-            logger.warn('No file uploaded');
-            return res.status(400).json({ error: 'No file uploaded' });
-        }
-        const imageUrl = `${baseUrl}/uploads/${req.file.filename}`;
-        logger.info(`Image uploaded: ${imageUrl}`);
-        res.json({ imageUrl });
-    } catch (err) {
-        logger.error(`Error handling file upload: ${err.message}`);
-        res.status(500).json({ error: 'Internal Server Error' });
+  try {
+    if (!req.file) {
+      logger.warn('No file uploaded');
+      return res.status(400).json({ error: 'No file uploaded' });
     }
+    const imageUrl = `${baseUrl}/uploads/${req.file.filename}`;
+    logger.info(`Image uploaded: ${imageUrl}`);
+    res.json({ imageUrl });
+  } catch (err) {
+    logger.error(`Error handling file upload: ${err.message}`);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 });
-
-
-
 
 // Endpoint to fetch all items
 router.get('/all-items', (req, res) => {

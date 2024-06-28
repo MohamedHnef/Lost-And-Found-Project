@@ -23,40 +23,34 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
   
-function uploadImage(file) {
+  function uploadImage(file) {
     const formData = new FormData();
     formData.append('image', file);
     return fetch(`${API_URL}/upload`, {
-        method: 'POST',
-        body: formData
+      method: 'POST',
+      body: formData
     })
     .then(handleResponse)
     .then(data => data.imageUrl)
     .catch(handleError('Error uploading image'));
-}
-
-function handleFormSubmit(event) {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const file = formData.get('addImage');
-
-    if (!file || file.size === 0) {
-        alert('Please upload an image.');
-        return;
-    }
-
-    uploadImage(file)
-        .then(imageUrl => {
-            const itemData = getItemDataFromForm(formData, imageUrl);
-            return submitItemData(itemData);
-        })
-        .then(() => {
-            alert('Item reported successfully!');
-            window.location.href = 'list_Item.html'; // Redirect to item list page after successful submission
-        })
-        .catch(error => console.error('Failed to report item:', error));
-}
-
+  }
+  
+  function submitItemData(itemData) {
+    console.log('Submitting item data:', itemData); // Log the item data being submitted
+    return fetch(`${API_URL}/items`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(itemData)
+    })
+    .then(handleResponse)
+    .then(data => {
+      console.log('Item reported successfully:', data);
+      return data;
+    })
+    .catch(handleError('Error submitting item data'));
+  }
   
   function handleFormSubmit(event) {
     event.preventDefault();
