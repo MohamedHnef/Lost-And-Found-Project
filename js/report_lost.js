@@ -24,7 +24,7 @@ function getItemDataFromForm(formData, imageUrl) {
 function uploadImage(file) {
     const formData = new FormData();
     formData.append('image', file);
-    return fetch('http://localhost:3000/api/upload', {
+    return fetch('https://lost-and-found-project-2.onrender.com/api/upload', {
         method: 'POST',
         body: formData
     })
@@ -47,7 +47,7 @@ function uploadImage(file) {
 
 function submitItemData(itemData) {
     console.log('Submitting item data:', itemData); // Log the item data being submitted
-    return fetch('http://localhost:3000/api/items', {
+    return fetch('https://lost-and-found-project-2.onrender.com/api/items', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

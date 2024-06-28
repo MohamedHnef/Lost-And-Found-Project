@@ -11,11 +11,12 @@ const port = process.env.PORT || 3000;
 // Middleware
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+
+// Content Security Policy (CSP)
 app.use((req, res, next) => {
-    res.setHeader("Content-Security-Policy", "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'");
+    res.setHeader("Content-Security-Policy", "default-src 'self'; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com");
     next();
 });
-
 
 // Dynamic CORS setup
 app.use(cors({
@@ -37,10 +38,13 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // API routes
 app.use('/api', routes);
 
+const apiUrl = 'https://lost-and-found-project-2.onrender.com/api/items'; // Correct the URL
+
 // Serve index.html for the root URL
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
+
 // Error handling middleware
 app.use((err, req, res, next) => {
     console.error(err.stack);

@@ -113,7 +113,7 @@ router.post('/upload', upload.single('image'), (req, res) => {
         if (!req.file) {
             return res.status(400).json({ error: 'No file uploaded' });
         }
-        const imageUrl = `http://localhost:3000/uploads/${req.file.filename}`;
+        const imageUrl = `https://lost-and-found-project-2.onrender.com/uploads/${req.file.filename}`;
         res.json({ imageUrl });
     } catch (err) {
         console.error('Error handling file upload:', err);

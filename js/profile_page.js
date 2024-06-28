@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 const populateTableWithData = (userId) => {
-    fetch(`http://localhost:3000/api/user-items?userId=${userId}`)
+    fetch(`https://lost-and-found-project-2.onrender.com/api/user-items?userId=${userId}`)
         .then(response => response.json())
         .then(data => {
             const reportsTbody = document.getElementById('reports-tbody');
@@ -93,7 +93,7 @@ const editItem = (id) => {
 
 const deleteItem = (id) => {
     if (confirm('Are you sure you want to delete this item?')) {
-        fetch(`http://localhost:3000/api/items/${id}`, {
+        fetch(`https://lost-and-found-project-2.onrender.com/api/items/${id}`, {
             method: 'DELETE'
         })
         .then(response => {

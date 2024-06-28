@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const selectedItemName = localStorage.getItem('selectedItemName');
 
     if (selectedItemName) {
-        fetch(`http://localhost:3000/api/items/${selectedItemName}`)
+        fetch(`https://lost-and-found-project-2.onrender.com/api/items/${selectedItemName}`)
             .then(response => response.json())
             .then(data => {
                 const selectedItem = data;
