@@ -1,5 +1,3 @@
-// routes.js
-
 const express = require('express');
 const router = express.Router();
 const pool = require('./db');
@@ -10,7 +8,7 @@ const fs = require('fs');
 // Multer setup for file uploads
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        const uploadPath = path.join(__dirname, 'uploads');
+        const uploadPath = path.join(__dirname, '../uploads');
         // Ensure the uploads directory exists
         if (!fs.existsSync(uploadPath)) {
             fs.mkdirSync(uploadPath, { recursive: true });
