@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: lost-and-found-project
+    env: node
+    plan: free
+    buildCommand: 'npm install'
+    startCommand: 'npm start'
+    envVars:
+      - key: DATABASE_URL
+        value: 'http://127.0.0.1:5500' # Replace with your actual database URL
+      - key: PORT
+        value: '3000'
