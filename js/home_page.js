@@ -1,75 +1,56 @@
-window.onload = () => {
+document.addEventListener('DOMContentLoaded', () => {
     populateItemsTable();
+    initializeChart();
+});
 
-};
+const fetchJSON = (url) => fetch(url).then(response => response.json());
+
 const populateItemsTable = () => {
-    fetch('http://localhost:3000/api/items') // Adjust the URL if needed
-        .then(response => response.json())
+    const apiUrl = window.location.hostname === 'localhost' ? 'http://localhost:3000/api/items' : 'https://lost-and-found-project-3.onrender.com/api/items';
+    fetchJSON(apiUrl)
         .then(data => {
             const itemsTable = document.getElementById('itemsTable');
-            itemsTable.innerHTML = '';
-
-            // Assuming the backend already limits to 4 items, no need for random selection
-            data.forEach(item => {
-                const row = document.createElement('tr');
-
-                const itemNameCell = document.createElement('td');
-                itemNameCell.textContent = item.itemName;
-                row.appendChild(itemNameCell);
-
-                const dateReportedCell = document.createElement('td');
-                dateReportedCell.textContent = new Date(item.lostDate).toLocaleDateString();
-                row.appendChild(dateReportedCell);
-
-                const locationCell = document.createElement('td');
-                locationCell.textContent = item.locationLost;
-                row.appendChild(locationCell);
-
-                const statusCell = document.createElement('td');
-                const statusSpan = document.createElement('span');
-                statusSpan.textContent = item.status;
-                if (item.status === 'Found') {
-                    statusSpan.classList.add('status-found');
-                } else {
-                    statusSpan.classList.add('status-lost');
-                }
-                statusCell.appendChild(statusSpan);
-                row.appendChild(statusCell);
-
-                itemsTable.appendChild(row);
-            });
+            itemsTable.innerHTML = data.map(createTableRow).join('');
         })
-        .catch(error => {
-            console.error('Error fetching items:', error);
-        });
-}
+        .catch(error => console.error('Error fetching items:', error));
+};
 
-// Chart
-document.addEventListener('DOMContentLoaded', function () {
-    const ctx = document.getElementById('itemsChart').getContext('2d');
-    const itemsChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Phones', 'Wallets', 'Keys', 'Purses', 'Computers', 'Others'],
-            datasets: [{
-                label: 'Found Items Count',
-                data: [40, 88, 60, 45, 10, 6],
-                backgroundColor: 'rgba(10, 162, 192, 0.2)',
-                borderColor: 'rgba(10, 162, 192, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            maintainAspectRatio: false,
-            responsive: true,
-            scales: {
-                x: {
-                    beginAtZero: true
-                },
-                y: {
-                    beginAtZero: true
-                }
-            }
+const createTableRow = (item) => `
+    <tr>
+        <td>${item.itemName}</td>
+        <td>${new Date(item.lostDate).toLocaleDateString()}</td>
+        <td>${item.locationLost}</td>
+        <td><span class="${item.status === 'Found' ? 'status-found' : 'status-lost'}">${item.status}</span></td>
+    </tr>
+`;
+
+const initializeChart = () => {
+    const chartDataUrl = window.location.hostname === 'localhost' ? 'server/data/homeGraph.json' : 'https://lost-and-found-project-3.onrender.com/server/data/homeGraph.json';
+    fetchJSON(chartDataUrl)
+        .then(chartData => {
+            new Chart(document.getElementById('itemsChart').getContext('2d'), getChartConfig(chartData));
+        })
+        .catch(error => console.error('Error fetching chart data:', error));
+};
+
+const getChartConfig = (chartData) => ({
+    type: 'bar',
+    data: {
+        labels: chartData.labels,
+        datasets: [{
+            label: 'Found Items Count',
+            data: chartData.data,
+            backgroundColor: 'rgba(10, 162, 192, 0.2)',
+            borderColor: 'rgba(10, 162, 192, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        maintainAspectRatio: false,
+        responsive: true,
+        scales: {
+            x: { beginAtZero: true },
+            y: { beginAtZero: true }
         }
-    });
+    }
 });
