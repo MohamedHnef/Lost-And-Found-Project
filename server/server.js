@@ -2,8 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
-const routes = require('./routes');
-const logger = require('./logger'); // Import the logger
+const routes = require('./server/routes');
+const logger = require('./server/logger');
+const fs = require('fs');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -11,11 +12,12 @@ const port = process.env.PORT || 3000;
 // CORS configuration
 const allowedOrigins = [
   'https://lost-and-found-project.onrender.com',
-  'https://lost-and-found-project-3.onrender.com'
+  'https://lost-and-found-project-3.onrender.com',
+  'http://localhost:3000'
 ];
 
 app.use(cors({
-  origin: function(origin, callback){
+  origin: function(origin, callback) {
     if (!origin) return callback(null, true);
     if (allowedOrigins.indexOf(origin) === -1) {
       const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
@@ -29,29 +31,33 @@ app.use(cors({
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
-// Serve static files from the 'first_submition' directory
-app.use(express.static(path.join(__dirname, '..')));
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Serve uploads directory
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+const uploadsDir = path.join(__dirname, 'server', 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir, { recursive: true });
+}
+app.use('/uploads', express.static(uploadsDir));
 
 // API routes
 app.use('/api', routes);
 
 // Logging middleware
 app.use((req, res, next) => {
-    logger.info(`${req.method} ${req.url}`);
-    next();
+  logger.info(`${req.method} ${req.url}`);
+  next();
 });
 
 // Error handling middleware
 app.use((err, req, res, next) => {
-    logger.error(err.stack);
-    res.status(500).send('Something broke!');
+  logger.error(err.stack);
+  res.status(500).send('Something broke!');
 });
 
 app.listen(port, () => {
-    console.log(`Server is running on ${process.env.NODE_ENV === 'production' ? 'https://lost-and-found-project-3.onrender.com' : `http://localhost:${port}`}`);
+  console.log(`Server is running on ${process.env.NODE_ENV === 'production' ? 'https://lost-and-found-project-3.onrender.com' : `http://localhost:${port}`}`);
 });
 
 module.exports = app;
