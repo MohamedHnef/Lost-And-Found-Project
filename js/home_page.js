@@ -3,11 +3,18 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeChart();
 });
 
-const fetchJSON = (url) => fetch(url).then(response => response.json());
+const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
+const GRAPH_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/server/data/homeGraph.json' : 'https://lost-and-found-project-3.onrender.com/server/data/homeGraph.json';
+
+const fetchJSON = (url) => fetch(url).then(response => {
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    return response.json();
+});
 
 const populateItemsTable = () => {
-    const apiUrl = window.location.hostname === 'localhost' ? 'http://localhost:3000/api/items' : 'https://lost-and-found-project-3.onrender.com/api/items';
-    fetchJSON(apiUrl)
+    fetchJSON(`${API_URL}/items`)
         .then(data => {
             const itemsTable = document.getElementById('itemsTable');
             itemsTable.innerHTML = data.map(createTableRow).join('');
@@ -25,8 +32,7 @@ const createTableRow = (item) => `
 `;
 
 const initializeChart = () => {
-    const chartDataUrl = window.location.hostname === 'localhost' ? 'server/data/homeGraph.json' : 'https://lost-and-found-project-3.onrender.com/server/data/homeGraph.json';
-    fetchJSON(chartDataUrl)
+    fetchJSON(GRAPH_URL)
         .then(chartData => {
             new Chart(document.getElementById('itemsChart').getContext('2d'), getChartConfig(chartData));
         })
