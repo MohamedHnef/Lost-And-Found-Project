@@ -71,7 +71,7 @@ function handleFormSubmit(event) {
         })
         .then(() => {
             alert('Item reported successfully!');
-            window.location.href = '/list_item.html'; // Redirect to item list page after successful submission
+            window.location.href = 'list_item.html'; // Redirect to item list page after successful submission
         })
         .catch(error => console.error('Failed to report item:', error));
 }
