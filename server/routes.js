@@ -30,7 +30,6 @@ const storage = multer.diskStorage({
         cb(null, Date.now() + '-' + file.originalname);
     }
 });
-
 const upload = multer({ storage: storage });
 
 // Endpoint to upload an image
@@ -48,6 +47,8 @@ router.post('/upload', upload.single('image'), (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
+
 
 
 // Endpoint to fetch all items
