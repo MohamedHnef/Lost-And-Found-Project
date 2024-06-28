@@ -16,7 +16,6 @@ const allowedOrigins = ['http://127.0.0.1:5501', 'https://lost-and-found-project
 
 app.use(cors({
     origin: function (origin, callback) {
-        // Allow requests with no origin (like mobile apps, curl requests, etc.)
         if (!origin) return callback(null, true);
         if (allowedOrigins.indexOf(origin) === -1) {
             const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
