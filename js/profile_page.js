@@ -5,82 +5,80 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
     populateTableWithData(userId);
+    initializeChart();
 });
 
+const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
+
 const populateTableWithData = (userId) => {
-    fetch(`http://localhost:3000/api/user-items?userId=${userId}`)
-        .then(response => response.json())
-        .then(data => {
-            const reportsTbody = document.getElementById('reports-tbody');
-            if (!reportsTbody) {
-                console.error('Reports tbody element not found');
-                return;
-            }
-            reportsTbody.innerHTML = ''; // Clear any existing rows
+    fetchUserItems(userId)
+        .then(data => updateTable(data))
+        .catch(error => console.error('Error fetching data:', error));
+};
 
-            data.forEach(item => {
-                const row = document.createElement('tr');
+const fetchUserItems = (userId) => {
+    return fetch(`${API_URL}/user-items?userId=${userId}`)
+        .then(response => response.json());
+};
 
-                const nameCell = document.createElement('td');
-                nameCell.textContent = item.itemName;
-                row.appendChild(nameCell);
+const updateTable = (data) => {
+    const reportsTbody = document.getElementById('reports-tbody');
+    if (!reportsTbody) {
+        console.error('Reports tbody element not found');
+        return;
+    }
+    reportsTbody.innerHTML = ''; // Clear any existing rows
+    data.forEach(item => createTableRow(item, reportsTbody));
+};
 
-                const categoryCell = document.createElement('td');
-                categoryCell.textContent = item.category;
-                row.appendChild(categoryCell);
+const createTableRow = (item, tbody) => {
+    const row = document.createElement('tr');
+    row.appendChild(createTableCell(item.itemName));
+    row.appendChild(createTableCell(item.category));
+    row.appendChild(createTableCell(item.color));
+    row.appendChild(createTableCell(formatDate(item.lostDate)));
+    row.appendChild(createTableCell(item.locationLost));
+    row.appendChild(createStatusButtonCell(item));
+    row.appendChild(createActionsCell(item));
+    tbody.appendChild(row);
+};
 
-                const colorCell = document.createElement('td');
-                colorCell.textContent = item.color;
-                row.appendChild(colorCell);
+const createTableCell = (text) => {
+    const cell = document.createElement('td');
+    cell.textContent = text;
+    return cell;
+};
 
-                const dateCell = document.createElement('td');
-                const formattedDate = new Date(item.lostDate).toLocaleDateString('en-CA'); // Format date as YYYY-MM-DD
-                dateCell.textContent = formattedDate;
-                row.appendChild(dateCell);
+const createStatusButtonCell = (item) => {
+    const cell = document.createElement('td');
+    const statusButton = document.createElement('button');
+    statusButton.textContent = item.status;
+    statusButton.className = `statusProfile-btn statusProfile-${item.status.toLowerCase()}`;
+    statusButton.style.fontSize = '12px'; // Make the button smaller
+    cell.appendChild(statusButton);
+    return cell;
+};
 
-                const locationCell = document.createElement('td');
-                locationCell.textContent = item.locationLost;
-                row.appendChild(locationCell);
+const createActionsCell = (item) => {
+    const cell = document.createElement('td');
+    cell.classList.add('actions');
+    cell.appendChild(createActionIcon('images/view-icon.png', 'View', () => viewItem(item.id)));
+    cell.appendChild(createActionIcon('images/edit-icon.png', 'Edit', () => editItem(item.id)));
+    cell.appendChild(createActionIcon('images/delete-icon.png', 'Delete', () => deleteItem(item.id)));
+    return cell;
+};
 
-                const statusCell = document.createElement('td');
-                const statusButton = document.createElement('button');
-                statusButton.textContent = item.status;
-                statusButton.className = `statusProfile-btn statusProfile-${item.status.toLowerCase()}`;
-                statusButton.style.fontSize = '12px'; // Make the button smaller
-                statusCell.appendChild(statusButton);
-                row.appendChild(statusCell);
+const createActionIcon = (src, alt, onClick) => {
+    const icon = document.createElement('img');
+    icon.src = src;
+    icon.alt = alt;
+    icon.classList.add('action-icon');
+    icon.addEventListener('click', onClick);
+    return icon;
+};
 
-                const actionsCell = document.createElement('td');
-                actionsCell.classList.add('actions');
-
-                const viewIcon = document.createElement('img');
-                viewIcon.src = 'images/view-icon.png';
-                viewIcon.alt = 'View';
-                viewIcon.classList.add('action-icon');
-                viewIcon.addEventListener('click', () => viewItem(item.id));
-                actionsCell.appendChild(viewIcon);
-
-                const editIcon = document.createElement('img');
-                editIcon.src = 'images/edit-icon.png';
-                editIcon.alt = 'Edit';
-                editIcon.classList.add('action-icon');
-                editIcon.addEventListener('click', () => editItem(item.id));
-                actionsCell.appendChild(editIcon);
-
-                const deleteIcon = document.createElement('img');
-                deleteIcon.src = 'images/delete-icon.png';
-                deleteIcon.alt = 'Delete';
-                deleteIcon.classList.add('action-icon');
-                deleteIcon.addEventListener('click', () => deleteItem(item.id));
-                actionsCell.appendChild(deleteIcon);
-
-                row.appendChild(actionsCell);
-                reportsTbody.appendChild(row);
-            });
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-        });
+const formatDate = (dateString) => {
+    return new Date(dateString).toLocaleDateString('en-CA'); // Format date as YYYY-MM-DD
 };
 
 const viewItem = (id) => {
@@ -93,7 +91,7 @@ const editItem = (id) => {
 
 const deleteItem = (id) => {
     if (confirm('Are you sure you want to delete this item?')) {
-        fetch(`http://localhost:3000/api/items/${id}`, {
+        fetch(`${API_URL}/items/${id}`, {
             method: 'DELETE'
         })
         .then(response => {
@@ -113,28 +111,42 @@ const deleteItem = (id) => {
     }
 };
 
-document.addEventListener("DOMContentLoaded", function () {
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-            datasets: [{
-                label: 'Items Reported',
-                data: [0, 25, 15, 10, 30, 50],
-                backgroundColor: 'rgba(10, 162, 192, 0.2)',
-                borderColor: '#0AA2C0',
-                borderWidth: 2,
-                pointBackgroundColor: '#0AA2C0'
-            }]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
+const initializeChart = () => {
+    fetch('server/data/profileGraph.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
             }
-        }
-    });
-});
+            return response.json();
+        })
+        .then(chartData => {
+            const ctx = document.getElementById('myChart').getContext('2d');
+            const myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: chartData.labels,
+                    datasets: [{
+                        label: 'Items Reported',
+                        data: chartData.data,
+                        backgroundColor: 'rgba(10, 162, 192, 0.2)',
+                        borderColor: '#0AA2C0',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#0AA2C0'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching chart data:', error);
+        });
+};
+
+document.addEventListener('DOMContentLoaded', initializeChart);

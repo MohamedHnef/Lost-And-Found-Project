@@ -4,9 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
-const GRAPH_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/server/data/homeGraph.json' : 'https://lost-and-found-project-3.onrender.com/server/data/homeGraph.json';
+const GRAPH_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/server/data/homeGraph.json' : 'https://lost-and-found-project.onrender.com/server/data/homeGraph.json';
 
-const fetchJSON = (url) => fetch(url).then(response => {
+const fetchJSON = (url) => fetch(url, { mode: 'cors' }).then(response => {
     if (!response.ok) {
         throw new Error('Network response was not ok');
     }
