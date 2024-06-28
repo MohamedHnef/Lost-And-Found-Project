@@ -26,6 +26,7 @@ function getItemDataFromForm(formData, imageUrl) {
 function uploadImage(file) {
     const formData = new FormData();
     formData.append('image', file);
+    console.log('Uploading image with the following data:', formData);
     return fetch(`${API_URL}/upload`, {
         method: 'POST',
         body: formData
@@ -77,6 +78,7 @@ function handleFormSubmit(event) {
 }
 
 function handleResponse(response) {
+    console.log('Handling response:', response);
     if (!response.ok) {
         throw new Error(`Failed, server responded with status: ${response.status}`);
     }
