@@ -2,8 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
-const routes = require('./server/routes');
-const logger = require('./server/logger');
+const routes = require('./routes');
+const logger = require('./logger');
 const fs = require('fs');
 
 const app = express();
@@ -31,8 +31,9 @@ app.use(cors({
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
-// Serve static files from the 'public' directory
-app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(express.static(path.join(__dirname, '.')));
+
 
 // Serve uploads directory
 const uploadsDir = path.join(__dirname, 'server', 'uploads');
