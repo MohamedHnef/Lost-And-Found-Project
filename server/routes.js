@@ -13,19 +13,40 @@ router.use((req, res, next) => {
   next();
 });
 
+// Determine if the environment is production
 const isProduction = process.env.NODE_ENV === 'production';
 const baseUrl = isProduction ? 'https://lost-and-found-project.onrender.com' : 'http://localhost:3000';
 
 // Multer setup for file uploads
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, path.join(__dirname, 'uploads'));
+        const uploadPath = path.join(__dirname, 'uploads');
+        if (!fs.existsSync(uploadPath)) {
+            fs.mkdirSync(uploadPath, { recursive: true });
+        }
+        cb(null, uploadPath);
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + '-' + file.originalname);
     }
 });
 const upload = multer({ storage: storage });
+
+// Endpoint to upload an image
+router.post('/upload', upload.single('image'), (req, res) => {
+    try {
+        if (!req.file) {
+            logger.warn('No file uploaded');
+            return res.status(400).json({ error: 'No file uploaded' });
+        }
+        const imageUrl = `${baseUrl}/uploads/${req.file.filename}`;
+        logger.info(`Image uploaded: ${imageUrl}`);
+        res.json({ imageUrl });
+    } catch (err) {
+        logger.error(`Error handling file upload: ${err.message}`);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 
 // Endpoint to fetch all items
 router.get('/all-items', (req, res) => {
@@ -149,22 +170,6 @@ router.delete('/items/:id', (req, res) => {
             res.json({ success: true });
         });
     });
-});
-
-// Endpoint to upload an image
-router.post('/upload', upload.single('image'), (req, res) => {
-    try {
-        if (!req.file) {
-            logger.warn('No file uploaded');
-            return res.status(400).json({ error: 'No file uploaded' });
-        }
-        const imageUrl = `${baseUrl}/uploads/${req.file.filename}`;
-        logger.info(`Image uploaded: ${imageUrl}`);
-        res.json({ imageUrl });
-    } catch (err) {
-        logger.error(`Error handling file upload: ${err.message}`);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
 });
 
 module.exports = router;
