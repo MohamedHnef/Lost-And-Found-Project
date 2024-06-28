@@ -5,6 +5,15 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const logger = require('./logger'); // Import the logger
+// Add CORS headers for all routes
+router.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    next();
+  });
+  
+
 
 // Determine if the environment is production
 const isProduction = process.env.NODE_ENV === 'production';
@@ -160,16 +169,6 @@ router.post('/upload', upload.single('image'), (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
-router.get('/all-items', (req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', '*'); // Set CORS headers manually if needed
-    pool.query('SELECT * FROM tbl_123_posts', (err, results) => {
-        if (err) {
-            logger.error(`Error fetching all items: ${err.message}`);
-            return res.status(500).json({ error: err.message });
-        }
-        logger.info('Fetched all items');
-        res.json(results);
-    });
-});
+
 
 module.exports = router;
