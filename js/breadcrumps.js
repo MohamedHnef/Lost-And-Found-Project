@@ -52,7 +52,7 @@ function getHrefForCrumb(crumb) {
             const selectedItemName = localStorage.getItem('selectedItemName');
             return selectedItemName ? `item.html?item=${selectedItemName}` : "item.html";
         case "Items List":
-            return "list_item.html";
+            return "list_Item.html";
         case "Report Lost":
         case "Report Lost Item":
             return "report_lost.html";
