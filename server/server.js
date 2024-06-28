@@ -8,14 +8,26 @@ const logger = require('./logger'); // Import the logger
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Determine the environment
-const isProduction = process.env.NODE_ENV === 'production';
-const corsOrigin = isProduction ? 'https://lost-and-found-project.onrender.com' : 'http://127.0.0.1:5501';
+// CORS configuration
+const allowedOrigins = [
+  'https://lost-and-found-project.onrender.com',
+  'https://lost-and-found-project-3.onrender.com'
+];
+
+app.use(cors({
+  origin: function(origin, callback){
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
+}));
 
 // Middleware
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
-app.use(cors({ origin: corsOrigin }));
 
 // Serve static files from the 'first_submition' directory
 app.use(express.static(path.join(__dirname, '..')));
@@ -39,7 +51,7 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(port, () => {
-    console.log(`Server is running on ${isProduction ? 'https://lost-and-found-project.onrender.com' : `http://localhost:${port}`}`);
+    console.log(`Server is running on ${process.env.NODE_ENV === 'production' ? 'https://lost-and-found-project-3.onrender.com' : `http://localhost:${port}`}`);
 });
 
 module.exports = app;

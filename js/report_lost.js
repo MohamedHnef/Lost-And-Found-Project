@@ -86,6 +86,7 @@ function handleResponse(response) {
 function handleError(message) {
     return error => {
         console.error(message, error);
+        alert(message); // Alert the error message
         throw error;
     };
 }
