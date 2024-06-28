@@ -14,7 +14,14 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 // Content Security Policy (CSP)
 app.use((req, res, next) => {
-    res.setHeader("Content-Security-Policy", "default-src 'self'; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com");
+    res.setHeader("Content-Security-Policy", `
+        default-src 'self'; 
+        style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; 
+        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; 
+        font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; 
+        img-src 'self' data:; 
+        connect-src 'self' https://lost-and-found-project-2.onrender.com;
+    `);
     next();
 });
 
