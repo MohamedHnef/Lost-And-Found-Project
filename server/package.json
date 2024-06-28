@@ -1,15 +1,11 @@
 {
   "name": "first_submition",
   "version": "1.0.0",
-  "main": "db.js",
+  "description": "",
+  "main": "server/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
