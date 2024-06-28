@@ -4,9 +4,15 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
 const routes = require('./server/routes');
+const fs = require('fs');
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+const uploadDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir, { recursive: true });
+}
 
 // Middleware
 app.use(bodyParser.json({ limit: '50mb' }));
