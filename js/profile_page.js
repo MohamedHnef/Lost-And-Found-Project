@@ -16,7 +16,7 @@ const populateTableWithData = (userId) => {
                 console.error('Reports tbody element not found');
                 return;
             }
-            reportsTbody.innerHTML = ''; // Clear any existing rows
+            reportsTbody.innerHTML = ''; 
 
             data.forEach(item => {
                 const row = document.createElement('tr');

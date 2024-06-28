@@ -10,15 +10,15 @@ const port = process.env.PORT || 3000;
 // Middleware
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
-app.use(cors({ origin: 'http://127.0.0.1:5500' }));
+app.use(cors({ origin: 'http://127.0.0.1:5500'}));
 
-// Serve static files from the 'first_submition' directory
+
 app.use(express.static(path.join(__dirname, '..')));
 
-// Serve uploads directory
+
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// API routes
+
 app.use('/api', routes);
 
 // Error handling middleware

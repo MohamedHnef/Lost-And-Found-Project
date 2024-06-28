@@ -11,13 +11,13 @@ function getItemDataFromForm(formData, imageUrl) {
         lostDate: formData.get('lostDate'),
         timeLost: formData.get('timeLost'),
         category: formData.get('category'),
-        color: formData.get('color'), // Ensure color is gathered here
+        color: formData.get('color'), 
         description: formData.get('description'),
         contactEmail: formData.get('contactEmail'),
         contactPhone: formData.get('contactPhone'),
         status: 'Lost',
-        imageUrl: imageUrl, // Use the uploaded image URL
-        userId: userId // Add userId to the item data
+        imageUrl: imageUrl, 
+        userId: userId 
     };
 }
 
@@ -96,7 +96,7 @@ function handleFormSubmit(event) {
         .then(data => {
             console.log('Item submission response:', data);
             alert('Item reported successfully!');
-            window.location.href = 'list_item.html'; // Redirect to item list page after successful submission
+            window.location.href = 'list_item.html'; // Redirect 
         })
         
 }
