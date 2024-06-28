@@ -1,13 +1,21 @@
+// routes.js
+
 const express = require('express');
 const router = express.Router();
 const pool = require('./db');
 const multer = require('multer');
 const path = require('path');
+const fs = require('fs');
 
 // Multer setup for file uploads
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'uploads/');
+        const uploadPath = path.join(__dirname, 'uploads');
+        // Ensure the uploads directory exists
+        if (!fs.existsSync(uploadPath)) {
+            fs.mkdirSync(uploadPath, { recursive: true });
+        }
+        cb(null, uploadPath);
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + '-' + file.originalname);
@@ -111,9 +119,11 @@ router.delete('/items/:id', (req, res) => {
 router.post('/upload', upload.single('image'), (req, res) => {
     try {
         if (!req.file) {
+            console.error('No file uploaded');
             return res.status(400).json({ error: 'No file uploaded' });
         }
         const imageUrl = `https://lost-and-found-project-2.onrender.com/uploads/${req.file.filename}`;
+        console.log('Image uploaded successfully:', imageUrl);
         res.json({ imageUrl });
     } catch (err) {
         console.error('Error handling file upload:', err);
