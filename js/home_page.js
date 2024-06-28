@@ -3,7 +3,7 @@ window.onload = () => {
 
 };
 const populateItemsTable = () => {
-    fetch('http://localhost:3000/api/items') // Adjust the URL if needed
+    fetch('https://lost-and-found-project-2.onrender.com/api/items') // Adjust the URL if needed
         .then(response => response.json())
         .then(data => {
             const itemsTable = document.getElementById('itemsTable');

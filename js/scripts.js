@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
 let originalData = [];
 
 function initDataFetching() {
-    fetch('http://localhost:3000/api/all-items') // Use /all-items to fetch all items
+    fetch('https://lost-and-found-project-2.onrender.com/api/all-items') // Use /all-items to fetch all items
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
