@@ -14,7 +14,6 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 const allowedOrigins = [
     'http://127.0.0.1:5501',
-    'https://lost-and-found-project-3.onrender.com',
     'https://lost-and-found-project.onrender.com' // Add this line
 ];
 
