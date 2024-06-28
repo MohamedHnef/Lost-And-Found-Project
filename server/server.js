@@ -12,10 +12,15 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
-const allowedOrigins = ['http://127.0.0.1:5501', 'https://lost-and-found-project-3.onrender.com'];
+const allowedOrigins = [
+    'http://127.0.0.1:5501',
+    'https://lost-and-found-project-3.onrender.com',
+    'https://lost-and-found-project.onrender.com' // Add this line
+];
 
 app.use(cors({
     origin: function (origin, callback) {
+        // Allow requests with no origin (like mobile apps, curl requests, etc.)
         if (!origin) return callback(null, true);
         if (allowedOrigins.indexOf(origin) === -1) {
             const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
