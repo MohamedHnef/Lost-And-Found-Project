@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    initBreadcrumbs();
     initDataFetching();
     initFilters();
     initSorting();
@@ -8,47 +7,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 let originalData = [];
 
-
-//breadcrumbs
-function initBreadcrumbs() {
-    const breadcrumbContainer = document.getElementById("breadcrumb");
-    const currentPage = document.title.split(' - ')[1];
-    let breadcrumbTrail = JSON.parse(sessionStorage.getItem('breadcrumbTrail')) || ["Home"];
-
-    if (!breadcrumbTrail.includes(currentPage)) {
-        breadcrumbTrail.push(currentPage);
-    } else {
-        breadcrumbTrail = breadcrumbTrail.slice(0, breadcrumbTrail.indexOf(currentPage) + 1);
-    }
-    sessionStorage.setItem('breadcrumbTrail', JSON.stringify(breadcrumbTrail));
-
-    breadcrumbContainer.innerHTML = '';
-    breadcrumbTrail.forEach((crumb, index) => {
-        const li = document.createElement("li");
-        li.classList.add("breadcrumb-item");
-        if (index === breadcrumbTrail.length - 1) {
-            li.classList.add("active");
-            li.setAttribute("aria-current", "page");
-            li.textContent = crumb;
-        } else {
-            const a = document.createElement("a");
-            a.href = crumb === "Home" ? "index.html" : crumb.toLowerCase().replace(/\s/g, '_') + ".html";
-            a.textContent = crumb;
-            li.appendChild(a);
-        }
-        breadcrumbContainer.appendChild(li);
-    });
-}
-
-
-// items list cards
 function initDataFetching() {
-    fetch('data/items.json')
-        .then(response => response.json())
+    fetch('http://localhost:3000/api/all-items') // Use /all-items to fetch all items
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
-            originalData = data;
-            const reportedItems = JSON.parse(sessionStorage.getItem('addedItems')) || [];
-            displayItems([...originalData, ...reportedItems]);
+            originalData = data || [];
+            displayItems(originalData);
             populateFilters(originalData);
         })
         .catch(error => console.error('Error fetching data:', error));
@@ -56,31 +25,64 @@ function initDataFetching() {
 
 function displayItems(data) {
     const container = document.getElementById('itemsRow');
+    if (!container) {
+        console.error('Items container element not found');
+        return;
+    }
     container.innerHTML = '';
 
     data.forEach(item => {
         const card = createCard(item);
         container.innerHTML += card;
     });
+
+    const cardLinks = document.querySelectorAll('.card-link');
+    cardLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            const itemName = this.getAttribute('data-item-name');
+            localStorage.removeItem('selectedItemName');
+            localStorage.setItem('selectedItemName', itemName);
+            window.location.href = this.href;
+        });
+    });
 }
 
 function createCard(item) {
+    const formattedDate = formatDate(item.lostDate);
+    const formattedTime = formatTime(item.timeLost);
+
     return `
         <div class="col">
-            <div class="card list-item-card">
-                <img src="${item.imageUrl}" class="card-img-top" alt="${item.itemName}">
-                <div class="card-body">
-                    <h5 class="card-title">${item.itemName}</h5>
-                    <div class="card-details">
-                        <div class="card-detail"><i class="bi bi-calendar"></i> <span>${item.lostDate}</span></div>
-                        <div class="card-detail"><i class="bi bi-tag"></i> <span>${item.category}</span></div>
-                        <div class="card-detail"><i class="bi bi-clock"></i> <span>${item.timeLost}</span></div>
-                        <div class="card-detail"><i class="bi bi-geo-alt"></i> <span>${item.locationLost}</span></div>
+            <a href="item.html" class="card-link" data-item-name="${item.itemName}">
+                <div class="card list-item-card">
+                    <img src="${item.imageUrl}" class="card-img-top" alt="${item.itemName}">
+                    <div class="card-body">
+                        <h5 class="card-title">${item.itemName}</h5>
+                        <div class="card-details">
+                            <div class="card-detail"><i class="bi bi-calendar"></i> <span>${formattedDate}</span></div>
+                            <div class="card-detail"><i class="bi bi-tag"></i> <span>${item.category}</span></div>
+                            <div class="card-detail"><i class="bi bi-clock"></i> <span>${formattedTime}</span></div>
+                            <div class="card-detail"><i class="bi bi-geo-alt"></i> <span>${item.locationLost}</span></div>
+                        </div>
+                        <a href="#" class="status-btn status-${item.status.toLowerCase()}">${item.status}</a>
                     </div>
-                    <a href="#" class="status-btn status-${item.status.toLowerCase()}">${item.status}</a>
                 </div>
-            </div>
+            </a>
         </div>`;
+}
+
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
+
+function formatTime(timeString) {
+    const [hour, minute] = timeString.split(':');
+    return `${hour}:${minute}`;
 }
 
 function populateFilters(data) {
@@ -95,12 +97,23 @@ function populateFilters(data) {
 
 function populateSelect(selectId, options) {
     const select = document.getElementById(selectId);
+    if (!select) {
+        console.error(`Select element with id ${selectId} not found`);
+        return;
+    }
     options.forEach(option => select.add(new Option(option, option)));
 }
 
 function initFilters() {
-    document.getElementById('applyFilter').addEventListener('click', applyFilters);
-    document.getElementById('clearFilter').addEventListener('click', clearFilters);
+    const applyFilterButton = document.getElementById('applyFilter');
+    if (applyFilterButton) {
+        applyFilterButton.addEventListener('click', applyFilters);
+    }
+
+    const clearFilterButton = document.getElementById('clearFilter');
+    if (clearFilterButton) {
+        clearFilterButton.addEventListener('click', clearFilters);
+    }
 }
 
 function applyFilters() {
@@ -126,8 +139,15 @@ function clearFilters() {
 }
 
 function initSorting() {
-    document.getElementById('sortByFound').addEventListener('click', () => sortItems('Found'));
-    document.getElementById('sortByLost').addEventListener('click', () => sortItems('Lost'));
+    const sortByFoundButton = document.getElementById('sortByFound');
+    if (sortByFoundButton) {
+        sortByFoundButton.addEventListener('click', () => sortItems('Found'));
+    }
+
+    const sortByLostButton = document.getElementById('sortByLost');
+    if (sortByLostButton) {
+        sortByLostButton.addEventListener('click', () => sortItems('Lost'));
+    }
 }
 
 function sortItems(status) {
@@ -136,7 +156,10 @@ function sortItems(status) {
 }
 
 function initSearch() {
-    document.getElementById('performSearch').addEventListener('click', performSearch);
+    const performSearchButton = document.getElementById('performSearch');
+    if (performSearchButton) {
+        performSearchButton.addEventListener('click', performSearch);
+    }
 }
 
 function performSearch() {
@@ -148,107 +171,7 @@ function performSearch() {
 
 function closeSearchModal() {
     const searchModal = bootstrap.Modal.getInstance(document.getElementById('searchModal'));
-    searchModal.hide();
+    if (searchModal) {
+        searchModal.hide();
+    }
 }
-
-
-
-// profile page table
-const populateTableWithData = () => {
-    fetch('data/data.json')
-        .then(response => response.json())
-        .then(data => {
-            const itemsTable = document.getElementById('itemsTable');
-            itemsTable.innerHTML = ''; // Clear any existing rows
-
-            data.forEach(item => {
-                const row = document.createElement('tr');
-
-                const nameCell = document.createElement('td');
-                nameCell.textContent = item.itemName;
-                row.appendChild(nameCell);
-
-                const dateCell = document.createElement('td');
-                dateCell.textContent = item.lostDate;
-                row.appendChild(dateCell);
-
-                const locationCell = document.createElement('td');
-                locationCell.textContent = item.location;
-                row.appendChild(locationCell);
-
-                const statusCell = document.createElement('td');
-                statusCell.textContent = item.status;
-                row.appendChild(statusCell);
-
-                itemsTable.appendChild(row);
-            });
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-        });
-};
-
-document.addEventListener("DOMContentLoaded", function () {
-    fetch("../Lost-And-Found-Project/data/reports.json")
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            const reportsTbody = document.getElementById("reports-tbody");
-            data.forEach(report => {
-                const row = document.createElement("tr");
-
-                row.innerHTML = `
-                    <td>${report.itemName}</td>
-                    <td>${report.category}</td>
-                    <td>${report.color}</td>
-                    <td>${report.dateFound}</td>
-                    <td>${report.location}</td>
-                    <td><span class="badge bg-danger">${report.status}</span></td>
-                    <td class="actions">
-                        <img src="../Lost-And-Found-Project/images/view-icon.png" alt="View" class="action-icon">
-                        <img src="../Lost-And-Found-Project/images/edit-icon.png" alt="Edit" class="action-icon">
-                        <img src="../Lost-And-Found-Project/images/delete-icon.png" alt="Delete" class="action-icon">
-                    </td>
-                `;
-
-                reportsTbody.appendChild(row);
-            });
-        })
-        .catch(error => {
-            console.error('Error fetching JSON:', error);
-        });
-});
-
-//chart profile page
-document.addEventListener("DOMContentLoaded", function () {
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-            datasets: [{
-                label: 'Items Reported',
-                data: [0, 25, 15, 10, 30, 50],
-                backgroundColor: 'rgba(10, 162, 192, 0.2)',
-                borderColor: '#0AA2C0',
-                borderWidth: 2,
-                pointBackgroundColor: '#0AA2C0'
-            }]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-});
-
-
-

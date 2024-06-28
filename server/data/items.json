@@ -1,15 +1,5 @@
 [
     {
-        "itemName": "Backpack",
-        "lostDate": "2023-06-01",
-        "timeLost": "11:00 AM",
-        "locationLost": "Subway Station",
-        "category": "Bags",
-        "status": "Found",
-        "color" : "Brown",
-        "imageUrl": "https://img.freepik.com/premium-photo/one-lost-bag-backpack-lie-bus-seat_8595-26070.jpg"
-    },
-    {
         "itemName": "Laptop",
         "lostDate": "2024-01-15",
         "timeLost": "10:30 AM",
@@ -18,6 +8,16 @@
         "status": "Found",
         "color" : "Gray",
         "imageUrl": "https://cdn.mos.cms.futurecdn.net/7fhdrdEhVie6e5q4jJHFJS-1200-80.jpeg"
+    },
+    {
+        "itemName": "Backpack",
+        "lostDate": "2023-06-01",
+        "timeLost": "11:00 AM",
+        "locationLost": "Subway Station",
+        "category": "Bags",
+        "status": "Found",
+        "color" : "Brown",
+        "imageUrl": "https://img.freepik.com/premium-photo/one-lost-bag-backpack-lie-bus-seat_8595-26070.jpg"
     },    
     {
         "itemName": "Notebook",
@@ -40,5 +40,6 @@
         "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOLJDeee3Bdryx3ljX573HgIvznpJVoKg4eQ&s"
     }
 ]
+
 
 
