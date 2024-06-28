@@ -18,4 +18,4 @@ pool.getConnection((err, connection) => {
   connection.release(); // release the connection back to the pool
 });
 
-module.exports = pool;
+module.exports = pool; 

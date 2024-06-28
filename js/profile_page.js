@@ -1,3 +1,5 @@
+const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
+
 document.addEventListener("DOMContentLoaded", function () {
     const userId = 1; // Replace with actual user ID
     if (!userId) {
@@ -8,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 const populateTableWithData = (userId) => {
-    fetch(`https://lost-and-found-project-2.onrender.com/api/user-items?userId=${userId}`)
+    fetch(`${API_URL}/user-items?userId=${userId}`)
         .then(response => response.json())
         .then(data => {
             const reportsTbody = document.getElementById('reports-tbody');
@@ -93,7 +95,7 @@ const editItem = (id) => {
 
 const deleteItem = (id) => {
     if (confirm('Are you sure you want to delete this item?')) {
-        fetch(`https://lost-and-found-project-2.onrender.com/api/items/${id}`, {
+        fetch(`${API_URL}/items/${id}`, {
             method: 'DELETE'
         })
         .then(response => {

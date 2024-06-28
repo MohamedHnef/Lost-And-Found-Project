@@ -1,9 +1,9 @@
+const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
+
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById('reportLostForm');
     form.addEventListener('submit', handleFormSubmit);
 });
-
-const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
 
 function getItemDataFromForm(formData, imageUrl) {
     const userId = 1; // Replace with actual user ID
@@ -71,7 +71,7 @@ function handleFormSubmit(event) {
         })
         .then(() => {
             alert('Item reported successfully!');
-            window.location.href = 'list_item.html'; // Redirect to item list page after successful submission
+            window.location.href = 'list_Item.html'; // Redirect to item list page after successful submission
         })
         .catch(error => console.error('Failed to report item:', error));
 }
