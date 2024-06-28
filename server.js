@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 // Content Security Policy (CSP)
 app.use((req, res, next) => {
-    res.setHeader("Content-Security-Policy", "default-src 'self'; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data: https:; connect-src 'self' https://lost-and-found-project-2.onrender.com;");
+    res.setHeader("Content-Security-Policy", "default-src 'self'; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data: https://cdn.mos.cms.futurecdn.net https://img.freepik.com https://thestationers.pk https://encrypted-tbn0.gstatic.com; connect-src 'self' https://lost-and-found-project-2.onrender.com;");
     next();
 });
 
@@ -37,6 +37,7 @@ app.use(cors({
 
 // Serve static files
 app.use(express.static(path.join(__dirname))); // Serve static files from the root directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Serve uploaded files
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
