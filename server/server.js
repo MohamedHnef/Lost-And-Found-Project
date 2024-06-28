@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
 const routes = require('./routes');
-const logger = require('./logger'); // Import the logger
+const logger = require('./logger');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -14,19 +14,20 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 const allowedOrigins = [
     'http://127.0.0.1:5501',
-    'https://lost-and-found-project.onrender.com' // Add this line
+    'https://lost-and-found-project-3.onrender.com',
+    'https://lost-and-found-project.onrender.com'
 ];
 
 app.use(cors({
     origin: function (origin, callback) {
-        // Allow requests with no origin (like mobile apps, curl requests, etc.)
-        if (!origin) return callback(null, true);
+        if (!origin) return callback(null, true); // Allow requests with no origin
         if (allowedOrigins.indexOf(origin) === -1) {
             const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
             return callback(new Error(msg), false);
         }
         return callback(null, true);
-    }
+    },
+    optionsSuccessStatus: 200 // Some legacy browsers choke on 204
 }));
 
 // Serve static files from the 'first_submition' directory
