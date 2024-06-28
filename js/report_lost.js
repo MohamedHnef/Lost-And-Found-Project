@@ -96,7 +96,7 @@ function handleFormSubmit(event) {
         .then(data => {
             console.log('Item submission response:', data);
             alert('Item reported successfully!');
-            window.location.href = 'list_item.html'; // Redirect 
+            window.location.href = '/list_item.html'; // Redirect 
         })
         
 }
