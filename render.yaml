@@ -4,9 +4,18 @@ services:
     env: node
     plan: free
     buildCommand: 'npm install'
-    startCommand: 'node server/server.js'
+    startCommand: 'node server.js'
     envVars:
-      - key: DATABASE_URL
-        value: 'http://127.0.0.1:5500' # Replace with your actual database URL
+      - key: DB_HOST
+        value: '148.66.138.145'
+      - key: DB_USER
+        value: 'dbusrShnkr24'
+      - key: DB_PASSWORD
+        value: 'studDBpwWeb2!'
+      - key: DB_NAME
+        value: 'dbShnkr24stud'
       - key: PORT
         value: '3000'
+
+
+
