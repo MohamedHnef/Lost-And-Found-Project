@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
 const routes = require('./server/routes');
+const logger = require('./logger');
 const fs = require('fs');
 
 const app = express();
@@ -57,11 +58,17 @@ app.get('/list_item.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'list_item.html'));
 });
 
-// Error handling middleware
-app.use((err, req, res, next) => {
-    console.error(err.stack);
+// Logging middleware
+app.use((req, res, next) => {
+    logger.info(`${req.method} ${req.url}`);
+    next();
+  });
+  
+  // Error handling middleware
+  app.use((err, req, res, next) => {
+    logger.error(err.stack);
     res.status(500).send('Something broke!');
-});
+  });
 
 // Start the server
 app.listen(port, () => {
