@@ -21,7 +21,7 @@ function getItemDataFromForm(formData, imageUrl) {
     imageUrl: imageUrl, 
     userId: userId 
   };
-}
+};
 
 function uploadImage(file) {
   const formData = new FormData();
@@ -33,7 +33,7 @@ function uploadImage(file) {
   .then(handleResponse)
   .then(data => data.imageUrl)
   .catch(handleError('Error uploading image'));
-}
+};
 
 function submitItemData(itemData) {
   console.log('Submitting item data:', itemData); 
@@ -50,7 +50,7 @@ function submitItemData(itemData) {
     return data;
   })
   .catch(handleError('Error submitting item data'));
-}
+};
 
 function handleFormSubmit(event) {
   event.preventDefault();
@@ -74,14 +74,14 @@ function handleFormSubmit(event) {
       window.location.href = 'list_Item.html'; 
     })
     .catch(error => console.error('Failed to report item:', error));
-}
+};
 
 function handleResponse(response) {
   if (!response.ok) {
     throw new Error(`Failed, server responded with status: ${response.status}`);
   }
   return response.json();
-}
+};
 
 function handleError(message) {
   return error => {
@@ -89,4 +89,4 @@ function handleError(message) {
     alert(message); 
     throw error;
   };
-}
+};
