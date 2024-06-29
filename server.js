@@ -52,6 +52,11 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+// Serve other HTML files correctly
+app.get('/list_item.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'list_item.html'));
+});
+
 // Error handling middleware
 app.use((err, req, res, next) => {
     console.error(err.stack);
