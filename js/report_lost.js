@@ -18,10 +18,10 @@ function getItemDataFromForm(formData, imageUrl) {
     contactEmail: formData.get('contactEmail'),
     contactPhone: formData.get('contactPhone'),
     status: 'Lost',
-    imageUrl: imageUrl, // Use the uploaded image URL
-    userId: userId // Add userId to the item data
+    imageUrl: imageUrl, 
+    userId: userId 
   };
-}
+};
 
 function uploadImage(file) {
   const formData = new FormData();
@@ -33,10 +33,10 @@ function uploadImage(file) {
   .then(handleResponse)
   .then(data => data.imageUrl)
   .catch(handleError('Error uploading image'));
-}
+};
 
 function submitItemData(itemData) {
-  console.log('Submitting item data:', itemData); // Log the item data being submitted
+  console.log('Submitting item data:', itemData); 
   return fetch(`${API_URL}/items`, {
     method: 'POST',
     headers: {
@@ -50,7 +50,7 @@ function submitItemData(itemData) {
     return data;
   })
   .catch(handleError('Error submitting item data'));
-}
+};
 
 function handleFormSubmit(event) {
   event.preventDefault();
@@ -71,22 +71,22 @@ function handleFormSubmit(event) {
     })
     .then(() => {
       alert('Item reported successfully!');
-      window.location.href = 'list_Item.html'; // Redirect to item list page after successful submission
+      window.location.href = 'list_Item.html'; 
     })
     .catch(error => console.error('Failed to report item:', error));
-}
+};
 
 function handleResponse(response) {
   if (!response.ok) {
     throw new Error(`Failed, server responded with status: ${response.status}`);
   }
   return response.json();
-}
+};
 
 function handleError(message) {
   return error => {
     console.error(message, error);
-    alert(message); // Alert the error message
+    alert(message); 
     throw error;
   };
-}
+};
