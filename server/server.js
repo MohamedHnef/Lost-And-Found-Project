@@ -13,7 +13,8 @@ const port = process.env.PORT || 3000;
 const allowedOrigins = [
   'https://lost-and-found-project.onrender.com',
   'https://lost-and-found-project-3.onrender.com',
-  'http://localhost:3000'
+  'http://localhost:3000',
+  'https://lost-and-found-project-bjg0.onrender.com'
 ];
 
 app.use(cors({
