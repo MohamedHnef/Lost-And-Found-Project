@@ -13,7 +13,7 @@ function getItemDataFromForm(formData, imageUrl) {
     lostDate: formData.get('lostDate'),
     timeLost: formData.get('timeLost'),
     category: formData.get('category'),
-    color: formData.get('color'),
+    color: formData.get('color'), // Ensure color is gathered here
     description: formData.get('description'),
     contactEmail: formData.get('contactEmail'),
     contactPhone: formData.get('contactPhone'),

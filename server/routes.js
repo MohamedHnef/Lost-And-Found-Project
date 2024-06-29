@@ -39,7 +39,7 @@ router.post('/upload', upload.single('image'), (req, res) => {
       logger.warn('No file uploaded');
       return res.status(400).json({ error: 'No file uploaded' });
     }
-    const imageUrl = `${baseUrl}/server/uploads/${req.file.filename}`;
+    const imageUrl = `${baseUrl}/uploads/${req.file.filename}`;
     logger.info(`Image uploaded: ${imageUrl}`);
     res.json({ imageUrl });
   } catch (err) {
@@ -107,27 +107,17 @@ router.get('/items/:itemName', (req, res) => {
 });
 
 // Endpoint to add a new item
-router.post('/items', upload.single('image'), (req, res) => {
-  try {
-    const newItem = req.body;
-    if (req.file) {
-      newItem.imageUrl = `${baseUrl}/server/uploads/${req.file.filename}`;
-    } else {
-      newItem.imageUrl = null; // or some default image URL
+router.post('/items', (req, res) => {
+  const newItem = req.body;
+  logger.info(`Adding new item: ${JSON.stringify(newItem)}`);
+  pool.query('INSERT INTO tbl_123_posts SET ?', newItem, (err, result) => {
+    if (err) {
+      logger.error(`Error adding new item: ${err.message}`);
+      return res.status(500).json({ error: err.message });
     }
-    logger.info(`Adding new item: ${JSON.stringify(newItem)}`);
-    pool.query('INSERT INTO tbl_123_posts SET ?', newItem, (err, result) => {
-      if (err) {
-        logger.error(`Error adding new item: ${err.message}`);
-        return res.status(500).json({ error: err.message });
-      }
-      logger.info(`Item added with ID: ${result.insertId}`);
-      res.json({ id: result.insertId, ...newItem });
-    });
-  } catch (err) {
-    logger.error(`Error adding new item: ${err.message}`);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
+    logger.info(`Item added with ID: ${result.insertId}`);
+    res.json({ id: result.insertId, ...newItem });
+  });
 });
 
 // Endpoint to update an item
