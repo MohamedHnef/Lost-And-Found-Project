@@ -2,7 +2,6 @@ window.onload = () => {
     populateItemsTable();
     adjustHeights();
 };
-
 window.onresize = () => {
     adjustHeights();
 };
@@ -10,14 +9,10 @@ window.onresize = () => {
 function adjustHeights() {
     const chartBackground = document.querySelector('.chart-background');
     const dataBackground = document.querySelector('.data-background');
-    const tableResponsive = document.querySelector('.table-responsive');
 
     // Reset heights
     chartBackground.style.height = 'auto';
     dataBackground.style.height = 'auto';
-
-    // Ensure the data background fits the table height
-    tableResponsive.style.height = 'auto';
 
     const chartHeight = chartBackground.offsetHeight;
     const dataHeight = dataBackground.offsetHeight;
@@ -27,7 +22,6 @@ function adjustHeights() {
     chartBackground.style.height = `${maxHeight}px`;
     dataBackground.style.height = `${maxHeight}px`;
 }
-
 
 const populateItemsTable = () => {
     fetch('data/NearbyItems.json')
@@ -87,10 +81,6 @@ document.addEventListener("DOMContentLoaded", function () {
             "Home": "index.html",
             "Report Lost": "report_lost.html",
             "My Profile": "profile.html"
-        },
-        "list_Item.html": {
-            "Home": "index.html",
-            "Items List": "",
         }
         // Add more page structures as needed
     };
@@ -141,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }]
         },
         options: {
-            maintainAspectRatio: false,
+            maintainAspectRatio: true,
             responsive: true,
             scales: {
                 x: {
@@ -154,44 +144,5 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    fetch('data/itemsList.json')
-        .then(response => response.json())
-        .then(data => {
-            const container = document.querySelector('.row');
-            container.innerHTML = '';
-            data.forEach(item => {
-                const card = `
-                    <div class="col">
-                        <div class="card list-item-card">
-                            <img src="${item.imageUrl}" class="card-img-top" alt="${item.itemName}">
-                            <div class="card-body">
-                                <h5 class="card-title">${item.itemName}</h5>
-                                <div class="card-details">
-                                    <div class="card-detail">
-                                        <i class="bi bi-calendar"></i> <span>${item.lostDate}</span>
-                                    </div>
-                                    <div class="card-detail">
-                                        <i class="bi bi-tag"></i> <span>${item.category}</span>
-                                    </div>
-                                    <div class="card-detail">
-                                        <i class="bi bi-clock"></i> <span>${item.timeLost}</span>
-                                    </div>
-                                    <div class="card-detail">
-                                        <i class="bi bi-geo-alt"></i> <span>${item.locationLost}</span>
-                                    </div>
-                                </div>
-                                <a href="#" class="status-btn status-${item.status.toLowerCase()}">${item.status}</a>
-                            </div>
-                        </div>
-                    </div>`;
-                container.innerHTML += card;
-            });
-        })
-        .catch(error => console.error('Error fetching data:', error));
-});
-
 
 

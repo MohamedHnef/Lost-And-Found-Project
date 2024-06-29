@@ -6,6 +6,7 @@
 html, body {
     height: 100%;
 }
+
 body {
     background-color: #f4f4f4;
     display: flex;
@@ -148,6 +149,7 @@ main {
     width: 3.4375rem; 
     height: 2.75rem; 
 }
+
 .container {
     width: 636px;
     height: 340px;
@@ -155,16 +157,19 @@ main {
     margin-left: 0px;
     flex-shrink: 0;
 }
+
 canvas {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
+
 .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
     padding-right: 0px;
     padding-left: 0px;
 } /* align the graph with the cards */
+
 .container-flex {
     display: flex;
     justify-content: space-between;
@@ -173,6 +178,7 @@ canvas {
     margin-top: 118px;
     gap: 57px;
 }
+
 .graph-container {
     width: 636px;
     height: 340px;
@@ -184,58 +190,70 @@ canvas {
     margin-top: 0px;
     margin-left: 57px; /* Align the reports section */
 }
+
 .reports-title {
     font-size: 24px;
     color: #0AA2C0;
     font-weight: bold;
     margin-bottom: 10px;
 }
+
 .table.reports-table {
     width: 100%;
     border-radius: 15px;
     background: #FFF;
     box-shadow: 0px 4px 4px 0px #000;
 }
+
 .table.reports-table th,
 .table.reports-table td {
     padding: 10px 15px;
     text-align: left;
     color: #333;
 }
+
 .table.reports-table th {
     background-color: #f4f4f4;
     color: #0AA2C0;
     font-weight: bold;
 }
+
 .table.reports-table tbody tr:nth-child(even) {
     background-color: #f9f9f9;
 }
+
 .table.reports-table tbody tr:hover {
     background-color: #f1f1f1;
 }
+
 .table.reports-table .status-lost {
     color: #fff;
     background-color: #ff4b5c;
     padding: 5px 10px;
     border-radius: 5px;
 }
+
 .table.reports-table .actions i {
     margin-right: 10px;
     cursor: pointer;
     color: #0AA2C0;
 }
+
 .table.reports-table .actions i:hover {
     color: #007bff;
 }
+
 .table.reports-table .actions {
     display: flex;
     gap: 10px;
 }
+
 .table.reports-table .actions img {
     width: 20px;
     height: 20px;
     cursor: pointer;
 }
+
 .table.reports-table .actions img:hover {
     opacity: 0.7;
 }
@@ -256,12 +274,16 @@ canvas {
 }
 .chart-container {
     position: relative;
+    height: 549px;
     width: 100%;
-    max-height: 549px;
+    /* max-width: 100%; */
+    height: 100%;
+    height: auto;
 }
 .chart-container canvas {
     width: 100% !important;
     height: 100% !important;
+    height: auto;
 }
 .data-container {
     padding: 1.25rem; 
@@ -280,7 +302,6 @@ canvas {
 }
 .table-responsive {
     overflow-x: auto;
-    width: 100%;
 }
 .table th, .table td {
     white-space: nowrap;
@@ -344,6 +365,7 @@ canvas {
         margin: 0 1rem; 
     }
     .footer {
+        /* padding-top: 1rem; */
         height: 50px;
         padding: 0.25rem;
     }
@@ -369,6 +391,7 @@ canvas {
         padding-top: 0.5rem;
     }
 }
+/* .......................*/
 /* reportLost page */
 .page-title {
     text-align: center;
@@ -424,125 +447,4 @@ textarea.form-control {
 }
 .col-lg-6.mb-3.form{
     padding: 0 74px;
-}
-/* Styles for list item cards */
-.items-container {
-    display: flex;
-    flex-wrap: wrap;
-    overflow-y: auto;
-    overflow-x: hidden;
-    justify-content: flex-start;
-    gap: 167px;
-}
-.list-item-card {
-    width: 407px;
-    height: 559px;
-    border-radius: 15px;
-    background: #FFF;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    position: relative;
-    flex: 0 0 407px;
-    margin-bottom: 1rem;
-}
-.list-item-card .card-img-top {
-    width: 100%;
-    height: 273px;
-    object-fit: cover;
-}
-.card-title {
-    margin: 36px 0 25px 16px;
-    color: #0AA2C0;
-    font-family: Inter;
-    font-size: 36px;
-    font-weight: 400;
-}
-.card-details {
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 16px 53px;
-    margin-left: 16px;
-}
-.card-detail {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-family: Inter;
-    font-size: 18px;
-    color: #0AA2C0;
-}
-.card-detail i {
-    font-size: 18px;
-}
-.status-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    border-radius: 5px;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    text-decoration: none;
-    width: calc(100% - 231px);
-    height: 68px;
-}
-.status-found {
-    background-color: #0AA2C0;
-}
-.status-lost {
-    background-color: #D9534F;
-}
-.card-detail span {
-    padding-left: 17px;
-}
-@media (max-width: 1200px) {
-    .list-item-card {
-        width: calc(100% - 32px);
-    }
-    .list-item-card .card-title {
-        font-size: 2rem;
-    }
-    .list-item-card .card-details {
-        gap: 16px 30px;
-    }
-    .list-item-card .card-text {
-        font-size: 1rem;
-    }
-    .list-item-card .status-btn {
-        font-size: 1rem;
-    }
-}
-@media (max-width: 768px) {
-    .list-item-card {
-        width: 100%;
-    }
-    .list-item-card .card-title {
-        font-size: 1.5rem;
-    }
-    .list-item-card .card-details {
-        grid-template-columns: auto;
-        gap: 10px;
-    }
-    .list-item-card .card-text {
-        font-size: 1rem;
-    }
-    .list-item-card .status-btn {
-        font-size: 1rem;
-    }
-}
-@media (max-width: 576px) {
-    .list-item-card .card-title {
-        font-size: 1.25rem;
-    }
-    .list-item-card .card-details {
-        grid-template-columns: auto;
-        gap: 8px;
-    }
-    .list-item-card .card-text {
-        font-size: 0.875rem;
-    }
-    .list-item-card .status-btn {
-        font-size: 0.875rem;
-    }
 }
