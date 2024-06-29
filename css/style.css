@@ -513,7 +513,7 @@ canvas {
         font-size: 0.875rem;
     }
     .container-flex {
-        flex-direction: column; /* Stack vertically on smaller screens */
+        flex-direction: column; 
     }
 }
 @media (max-width: 768px) {

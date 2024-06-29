@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 let originalData = [];
 
 function initDataFetching() {
-    fetch('https://lost-and-found-project.onrender.com/api/all-items') // Use /all-items to fetch all items
+    fetch('https://lost-and-found-project.onrender.com/api/all-items') 
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -76,7 +76,7 @@ function createCard(item) {
 function formatDate(dateString) {
     const date = new Date(dateString);
     const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+    const month = String(date.getMonth() + 1).padStart(2, '0'); 
     const day = String(date.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
 }
