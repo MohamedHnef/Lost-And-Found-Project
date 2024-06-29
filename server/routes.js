@@ -39,7 +39,7 @@ router.post('/upload', upload.single('image'), (req, res) => {
       logger.warn('No file uploaded');
       return res.status(400).json({ error: 'No file uploaded' });
     }
-    const imageUrl = `${baseUrl}/uploads/${req.file.filename}`;
+    const imageUrl = `${baseUrl}/server/uploads/${req.file.filename}`;
     logger.info(`Image uploaded: ${imageUrl}`);
     res.json({ imageUrl });
   } catch (err) {
@@ -111,7 +111,7 @@ router.post('/items', upload.single('image'), (req, res) => {
   try {
     const newItem = req.body;
     if (req.file) {
-      newItem.imageUrl = `${baseUrl}/uploads/${req.file.filename}`;
+      newItem.imageUrl = `${baseUrl}/server/uploads/${req.file.filename}`;
     } else {
       newItem.imageUrl = null; // or some default image URL
     }
