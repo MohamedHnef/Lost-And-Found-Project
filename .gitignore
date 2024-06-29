@@ -6,7 +6,7 @@ logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log*
+lerna-debug.log*
 
 # Environment variables
 .env
@@ -35,9 +35,6 @@ bower_components/
 # MacOS file
 .DS_Store
 
-# Logs
-*.log
-
 # Debug files
 npm-debug.log*
 yarn-debug.log*
@@ -57,9 +54,6 @@ lerna-debug.log*
 
 # Yarn Integrity file
 .yarn-integrity
-
-# dotenv environment variables file
-.env
 
 # Temporary files
 tmp/

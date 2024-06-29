@@ -1,15 +1,16 @@
+const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
+
 window.onload = () => {
     populateItemsTable();
-
 };
+
 const populateItemsTable = () => {
-    fetch('https://lost-and-found-project-2.onrender.com/api/items') // Adjust the URL if needed
+    fetch(`${API_URL}/items`)
         .then(response => response.json())
         .then(data => {
             const itemsTable = document.getElementById('itemsTable');
             itemsTable.innerHTML = '';
 
-            // Assuming the backend already limits to 4 items, no need for random selection
             data.forEach(item => {
                 const row = document.createElement('tr');
 
