@@ -6,20 +6,20 @@ document.addEventListener("DOMContentLoaded", () => {
 const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
 
 function getItemDataFromForm(formData, imageUrl) {
-  const userId = 1; // Replace with actual user ID
+  const userId = 1; 
   return {
     itemName: formData.get('itemName'),
     locationLost: formData.get('locationLost'),
     lostDate: formData.get('lostDate'),
     timeLost: formData.get('timeLost'),
     category: formData.get('category'),
-    color: formData.get('color'), // Ensure color is gathered here
+    color: formData.get('color'), 
     description: formData.get('description'),
     contactEmail: formData.get('contactEmail'),
     contactPhone: formData.get('contactPhone'),
     status: 'Lost',
-    imageUrl: imageUrl, // Use the uploaded image URL
-    userId: userId // Add userId to the item data
+    imageUrl: imageUrl, 
+    userId: userId 
   };
 }
 
@@ -36,7 +36,7 @@ function uploadImage(file) {
 }
 
 function submitItemData(itemData) {
-  console.log('Submitting item data:', itemData); // Log the item data being submitted
+  console.log('Submitting item data:', itemData); 
   return fetch(`${API_URL}/items`, {
     method: 'POST',
     headers: {
@@ -71,7 +71,7 @@ function handleFormSubmit(event) {
     })
     .then(() => {
       alert('Item reported successfully!');
-      window.location.href = 'list_Item.html'; // Redirect to item list page after successful submission
+      window.location.href = 'list_Item.html'; 
     })
     .catch(error => console.error('Failed to report item:', error));
 }
@@ -86,7 +86,7 @@ function handleResponse(response) {
 function handleError(message) {
   return error => {
     console.error(message, error);
-    alert(message); // Alert the error message
+    alert(message); 
     throw error;
   };
 }
