@@ -162,6 +162,14 @@ main {
     display: flex;
     flex-direction: column;
 }
+.footer-wrap{
+    margin: 0 4rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: 65px;
+    margin-right: 65px;
+}
 .footer {
     height: 91px; 
     background-color: #f4f4f4;
