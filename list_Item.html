@@ -114,8 +114,8 @@
             </div>
         </div>
     </header>
-    <section class="wrapper">
-        <main>
+    <main class="wrapper">
+        <section>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb" id="breadcrumb">
                    <!-- Breadcrumb items -->
@@ -145,19 +145,16 @@
             <section class="items-container">
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="itemsRow"></div>
             </section>
+        </section>
         </main>
-        <footer class="footer">
-            <div class="footer-icons">
-                <a href="https://www.facebook.com/yourfacebookpage" target="_blank" rel="noopener noreferrer">
+        <section class="footer-wrap">
+            <footer class="footer">
+                <div class="footer-icons">
                     <img src="images/Facebook_Icon.png" alt="Facebook" class="footer-icon">
-                </a>
-                <a href="https://www.instagram.com/yourinstagrampage" target="_blank" rel="noopener noreferrer">
                     <img src="images/insta_icon.png" alt="Instagram" class="footer-icon">
-                </a>
-            </div>
-        </footer>
-    </section>
-
+                </div>
+            </footer>
+        </section>
     <!-- Search Modal -->
     <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -176,7 +173,6 @@
             </div>
         </div>
     </div>
-
     <!-- Filter Modal -->
     <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -199,21 +195,18 @@
                             <label for="location">Select Location</label>
                             <select id="location" name="location" class="form-select">
                                 <option value="">Select Location</option>
-                                <!-- Options will be populated dynamically -->
                             </select>
                         </div>
                         <div class="form-group mb-3">
                             <label for="category">Select Category</label>
                             <select id="category" name="category" class="form-select">
                                 <option value="">Select Category</option>
-                                <!-- Options will be populated dynamically -->
                             </select>
                         </div>
                         <div class="form-group mb-3">
                             <label for="status">Select Status</label>
                             <select id="status" name="status" class="form-select">
                                 <option value="">Select Status</option>
-                                <!-- Options will be populated dynamically -->
                             </select>
                         </div>
                         <div class="d-flex justify-content-between">
