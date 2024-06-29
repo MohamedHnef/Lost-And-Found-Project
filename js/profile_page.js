@@ -1,32 +1,38 @@
 const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
 
-window.onload = () => {
-    populateItemsTable();
+document.addEventListener("DOMContentLoaded", () => {
+    const userId = 1; // Replace with actual user ID
+    if (!userId) {
+        console.error('User ID is missing');
+        return;
+    }
+    populateTableWithData(userId);
     initializeChart();
-};
+});
 
-const populateItemsTable = () => {
-    fetch(`${API_URL}/items`)
+const populateTableWithData = (userId) => {
+    fetch(`${API_URL}/user-items?userId=${userId}`)
         .then(response => response.json())
         .then(data => {
-            const itemsTable = document.getElementById('itemsTable');
-            itemsTable.innerHTML = '';
-
+            const reportsTbody = document.getElementById('reports-tbody');
+            if (!reportsTbody) {
+                console.error('Reports tbody element not found');
+                return;
+            }
+            reportsTbody.innerHTML = '';
             data.forEach(item => {
                 const row = document.createElement('tr');
-
                 row.appendChild(createTableCell(item.itemName));
-                row.appendChild(createTableCell(new Date(item.lostDate).toLocaleDateString()));
+                row.appendChild(createTableCell(item.category));
+                row.appendChild(createTableCell(item.color));
+                row.appendChild(createTableCell(new Date(item.lostDate).toLocaleDateString('en-CA')));
                 row.appendChild(createTableCell(item.locationLost));
                 row.appendChild(createStatusCell(item.status));
-
-                const actionsCell = createActionsCell(item.id);
-                row.appendChild(actionsCell);
-
-                itemsTable.appendChild(row);
+                row.appendChild(createActionsCell(item.id));
+                reportsTbody.appendChild(row);
             });
         })
-        .catch(error => console.error('Error fetching items:', error));
+        .catch(error => console.error('Error fetching data:', error));
 };
 
 const createTableCell = (text) => {
@@ -37,18 +43,18 @@ const createTableCell = (text) => {
 
 const createStatusCell = (status) => {
     const cell = document.createElement('td');
-    const span = document.createElement('span');
-    span.textContent = status;
-    span.classList.add(status === 'Found' ? 'status-found' : 'status-lost');
-    cell.appendChild(span);
+    const button = document.createElement('button');
+    button.textContent = status;
+    button.className = `statusProfile-btn statusProfile-${status.toLowerCase()}`;
+    button.style.fontSize = '12px';
+    cell.appendChild(button);
     return cell;
 };
 
 const createActionsCell = (id) => {
     const cell = document.createElement('td');
     cell.classList.add('actions');
-    const actions = ['view', 'edit', 'delete'];
-    actions.forEach(action => {
+    ['view', 'edit', 'delete'].forEach(action => {
         const icon = document.createElement('img');
         icon.src = `images/${action}-icon.png`;
         icon.alt = action.charAt(0).toUpperCase() + action.slice(1);
@@ -68,7 +74,10 @@ const editItem = (id) => window.location.href = `edit_item.html?id=${id}`;
 const deleteItem = (id) => {
     if (confirm('Are you sure you want to delete this item?')) {
         fetch(`${API_URL}/items/${id}`, { method: 'DELETE' })
-            .then(response => response.ok ? response.json() : Promise.reject('Failed to delete item'))
+            .then(response => {
+                if (!response.ok) throw new Error('Failed to delete item');
+                return response.json();
+            })
             .then(() => {
                 alert('Item deleted successfully');
                 window.location.reload();
@@ -80,29 +89,27 @@ const deleteItem = (id) => {
     }
 };
 
-// Chart
 const initializeChart = () => {
-    fetch(`${API_URL}/home-graph-data`)
+    fetch(`${API_URL}/profile-graph-data`)
         .then(response => response.json())
         .then(data => {
-            const ctx = document.getElementById('itemsChart').getContext('2d');
+            const ctx = document.getElementById('myChart').getContext('2d');
             new Chart(ctx, {
-                type: 'bar',
+                type: 'line',
                 data: {
                     labels: data.labels,
                     datasets: [{
-                        label: 'Found Items Count',
+                        label: 'Items Reported',
                         data: data.values,
                         backgroundColor: 'rgba(10, 162, 192, 0.2)',
-                        borderColor: 'rgba(10, 162, 192, 1)',
-                        borderWidth: 1
+                        borderColor: '#0AA2C0',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#0AA2C0'
                     }]
                 },
                 options: {
-                    maintainAspectRatio: false,
                     responsive: true,
                     scales: {
-                        x: { beginAtZero: true },
                         y: { beginAtZero: true }
                     }
                 }
