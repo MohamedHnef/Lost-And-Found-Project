@@ -113,8 +113,8 @@
             </div>
         </div>
     </header>
-    <section class="wrapper">
-        <main>
+    <main class="wrapper">
+        <section>
             <nav class="breadcrumb" aria-label="breadcrumb">
                 <ol class="breadcrumb" id="breadcrumb"></ol>
             </nav>
@@ -140,7 +140,7 @@
                     <div class="col-lg-6 mb-3 form">
                         <label for="category" class="form-label">Category</label>
                         <select class="form-select" id="category" name="category" required>
-                            <option selected disabled>Please Select Category</option>
+                            <option value="" selected disabled >Please Select Category</option>
                             <option>Electronics</option>
                             <option>Personal Items</option>
                             <option>Books and Documents</option>
@@ -174,13 +174,15 @@
                     </div>
                 </form>                
             </section>
+        </section>
         </main>
-        <footer class="footer mt-auto">
-            <div class="footer-icons">
-                <img src="images/Facebook_Icon.png" alt="Facebook" class="footer-icon">
-                <img src="images/insta_icon.png" alt="Instagram" class="footer-icon">
-            </div>
-        </footer>
-    </section>
+        <section class="footer-wrap">
+            <footer class="footer">
+                <div class="footer-icons">
+                    <img src="images/Facebook_Icon.png" alt="Facebook" class="footer-icon">
+                    <img src="images/insta_icon.png" alt="Instagram" class="footer-icon">
+                </div>
+            </footer>
+        </section>
 </body>
 </html>
