@@ -1,56 +1,63 @@
 const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
 
-document.addEventListener("DOMContentLoaded", function () {
-    const userId = 1; // Replace with actual user ID
-    if (!userId) return console.error('User ID is missing');
-    fetchUserItems(userId);
+window.onload = () => {
+    populateItemsTable();
     initializeChart();
-});
+};
 
-const fetchUserItems = (userId) => {
-    fetch(`${API_URL}/user-items?userId=${userId}`)
+const populateItemsTable = () => {
+    fetch(`${API_URL}/items`)
         .then(response => response.json())
-        .then(data => updateTable(data))
-        .catch(error => console.error('Error fetching data:', error));
+        .then(data => {
+            const itemsTable = document.getElementById('itemsTable');
+            itemsTable.innerHTML = '';
+
+            data.forEach(item => {
+                const row = document.createElement('tr');
+
+                row.appendChild(createTableCell(item.itemName));
+                row.appendChild(createTableCell(new Date(item.lostDate).toLocaleDateString()));
+                row.appendChild(createTableCell(item.locationLost));
+                row.appendChild(createStatusCell(item.status));
+
+                const actionsCell = createActionsCell(item.id);
+                row.appendChild(actionsCell);
+
+                itemsTable.appendChild(row);
+            });
+        })
+        .catch(error => console.error('Error fetching items:', error));
 };
 
-const updateTable = (data) => {
-    const reportsTbody = document.getElementById('reports-tbody');
-    if (!reportsTbody) return console.error('Reports tbody element not found');
-    reportsTbody.innerHTML = ''; 
-    data.forEach(item => reportsTbody.appendChild(createTableRow(item)));
-};
-
-const createTableRow = (item) => {
-    const row = document.createElement('tr');
-    const cells = ['itemName', 'category', 'color', 'lostDate', 'locationLost', 'status'].map(key => createCell(item[key], key));
-    cells.forEach(cell => row.appendChild(cell));
-    row.appendChild(createActionsCell(item.id));
-    return row;
-};
-
-const createCell = (value, key) => {
+const createTableCell = (text) => {
     const cell = document.createElement('td');
-    if (key === 'lostDate') cell.textContent = new Date(value).toLocaleDateString('en-CA');
-    else if (key === 'status') {
-        const button = document.createElement('button');
-        button.textContent = value;
-        button.className = `statusProfile-btn statusProfile-${value.toLowerCase()}`;
-        button.style.fontSize = '12px';
-        cell.appendChild(button);
-    } else cell.textContent = value;
+    cell.textContent = text;
+    return cell;
+};
+
+const createStatusCell = (status) => {
+    const cell = document.createElement('td');
+    const span = document.createElement('span');
+    span.textContent = status;
+    span.classList.add(status === 'Found' ? 'status-found' : 'status-lost');
+    cell.appendChild(span);
     return cell;
 };
 
 const createActionsCell = (id) => {
     const cell = document.createElement('td');
     cell.classList.add('actions');
-    ['view', 'edit', 'delete'].forEach(action => {
+    const actions = ['view', 'edit', 'delete'];
+    actions.forEach(action => {
         const icon = document.createElement('img');
         icon.src = `images/${action}-icon.png`;
         icon.alt = action.charAt(0).toUpperCase() + action.slice(1);
         icon.classList.add('action-icon');
-        icon.addEventListener('click', () => window[`${action}Item`](id));
+        icon.addEventListener('click', () => {
+            if (action === 'view') viewItem(id);
+            if (action === 'edit') editItem(id);
+            if (action === 'delete') deleteItem(id);
+        });
         cell.appendChild(icon);
     });
     return cell;
@@ -73,27 +80,29 @@ const deleteItem = (id) => {
     }
 };
 
+// Chart
 const initializeChart = () => {
-    fetch(`${API_URL}/profile-graph-data`)
+    fetch(`${API_URL}/home-graph-data`)
         .then(response => response.json())
         .then(data => {
-            const ctx = document.getElementById('myChart').getContext('2d');
+            const ctx = document.getElementById('itemsChart').getContext('2d');
             new Chart(ctx, {
-                type: 'line',
+                type: 'bar',
                 data: {
                     labels: data.labels,
                     datasets: [{
-                        label: 'Items Reported',
+                        label: 'Found Items Count',
                         data: data.values,
                         backgroundColor: 'rgba(10, 162, 192, 0.2)',
-                        borderColor: '#0AA2C0',
-                        borderWidth: 2,
-                        pointBackgroundColor: '#0AA2C0'
+                        borderColor: 'rgba(10, 162, 192, 1)',
+                        borderWidth: 1
                     }]
                 },
                 options: {
+                    maintainAspectRatio: false,
                     responsive: true,
                     scales: {
+                        x: { beginAtZero: true },
                         y: { beginAtZero: true }
                     }
                 }
