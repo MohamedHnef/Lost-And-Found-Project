@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById('reportLostForm');
   form.addEventListener('submit', handleFormSubmit);
@@ -6,14 +7,14 @@ document.addEventListener("DOMContentLoaded", () => {
 const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
 
 function getItemDataFromForm(formData, imageUrl) {
-  const userId = 1; // Replace with actual user ID
+  const userId = 1; 
   return {
     itemName: formData.get('itemName'),
     locationLost: formData.get('locationLost'),
     lostDate: formData.get('lostDate'),
     timeLost: formData.get('timeLost'),
     category: formData.get('category'),
-    color: formData.get('color'), // Ensure color is gathered here
+    color: formData.get('color'), 
     description: formData.get('description'),
     contactEmail: formData.get('contactEmail'),
     contactPhone: formData.get('contactPhone'),

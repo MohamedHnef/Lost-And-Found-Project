@@ -7,7 +7,7 @@ const fs = require('fs');
 const logger = require('./logger'); // Import the logger
 
 router.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Origin', '*'); // This allows all origins, which is generally not recommended for production but will solve the CORS issue for now.
   res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();

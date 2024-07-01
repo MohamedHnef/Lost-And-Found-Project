@@ -13,7 +13,9 @@ const port = process.env.PORT || 3000;
 const allowedOrigins = [
   'https://lost-and-found-project.onrender.com',
   'https://lost-and-found-project-3.onrender.com',
-  'http://localhost:3000'
+  'http://localhost:3000',
+  'http://127.0.0.1:5501',
+  'http://se.shenkar.ac.il/students/2023-2024/web1/dev123/index.html' // Add this line
 ];
 
 app.use(cors({

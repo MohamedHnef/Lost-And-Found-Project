@@ -1,4 +1,6 @@
+
 const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
+
 window.onload = () => {
     populateItemsTable();
     initializeChart();
@@ -16,6 +18,7 @@ const populateItemsTable = () => {
 
                 row.appendChild(createTableCell(item.itemName));
                 row.appendChild(createTableCell(new Date(item.lostDate).toLocaleDateString()));
+                console.log(item.itemName);
                 row.appendChild(createTableCell(item.locationLost));
                 row.appendChild(createStatusCell(item.status));
 
