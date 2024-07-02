@@ -4,10 +4,11 @@ const pool = require('./db');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
-const logger = require('./logger'); 
+const logger = require('./logger'); // Import the logger
 
+// Determine if the environment is production
 const isProduction = process.env.NODE_ENV === 'production';
-const baseUrl = isProduction ? `https://${process.env.RENDER_EXTERNAL_HOSTNAME}/api` : 'http://localhost:3000/api';
+const baseUrl = isProduction ? 'https://lost-and-found-project.onrender.com' : 'http://localhost:3000';
 
 // Multer setup for file uploads
 const storage = multer.diskStorage({
@@ -185,5 +186,6 @@ router.get('/home-graph-data', (req, res) => {
     }
   });
 });
+
 
 module.exports = router;

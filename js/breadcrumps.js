@@ -23,7 +23,7 @@ function initBreadcrumbs() {
         }
         breadcrumbContainer.appendChild(li);
     });
-}
+};
 
 function updateBreadcrumbTrail(currentPage) {
     let breadcrumbTrail = JSON.parse(sessionStorage.getItem('breadcrumbTrail')) || ["Home"];
@@ -35,14 +35,14 @@ function updateBreadcrumbTrail(currentPage) {
         breadcrumbTrail = breadcrumbTrail.slice(0, breadcrumbTrail.indexOf(displayName) + 1);
     }
     return breadcrumbTrail;
-}
+};
 
 function getDisplayName(currentPage) {
     if (currentPage === "Item") {
         return localStorage.getItem('selectedItemName') || currentPage;
     }
     return currentPage;
-}
+};
 
 function getHrefForCrumb(crumb) {
     switch (crumb) {
@@ -61,10 +61,10 @@ function getHrefForCrumb(crumb) {
         default:
             return crumb.toLowerCase().replace(/\s/g, '_') + ".html";
     }
-}
+};
 
 // Additional function to preserve the item selection
 function handleItemLinkClick(itemName) {
     localStorage.setItem('selectedItemName', itemName);
     window.location.href = `item.html?item=${itemName}`;
-}
+};

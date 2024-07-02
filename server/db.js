@@ -19,7 +19,7 @@ pool.getConnection((err, connection) => {
     return;
   }
   console.log('Connected to the MySQL database.');
-  connection.release(); 
+  connection.release(); // release the connection back to the pool
 });
 
 module.exports = pool;

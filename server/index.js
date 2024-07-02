@@ -9,18 +9,22 @@ const fs = require('fs');
 const app = express();
 const port = process.env.PORT || 3000;
 
-// CORS configuration to allow all origins in development and specific origins in production
-const allowedOrigins = process.env.NODE_ENV === 'production'
-  ? ['https://lost-and-found-project.onrender.com', 'http://se.shenkar.ac.il']
-  : '*';
+// CORS configuration
+const allowedOrigins = [
+  'https://lost-and-found-project.onrender.com',
+  'http://localhost:3000',
+  'http://127.0.0.1:5501',
+  'http://se.shenkar.ac.il'
+];
 
 app.use(cors({
   origin: function(origin, callback) {
-    if (!origin || allowedOrigins === '*' || allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('The CORS policy for this site does not allow access from the specified Origin.'), false);
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
     }
+    return callback(null, true);
   }
 }));
 
