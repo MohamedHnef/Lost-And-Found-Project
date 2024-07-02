@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lost and Found - Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/home_page.js" defer></script>
+    <script src="js/breadcrumps.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-white shadow">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/logo.jpeg" alt="Logo" class="logo">
+                </a>
+                <span class="navbar-brand">Lost And Found</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link activee" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="report_lost.html">Report Lost</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Report Found</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Set Reminders</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Add Feedback</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><img src="images/bell-icon.png" alt=""></a>
+                        </li>
+                        <li class="nav-item dropdown profile-dropdown">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="images/profilepic.jpeg" alt="Profile" class="profile-img rounded-circle me-2">
+                                <div class="profile-info">
+                                    <div>Roni Bozaglo</div>
+                                    <div class="text-muted">Connected</div>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Settings</a></li>
+                                <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
+                                <li><a class="dropdown-item" href="#">Log Out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item profile-dropdown">
+                        <div class="profile-info">
+                            <img src="images/profilepic.jpeg" alt="Profile" class="profile-img rounded-circle side">
+                            <div>Roni Bozaglo</div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link side active" aria-current="page" href="index.html">
+                            <i class="bi bi-house"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link side" href="report_lost.html">
+                            <i class="bi bi-search"></i> Report Lost
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link side" href="#">
+                            <i class="bi bi-bell"></i> Report Found
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link side" href="#">
+                            <i class="bi bi-clock"></i> Set Reminders
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link side" href="#">
+                            <i class="bi bi-chat"></i> Add Feedback
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link side" href="profile.html">
+                            <i class="bi bi-person"></i> My Profile
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link side" href="#">
+                            <i class="bi bi-box-arrow-right"></i> Log Out
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <main class="wrapper">
+    <section class="main-content">
+            <nav class="breadcrumb" aria-label="breadcrumb">
+                <ol class="breadcrumb" id="breadcrumb"></ol>
+            </nav>
+            <div class="row gx-5">
+                <div class="col-12 col-md-6 col-lg-3 mb-3">
+                    <div class="card custom-card">
+                        <div class="card-body">
+                            <div>
+                                <h5 class="card-title">Lost Items</h5>
+                                <h6 class="card-subtitle">135</h6>
+                            </div>
+                            <div>
+                                <a href="#" class="card-link">
+                                    <img src="images/arrow.png" alt="Arrow" class="arrow-icon">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 mb-3">
+                    <div class="card custom-card">
+                        <div class="card-body">
+                            <div>
+                                <h5 class="card-title">Found Items</h5>
+                                <h6 class="card-subtitle">98</h6>
+                            </div>
+                            <div>
+                                <a href="#" class="card-link">
+                                    <img src="images/arrow.png" alt="Arrow" class="arrow-icon">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 mb-3">
+                    <div class="card custom-card">
+                        <div class="card-body">
+                            <div>
+                                <h5 class="card-title">Claimed Items</h5>
+                                <h6 class="card-subtitle">210</h6>
+                            </div>
+                            <div>
+                                <a href="#" class="card-link">
+                                    <img src="images/arrow.png" alt="Arrow" class="arrow-icon">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 mb-3">
+                    <div class="card custom-card">
+                        <div class="card-body">
+                            <div>
+                                <h5 class="card-title">Unclaimed Items</h5>
+                                <h6 class="card-subtitle">13</h6>
+                            </div>
+                            <div>
+                                <a href="#" class="card-link">
+                                    <img src="images/arrow.png" alt="Arrow" class="arrow-icon">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row gx-5">
+                <div class="col-lg-6 mb-3">
+                    <div class="chart-background">
+                        <div class="chart-container">
+                            <canvas id="itemsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-3">
+                    <div class="data-background">
+                        <div class="data-container">
+                            <a href="list_Item.html" class="view-all-link">View All</a>
+                            <h3>Display Nearby Items</h3>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Item Name</th>
+                                            <th>Date Reported</th>
+                                            <th>Location</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="itemsTable">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>                                
+            </div>
+        </section>
+    </main>
+    <section class="footer-wrap">
+        <footer class="footer">
+            <div class="footer-icons">
+                <a href="https://www.facebook.com/YourPageName" target="_blank">
+                    <img src="images/Facebook_Icon.png" alt="Facebook" class="footer-icon">
+                </a>
+                <a href="https://www.instagram.com/YourPageName" target="_blank">
+                    <img src="images/insta_icon.png" alt="Instagram" class="footer-icon">
+                </a>
+            </div>
+        </footer>
+    </section>
+</body>
+</html>
