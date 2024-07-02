@@ -381,6 +381,9 @@ canvas {
     cursor: pointer;
     color: #0AA2C0;
 }
+.table.reports-table .actions {
+    padding-bottom: 20px;
+}
 .table.reports-table .actions i:hover {
     color: #007bff;
 }
@@ -933,9 +936,6 @@ img.img-fluid {
     margin: 0 auto;
     align-self: center; 
 }
-.mt-4 {
-    margin-left: 513px;  
-}
 .mt-4 .btn.btn-primary{
     width: 538px;
     height: 79px;
@@ -994,6 +994,73 @@ img.img-fluid {
 .statusProfile-lost {
     background-color: #D9534F;
 }
+
+/* New responsive classes */
+.responsive-container-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+}
+
+.responsive-graph-container,
+.responsive-my-reports {
+    width: 100%;
+    max-width: 100%;
+}
+
+@media (min-width: 768px) {
+    .responsive-container-flex {
+        flex-direction: row;
+    }
+
+    .responsive-graph-container {
+        width: 30%;
+    }
+
+    .responsive-my-reports {
+        width: 70%;
+    }
+}
+
+.responsive-my-reports {
+    overflow-x: auto;
+}
+
+.responsive-reports-table {
+    table-layout: auto;
+    width: 100%;
+}
+
+.responsive-reports-table th,
+.responsive-reports-table td {
+    padding: 10px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+    .responsive-reports-table th,
+    .responsive-reports-table td {
+        font-size: 14px;
+        padding: 5px;
+    }
+
+    .reports-title {
+        font-size: 20px;
+    }
+}
+
+.responsive-graph-container {
+    overflow: hidden;
+}
+
+.responsive-graph-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 10px;
+}
+
 
 
 
