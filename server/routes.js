@@ -4,9 +4,9 @@ const pool = require('./db');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
-const logger = require('./logger'); // Import the logger
+const logger = require('./logger'); 
 
-// Determine if the environment is production
+
 const isProduction = process.env.NODE_ENV === 'production';
 const baseUrl = isProduction ? 'https://lost-and-found-project.onrender.com' : 'http://localhost:3000';
 
