@@ -2,9 +2,9 @@
   "name": "first_submition",
   "version": "1.0.0",
   "description": "",
-  "main": "server/server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node server/index.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "body-parser": "^1.20.2",
