@@ -15,6 +15,7 @@ const fetchItemDetails = (id) => {
         .catch(error => console.error('Error fetching data:', error));
 };
 
+
 const displayItemDetails = (item) => {
     if (item) {
         document.getElementById('item-details-box').innerHTML = getItemDetailsHTML(item);
@@ -30,9 +31,9 @@ const getItemDetailsHTML = (item) => `
         <div class="item-detail"><strong>Item Name</strong><span>${item.itemName}</span></div>
         <div class="item-detail"><strong>Category</strong><span>${item.category}</span></div>
         <div class="item-detail"><strong>Color</strong><span>${item.color}</span></div>
-        <div class="item-detail"><strong>Date</strong><span>${formatDate(item.foundDate || item.lostDate)}</span></div>
+        <div class="item-detail"><strong>Date</strong><span>${formatDate(item.lostDate)}</span></div>
         <div class="item-detail"><strong>Status</strong><span>${item.status}</span></div>
-        <div class="item-detail"><strong>Location</strong><span>${item.locationFound || item.locationLost}</span></div>
+        <div class="item-detail"><strong>Location</strong><span>${item.locationLost}</span></div>
     </div>
 `;
 

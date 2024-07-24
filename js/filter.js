@@ -49,7 +49,7 @@ function displayItems(data) {
 };
 
 function createCard(item) {
-    const formattedDate = formatDate(item.foundDate || item.lostDate);
+    const formattedDate = formatDate(item.lostDate);
     const formattedTime = formatTime(item.timeLost);
 
     return `
@@ -63,7 +63,7 @@ function createCard(item) {
                             <div class="card-detail"><i class="bi bi-calendar"></i> <span>${formattedDate}</span></div>
                             <div class="card-detail"><i class="bi bi-tag"></i> <span>${item.category}</span></div>
                             <div class="card-detail"><i class="bi bi-clock"></i> <span>${formattedTime}</span></div>
-                            <div class="card-detail"><i class="bi bi-geo-alt"></i> <span>${item.locationFound || item.locationLost}</span></div>
+                            <div class="card-detail"><i class="bi bi-geo-alt"></i> <span>${item.locationLost}</span></div>
                         </div>
                         <a href="#" class="status-btn status-${item.status.toLowerCase()}">${item.status}</a>
                     </div>
@@ -86,7 +86,7 @@ function formatTime(timeString) {
 };
 
 function populateFilters(data) {
-    const locations = [...new Set(data.map(item => item.locationFound || item.locationLost))];
+    const locations = [...new Set(data.map(item => item.locationLost))];
     const categories = [...new Set(data.map(item => item.category))];
     const statuses = [...new Set(data.map(item => item.status))];
 
@@ -124,9 +124,9 @@ function applyFilters() {
     const status = document.getElementById('status').value;
 
     const filteredData = originalData.filter(item =>
-        (!fromDate || new Date(item.foundDate || item.lostDate) >= new Date(fromDate)) &&
-        (!toDate || new Date(item.foundDate || item.lostDate) <= new Date(toDate)) &&
-        (!location || (item.locationFound || item.locationLost) === location) &&
+        (!fromDate || new Date(item.lostDate) >= new Date(fromDate)) &&
+        (!toDate || new Date(item.lostDate) <= new Date(toDate)) &&
+        (!location || item.locationLost === location) &&
         (!category || item.category === category) &&
         (!status || item.status === status)
     );

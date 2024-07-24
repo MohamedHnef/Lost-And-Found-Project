@@ -93,12 +93,32 @@
 2024-07-22T19:57:09.747Z warn: Item not found with id: 116
 2024-07-22T19:57:23.839Z warn: Item not found with id: 116
 2024-07-22T20:10:11.270Z error: Error deleting image file: ENOENT: no such file or directory, unlink 'C:\shenkar\dev43\first_submition\server\uploads\1721678300895-×?×?×?×?×?×?× ×?×£3.png'
-2024-07-23T12:31:23.960Z error: Error reporting found item: ER_BAD_FIELD_ERROR: Unknown column 'locationFound' in 'field list'
-2024-07-23T12:51:25.002Z error: Error reporting found item: ER_BAD_FIELD_ERROR: Unknown column 'locationFound' in 'field list'
-2024-07-23T12:54:13.911Z error: Error reporting found item: ER_BAD_FIELD_ERROR: Unknown column 'locationFound' in 'field list'
-2024-07-23T13:07:20.458Z error: Error deleting image file: ENOENT: no such file or directory, unlink 'C:\shenkar\dev43\first_submition\server\uploads\1721678207859-Webfirstsub.JPG'
-2024-07-23T20:06:45.165Z warn: Item not found with id: 134
-2024-07-24T11:37:35.044Z error: Error fetching limited items: connect ETIMEDOUT
-2024-07-24T11:37:36.935Z error: Error fetching limited items: connect ETIMEDOUT
-2024-07-24T11:37:43.179Z error: Error fetching limited items: connect ETIMEDOUT
-2024-07-24T11:37:53.193Z error: Error fetching limited items: connect ETIMEDOUT
+2024-07-23T18:57:07.430Z warn: Invalid email or password
+2024-07-23T18:57:22.757Z warn: Invalid email or password
+2024-07-23T18:57:42.668Z warn: Invalid email or password
+2024-07-23T19:05:32.005Z warn: Invalid email or password
+2024-07-23T19:05:50.241Z warn: Invalid email or password
+2024-07-23T19:13:35.155Z warn: Invalid email
+2024-07-23T19:14:27.036Z warn: Invalid email
+2024-07-23T19:20:56.496Z error: ReferenceError: username is not defined
+    at C:\Users\mohamed\Desktop\shenkar\semester2\web fullstack\Lost And Found\server\routes.js:222:57
+    at Layer.handle [as handle_request] (C:\Users\mohamed\Desktop\shenkar\semester2\web fullstack\Lost And Found\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\mohamed\Desktop\shenkar\semester2\web fullstack\Lost And Found\server\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\mohamed\Desktop\shenkar\semester2\web fullstack\Lost And Found\server\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\mohamed\Desktop\shenkar\semester2\web fullstack\Lost And Found\server\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\mohamed\Desktop\shenkar\semester2\web fullstack\Lost And Found\server\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\mohamed\Desktop\shenkar\semester2\web fullstack\Lost And Found\server\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\mohamed\Desktop\shenkar\semester2\web fullstack\Lost And Found\server\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\mohamed\Desktop\shenkar\semester2\web fullstack\Lost And Found\server\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\mohamed\Desktop\shenkar\semester2\web fullstack\Lost And Found\server\node_modules\express\lib\router\index.js:47:12)
+2024-07-23T19:22:58.206Z warn: Invalid username
+2024-07-23T19:23:20.052Z warn: Invalid username
+2024-07-23T19:24:22.905Z warn: Invalid username
+2024-07-23T19:24:30.846Z warn: Invalid username
+2024-07-23T19:24:45.599Z warn: Invalid username
+2024-07-23T19:24:55.703Z warn: Invalid username
+2024-07-23T19:36:40.419Z error: Error registering new user: ER_DUP_ENTRY: Duplicate entry 'adrian@gmail.com' for key 'email'
+2024-07-23T21:00:53.824Z warn: Invalid password
+2024-07-23T21:12:21.249Z warn: Invalid password
+2024-07-24T10:54:14.536Z warn: Invalid password
+2024-07-24T12:23:58.892Z error: Error registering new user: ER_DUP_ENTRY: Duplicate entry 'adrian@gmail.com' for key 'email'
