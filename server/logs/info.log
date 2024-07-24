@@ -8660,3 +8660,41 @@
 2024-07-24T12:38:04.568Z info: GET /api/items
 2024-07-24T12:38:04.569Z info: GET /api/home-graph-data
 2024-07-24T12:38:05.010Z info: Fetched limited items
+2024-07-24T20:10:24.276Z info: Server is running on http://localhost:3000
+2024-07-24T20:10:51.962Z info: GET /
+2024-07-24T20:10:51.986Z info: GET /js/userAuth.js
+2024-07-24T20:10:51.990Z info: GET /css/style.css
+2024-07-24T20:11:02.559Z info: POST /api/login
+2024-07-24T20:11:03.096Z info: User logged in: hnef
+2024-07-24T20:11:05.754Z info: GET /homePage.html
+2024-07-24T20:11:05.778Z info: GET /css/style.css
+2024-07-24T20:11:05.782Z info: GET /images/bell-icon.png
+2024-07-24T20:11:05.783Z info: GET /js/userLogout.js
+2024-07-24T20:11:05.785Z info: GET /images/arrow.png
+2024-07-24T20:11:05.838Z info: GET /js/dashboard.js
+2024-07-24T20:11:05.840Z info: GET /js/breadcrumps.js
+2024-07-24T20:11:05.850Z info: GET /images/insta_icon.png
+2024-07-24T20:11:05.851Z info: GET /images/Facebook_Icon.png
+2024-07-24T20:11:05.858Z info: GET /images/logo.jpeg
+2024-07-24T20:11:05.916Z info: GET /api/items
+2024-07-24T20:11:05.929Z info: GET /api/home-graph-data
+2024-07-24T20:11:06.322Z info: Fetched limited items
+2024-07-24T20:12:35.097Z info: GET /index.html
+2024-07-24T20:12:35.130Z info: GET /css/style.css
+2024-07-24T20:12:35.130Z info: GET /js/userAuth.js
+2024-07-24T20:12:35.131Z info: GET /js/userLogout.js
+2024-07-24T20:12:42.927Z info: POST /api/login
+2024-07-24T20:12:43.852Z info: User logged in: hnef
+2024-07-24T20:12:45.200Z info: GET /homePage.html
+2024-07-24T20:12:45.237Z info: GET /css/style.css
+2024-07-24T20:12:45.238Z info: GET /js/userLogout.js
+2024-07-24T20:12:45.238Z info: GET /images/bell-icon.png
+2024-07-24T20:12:45.239Z info: GET /images/arrow.png
+2024-07-24T20:12:45.280Z info: GET /js/dashboard.js
+2024-07-24T20:12:45.283Z info: GET /js/breadcrumps.js
+2024-07-24T20:12:45.291Z info: GET /images/Facebook_Icon.png
+2024-07-24T20:12:45.291Z info: GET /images/insta_icon.png
+2024-07-24T20:12:45.297Z info: GET /images/logo.jpeg
+2024-07-24T20:12:45.332Z info: GET /api/items
+2024-07-24T20:12:45.332Z info: GET /api/home-graph-data
+2024-07-24T20:12:45.758Z info: Fetched limited items
