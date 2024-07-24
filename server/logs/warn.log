@@ -1,0 +1,104 @@
+2024-07-01T22:42:00.640Z error: Error: ENOENT: no such file or directory, stat 'C:\shenkar\dev43\first_submition\server\data\homeGraph.json'
+2024-07-21T20:02:52.941Z error: Error deleting image file: ENOENT: no such file or directory, unlink 'C:\shenkar\dev43\first_submition\server\uploads\1721084007003-sad-face.png'
+2024-07-22T12:10:37.067Z error: Error fetching limited items: connect ETIMEDOUT
+2024-07-22T12:10:44.948Z error: Error fetching limited items: connect ETIMEDOUT
+2024-07-22T13:53:40.847Z warn: Item not found: 107
+2024-07-22T13:59:18.435Z warn: Item not found: 107
+2024-07-22T14:03:13.762Z warn: Item not found: 107
+2024-07-22T14:03:50.275Z warn: Item not found: 107
+2024-07-22T14:04:10.707Z warn: Item not found: 107
+2024-07-22T14:05:17.793Z warn: Item not found: 107
+2024-07-22T14:08:14.281Z warn: Item not found: 107
+2024-07-22T14:08:39.980Z warn: Item not found: 107
+2024-07-22T14:08:43.869Z warn: Item not found: 107
+2024-07-22T14:08:54.305Z warn: Item not found: 107
+2024-07-22T14:12:21.032Z warn: Item not found: 107
+2024-07-22T14:14:05.291Z warn: Item not found: 107
+2024-07-22T14:18:06.688Z warn: Item not found: 107
+2024-07-22T14:18:44.393Z warn: Item not found: 107
+2024-07-22T14:21:32.465Z warn: Item not found: 1
+2024-07-22T14:21:39.758Z warn: Item not found: 2
+2024-07-22T14:22:59.745Z warn: Item not found: 1
+2024-07-22T14:23:54.778Z warn: Item not found: 1
+2024-07-22T14:24:03.628Z warn: Item not found: 107
+2024-07-22T14:24:35.201Z warn: Item not found: :107
+2024-07-22T14:24:44.015Z warn: Item not found: :1
+2024-07-22T14:33:21.016Z warn: Item not found: 107
+2024-07-22T14:39:54.182Z warn: Item not found: :107
+2024-07-22T14:39:59.189Z warn: Item not found: 1
+2024-07-22T15:34:27.423Z warn: Item not found: phone
+2024-07-22T15:35:22.616Z warn: Item not found: phone
+2024-07-22T15:35:25.632Z warn: Item not found: Notebook
+2024-07-22T15:35:28.838Z warn: Item not found: phone
+2024-07-22T15:35:31.142Z warn: Item not found: Smartphone
+2024-07-22T15:35:42.205Z warn: Item not found: Smartphone
+2024-07-22T15:36:48.251Z warn: Item not found: Smartphone
+2024-07-22T15:38:01.415Z warn: Item not found: Backpack
+2024-07-22T15:40:27.104Z warn: Item not found: Notebook
+2024-07-22T15:40:55.406Z warn: Item not found: Notebook
+2024-07-22T15:43:09.011Z warn: Item not found: Backpack
+2024-07-22T15:43:16.946Z warn: Item not found: Laptop
+2024-07-22T15:44:37.375Z warn: Item not found: Backpack
+2024-07-22T15:45:10.293Z warn: Item not found: Backpack
+2024-07-22T15:45:59.233Z warn: Item not found: 1
+2024-07-22T15:46:49.876Z warn: Item not found: 109
+2024-07-22T15:50:12.169Z warn: Item not found: 109
+2024-07-22T15:50:23.510Z warn: Item not found: 109
+2024-07-22T15:51:12.901Z warn: Item not found: Backpack
+2024-07-22T15:52:42.226Z warn: Item not found: Backpack
+2024-07-22T15:52:55.272Z warn: Item not found: Backpack
+2024-07-22T15:54:13.551Z warn: Item not found: Notebook
+2024-07-22T15:54:46.756Z warn: Item not found: Backpack
+2024-07-22T15:55:52.628Z warn: Item not found: 109
+2024-07-22T16:06:02.227Z warn: Item not found: 110
+2024-07-22T16:06:09.328Z warn: Item not found: 110
+2024-07-22T16:09:11.298Z warn: Item not found: Backpack
+2024-07-22T16:09:52.783Z warn: Item not found: Backpack
+2024-07-22T16:16:05.331Z warn: Item not found: Laptop
+2024-07-22T16:16:48.476Z warn: Item not found: Laptop
+2024-07-22T16:17:37.600Z warn: Item not found: Laptop
+2024-07-22T16:17:49.840Z warn: Item not found: Laptop
+2024-07-22T16:18:04.717Z warn: Item not found: Laptop
+2024-07-22T16:21:50.467Z warn: Item not found: Laptop
+2024-07-22T16:25:06.818Z warn: Item not found: Laptop
+2024-07-22T16:27:12.920Z warn: Item not found: Backpack
+2024-07-22T16:27:33.474Z warn: Item not found: Backpack
+2024-07-22T16:27:54.375Z warn: Item not found: 110
+2024-07-22T16:27:58.557Z warn: Item not found: 110
+2024-07-22T16:32:36.242Z warn: Item not found: Laptop
+2024-07-22T16:36:58.902Z warn: Item not found: Laptop
+2024-07-22T16:37:33.536Z warn: Item not found: Laptop
+2024-07-22T16:46:38.541Z warn: Item not found: 111
+2024-07-22T16:47:12.728Z warn: Item not found: 111
+2024-07-22T16:49:07.989Z warn: Item not found: Laptop
+2024-07-22T16:49:15.283Z warn: Item not found: Laptop
+2024-07-22T16:50:43.759Z warn: Item not found: Laptop
+2024-07-22T16:56:17.046Z warn: Item not found: rambo
+2024-07-22T16:56:23.285Z warn: Item not found: Backpack
+2024-07-22T17:04:03.888Z error: Error deleting image file: ENOENT: no such file or directory, unlink 'C:\shenkar\dev43\first_submition\server\uploads\1721667721194-_×?×?××?×¨×?×? ×?×?× ×©×_.jpg'
+2024-07-22T17:04:08.801Z error: Error deleting image file: ENOENT: no such file or directory, unlink 'C:\shenkar\dev43\first_submition\server\uploads\1721667784934-×?×?×?×?×?×?× ×?×£3.png'
+2024-07-22T17:06:48.961Z warn: Item not found with ID: Notebook
+2024-07-22T17:06:55.716Z warn: Item not found with ID: Laptop
+2024-07-22T17:07:30.015Z warn: Item not found with ID: Smartphone
+2024-07-22T17:08:24.013Z warn: Item not found with ID: Smartphone
+2024-07-22T17:08:30.225Z warn: Item not found with ID: Backpack
+2024-07-22T17:11:28.752Z warn: Item not found with ID: Backpack
+2024-07-22T17:11:33.150Z warn: Item not found with ID: Smartphone
+2024-07-22T17:11:48.020Z warn: Item not found with ID: Notebook
+2024-07-22T18:38:03.140Z error: Error updating item ID 114: ER_BAD_FIELD_ERROR: Unknown column 'editItemId' in 'field list'
+2024-07-22T18:38:08.905Z error: Error updating item ID 114: ER_BAD_FIELD_ERROR: Unknown column 'editItemId' in 'field list'
+2024-07-22T18:38:18.639Z error: Error updating item ID 114: ER_BAD_FIELD_ERROR: Unknown column 'editItemId' in 'field list'
+2024-07-22T19:54:00.448Z warn: Item not found with id: 115
+2024-07-22T19:57:03.009Z warn: Item not found with id: 116
+2024-07-22T19:57:09.747Z warn: Item not found with id: 116
+2024-07-22T19:57:23.839Z warn: Item not found with id: 116
+2024-07-22T20:10:11.270Z error: Error deleting image file: ENOENT: no such file or directory, unlink 'C:\shenkar\dev43\first_submition\server\uploads\1721678300895-×?×?×?×?×?×?× ×?×£3.png'
+2024-07-23T12:31:23.960Z error: Error reporting found item: ER_BAD_FIELD_ERROR: Unknown column 'locationFound' in 'field list'
+2024-07-23T12:51:25.002Z error: Error reporting found item: ER_BAD_FIELD_ERROR: Unknown column 'locationFound' in 'field list'
+2024-07-23T12:54:13.911Z error: Error reporting found item: ER_BAD_FIELD_ERROR: Unknown column 'locationFound' in 'field list'
+2024-07-23T13:07:20.458Z error: Error deleting image file: ENOENT: no such file or directory, unlink 'C:\shenkar\dev43\first_submition\server\uploads\1721678207859-Webfirstsub.JPG'
+2024-07-23T20:06:45.165Z warn: Item not found with id: 134
+2024-07-24T11:37:35.044Z error: Error fetching limited items: connect ETIMEDOUT
+2024-07-24T11:37:36.935Z error: Error fetching limited items: connect ETIMEDOUT
+2024-07-24T11:37:43.179Z error: Error fetching limited items: connect ETIMEDOUT
+2024-07-24T11:37:53.193Z error: Error fetching limited items: connect ETIMEDOUT
