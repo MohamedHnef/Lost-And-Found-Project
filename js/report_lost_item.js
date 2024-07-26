@@ -7,26 +7,26 @@ document.addEventListener("DOMContentLoaded", () => {
 const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
 
 function getItemDataFromForm(formData, imageUrl) {
-  const userId = 1; 
+  const userId = 1; // Replace with actual user ID logic
   return {
       itemName: formData.get('itemName'),
       locationLost: formData.get('locationLost'),
       lostDate: formData.get('lostDate'),
       timeLost: formData.get('timeLost'),
       category: formData.get('category'),
-      color: formData.get('color'), 
+      color: formData.get('color'),
       description: formData.get('description'),
       contactEmail: formData.get('contactEmail'),
       contactPhone: formData.get('contactPhone'),
       status: 'Lost',
-      imageUrl: imageUrl, 
-      userId: userId 
+      imageUrl: imageUrl,
+      userId: userId
   };
 }
 
 function uploadImage(file) {
   const formData = new FormData();
-  formData.append('image', file);
+  formData.append('image', file); // Ensure field name is 'image'
   return fetch(`${API_URL}/upload`, {
       method: 'POST',
       body: formData
@@ -37,8 +37,7 @@ function uploadImage(file) {
 }
 
 function submitItemData(itemData) {
-  console.log('Submitting item data:', itemData); 
-  return fetch(`${API_URL}/items`, {
+  return fetch(`${API_URL}/lost-items`, {  // Correct endpoint for lost items
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
@@ -56,9 +55,8 @@ function submitItemData(itemData) {
 function handleFormSubmit(event) {
   event.preventDefault();
   const formData = new FormData(event.target);
-  const file = formData.get('addImage');
+  const file = formData.get('image');
 
-  console.log('Handling form submission...');
   if (!file || file.size === 0) {
       showNotification('Please upload an image.');
       return;
@@ -66,7 +64,6 @@ function handleFormSubmit(event) {
 
   uploadImage(file)
       .then(imageUrl => {
-          console.log('Using image URL:', imageUrl);
           const itemData = getItemDataFromForm(formData, imageUrl);
           return submitItemData(itemData);
       })

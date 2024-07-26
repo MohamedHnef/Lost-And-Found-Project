@@ -5,7 +5,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif; 
+    font-family: 'Inter', sans-serif; /* Set Inter as the default font */
 }
 
 html, body {
@@ -1128,41 +1128,13 @@ img.img-fluid {
     align-self: center;
 }
 
-/* Default styles for small screens */
 .mt-4 .btn.btn-primary {
-    width: 100%;
-    max-width: 538px;
+    width: 538px;
     height: 79px;
     border-radius: 15px;
-    margin-top: 20px;
-    margin-left: 0; /* Ensure the button is centered on small screens */
+    margin-top: 70px;
 }
 
-/* Adjust button size and margin for medium screens (tablets) */
-@media (min-width: 768px) {
-    .mt-4 .btn.btn-primary {
-        height: 60px;
-        margin-top: 40px;
-    }
-}
-
-/* Adjust button size and margin for large screens (desktops) */
-@media (min-width: 992px) {
-    .mt-4 .btn.btn-primary {
-        height: 70px;
-        margin-top: 50px;
-    }
-}
-/* Adjust button size and margin for extra large screens (large desktops) */
-@media (min-width: 1200px) {
-    .mt-4 .btn.btn-primary {
-        height: 79px;
-        margin-top: 70px;
-        margin-left: 578px; /* Position the button 578px from the left */
-        width: calc(100% - 578px); /* Ensure the button remains responsive */
-        
-    }
-}
 @media (max-width: 1200px) {
     .item-box {
         width: 100%;
@@ -1322,3 +1294,27 @@ img.img-fluid {
     margin: 0 10px;
 }
 
+/* login register */
+.tab-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+.tab-buttons .btn {
+    flex: 1;
+    border-radius: 0;
+    border-bottom: 2px solid transparent;
+}
+.tab-buttons .btn.active {
+    border-color: #007bff;
+    background-color: #f8f9fa;
+}
+.form-container.auth{
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    background-color: #fff;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}

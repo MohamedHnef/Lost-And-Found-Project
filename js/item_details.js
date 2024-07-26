@@ -15,8 +15,10 @@ const fetchItemDetails = (id) => {
         .catch(error => console.error('Error fetching data:', error));
 };
 
+
 const displayItemDetails = (item) => {
     if (item) {
+        console.log('Item Data:', item); // Add this log to see the received data
         document.getElementById('item-details-box').innerHTML = getItemDetailsHTML(item);
         document.getElementById('item-description-box').innerHTML = getItemDescriptionHTML(item);
     } else {
@@ -36,12 +38,6 @@ const getItemDetailsHTML = (item) => `
     </div>
 `;
 
-const getItemDescriptionHTML = (item) => `
-    <h3>Report Information</h3>
-    <p>${item.description || 'No description provided.'}</p>
-    <img src="${item.imageUrl}" alt="${item.itemName}" class="img-fluid">
-`;
-
 const formatDate = (dateString) => {
     const date = new Date(dateString);
     const year = date.getFullYear();
@@ -49,6 +45,13 @@ const formatDate = (dateString) => {
     const day = String(date.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
 };
+
+const getItemDescriptionHTML = (item) => `
+    <h3>Report Information</h3>
+    <p>${item.description || 'No description provided.'}</p>
+    <img src="${item.imageUrl}" alt="${item.itemName}" class="img-fluid">
+`;
+
 
 const displayNoItemDetails = () => {
     document.getElementById('item-details-box').innerHTML = '<p>No item details available.</p>';

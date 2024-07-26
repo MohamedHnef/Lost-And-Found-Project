@@ -72,6 +72,7 @@ function createCard(item) {
         </div>`;
 };
 
+
 function formatDate(dateString) {
     const date = new Date(dateString);
     const year = date.getFullYear();
@@ -86,7 +87,7 @@ function formatTime(timeString) {
 };
 
 function populateFilters(data) {
-    const locations = [...new Set(data.map(item => item.locationFound || item.locationLost))];
+    const locations = [...new Set(data.map(item => item.locationLost))];
     const categories = [...new Set(data.map(item => item.category))];
     const statuses = [...new Set(data.map(item => item.status))];
 
@@ -124,9 +125,9 @@ function applyFilters() {
     const status = document.getElementById('status').value;
 
     const filteredData = originalData.filter(item =>
-        (!fromDate || new Date(item.foundDate || item.lostDate) >= new Date(fromDate)) &&
-        (!toDate || new Date(item.foundDate || item.lostDate) <= new Date(toDate)) &&
-        (!location || (item.locationFound || item.locationLost) === location) &&
+        (!fromDate || new Date(item.lostDate) >= new Date(fromDate)) &&
+        (!toDate || new Date(item.lostDate) <= new Date(toDate)) &&
+        (!location || item.locationLost === location) &&
         (!category || item.category === category) &&
         (!status || item.status === status)
     );
