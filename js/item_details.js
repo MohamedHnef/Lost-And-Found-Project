@@ -1,24 +1,31 @@
 const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
+
 document.addEventListener('DOMContentLoaded', () => {
-    const selectedItemId = localStorage.getItem('selectedItemId');
-    if (selectedItemId) {
-        fetchItemDetails(selectedItemId);
+    const urlParams = new URLSearchParams(window.location.search);
+    const itemId = urlParams.get('id');
+
+    if (itemId) {
+        fetchItemDetails(itemId);
     } else {
         displayNoItemSelected();
     }
 });
 
 const fetchItemDetails = (id) => {
-    fetch(`${API_URL}/items/${id}`)
+    const token = localStorage.getItem('token');
+
+    fetch(`${API_URL}/items/${id}`, {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
         .then(response => response.json())
         .then(data => displayItemDetails(data))
         .catch(error => console.error('Error fetching data:', error));
 };
 
-
 const displayItemDetails = (item) => {
     if (item) {
-        console.log('Item Data:', item); // Add this log to see the received data
         document.getElementById('item-details-box').innerHTML = getItemDetailsHTML(item);
         document.getElementById('item-description-box').innerHTML = getItemDescriptionHTML(item);
     } else {
@@ -51,7 +58,6 @@ const getItemDescriptionHTML = (item) => `
     <p>${item.description || 'No description provided.'}</p>
     <img src="${item.imageUrl}" alt="${item.itemName}" class="img-fluid">
 `;
-
 
 const displayNoItemDetails = () => {
     document.getElementById('item-details-box').innerHTML = '<p>No item details available.</p>';

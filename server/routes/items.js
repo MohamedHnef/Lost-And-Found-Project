@@ -263,4 +263,46 @@ router.put('/items/claim/:id', authenticateToken, authorizeAdmin, (req, res) => 
   });
 });
 
+router.get('/admin-dashboard', authenticateToken, authorizeAdmin, (req, res) => {
+  const dashboardData = {
+      totalApproved: 0,
+      totalRejected: 0,
+      totalPending: 0,
+      recentActivities: []
+  };
+
+  pool.query('SELECT COUNT(*) AS totalApproved FROM tbl_123_posts WHERE claimStatus = "Approved"', (err, results) => {
+      if (err) {
+          logger.error(`Error fetching total approved items: ${err.message}`);
+          return res.status(500).json({ error: 'Internal Server Error' });
+      }
+      dashboardData.totalApproved = results[0].totalApproved;
+
+      pool.query('SELECT COUNT(*) AS totalRejected FROM tbl_123_posts WHERE claimStatus = "Rejected"', (err, results) => {
+          if (err) {
+              logger.error(`Error fetching total rejected items: ${err.message}`);
+              return res.status(500).json({ error: 'Internal Server Error' });
+          }
+          dashboardData.totalRejected = results[0].totalRejected;
+
+          pool.query('SELECT COUNT(*) AS totalPending FROM tbl_123_posts WHERE claimStatus = "Pending"', (err, results) => {
+              if (err) {
+                  logger.error(`Error fetching total pending items: ${err.message}`);
+                  return res.status(500).json({ error: 'Internal Server Error' });
+              }
+              dashboardData.totalPending = results[0].totalPending;
+
+              pool.query('SELECT itemName, claimant, claimStatus AS action, timestamp FROM tbl_123_posts WHERE claimStatus IN ("Approved", "Rejected") ORDER BY timestamp DESC LIMIT 10', (err, results) => {
+                  if (err) {
+                      logger.error(`Error fetching recent activities: ${err.message}`);
+                      return res.status(500).json({ error: 'Internal Server Error' });
+                  }
+                  dashboardData.recentActivities = results;
+                  res.json(dashboardData);
+              });
+          });
+      });
+  });
+});
+
 module.exports = router;

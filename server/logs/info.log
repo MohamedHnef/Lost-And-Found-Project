@@ -12134,3 +12134,345 @@
 2024-07-26T18:35:38.997Z info: GET /api/items?claimStatus=Pending
 2024-07-26T18:35:39.535Z info: Fetched limited items
 2024-07-26T18:35:45.010Z info: GET /css/style.css
+2024-07-26T19:17:30.286Z info: Server is running on http://localhost:3000
+2024-07-26T19:17:33.335Z info: GET /
+2024-07-26T19:17:33.427Z info: GET /css/style.css
+2024-07-26T19:17:33.430Z info: GET /js/userAuth.js
+2024-07-26T19:17:37.181Z info: GET /css/style.css
+2024-07-26T19:17:37.206Z info: GET /css/style.css
+2024-07-26T19:17:38.537Z info: GET /js/manage_claims.js
+2024-07-26T19:17:38.554Z info: GET /js/userLogout.js
+2024-07-26T19:17:38.560Z info: GET /js/manage_claims.js
+2024-07-26T19:17:38.569Z info: GET /js/userLogout.js
+2024-07-26T19:17:38.644Z info: GET /api/items?claimStatus=Pending
+2024-07-26T19:17:38.648Z info: GET /default-profile-pic.png
+2024-07-26T19:17:38.662Z info: GET /images/logo.jpeg
+2024-07-26T19:17:38.664Z info: GET /images/default-profile-pic.png
+2024-07-26T19:17:38.670Z info: GET /default-profile-pic.png
+2024-07-26T19:17:38.683Z info: GET /images/logo.jpeg
+2024-07-26T19:17:38.684Z info: GET /images/default-profile-pic.png
+2024-07-26T19:17:39.186Z info: Fetched limited items
+2024-07-26T19:17:39.192Z info: GET /api/items?claimStatus=Pending
+2024-07-26T19:17:39.722Z info: Fetched limited items
+2024-07-26T19:17:39.813Z info: POST /api/login
+2024-07-26T19:17:40.519Z info: User logged in: policeman
+2024-07-26T19:17:40.532Z info: GET /adminPage.html
+2024-07-26T19:17:40.561Z info: GET /css/style.css
+2024-07-26T19:17:40.563Z info: GET /js/manage_claims.js
+2024-07-26T19:17:40.770Z info: GET /js/userLogout.js
+2024-07-26T19:17:40.788Z info: GET /images/logo.jpeg
+2024-07-26T19:17:40.788Z info: GET /images/default-profile-pic.png
+2024-07-26T19:17:40.834Z info: GET /api/items?claimStatus=Pending
+2024-07-26T19:17:40.835Z info: GET /uploads/profile_pictures/policeman.jpg
+2024-07-26T19:17:41.379Z info: Fetched limited items
+2024-07-26T19:17:50.863Z info: GET /css/style.css
+2024-07-26T19:18:46.479Z info: Server is running on http://localhost:3000
+2024-07-26T19:18:49.587Z info: GET /
+2024-07-26T19:18:49.676Z info: GET /css/style.css
+2024-07-26T19:18:49.680Z info: GET /css/style.css
+2024-07-26T19:18:50.592Z info: GET /js/userAuth.js
+2024-07-26T19:18:50.903Z info: GET /js/manage_claims.js
+2024-07-26T19:18:50.909Z info: GET /js/userLogout.js
+2024-07-26T19:18:50.990Z info: GET /api/items?claimStatus=Pending
+2024-07-26T19:18:51.017Z info: GET /uploads/profile_pictures/policeman.jpg
+2024-07-26T19:18:51.018Z info: GET /images/logo.jpeg
+2024-07-26T19:18:51.018Z info: GET /images/default-profile-pic.png
+2024-07-26T19:18:51.559Z info: Fetched limited items
+2024-07-26T19:18:53.780Z info: GET /css/style.css
+2024-07-26T19:18:55.193Z info: GET /js/manage_claims.js
+2024-07-26T19:18:55.203Z info: GET /js/userLogout.js
+2024-07-26T19:18:55.298Z info: GET /api/items?claimStatus=Pending
+2024-07-26T19:18:55.299Z info: GET /uploads/profile_pictures/policeman.jpg
+2024-07-26T19:18:55.307Z info: GET /images/logo.jpeg
+2024-07-26T19:18:55.308Z info: GET /images/default-profile-pic.png
+2024-07-26T19:18:55.848Z info: Fetched limited items
+2024-07-26T19:18:59.811Z info: POST /api/login
+2024-07-26T19:19:00.473Z info: User logged in: policeman
+2024-07-26T19:19:00.486Z info: GET /adminPage.html
+2024-07-26T19:19:00.514Z info: GET /css/style.css
+2024-07-26T19:19:00.518Z info: GET /js/manage_claims.js
+2024-07-26T19:19:00.730Z info: GET /js/userLogout.js
+2024-07-26T19:19:00.745Z info: GET /images/logo.jpeg
+2024-07-26T19:19:00.745Z info: GET /images/default-profile-pic.png
+2024-07-26T19:19:00.794Z info: GET /api/items?claimStatus=Pending
+2024-07-26T19:19:00.794Z info: GET /uploads/profile_pictures/policeman.png
+2024-07-26T19:19:01.331Z info: Fetched limited items
+2024-07-26T19:19:04.846Z info: GET /css/style.css
+2024-07-26T19:20:41.860Z info: Server is running on http://localhost:3000
+2024-07-26T19:20:44.183Z info: GET /
+2024-07-26T19:20:44.291Z info: GET /js/userAuth.js
+2024-07-26T19:20:44.292Z info: GET /css/style.css
+2024-07-26T19:20:47.842Z info: GET /adminPage.html
+2024-07-26T19:20:47.876Z info: GET /css/style.css
+2024-07-26T19:20:47.899Z info: GET /css/style.css
+2024-07-26T19:20:48.857Z info: GET /js/manage_claims.js
+2024-07-26T19:20:48.865Z info: GET /js/userLogout.js
+2024-07-26T19:20:48.894Z info: GET /js/manage_claims.js
+2024-07-26T19:20:48.902Z info: GET /js/userLogout.js
+2024-07-26T19:20:49.502Z info: GET /api/items?claimStatus=Pending
+2024-07-26T19:20:49.513Z info: GET /images/logo.jpeg
+2024-07-26T19:20:49.515Z info: GET /images/default-profile-pic.png
+2024-07-26T19:20:49.547Z info: GET /images/logo.jpeg
+2024-07-26T19:20:49.548Z info: GET /images/default-profile-pic.png
+2024-07-26T19:20:50.040Z info: Fetched limited items
+2024-07-26T19:20:50.042Z info: GET /api/items?claimStatus=Pending
+2024-07-26T19:20:50.423Z info: POST /api/login
+2024-07-26T19:20:50.594Z info: Fetched limited items
+2024-07-26T19:20:51.626Z info: User logged in: policeman
+2024-07-26T19:20:51.640Z info: GET /adminPage.html
+2024-07-26T19:20:51.671Z info: GET /css/style.css
+2024-07-26T19:20:51.672Z info: GET /js/manage_claims.js
+2024-07-26T19:20:51.887Z info: GET /js/userLogout.js
+2024-07-26T19:20:51.907Z info: GET /images/logo.jpeg
+2024-07-26T19:20:51.907Z info: GET /images/default-profile-pic.png
+2024-07-26T19:20:51.947Z info: GET /api/items?claimStatus=Pending
+2024-07-26T19:20:51.947Z info: GET /uploads/default-profile-pic.png
+2024-07-26T19:20:52.491Z info: Fetched limited items
+2024-07-26T19:24:46.194Z info: GET /profile.html
+2024-07-26T19:24:46.259Z info: GET /js/userLogout.js
+2024-07-26T19:24:46.261Z info: GET /css/style.css
+2024-07-26T19:24:46.262Z info: GET /images/bell-icon.png
+2024-07-26T19:24:46.262Z info: GET /images/arrow.png
+2024-07-26T19:24:46.528Z info: GET /js/profile_data.js
+2024-07-26T19:24:46.530Z info: GET /js/breadcrumps.js
+2024-07-26T19:24:46.540Z info: GET /images/Facebook_Icon.png
+2024-07-26T19:24:46.540Z info: GET /images/insta_icon.png
+2024-07-26T19:24:46.551Z info: GET /images/logo.jpeg
+2024-07-26T19:24:46.551Z info: GET /images/default-profile-pic.png
+2024-07-26T19:24:46.592Z info: GET /uploads/default-profile-pic.png
+2024-07-26T19:24:46.593Z info: GET /api/user-items?userId=1
+2024-07-26T19:24:46.593Z info: GET /api/profile-graph-data
+2024-07-26T19:24:47.675Z info: Fetched items for user 1
+2024-07-26T19:36:20.072Z info: GET /css/style.css
+2024-07-26T19:36:41.180Z info: Server is running on http://localhost:3000
+2024-07-26T19:36:43.475Z info: GET /
+2024-07-26T19:36:43.516Z info: GET /css/style.css
+2024-07-26T19:36:43.526Z info: GET /js/userAuth.js
+2024-07-26T19:36:52.457Z info: POST /api/login
+2024-07-26T19:36:53.132Z info: User logged in: policeman
+2024-07-26T19:36:53.145Z info: GET /adminPage.html
+2024-07-26T19:36:53.169Z info: GET /js/manage_claims.js
+2024-07-26T19:36:53.170Z info: GET /css/style.css
+2024-07-26T19:36:53.343Z info: GET /js/userLogout.js
+2024-07-26T19:36:53.360Z info: GET /images/logo.jpeg
+2024-07-26T19:36:53.361Z info: GET /images/default-profile-pic.png
+2024-07-26T19:36:53.391Z info: GET /api/items?claimStatus=Pending
+2024-07-26T19:36:53.392Z info: GET /uploads/default-profile-pic.png
+2024-07-26T19:36:53.975Z info: Fetched limited items
+2024-07-26T19:36:57.825Z info: GET /homePage.html
+2024-07-26T19:36:57.851Z info: GET /images/bell-icon.png
+2024-07-26T19:36:57.852Z info: GET /images/arrow.png
+2024-07-26T19:36:57.853Z info: GET /css/style.css
+2024-07-26T19:36:57.853Z info: GET /js/userLogout.js
+2024-07-26T19:36:58.037Z info: GET /js/dashboard.js
+2024-07-26T19:36:58.044Z info: GET /js/breadcrumps.js
+2024-07-26T19:36:58.053Z info: GET /images/Facebook_Icon.png
+2024-07-26T19:36:58.054Z info: GET /images/insta_icon.png
+2024-07-26T19:36:58.063Z info: GET /images/logo.jpeg
+2024-07-26T19:36:58.064Z info: GET /images/default-profile-pic.png
+2024-07-26T19:36:58.074Z info: GET /uploads/default-profile-pic.png
+2024-07-26T19:36:58.100Z info: GET /api/items
+2024-07-26T19:36:58.101Z info: GET /api/home-graph-data
+2024-07-26T19:36:58.668Z info: Fetched limited items
+2024-07-26T19:37:28.793Z info: GET /adminPage.html
+2024-07-26T19:37:28.818Z info: GET /js/manage_claims.js
+2024-07-26T19:37:28.819Z info: GET /css/style.css
+2024-07-26T19:37:28.913Z info: GET /js/userLogout.js
+2024-07-26T19:37:28.924Z info: GET /images/logo.jpeg
+2024-07-26T19:37:28.925Z info: GET /images/default-profile-pic.png
+2024-07-26T19:37:28.933Z info: GET /api/items?claimStatus=Pending
+2024-07-26T19:37:28.934Z info: GET /uploads/default-profile-pic.png
+2024-07-26T19:37:29.493Z info: Fetched limited items
+2024-07-26T19:37:32.120Z info: GET /adminHomePage.html
+2024-07-26T19:37:32.145Z info: GET /css/style.css
+2024-07-26T19:37:32.145Z info: GET /js/adminHome.js
+2024-07-26T19:37:32.328Z info: GET /api/admin-dashboard
+2024-07-26T19:37:32.330Z info: GET /images/logo.jpeg
+2024-07-26T19:37:32.336Z info: GET /images/default-profile-pic.png
+2024-07-26T19:37:55.658Z info: GET /css/style.css
+2024-07-26T19:41:39.984Z info: Server is running on http://localhost:3000
+2024-07-26T19:41:41.982Z info: GET /
+2024-07-26T19:41:42.041Z info: GET /css/style.css
+2024-07-26T19:41:42.052Z info: GET /css/style.css
+2024-07-26T19:41:42.055Z info: GET /js/userAuth.js
+2024-07-26T19:41:43.218Z info: GET /js/adminHome.js
+2024-07-26T19:41:43.300Z info: GET /api/admin-dashboard
+2024-07-26T19:41:43.316Z info: GET /images/logo.jpeg
+2024-07-26T19:41:43.319Z info: GET /images/default-profile-pic.png
+2024-07-26T19:41:49.270Z info: POST /api/login
+2024-07-26T19:41:49.953Z info: User logged in: policeman
+2024-07-26T19:41:49.966Z info: GET /adminHomePage.html
+2024-07-26T19:41:49.991Z info: GET /css/style.css
+2024-07-26T19:41:49.993Z info: GET /js/adminHome.js
+2024-07-26T19:41:50.184Z info: GET /images/logo.jpeg
+2024-07-26T19:41:50.184Z info: GET /images/default-profile-pic.png
+2024-07-26T19:41:50.219Z info: GET /api/admin-dashboard
+2024-07-26T19:42:37.534Z info: GET /manage_claims.html
+2024-07-26T19:42:37.574Z info: GET /css/style.css
+2024-07-26T19:42:37.786Z info: GET /js/manage_claims.js
+2024-07-26T19:42:37.787Z info: GET /js/userLogout.js
+2024-07-26T19:42:37.814Z info: GET /api/items?claimStatus=Pending
+2024-07-26T19:42:37.814Z info: GET /uploads/default-profile-pic.png
+2024-07-26T19:42:37.816Z info: GET /images/logo.jpeg
+2024-07-26T19:42:37.817Z info: GET /images/default-profile-pic.png
+2024-07-26T19:42:38.399Z info: Fetched limited items
+2024-07-26T19:42:46.058Z info: GET /adminHomePage.html
+2024-07-26T19:42:46.082Z info: GET /css/style.css
+2024-07-26T19:42:46.083Z info: GET /js/adminHome.js
+2024-07-26T19:42:46.196Z info: GET /images/logo.jpeg
+2024-07-26T19:42:46.197Z info: GET /images/default-profile-pic.png
+2024-07-26T19:42:46.204Z info: GET /api/admin-dashboard
+2024-07-26T19:47:52.954Z info: GET /adminHomePage.html
+2024-07-26T19:47:52.988Z info: GET /css/style.css
+2024-07-26T19:47:53.021Z info: GET /server/uploads/default-profile-pic.png
+2024-07-26T19:47:53.118Z info: GET /js/adminHome.js
+2024-07-26T19:47:53.141Z info: GET /images/default-profile-pic.png
+2024-07-26T19:47:53.141Z info: GET /images/logo.jpeg
+2024-07-26T19:47:53.180Z info: GET /api/admin-dashboard
+2024-07-26T19:48:01.121Z info: GET /css/style.css
+2024-07-26T19:48:41.424Z info: GET /manage_claims.html
+2024-07-26T19:48:41.467Z info: GET /css/style.css
+2024-07-26T19:48:41.931Z info: GET /js/manage_claims.js
+2024-07-26T19:48:41.934Z info: GET /js/userLogout.js
+2024-07-26T19:48:41.962Z info: GET /api/items?claimStatus=Pending
+2024-07-26T19:48:41.963Z info: GET /uploads/default-profile-pic.png
+2024-07-26T19:48:41.965Z info: GET /images/default-profile-pic.png
+2024-07-26T19:48:41.966Z info: GET /images/logo.jpeg
+2024-07-26T19:48:42.496Z info: Fetched limited items
+2024-07-26T19:48:50.051Z info: GET /adminHomePage.html
+2024-07-26T19:48:50.076Z info: GET /css/style.css
+2024-07-26T19:48:50.078Z info: GET /server/uploads/default-profile-pic.png
+2024-07-26T19:48:50.078Z info: GET /js/adminHome.js
+2024-07-26T19:48:50.273Z info: GET /api/admin-dashboard
+2024-07-26T19:48:50.273Z info: GET /images/logo.jpeg
+2024-07-26T19:48:50.275Z info: GET /images/default-profile-pic.png
+2024-07-26T19:48:55.597Z info: GET /manage_claims.html
+2024-07-26T19:48:55.627Z info: GET /js/manage_claims.js
+2024-07-26T19:48:55.628Z info: GET /css/style.css
+2024-07-26T19:48:55.747Z info: GET /js/userLogout.js
+2024-07-26T19:48:55.763Z info: GET /api/items?claimStatus=Pending
+2024-07-26T19:48:55.763Z info: GET /uploads/default-profile-pic.png
+2024-07-26T19:48:55.765Z info: GET /images/logo.jpeg
+2024-07-26T19:48:55.766Z info: GET /images/default-profile-pic.png
+2024-07-26T19:48:56.304Z info: Fetched limited items
+2024-07-26T19:49:01.511Z info: PUT /api/items/claim/1
+2024-07-26T19:49:02.044Z info: Claim status updated for item ID 1 to Approved
+2024-07-26T19:49:05.155Z info: GET /api/items?claimStatus=Pending
+2024-07-26T19:49:05.694Z info: Fetched limited items
+2024-07-26T19:49:08.131Z info: GET /item.html?id=1
+2024-07-26T19:49:08.193Z info: GET /js/userLogout.js
+2024-07-26T19:49:08.194Z info: GET /css/style.css
+2024-07-26T19:49:08.196Z info: GET /images/bell-icon.png
+2024-07-26T19:49:08.197Z info: GET /images/Facebook_Icon.png
+2024-07-26T19:49:08.383Z info: GET /images/insta_icon.png
+2024-07-26T19:49:08.397Z info: GET /js/item_details.js
+2024-07-26T19:49:08.401Z info: GET /js/breadcrumps.js
+2024-07-26T19:49:08.423Z info: GET /images/logo.jpeg
+2024-07-26T19:49:08.424Z info: GET /images/default-profile-pic.png
+2024-07-26T19:49:08.432Z info: GET /uploads/default-profile-pic.png
+2024-07-26T19:50:27.107Z info: GET /adminHomePage.html
+2024-07-26T19:50:27.148Z info: GET /css/style.css
+2024-07-26T19:50:27.149Z info: GET /server/uploads/default-profile-pic.png
+2024-07-26T19:50:27.383Z info: GET /js/adminHome.js
+2024-07-26T19:50:27.402Z info: GET /images/logo.jpeg
+2024-07-26T19:50:27.402Z info: GET /images/default-profile-pic.png
+2024-07-26T19:50:27.444Z info: GET /api/admin-dashboard
+2024-07-26T19:50:49.514Z info: GET /manage_claims.html
+2024-07-26T19:50:49.540Z info: GET /css/style.css
+2024-07-26T19:50:49.541Z info: GET /js/manage_claims.js
+2024-07-26T19:50:49.655Z info: GET /js/userLogout.js
+2024-07-26T19:50:49.666Z info: GET /images/logo.jpeg
+2024-07-26T19:50:49.667Z info: GET /images/default-profile-pic.png
+2024-07-26T19:50:49.683Z info: GET /api/items?claimStatus=Pending
+2024-07-26T19:50:49.683Z info: GET /uploads/default-profile-pic.png
+2024-07-26T19:50:50.249Z info: Fetched limited items
+2024-07-26T19:50:57.933Z info: PUT /api/items/claim/1
+2024-07-26T19:50:58.463Z info: Claim status updated for item ID 1 to Approved
+2024-07-26T19:51:00.404Z info: GET /api/items?claimStatus=Pending
+2024-07-26T19:51:00.972Z info: Fetched limited items
+2024-07-26T19:51:03.629Z info: GET /item.html?id=1
+2024-07-26T19:51:03.660Z info: GET /js/userLogout.js
+2024-07-26T19:51:03.662Z info: GET /css/style.css
+2024-07-26T19:51:03.664Z info: GET /images/bell-icon.png
+2024-07-26T19:51:03.664Z info: GET /images/Facebook_Icon.png
+2024-07-26T19:51:03.873Z info: GET /images/insta_icon.png
+2024-07-26T19:51:03.887Z info: GET /js/item_details.js
+2024-07-26T19:51:03.888Z info: GET /js/breadcrumps.js
+2024-07-26T19:51:03.905Z info: GET /images/logo.jpeg
+2024-07-26T19:51:03.906Z info: GET /images/default-profile-pic.png
+2024-07-26T19:51:03.920Z info: GET /uploads/default-profile-pic.png
+2024-07-26T19:51:24.449Z info: GET /adminHomePage.html
+2024-07-26T19:51:24.475Z info: GET /css/style.css
+2024-07-26T19:51:24.476Z info: GET /js/adminHome.js
+2024-07-26T19:51:24.477Z info: GET /server/uploads/default-profile-pic.png
+2024-07-26T19:51:24.600Z info: GET /api/admin-dashboard
+2024-07-26T19:51:24.601Z info: GET /images/logo.jpeg
+2024-07-26T19:51:24.602Z info: GET /images/default-profile-pic.png
+2024-07-26T20:16:38.329Z info: GET /manage_claims.html
+2024-07-26T20:16:38.405Z info: GET /css/style.css
+2024-07-26T20:16:38.593Z info: GET /js/userLogout.js
+2024-07-26T20:16:38.594Z info: GET /js/manage_claims.js
+2024-07-26T20:16:38.613Z info: GET /images/logo.jpeg
+2024-07-26T20:16:38.613Z info: GET /images/default-profile-pic.png
+2024-07-26T20:16:38.657Z info: GET /api/items?claimStatus=Pending
+2024-07-26T20:16:38.670Z info: GET /uploads/default-profile-pic.png
+2024-07-26T20:16:39.763Z info: Fetched limited items
+2024-07-26T20:16:41.081Z info: GET /item.html?id=1
+2024-07-26T20:16:41.127Z info: GET /js/userLogout.js
+2024-07-26T20:16:41.127Z info: GET /css/style.css
+2024-07-26T20:16:41.130Z info: GET /images/bell-icon.png
+2024-07-26T20:16:41.131Z info: GET /images/Facebook_Icon.png
+2024-07-26T20:16:41.306Z info: GET /images/insta_icon.png
+2024-07-26T20:16:41.313Z info: GET /js/item_details.js
+2024-07-26T20:16:41.313Z info: GET /js/breadcrumps.js
+2024-07-26T20:16:41.330Z info: GET /images/logo.jpeg
+2024-07-26T20:16:41.330Z info: GET /images/default-profile-pic.png
+2024-07-26T20:16:41.340Z info: GET /uploads/default-profile-pic.png
+2024-07-26T20:17:23.588Z info: GET /css/style.css
+2024-07-26T20:30:00.352Z info: Server is running on http://localhost:3000
+2024-07-26T20:30:03.112Z info: GET /
+2024-07-26T20:30:03.300Z info: GET /css/style.css
+2024-07-26T20:30:03.302Z info: GET /js/userAuth.js
+2024-07-26T20:30:04.531Z info: GET /css/style.css
+2024-07-26T20:30:04.570Z info: GET /js/userLogout.js
+2024-07-26T20:30:04.572Z info: GET /images/bell-icon.png
+2024-07-26T20:30:04.577Z info: GET /images/Facebook_Icon.png
+2024-07-26T20:30:04.594Z info: GET /images/insta_icon.png
+2024-07-26T20:30:04.992Z info: GET /js/item_details.js
+2024-07-26T20:30:05.296Z info: GET /js/breadcrumps.js
+2024-07-26T20:30:05.848Z info: GET /uploads/default-profile-pic.png
+2024-07-26T20:30:05.851Z info: GET /api/items/1
+2024-07-26T20:30:05.857Z info: GET /images/logo.jpeg
+2024-07-26T20:30:05.858Z info: GET /images/default-profile-pic.png
+2024-07-26T20:30:06.470Z info: Fetched item with id: 1
+2024-07-26T20:30:21.510Z info: POST /api/login
+2024-07-26T20:30:22.181Z info: User logged in: policeman
+2024-07-26T20:30:22.193Z info: GET /adminHomePage.html
+2024-07-26T20:30:22.221Z info: GET /css/style.css
+2024-07-26T20:30:22.223Z info: GET /server/uploads/default-profile-pic.png
+2024-07-26T20:30:22.398Z info: GET /js/adminHome.js
+2024-07-26T20:30:22.426Z info: GET /images/logo.jpeg
+2024-07-26T20:30:22.427Z info: GET /images/default-profile-pic.png
+2024-07-26T20:30:22.455Z info: GET /api/admin-dashboard
+2024-07-26T20:30:29.918Z info: GET /manage_claims.html
+2024-07-26T20:30:29.943Z info: GET /css/style.css
+2024-07-26T20:30:29.944Z info: GET /js/manage_claims.js
+2024-07-26T20:30:30.109Z info: GET /js/userLogout.js
+2024-07-26T20:30:30.130Z info: GET /images/logo.jpeg
+2024-07-26T20:30:30.131Z info: GET /images/default-profile-pic.png
+2024-07-26T20:30:30.145Z info: GET /api/items?claimStatus=Pending
+2024-07-26T20:30:30.146Z info: GET /uploads/default-profile-pic.png
+2024-07-26T20:30:30.719Z info: Fetched limited items
+2024-07-26T20:30:35.169Z info: GET /item.html?id=1
+2024-07-26T20:30:35.208Z info: GET /js/userLogout.js
+2024-07-26T20:30:35.210Z info: GET /css/style.css
+2024-07-26T20:30:35.211Z info: GET /images/bell-icon.png
+2024-07-26T20:30:35.212Z info: GET /images/Facebook_Icon.png
+2024-07-26T20:30:35.401Z info: GET /images/insta_icon.png
+2024-07-26T20:30:35.416Z info: GET /js/item_details.js
+2024-07-26T20:30:35.417Z info: GET /js/breadcrumps.js
+2024-07-26T20:30:35.436Z info: GET /images/logo.jpeg
+2024-07-26T20:30:35.436Z info: GET /images/default-profile-pic.png
+2024-07-26T20:30:35.447Z info: GET /uploads/default-profile-pic.png
+2024-07-26T20:30:35.448Z info: GET /api/items/1
+2024-07-26T20:30:36.008Z info: Fetched item with id: 1
