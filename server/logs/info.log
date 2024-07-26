@@ -11832,3 +11832,73 @@
 2024-07-26T16:15:00.198Z info: GET /api/items
 2024-07-26T16:15:00.199Z info: GET /api/home-graph-data
 2024-07-26T16:15:00.753Z info: Fetched limited items
+2024-07-26T16:19:01.638Z info: Server is running on http://localhost:3000
+2024-07-26T16:19:08.977Z info: GET /
+2024-07-26T16:19:09.113Z info: GET /css/style.css
+2024-07-26T16:19:09.116Z info: GET /js/userAuth.js
+2024-07-26T16:19:10.394Z info: GET /css/style.css
+2024-07-26T16:19:10.432Z info: GET /js/userLogout.js
+2024-07-26T16:19:10.433Z info: GET /images/bell-icon.png
+2024-07-26T16:19:10.435Z info: GET /images/arrow.png
+2024-07-26T16:19:10.449Z info: GET /js/dashboard.js
+2024-07-26T16:19:10.450Z info: GET /js/breadcrumps.js
+2024-07-26T16:19:10.464Z info: GET /images/Facebook_Icon.png
+2024-07-26T16:19:10.474Z info: GET /images/insta_icon.png
+2024-07-26T16:19:10.479Z info: GET /default-profile-pic.png
+2024-07-26T16:19:10.491Z info: GET /images/logo.jpeg
+2024-07-26T16:19:10.504Z info: GET /images/default-profile-pic.png
+2024-07-26T16:19:10.577Z info: GET /api/items
+2024-07-26T16:19:10.577Z info: GET /api/home-graph-data
+2024-07-26T16:19:11.159Z info: Fetched limited items
+2024-07-26T16:19:20.379Z info: GET /css/style.css
+2024-07-26T16:19:26.014Z info: POST /api/login
+2024-07-26T16:19:27.112Z info: User logged in: policeman
+2024-07-26T16:19:27.126Z info: GET /adminPage.html
+2024-07-26T16:19:27.185Z info: GET /css/style.css
+2024-07-26T16:19:27.636Z info: GET /js/manage_claims.js
+2024-07-26T16:19:27.638Z info: GET /js/userLogout.js
+2024-07-26T16:19:27.689Z info: GET /images/logo.jpeg
+2024-07-26T16:19:27.690Z info: GET /images/default-profile-pic.png
+2024-07-26T16:19:27.827Z info: GET /api/items?claimStatus=Pending
+2024-07-26T16:19:27.828Z info: GET /default-profile-pic.png
+2024-07-26T16:19:28.994Z info: Fetched limited items
+2024-07-26T16:22:37.472Z info: PUT /api/items/claim/1
+2024-07-26T16:22:38.599Z info: Claim status updated for item ID 1 to Approved
+2024-07-26T16:22:38.610Z info: GET /api/items?claimStatus=Pending
+2024-07-26T16:22:39.180Z info: Fetched limited items
+2024-07-26T16:22:39.375Z info: PUT /api/items/claim/1
+2024-07-26T16:22:39.964Z info: Claim status updated for item ID 1 to Approved
+2024-07-26T16:22:39.973Z info: GET /api/items?claimStatus=Pending
+2024-07-26T16:22:40.172Z info: PUT /api/items/claim/1
+2024-07-26T16:22:40.555Z info: Fetched limited items
+2024-07-26T16:22:40.839Z info: PUT /api/items/claim/2
+2024-07-26T16:22:41.338Z info: Claim status updated for item ID 1 to Rejected
+2024-07-26T16:22:41.347Z info: GET /api/items?claimStatus=Pending
+2024-07-26T16:22:41.415Z info: Claim status updated for item ID 2 to Approved
+2024-07-26T16:22:41.488Z info: PUT /api/items/claim/2
+2024-07-26T16:22:41.925Z info: Fetched limited items
+2024-07-26T16:22:41.927Z info: GET /api/items?claimStatus=Pending
+2024-07-26T16:22:41.928Z info: PUT /api/items/claim/3
+2024-07-26T16:22:42.066Z info: Claim status updated for item ID 2 to Rejected
+2024-07-26T16:22:42.330Z info: PUT /api/items/claim/3
+2024-07-26T16:22:42.510Z info: Fetched limited items
+2024-07-26T16:22:42.511Z info: GET /api/items?claimStatus=Pending
+2024-07-26T16:22:42.954Z info: Claim status updated for item ID 3 to Approved
+2024-07-26T16:22:43.025Z info: PUT /api/items/claim/3
+2024-07-26T16:22:43.054Z info: Claim status updated for item ID 3 to Approved
+2024-07-26T16:22:43.095Z info: Fetched limited items
+2024-07-26T16:22:43.096Z info: GET /api/items?claimStatus=Pending
+2024-07-26T16:22:43.381Z info: PUT /api/items/claim/4
+2024-07-26T16:22:43.627Z info: Claim status updated for item ID 3 to Rejected
+2024-07-26T16:22:43.648Z info: Fetched limited items
+2024-07-26T16:22:43.650Z info: GET /api/items?claimStatus=Pending
+2024-07-26T16:22:43.775Z info: PUT /api/items/claim/4
+2024-07-26T16:22:43.951Z info: Claim status updated for item ID 4 to Approved
+2024-07-26T16:22:44.281Z info: Fetched limited items
+2024-07-26T16:22:44.283Z info: GET /api/items?claimStatus=Pending
+2024-07-26T16:22:44.328Z info: Claim status updated for item ID 4 to Rejected
+2024-07-26T16:22:44.851Z info: Fetched limited items
+2024-07-26T16:22:44.853Z info: GET /api/items?claimStatus=Pending
+2024-07-26T16:22:45.413Z info: Fetched limited items
+2024-07-26T16:22:45.416Z info: GET /api/items?claimStatus=Pending
+2024-07-26T16:22:45.962Z info: Fetched limited items
