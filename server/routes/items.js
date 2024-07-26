@@ -5,6 +5,7 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const logger = require('../logger');
+const { authenticateToken } = require('../middleware/authMiddleware');
 
 // Determine if the environment is production
 const isProduction = process.env.NODE_ENV === 'production';
@@ -250,6 +251,21 @@ router.post('/found-items', upload.none(), (req, res) => {
       }
     });
   });
+
+  router.put('/items/claim/:id', authenticateToken, (req, res) => {
+    const itemId = req.params.id;
+    const { approved } = req.body; //true or false
+    const claimStatus = approved ? 'Approved' : 'Rejected';
+
+    pool.query('UPDATE tbl_123_posts SET claimStatus = ? WHERE id = ?', [claimStatus, itemId], (err, result) => {
+        if (err) {
+            logger.error(`Error updating claim status for item ID ${itemId}: ${err.message}`);
+            return res.status(500).json({ error: 'Internal Server Error' });
+        }
+        logger.info(`Claim status updated for item ID ${itemId} to ${claimStatus}`);
+        res.json({ success: true, claimStatus });
+    });
+});
 
 
 module.exports = router;

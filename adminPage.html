@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Manage Claims</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/manage_claims.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-white shadow">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="homePage.html">
+                    <div class="logo"></div>
+                </a>
+                <span class="navbar-brand">Lost And Found - Admin</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="homePage.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="manage_claims.html">Manage Claims</a>
+                        </li>
+                        <li class="nav-item dropdown profile-dropdown">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="" alt="Profile" class="profile-img rounded-circle me-2" id="profileImg">
+                                <div class="profile-info">
+                                    <div id="username">Username</div>
+                                    <div class="text-muted">Admin</div>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
+                                <li><a class="dropdown-item logout-link" href="#">Log Out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item profile-dropdown">
+                        <div class="profile-info">
+                            <img src="" alt="Profile" class="profile-img rounded-circle side" id="sideProfileImg">
+                            <div id="sideUsername">Username</div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link side" aria-current="page" href="homePage.html">
+                            <i class="bi bi-house"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link side active" href="manage_claims.html">
+                            <i class="bi bi-check-circle"></i> Manage Claims
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link side" href="profile.html">
+                            <i class="bi bi-person"></i> My Profile
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link side logout-link" href="#">
+                            <i class="bi bi-box-arrow-right"></i> Log Out
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <main class="wrapper">
+        <section class="container mt-5">
+            <h1>Manage Claims</h1>
+            <table class="table table-striped" id="claimsTable">
+                <thead>
+                    <tr>
+                        <th>Item Name</th>
+                        <th>Claimant</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dynamic content will be loaded here -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container">
+            <span class="text-muted">Lost and Found © 2024</span>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/userLogout.js" defer></script>
+</body>
+</html>

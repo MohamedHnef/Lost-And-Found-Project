@@ -1318,3 +1318,70 @@ img.img-fluid {
     background-color: #fff;
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 }
+
+/* --------------------------------------*/
+/* Ensure the admin page has the same style as other pages */
+.wrapper {
+    padding: 20px;
+}
+
+.table {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand .logo {
+    width: 40px;
+    height: 40px;
+    background: url('../images/logo.jpeg') no-repeat center center;
+    background-size: cover;
+    margin-right: 10px;
+}
+
+.profile-img {
+    width: 40px;
+    height: 40px;
+    background: url('../images/default-profile-pic.png') no-repeat center center;
+    background-size: cover;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    background-color: #f8f9fa;
+}
+
+.offcanvas {
+    width: 250px;
+}
+
+.offcanvas .profile-info {
+    padding: 10px 0;
+}
+
+.offcanvas .profile-img.side {
+    width: 60px;
+    height: 60px;
+}
+
+.offcanvas .nav-link.side {
+    display: flex;
+    align-items: center;
+}
+
+.offcanvas .nav-link.side i {
+    margin-right: 10px;
+}

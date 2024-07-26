@@ -53,30 +53,68 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('loginForm').addEventListener('submit', async (e) => {
         e.preventDefault();
-
+    
         const formData = new FormData(e.target);
         const data = Object.fromEntries(formData.entries());
-
-        const response = await fetch('/api/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
-
-        const result = await response.json();
-        console.log(`Login Result: ${JSON.stringify(result)}`);
-        if (response.ok) {
-            localStorage.setItem('token', result.token);
-            localStorage.setItem('username', result.user.username);
-            localStorage.setItem('profile_pic', result.user.profilePicture);
-            // alert(`Login successful. Profile Picture URL: ${result.user.profilePicture}`);
-            window.location.href = 'homePage.html';
-        } else {
-            alert(`Error: ${result.error}`);
+    
+        try {
+            const response = await fetch('/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+    
+            const result = await response.json();
+            console.log(`Login Result: ${JSON.stringify(result)}`);
+            if (response.ok) {
+                localStorage.setItem('token', result.token);
+                localStorage.setItem('username', result.user.username);
+                localStorage.setItem('profile_pic', result.user.profilePicture);
+    
+                // Check user role and redirect accordingly
+                if (result.user.role === 'admin') {
+                    window.location.href = 'adminPage.html';
+                } else {
+                    window.location.href = 'homePage.html';
+                }
+            } else {
+                alert(`Error: ${result.error}`);
+            }
+        } catch (error) {
+            console.error('Fetch error:', error);
+            alert('An error occurred while logging in. Please try again.');
         }
     });
 });
+
+const handleLogin = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+
+    fetch(`${API_URL}/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(formData))
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Login response:', data); // Debug log
+        if (data.token) {
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('role', data.user.role); // Store user role
+            console.log('User role:', data.user.role); // Debug log
+            if (data.user.role === 'admin') {
+                window.location.href = 'adminPage.html'; // Redirect admin to admin page
+            } else {
+                window.location.href = 'profile.html'; // Redirect regular user to profile page
+            }
+        } else {
+            alert('Login failed');
+        }
+    })
+    .catch(error => console.error('Error logging in:', error));
+};
 
 

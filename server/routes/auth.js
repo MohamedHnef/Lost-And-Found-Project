@@ -54,7 +54,6 @@ router.post('/register', upload.single('profilePic'), async (req, res) => {
 // Login a user
 router.post('/login', (req, res) => {
     const { username, password } = req.body;
-    console.log(`Login attempt: username=${username}, password=${password}`);
 
     pool.query('SELECT * FROM tbl_123_users WHERE username = ?', [username], async (err, results) => {
         if (err) {
@@ -68,17 +67,15 @@ router.post('/login', (req, res) => {
         }
 
         const user = results[0];
-        console.log(`User found: ${JSON.stringify(user)}`);
 
         const isMatch = await bcrypt.compare(password, user.password);
-        console.log(`Password match: ${isMatch}`);
 
         if (!isMatch) {
             logger.warn('Invalid password');
             return res.status(401).json({ error: 'Invalid username or password' });
         }
 
-        const token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({ id: user.id, role: user.role }, JWT_SECRET, { expiresIn: '1h' });
 
         logger.info(`User logged in: ${user.username}`);
         res.json({
@@ -86,6 +83,7 @@ router.post('/login', (req, res) => {
             token,
             user: {
                 username: user.username,
+                role: user.role,
                 profilePicture: user.profile_pic  
             }
         });

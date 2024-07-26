@@ -11483,3 +11483,352 @@
 2024-07-26T14:08:23.519Z info: GET /api/items
 2024-07-26T14:08:23.519Z info: GET /api/home-graph-data
 2024-07-26T14:08:24.330Z info: Fetched limited items
+2024-07-26T14:21:08.042Z info: Server is running on http://localhost:3000
+2024-07-26T14:22:43.533Z info: GET /
+2024-07-26T14:22:43.944Z info: GET /js/userAuth.js
+2024-07-26T14:22:43.954Z info: GET /css/style.css
+2024-07-26T14:22:53.875Z info: GET /sourceMap/chrome/css/logged_out_popup.css.map
+2024-07-26T14:23:53.063Z info: POST /api/register
+2024-07-26T14:23:54.702Z info: User registered with ID: 12
+2024-07-26T14:23:56.607Z info: GET /index.html
+2024-07-26T14:23:56.769Z info: GET /css/style.css
+2024-07-26T14:23:56.792Z info: GET /js/userAuth.js
+2024-07-26T14:24:08.144Z info: POST /api/login
+2024-07-26T14:24:09.215Z info: User logged in: amirkh
+2024-07-26T14:24:09.258Z info: GET /homePage.html
+2024-07-26T14:24:09.372Z info: GET /js/userLogout.js
+2024-07-26T14:24:09.385Z info: GET /css/style.css
+2024-07-26T14:24:09.387Z info: GET /images/bell-icon.png
+2024-07-26T14:24:09.389Z info: GET /images/arrow.png
+2024-07-26T14:24:10.170Z info: GET /js/dashboard.js
+2024-07-26T14:24:10.195Z info: GET /js/breadcrumps.js
+2024-07-26T14:24:10.275Z info: GET /images/Facebook_Icon.png
+2024-07-26T14:24:10.277Z info: GET /images/insta_icon.png
+2024-07-26T14:24:10.313Z info: GET /images/logo.jpeg
+2024-07-26T14:24:10.398Z info: GET /uploads/default-profile-pic.png
+2024-07-26T14:24:10.562Z info: GET /api/items
+2024-07-26T14:24:10.564Z info: GET /api/home-graph-data
+2024-07-26T14:24:11.165Z info: Fetched limited items
+2024-07-26T14:24:44.722Z info: GET /report_found.html
+2024-07-26T14:24:44.851Z info: GET /js/userLogout.js
+2024-07-26T14:24:44.855Z info: GET /css/style.css
+2024-07-26T14:24:44.856Z info: GET /images/bell-icon.png
+2024-07-26T14:24:44.861Z info: GET /images/Facebook_Icon.png
+2024-07-26T14:24:45.670Z info: GET /images/insta_icon.png
+2024-07-26T14:24:45.706Z info: GET /js/report_found_item.js
+2024-07-26T14:24:45.707Z info: GET /js/claim_item.js
+2024-07-26T14:24:45.774Z info: GET /js/breadcrumps.js
+2024-07-26T14:24:45.826Z info: GET /images/logo.jpeg
+2024-07-26T14:24:46.093Z info: GET /uploads/default-profile-pic.png
+2024-07-26T14:25:40.002Z info: POST /api/upload
+2024-07-26T14:25:40.042Z info: Image uploaded: http://localhost:3000/uploads/1722003940005-gucciWallet.jpeg
+2024-07-26T14:25:40.064Z info: POST /api/found-items
+2024-07-26T14:25:41.224Z info: Item added with ID: 159
+2024-07-26T14:25:43.261Z info: GET /list_Item.html
+2024-07-26T14:25:43.379Z info: GET /js/filter.js
+2024-07-26T14:25:43.385Z info: GET /css/style.css
+2024-07-26T14:25:43.386Z info: GET /js/userLogout.js
+2024-07-26T14:25:43.389Z info: GET /images/bell-icon.png
+2024-07-26T14:25:43.398Z info: GET /images/search-icon.png
+2024-07-26T14:25:44.427Z info: GET /images/filter-icon.png
+2024-07-26T14:25:44.430Z info: GET /images/sortby-icon.png
+2024-07-26T14:25:44.462Z info: GET /images/Facebook_Icon.png
+2024-07-26T14:25:44.512Z info: GET /js/breadcrumps.js
+2024-07-26T14:25:44.519Z info: GET /images/insta_icon.png
+2024-07-26T14:25:44.671Z info: GET /images/logo.jpeg
+2024-07-26T14:25:45.029Z info: GET /uploads/default-profile-pic.png
+2024-07-26T14:25:46.967Z info: GET /uploads/1722003940005-gucciWallet.jpeg
+2024-07-26T14:26:04.921Z info: GET /item.html
+2024-07-26T14:26:04.985Z info: GET /js/item_details.js
+2024-07-26T14:26:04.991Z info: GET /css/style.css
+2024-07-26T14:26:04.993Z info: GET /js/userLogout.js
+2024-07-26T14:26:04.995Z info: GET /images/bell-icon.png
+2024-07-26T14:26:04.996Z info: GET /images/Facebook_Icon.png
+2024-07-26T14:26:05.863Z info: GET /images/insta_icon.png
+2024-07-26T14:26:05.889Z info: GET /js/breadcrumps.js
+2024-07-26T14:26:05.990Z info: GET /images/logo.jpeg
+2024-07-26T14:26:06.035Z info: GET /uploads/default-profile-pic.png
+2024-07-26T14:26:06.042Z info: GET /api/items/159
+2024-07-26T14:26:06.807Z info: Fetched item with id: 159
+2024-07-26T14:26:06.828Z info: GET /uploads/1722003940005-gucciWallet.jpeg
+2024-07-26T14:26:18.596Z info: GET /profile.html
+2024-07-26T14:26:18.682Z info: GET /js/profile_data.js
+2024-07-26T14:26:18.686Z info: GET /css/style.css
+2024-07-26T14:26:18.688Z info: GET /js/userLogout.js
+2024-07-26T14:26:18.690Z info: GET /images/bell-icon.png
+2024-07-26T14:26:18.699Z info: GET /images/arrow.png
+2024-07-26T14:26:19.474Z info: GET /js/breadcrumps.js
+2024-07-26T14:26:19.507Z info: GET /images/Facebook_Icon.png
+2024-07-26T14:26:19.530Z info: GET /images/insta_icon.png
+2024-07-26T14:26:19.597Z info: GET /images/logo.jpeg
+2024-07-26T14:26:19.647Z info: GET /uploads/default-profile-pic.png
+2024-07-26T14:26:19.653Z info: GET /api/user-items?userId=1
+2024-07-26T14:26:19.655Z info: GET /api/profile-graph-data
+2024-07-26T14:26:20.246Z info: Fetched items for user 1
+2024-07-26T14:26:20.454Z info: GET /images/view-icon.png
+2024-07-26T14:26:20.457Z info: GET /images/edit-icon.png
+2024-07-26T14:26:20.459Z info: GET /images/delete-icon.png
+2024-07-26T14:26:33.245Z info: GET /api/items/159
+2024-07-26T14:26:33.847Z info: Fetched item with id: 159
+2024-07-26T14:27:38.519Z info: PUT /api/items/159
+2024-07-26T14:27:38.520Z info: Updating item ID 159: {"itemName":"Gucci Wallet","locationLost":"tel aviv port","category":"Personal Items","color":"Black","description":"","contactEmail":"amir.kh28@hotmail.com","contactPhone":"0546773232","lostDate":"2024-07-19","timeLost":"00:00:00","locationFound":"tel aviv port"}
+2024-07-26T14:27:39.984Z info: Item ID 159 updated
+2024-07-26T14:27:40.022Z info: GET /profile.html
+2024-07-26T14:27:40.148Z info: GET /js/userLogout.js
+2024-07-26T14:27:40.151Z info: GET /css/style.css
+2024-07-26T14:27:40.155Z info: GET /images/bell-icon.png
+2024-07-26T14:27:40.159Z info: GET /images/arrow.png
+2024-07-26T14:27:40.628Z info: GET /js/profile_data.js
+2024-07-26T14:27:40.635Z info: GET /js/breadcrumps.js
+2024-07-26T14:27:40.691Z info: GET /images/Facebook_Icon.png
+2024-07-26T14:27:40.696Z info: GET /images/insta_icon.png
+2024-07-26T14:27:40.763Z info: GET /images/logo.jpeg
+2024-07-26T14:27:40.932Z info: GET /uploads/default-profile-pic.png
+2024-07-26T14:27:40.948Z info: GET /api/user-items?userId=1
+2024-07-26T14:27:40.949Z info: GET /api/profile-graph-data
+2024-07-26T14:27:41.425Z info: GET /favicon.ico
+2024-07-26T14:27:41.540Z info: Fetched items for user 1
+2024-07-26T14:27:41.699Z info: GET /images/view-icon.png
+2024-07-26T14:27:41.701Z info: GET /images/edit-icon.png
+2024-07-26T14:27:41.703Z info: GET /images/delete-icon.png
+2024-07-26T14:28:00.179Z info: GET /item.html?id=159
+2024-07-26T14:28:00.253Z info: GET /js/item_details.js
+2024-07-26T14:28:00.258Z info: GET /css/style.css
+2024-07-26T14:28:00.259Z info: GET /js/userLogout.js
+2024-07-26T14:28:00.261Z info: GET /images/bell-icon.png
+2024-07-26T14:28:00.262Z info: GET /images/Facebook_Icon.png
+2024-07-26T14:28:01.009Z info: GET /images/insta_icon.png
+2024-07-26T14:28:01.027Z info: GET /js/breadcrumps.js
+2024-07-26T14:28:01.111Z info: GET /images/logo.jpeg
+2024-07-26T14:28:01.149Z info: GET /api/items/159
+2024-07-26T14:28:01.151Z info: GET /uploads/default-profile-pic.png
+2024-07-26T14:28:01.754Z info: Fetched item with id: 159
+2024-07-26T14:28:01.773Z info: GET /uploads/1722003940005-gucciWallet.jpeg
+2024-07-26T15:08:47.600Z info: Server is running on http://localhost:3000
+2024-07-26T15:08:59.550Z info: GET /
+2024-07-26T15:08:59.653Z info: GET /css/style.css
+2024-07-26T15:08:59.661Z info: GET /js/userAuth.js
+2024-07-26T15:09:01.234Z info: GET /css/style.css
+2024-07-26T15:09:01.271Z info: GET /js/userLogout.js
+2024-07-26T15:09:01.272Z info: GET /images/bell-icon.png
+2024-07-26T15:09:01.274Z info: GET /images/arrow.png
+2024-07-26T15:09:01.311Z info: GET /js/dashboard.js
+2024-07-26T15:09:01.312Z info: GET /js/breadcrumps.js
+2024-07-26T15:09:01.332Z info: GET /images/Facebook_Icon.png
+2024-07-26T15:09:01.347Z info: GET /images/insta_icon.png
+2024-07-26T15:09:01.356Z info: GET /uploads/default-profile-pic.png
+2024-07-26T15:09:01.372Z info: GET /images/logo.jpeg
+2024-07-26T15:09:01.384Z info: GET /images/default-profile-pic.png
+2024-07-26T15:09:01.451Z info: GET /api/items
+2024-07-26T15:09:01.452Z info: GET /api/home-graph-data
+2024-07-26T15:09:02.003Z info: Fetched limited items
+2024-07-26T15:09:08.496Z info: POST /api/login
+2024-07-26T15:09:09.209Z info: User logged in: amirkh
+2024-07-26T15:09:09.222Z info: GET /homePage.html
+2024-07-26T15:09:09.267Z info: GET /js/userLogout.js
+2024-07-26T15:09:09.269Z info: GET /css/style.css
+2024-07-26T15:09:09.270Z info: GET /images/bell-icon.png
+2024-07-26T15:09:09.273Z info: GET /images/arrow.png
+2024-07-26T15:09:09.513Z info: GET /js/dashboard.js
+2024-07-26T15:09:09.514Z info: GET /js/breadcrumps.js
+2024-07-26T15:09:09.534Z info: GET /images/Facebook_Icon.png
+2024-07-26T15:09:09.534Z info: GET /images/insta_icon.png
+2024-07-26T15:09:09.559Z info: GET /images/logo.jpeg
+2024-07-26T15:09:09.573Z info: GET /images/default-profile-pic.png
+2024-07-26T15:09:09.618Z info: GET /uploads/default-profile-pic.png
+2024-07-26T15:09:09.663Z info: GET /api/items
+2024-07-26T15:09:09.669Z info: GET /api/home-graph-data
+2024-07-26T15:09:10.200Z info: Fetched limited items
+2024-07-26T15:09:12.329Z info: GET /index.html
+2024-07-26T15:09:12.360Z info: GET /css/style.css
+2024-07-26T15:09:12.361Z info: GET /js/userAuth.js
+2024-07-26T15:09:55.495Z info: Server is running on http://localhost:3000
+2024-07-26T15:09:59.890Z info: GET /
+2024-07-26T15:09:59.969Z info: GET /css/style.css
+2024-07-26T15:09:59.972Z info: GET /js/userAuth.js
+2024-07-26T15:10:08.606Z info: POST /api/login
+2024-07-26T15:10:09.623Z info: User logged in: amirkh
+2024-07-26T15:10:09.637Z info: GET /homePage.html
+2024-07-26T15:10:09.679Z info: GET /js/userLogout.js
+2024-07-26T15:10:09.682Z info: GET /css/style.css
+2024-07-26T15:10:09.683Z info: GET /images/bell-icon.png
+2024-07-26T15:10:09.684Z info: GET /images/arrow.png
+2024-07-26T15:10:09.881Z info: GET /js/dashboard.js
+2024-07-26T15:10:09.881Z info: GET /js/breadcrumps.js
+2024-07-26T15:10:09.889Z info: GET /images/Facebook_Icon.png
+2024-07-26T15:10:09.890Z info: GET /images/insta_icon.png
+2024-07-26T15:10:09.900Z info: GET /images/logo.jpeg
+2024-07-26T15:10:09.900Z info: GET /images/default-profile-pic.png
+2024-07-26T15:10:09.964Z info: GET /api/items
+2024-07-26T15:10:09.968Z info: GET /api/home-graph-data
+2024-07-26T15:10:10.815Z info: Fetched limited items
+2024-07-26T15:10:23.020Z info: GET /css/style.css
+2024-07-26T15:24:46.086Z info: Server is running on http://localhost:3000
+2024-07-26T15:24:49.159Z info: GET /
+2024-07-26T15:24:49.231Z info: GET /css/style.css
+2024-07-26T15:24:49.245Z info: GET /js/userAuth.js
+2024-07-26T15:24:59.213Z info: POST /api/login
+2024-07-26T15:24:59.834Z warn: Invalid password
+2024-07-26T15:25:14.482Z info: POST /api/login
+2024-07-26T15:25:15.052Z warn: Invalid password
+2024-07-26T15:32:30.463Z info: Server is running on http://localhost:3000
+2024-07-26T15:32:33.772Z info: GET /
+2024-07-26T15:32:33.859Z info: GET /css/style.css
+2024-07-26T15:32:33.863Z info: GET /js/userAuth.js
+2024-07-26T15:32:35.276Z info: GET /
+2024-07-26T15:32:35.431Z info: GET /css/style.css
+2024-07-26T15:32:35.431Z info: GET /js/userAuth.js
+2024-07-26T15:32:51.368Z info: POST /api/login
+2024-07-26T15:32:52.050Z info: User logged in: policeman
+2024-07-26T15:32:52.064Z info: GET /homePage.html
+2024-07-26T15:32:52.097Z info: GET /css/style.css
+2024-07-26T15:32:52.100Z info: GET /js/userLogout.js
+2024-07-26T15:32:52.102Z info: GET /images/bell-icon.png
+2024-07-26T15:32:52.103Z info: GET /images/arrow.png
+2024-07-26T15:32:52.288Z info: GET /js/dashboard.js
+2024-07-26T15:32:52.289Z info: GET /js/breadcrumps.js
+2024-07-26T15:32:52.297Z info: GET /images/Facebook_Icon.png
+2024-07-26T15:32:52.297Z info: GET /images/insta_icon.png
+2024-07-26T15:32:52.305Z info: GET /images/logo.jpeg
+2024-07-26T15:32:52.306Z info: GET /images/default-profile-pic.png
+2024-07-26T15:32:52.344Z info: GET /default-profile-pic.png
+2024-07-26T15:32:52.384Z info: GET /api/items
+2024-07-26T15:32:52.394Z info: GET /api/home-graph-data
+2024-07-26T15:32:52.930Z info: Fetched limited items
+2024-07-26T15:36:08.152Z info: GET /css/style.css
+2024-07-26T15:37:26.988Z info: Server is running on http://localhost:3000
+2024-07-26T15:37:30.418Z info: GET /
+2024-07-26T15:37:30.530Z info: GET /css/style.css
+2024-07-26T15:37:30.534Z info: GET /js/userAuth.js
+2024-07-26T15:37:31.630Z info: GET /css/style.css
+2024-07-26T15:37:31.665Z info: GET /js/userLogout.js
+2024-07-26T15:37:31.666Z info: GET /images/bell-icon.png
+2024-07-26T15:37:31.668Z info: GET /images/arrow.png
+2024-07-26T15:37:31.691Z info: GET /js/dashboard.js
+2024-07-26T15:37:31.692Z info: GET /js/breadcrumps.js
+2024-07-26T15:37:31.726Z info: GET /images/Facebook_Icon.png
+2024-07-26T15:37:31.736Z info: GET /images/insta_icon.png
+2024-07-26T15:37:31.742Z info: GET /default-profile-pic.png
+2024-07-26T15:37:31.755Z info: GET /images/logo.jpeg
+2024-07-26T15:37:31.767Z info: GET /images/default-profile-pic.png
+2024-07-26T15:37:31.821Z info: GET /api/items
+2024-07-26T15:37:31.821Z info: GET /api/home-graph-data
+2024-07-26T15:37:32.365Z info: Fetched limited items
+2024-07-26T15:37:41.272Z info: POST /api/login
+2024-07-26T15:37:41.935Z info: User logged in: policeman
+2024-07-26T15:37:41.947Z info: GET /homePage.html
+2024-07-26T15:37:41.977Z info: GET /js/userLogout.js
+2024-07-26T15:37:41.978Z info: GET /css/style.css
+2024-07-26T15:37:41.979Z info: GET /images/bell-icon.png
+2024-07-26T15:37:41.981Z info: GET /images/arrow.png
+2024-07-26T15:37:42.169Z info: GET /js/dashboard.js
+2024-07-26T15:37:42.169Z info: GET /js/breadcrumps.js
+2024-07-26T15:37:42.176Z info: GET /images/Facebook_Icon.png
+2024-07-26T15:37:42.177Z info: GET /images/insta_icon.png
+2024-07-26T15:37:42.186Z info: GET /images/logo.jpeg
+2024-07-26T15:37:42.187Z info: GET /images/default-profile-pic.png
+2024-07-26T15:37:42.222Z info: GET /default-profile-pic.png
+2024-07-26T15:37:42.254Z info: GET /api/items
+2024-07-26T15:37:42.254Z info: GET /api/home-graph-data
+2024-07-26T15:37:42.812Z info: Fetched limited items
+2024-07-26T15:38:00.734Z info: GET /css/style.css
+2024-07-26T15:40:21.471Z info: GET /index.html
+2024-07-26T15:40:21.538Z info: GET /css/style.css
+2024-07-26T15:40:21.539Z info: GET /js/userAuth.js
+2024-07-26T15:40:25.873Z info: GET /css/style.css
+2024-07-26T15:41:12.608Z info: POST /api/login
+2024-07-26T15:41:13.771Z info: User logged in: policeman
+2024-07-26T15:41:13.794Z info: GET /homePage.html
+2024-07-26T15:41:13.869Z info: GET /js/userLogout.js
+2024-07-26T15:41:13.870Z info: GET /images/bell-icon.png
+2024-07-26T15:41:13.872Z info: GET /css/style.css
+2024-07-26T15:41:13.872Z info: GET /images/arrow.png
+2024-07-26T15:41:14.585Z info: GET /js/dashboard.js
+2024-07-26T15:41:14.599Z info: GET /js/breadcrumps.js
+2024-07-26T15:41:14.629Z info: GET /images/Facebook_Icon.png
+2024-07-26T15:41:14.630Z info: GET /images/insta_icon.png
+2024-07-26T15:41:14.670Z info: GET /default-profile-pic.png
+2024-07-26T15:41:14.673Z info: GET /images/logo.jpeg
+2024-07-26T15:41:14.680Z info: GET /images/default-profile-pic.png
+2024-07-26T15:41:14.822Z info: GET /api/items
+2024-07-26T15:41:14.823Z info: GET /api/home-graph-data
+2024-07-26T15:41:15.373Z info: Fetched limited items
+2024-07-26T15:59:50.281Z info: Server is running on http://localhost:3000
+2024-07-26T15:59:53.223Z info: GET /
+2024-07-26T15:59:53.260Z info: GET /css/style.css
+2024-07-26T15:59:53.262Z info: GET /js/userAuth.js
+2024-07-26T16:00:07.190Z info: GET /
+2024-07-26T16:00:07.326Z info: GET /css/style.css
+2024-07-26T16:00:07.327Z info: GET /js/userAuth.js
+2024-07-26T16:00:07.332Z info: GET /css/style.css
+2024-07-26T16:00:08.365Z info: GET /js/userAuth.js
+2024-07-26T16:00:19.527Z info: GET /?username=policeman&password=policeman123
+2024-07-26T16:00:19.564Z info: GET /css/style.css
+2024-07-26T16:00:19.566Z info: GET /js/userAuth.js
+2024-07-26T16:00:35.239Z info: GET /?username=policeman&password=policeman123
+2024-07-26T16:00:35.265Z info: GET /css/style.css
+2024-07-26T16:00:35.267Z info: GET /js/userAuth.js
+2024-07-26T16:00:44.120Z info: GET /css/style.css
+2024-07-26T16:03:16.420Z info: Server is running on http://localhost:3000
+2024-07-26T16:03:19.776Z info: GET /
+2024-07-26T16:03:19.837Z info: GET /css/style.css
+2024-07-26T16:03:19.841Z info: GET /js/userAuth.js
+2024-07-26T16:03:26.538Z info: GET /css/style.css
+2024-07-26T16:03:37.697Z info: GET /?username=policeman&password=policeman123
+2024-07-26T16:03:37.730Z info: GET /css/style.css
+2024-07-26T16:03:37.732Z info: GET /js/userAuth.js
+2024-07-26T16:03:38.522Z info: GET /sourceMap/chrome/css/logged_out_popup.css.map
+2024-07-26T16:05:58.901Z info: Server is running on http://localhost:3000
+2024-07-26T16:11:47.162Z info: GET /css/style.css
+2024-07-26T16:11:47.475Z info: GET /sourceMap/chrome/css/logged_out_popup.css.map
+2024-07-26T16:12:12.435Z info: GET /?username=policeman&password=policeman123
+2024-07-26T16:12:12.508Z info: GET /css/style.css
+2024-07-26T16:12:12.510Z info: GET /js/userAuth.js
+2024-07-26T16:12:13.525Z info: GET /sourceMap/chrome/css/logged_out_popup.css.map
+2024-07-26T16:12:42.393Z info: GET /sourceMap/chrome/css/logged_out_popup.css.map
+2024-07-26T16:12:52.707Z info: GET /?username=amirkh&password=amir9556
+2024-07-26T16:12:52.787Z info: GET /css/style.css
+2024-07-26T16:12:52.789Z info: GET /js/userAuth.js
+2024-07-26T16:12:54.027Z info: GET /sourceMap/chrome/css/logged_out_popup.css.map
+2024-07-26T16:14:21.523Z info: Server is running on http://localhost:3000
+2024-07-26T16:14:23.761Z info: GET /
+2024-07-26T16:14:23.821Z info: GET /css/style.css
+2024-07-26T16:14:23.824Z info: GET /js/userAuth.js
+2024-07-26T16:14:34.156Z info: POST /api/login
+2024-07-26T16:14:34.834Z info: User logged in: amirkh
+2024-07-26T16:14:34.869Z info: GET /homePage.html
+2024-07-26T16:14:34.904Z info: GET /css/style.css
+2024-07-26T16:14:34.907Z info: GET /js/userLogout.js
+2024-07-26T16:14:34.908Z info: GET /images/arrow.png
+2024-07-26T16:14:34.908Z info: GET /images/bell-icon.png
+2024-07-26T16:14:35.101Z info: GET /js/dashboard.js
+2024-07-26T16:14:35.102Z info: GET /js/breadcrumps.js
+2024-07-26T16:14:35.110Z info: GET /images/Facebook_Icon.png
+2024-07-26T16:14:35.111Z info: GET /images/insta_icon.png
+2024-07-26T16:14:35.122Z info: GET /images/logo.jpeg
+2024-07-26T16:14:35.123Z info: GET /images/default-profile-pic.png
+2024-07-26T16:14:35.161Z info: GET /uploads/default-profile-pic.png
+2024-07-26T16:14:35.198Z info: GET /api/items
+2024-07-26T16:14:35.201Z info: GET /api/home-graph-data
+2024-07-26T16:14:35.750Z info: Fetched limited items
+2024-07-26T16:14:42.991Z info: GET /index.html
+2024-07-26T16:14:43.014Z info: GET /css/style.css
+2024-07-26T16:14:43.016Z info: GET /js/userAuth.js
+2024-07-26T16:14:54.749Z info: GET /css/style.css
+2024-07-26T16:14:58.494Z info: POST /api/login
+2024-07-26T16:14:59.151Z info: User logged in: policeman
+2024-07-26T16:14:59.166Z info: GET /homePage.html
+2024-07-26T16:14:59.221Z info: GET /js/userLogout.js
+2024-07-26T16:14:59.229Z info: GET /css/style.css
+2024-07-26T16:14:59.230Z info: GET /images/bell-icon.png
+2024-07-26T16:14:59.230Z info: GET /images/arrow.png
+2024-07-26T16:14:59.844Z info: GET /js/dashboard.js
+2024-07-26T16:14:59.854Z info: GET /js/breadcrumps.js
+2024-07-26T16:14:59.933Z info: GET /images/Facebook_Icon.png
+2024-07-26T16:14:59.933Z info: GET /images/insta_icon.png
+2024-07-26T16:14:59.973Z info: GET /images/logo.jpeg
+2024-07-26T16:14:59.974Z info: GET /images/default-profile-pic.png
+2024-07-26T16:15:00.017Z info: GET /default-profile-pic.png
+2024-07-26T16:15:00.198Z info: GET /api/items
+2024-07-26T16:15:00.199Z info: GET /api/home-graph-data
+2024-07-26T16:15:00.753Z info: Fetched limited items
