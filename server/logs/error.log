@@ -21,3 +21,31 @@
     at router (C:\Users\mohamed\Desktop\shenkar\semester2\web fullstack\Lost And Found\server\node_modules\express\lib\router\index.js:47:12)
 2024-07-23T19:36:40.419Z error: Error registering new user: ER_DUP_ENTRY: Duplicate entry 'adrian@gmail.com' for key 'email'
 2024-07-24T12:23:58.892Z error: Error registering new user: ER_DUP_ENTRY: Duplicate entry 'adrian@gmail.com' for key 'email'
+2024-07-25T21:12:40.116Z error: Error deleting image file: ENOENT: no such file or directory, unlink 'C:\Users\mohamed\Desktop\shenkar\semester2\web fullstack\Lost-And-Found-Project\server\routes\uploads\1721854618558-Capture.PNG'
+2024-07-25T21:12:44.609Z error: Error deleting image file: ENOENT: no such file or directory, unlink 'C:\Users\mohamed\Desktop\shenkar\semester2\web fullstack\Lost-And-Found-Project\server\routes\uploads\1721853954444-×?×?×?×?×? ×¢×?×?×¨ ×?×?×?×?×?×?.jpg'
+2024-07-25T21:12:49.279Z error: Error deleting image file: ENOENT: no such file or directory, unlink 'C:\Users\mohamed\Desktop\shenkar\semester2\web fullstack\Lost-And-Found-Project\server\routes\uploads\1721852866001-×?×?×?×?×? ×¢×?×?×¨ ×?×?×?×?×?×?.jpg'
+2024-07-25T21:54:17.387Z error: Server error: profilePic is not defined
+2024-07-25T21:54:52.079Z error: MulterError: Unexpected field
+    at wrappedFileFilter (C:\Users\mohamed\Desktop\shenkar\semester2\web fullstack\Lost-And-Found-Project\server\node_modules\multer\index.js:40:19)
+    at Multipart.<anonymous> (C:\Users\mohamed\Desktop\shenkar\semester2\web fullstack\Lost-And-Found-Project\server\node_modules\multer\lib\make-middleware.js:107:7)
+    at Multipart.emit (node:events:519:28)
+    at HeaderParser.cb (C:\Users\mohamed\Desktop\shenkar\semester2\web fullstack\Lost-And-Found-Project\server\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (C:\Users\mohamed\Desktop\shenkar\semester2\web fullstack\Lost-And-Found-Project\server\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (C:\Users\mohamed\Desktop\shenkar\semester2\web fullstack\Lost-And-Found-Project\server\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (C:\Users\mohamed\Desktop\shenkar\semester2\web fullstack\Lost-And-Found-Project\server\node_modules\streamsearch\lib\sbmh.js:219:14)
+    at SBMH.push (C:\Users\mohamed\Desktop\shenkar\semester2\web fullstack\Lost-And-Found-Project\server\node_modules\streamsearch\lib\sbmh.js:104:16)
+    at Multipart._write (C:\Users\mohamed\Desktop\shenkar\semester2\web fullstack\Lost-And-Found-Project\server\node_modules\busboy\lib\types\multipart.js:567:19)
+    at writeOrBuffer (node:internal/streams/writable:564:12)
+2024-07-26T11:23:11.964Z error: MulterError: Unexpected field
+    at wrappedFileFilter (C:\Users\mohamed\Desktop\shenkar\semester2\web fullstack\Lost-And-Found-Project\server\node_modules\multer\index.js:40:19)
+    at Multipart.<anonymous> (C:\Users\mohamed\Desktop\shenkar\semester2\web fullstack\Lost-And-Found-Project\server\node_modules\multer\lib\make-middleware.js:107:7)
+    at Multipart.emit (node:events:519:28)
+    at HeaderParser.cb (C:\Users\mohamed\Desktop\shenkar\semester2\web fullstack\Lost-And-Found-Project\server\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (C:\Users\mohamed\Desktop\shenkar\semester2\web fullstack\Lost-And-Found-Project\server\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (C:\Users\mohamed\Desktop\shenkar\semester2\web fullstack\Lost-And-Found-Project\server\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (C:\Users\mohamed\Desktop\shenkar\semester2\web fullstack\Lost-And-Found-Project\server\node_modules\streamsearch\lib\sbmh.js:219:14)
+    at SBMH.push (C:\Users\mohamed\Desktop\shenkar\semester2\web fullstack\Lost-And-Found-Project\server\node_modules\streamsearch\lib\sbmh.js:104:16)
+    at Multipart._write (C:\Users\mohamed\Desktop\shenkar\semester2\web fullstack\Lost-And-Found-Project\server\node_modules\busboy\lib\types\multipart.js:567:19)
+    at writeOrBuffer (node:internal/streams/writable:564:12)
+2024-07-26T11:33:22.534Z error: Error registering new user: ER_DUP_ENTRY: Duplicate entry 'mohamed.hnef1@gmail.com' for key 'email'
+2024-07-26T11:35:14.273Z error: Error registering new user: ER_DUP_ENTRY: Duplicate entry 'mohamed.hnef1@gmail.com' for key 'email'

@@ -4,17 +4,39 @@ const pool = require('../db');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const logger = require('../logger');
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
 
+// Determine if the environment is production
+const isProduction = process.env.NODE_ENV === 'production';
+const baseUrl = isProduction ? 'https://lost-and-found-project.onrender.com' : 'http://localhost:3000';
 const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret';
+const DEFAULT_PROFILE_PIC = `${baseUrl}/uploads/default-profile-pic.png`; // Path to your default profile picture
 
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      const uploadPath = path.join(__dirname, '../uploads');
+      if (!fs.existsSync(uploadPath)) {
+        fs.mkdirSync(uploadPath, { recursive: true });
+      }
+      cb(null, uploadPath);
+    },
+    filename: function (req, file, cb) {
+      cb(null, Date.now() + '-' + file.originalname);
+    }
+  });
+  const upload = multer({ storage: storage });
 // Register a new user
-// Register a new user
-router.post('/register', async (req, res) => {
+router.post('/register', upload.single('profilePic'), async (req, res) => {
     try {
         const { username, email, password, phone } = req.body;
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        const newUser = { username, email, password: hashedPassword, phone };
+        const profilePicture = req.file ? `${baseUrl}/uploads/${req.file.filename}` : DEFAULT_PROFILE_PIC;
+        const newUser = { username, email, password: hashedPassword, phone, profile_pic: profilePicture };
+
         pool.query('INSERT INTO tbl_123_users SET ?', newUser, (err, result) => {
             if (err) {
                 logger.error(`Error registering new user: ${err.message}`);
@@ -59,7 +81,14 @@ router.post('/login', (req, res) => {
         const token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: '1h' });
 
         logger.info(`User logged in: ${user.username}`);
-        res.json({ message: 'Login successful', token, user: { username: user.username } });
+        res.json({
+            message: 'Login successful',
+            token,
+            user: {
+                username: user.username,
+                profilePicture: user.profile_pic  
+            }
+        });
     });
 });
 
