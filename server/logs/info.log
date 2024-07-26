@@ -12094,3 +12094,43 @@
 2024-07-26T18:32:42.796Z info: Claim status updated for item ID 1 to Approved
 2024-07-26T18:32:42.805Z info: GET /api/items?claimStatus=Pending
 2024-07-26T18:32:43.379Z info: Fetched limited items
+2024-07-26T18:34:57.777Z info: Server is running on http://localhost:3000
+2024-07-26T18:35:00.246Z info: GET /
+2024-07-26T18:35:00.287Z info: GET /css/style.css
+2024-07-26T18:35:00.293Z info: GET /js/userAuth.js
+2024-07-26T18:35:00.295Z info: GET /css/style.css
+2024-07-26T18:35:01.376Z info: GET /js/manage_claims.js
+2024-07-26T18:35:01.383Z info: GET /js/userLogout.js
+2024-07-26T18:35:01.478Z info: GET /api/items?claimStatus=Pending
+2024-07-26T18:35:01.478Z info: GET /default-profile-pic.png
+2024-07-26T18:35:01.490Z info: GET /images/logo.jpeg
+2024-07-26T18:35:01.493Z info: GET /images/default-profile-pic.png
+2024-07-26T18:35:02.080Z info: Fetched limited items
+2024-07-26T18:35:11.036Z info: POST /api/login
+2024-07-26T18:35:11.680Z info: User logged in: policeman
+2024-07-26T18:35:11.693Z info: GET /adminPage.html
+2024-07-26T18:35:11.718Z info: GET /css/style.css
+2024-07-26T18:35:11.720Z info: GET /js/manage_claims.js
+2024-07-26T18:35:11.891Z info: GET /js/userLogout.js
+2024-07-26T18:35:11.911Z info: GET /images/logo.jpeg
+2024-07-26T18:35:11.911Z info: GET /images/default-profile-pic.png
+2024-07-26T18:35:11.938Z info: GET /api/items?claimStatus=Pending
+2024-07-26T18:35:11.939Z info: GET /default-profile-pic.png
+2024-07-26T18:35:12.475Z info: Fetched limited items
+2024-07-26T18:35:17.030Z info: GET /item.html?id=1
+2024-07-26T18:35:17.058Z info: GET /js/userLogout.js
+2024-07-26T18:35:17.060Z info: GET /css/style.css
+2024-07-26T18:35:17.061Z info: GET /images/bell-icon.png
+2024-07-26T18:35:17.062Z info: GET /images/Facebook_Icon.png
+2024-07-26T18:35:17.227Z info: GET /images/insta_icon.png
+2024-07-26T18:35:17.237Z info: GET /js/item_details.js
+2024-07-26T18:35:17.242Z info: GET /js/breadcrumps.js
+2024-07-26T18:35:17.258Z info: GET /images/logo.jpeg
+2024-07-26T18:35:17.259Z info: GET /images/default-profile-pic.png
+2024-07-26T18:35:17.269Z info: GET /default-profile-pic.png
+2024-07-26T18:35:25.924Z info: GET /css/style.css
+2024-07-26T18:35:36.711Z info: PUT /api/items/claim/1
+2024-07-26T18:35:37.253Z info: Claim status updated for item ID 1 to Approved
+2024-07-26T18:35:38.997Z info: GET /api/items?claimStatus=Pending
+2024-07-26T18:35:39.535Z info: Fetched limited items
+2024-07-26T18:35:45.010Z info: GET /css/style.css
