@@ -163,23 +163,29 @@ const handleEditFormSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const itemId = formData.get('editItemId');
+    const updateData = {
+        itemName: formData.get('editItemName'),
+        locationLost: formData.get('editLocationLost'),
+        category: formData.get('editCategory'),
+        color: formData.get('editItemColor'),
+        description: formData.get('editDescription'),
+        contactEmail: formData.get('editContactEmail'),
+        contactPhone: formData.get('editContactPhone')
+    };
 
+    if (formData.get('editLostDate')) {
+        updateData.lostDate = formData.get('editLostDate');
+    }
+    if (formData.get('editTimeLost')) {
+        updateData.timeLost = formData.get('editTimeLost');
+    }
+    
     fetch(`${API_URL}/items/${itemId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-            itemName: formData.get('editItemName'),
-            locationLost: formData.get('editLocationLost'),
-            lostDate: formData.get('editLostDate'),
-            timeLost: formData.get('editTimeLost'),
-            category: formData.get('editCategory'),
-            color: formData.get('editItemColor'),
-            description: formData.get('editDescription'),
-            contactEmail: formData.get('editContactEmail'),
-            contactPhone: formData.get('editContactPhone')
-        })
+        body: JSON.stringify(updateData)
     })
     .then(response => {
         if (!response.ok) {
@@ -195,7 +201,6 @@ const handleEditFormSubmit = (event) => {
         showNotification('Failed to update item. Please try again.');
     });
 };
-
 
 const initializeNotification = () => {
     const notification = document.getElementById('notification');

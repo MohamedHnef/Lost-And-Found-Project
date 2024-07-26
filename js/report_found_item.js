@@ -10,12 +10,26 @@
         event.preventDefault();
         const formData = new FormData(event.target);
         const file = formData.get('addImage');
-
+    
+        console.log('Form Data:', {
+            itemName: formData.get('itemName'),
+            locationFound: formData.get('locationFound'),
+            foundDate: formData.get('foundDate'),
+            category: formData.get('category'),
+            color: formData.get('color'),
+            description: formData.get('description'),
+            contactEmail: formData.get('contactEmail'),
+            contactPhone: formData.get('contactPhone'),
+            securityQuestion: formData.get('securityQuestion'),
+            securityAnswer: formData.get('securityAnswer'),
+            imageUrl: file ? file.name : 'No image'
+        });
+    
         if (!file || file.size === 0) {
             showNotification('Please upload an image.', 'error');
             return;
         }
-
+    
         uploadImage(file).then(imageUrl => {
             console.log('Image URL:', imageUrl); // Debugging log
             submitFoundItemData(formData, imageUrl);
@@ -24,7 +38,7 @@
             showNotification('Failed to upload image. Please try again.', 'error');
         });
     }
-
+    
     function uploadImage(file) {
         const formData = new FormData();
         formData.append('image', file);
@@ -55,31 +69,34 @@
         };
 
         console.log('Item Data:', itemData); // Debugging log
-
+    
         fetch(`${API_URL}/found-items`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(itemData)
-        }).then(response => {
+        })
+        .then(response => {
             if (!response.ok) {
                 return response.json().then(err => {
                     throw new Error(err.error || 'Failed to report found item');
                 });
             }
             return response.json();
-        }).then(() => {
+        })
+        .then(() => {
             showNotification('Found item reported successfully!', 'success');
             setTimeout(() => {
                 window.location.href = 'list_Item.html';
             }, 2000);
-        }).catch(error => {
+        })
+        .catch(error => {
             console.error('Failed to report found item:', error);
             showNotification(`Failed to report found item: ${error.message}`, 'error');
         });
     }
-
+    
     function showNotification(message, type) {
         const notification = document.getElementById('notification');
         const notificationMessage = document.getElementById('notification-message');

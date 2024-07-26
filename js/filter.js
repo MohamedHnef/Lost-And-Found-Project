@@ -49,7 +49,7 @@ function displayItems(data) {
 };
 
 function createCard(item) {
-    const formattedDate = formatDate(item.lostDate);
+    const formattedDate = formatDate(item.foundDate || item.lostDate);
     const formattedTime = formatTime(item.timeLost);
 
     return `
@@ -63,7 +63,7 @@ function createCard(item) {
                             <div class="card-detail"><i class="bi bi-calendar"></i> <span>${formattedDate}</span></div>
                             <div class="card-detail"><i class="bi bi-tag"></i> <span>${item.category}</span></div>
                             <div class="card-detail"><i class="bi bi-clock"></i> <span>${formattedTime}</span></div>
-                            <div class="card-detail"><i class="bi bi-geo-alt"></i> <span>${item.locationLost}</span></div>
+                            <div class="card-detail"><i class="bi bi-geo-alt"></i> <span>${item.locationFound || item.locationLost}</span></div>
                         </div>
                         <a href="#" class="status-btn status-${item.status.toLowerCase()}">${item.status}</a>
                     </div>
@@ -71,6 +71,7 @@ function createCard(item) {
             </a>
         </div>`;
 };
+
 
 function formatDate(dateString) {
     const date = new Date(dateString);

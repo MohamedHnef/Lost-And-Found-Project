@@ -49,3 +49,12 @@
     at writeOrBuffer (node:internal/streams/writable:564:12)
 2024-07-26T11:33:22.534Z error: Error registering new user: ER_DUP_ENTRY: Duplicate entry 'mohamed.hnef1@gmail.com' for key 'email'
 2024-07-26T11:35:14.273Z error: Error registering new user: ER_DUP_ENTRY: Duplicate entry 'mohamed.hnef1@gmail.com' for key 'email'
+2024-07-26T13:08:58.017Z error: Error deleting image file: ENOENT: no such file or directory, unlink 'C:\shenkar\dev43\first_submition\server\routes\uploads\1721997662089-profile.PNG'
+2024-07-26T13:09:04.534Z error: Error deleting image file: ENOENT: no such file or directory, unlink 'C:\shenkar\dev43\first_submition\server\routes\uploads\1721999279253-Webfirstsub.JPG'
+2024-07-26T13:13:59.752Z error: Error deleting image file: ENOENT: no such file or directory, unlink 'C:\shenkar\dev43\first_submition\server\routes\uploads\1721999377010-Webfirstsub.JPG'
+2024-07-26T13:22:26.351Z error: Error deleting image file: ENOENT: no such file or directory, unlink 'C:\shenkar\dev43\first_submition\server\routes\uploads\1721999662839-Webfirstsub.JPG'
+2024-07-26T13:23:31.936Z error: Error deleting image file: ENOENT: no such file or directory, unlink 'C:\shenkar\dev43\first_submition\server\routes\uploads\1722000118013-Webfirstsub.JPG'
+2024-07-26T13:28:13.899Z error: Error deleting image file: ENOENT: no such file or directory, unlink 'C:\shenkar\dev43\first_submition\server\routes\uploads\1722000244421-Webfirstsub.JPG'
+2024-07-26T14:04:43.487Z error: Error deleting image file: ENOENT: no such file or directory, unlink 'C:\shenkar\dev43\first_submition\server\routes\uploads\1722000935848-Webfirstsub.JPG'
+2024-07-26T14:05:37.079Z error: Error deleting image file: ENOENT: no such file or directory, unlink 'C:\shenkar\dev43\first_submition\server\routes\uploads\1722002520381-WhatsApp Image 2024-07-26 at 16.46.06.jpeg'
+2024-07-26T14:06:58.300Z error: Error deleting image file: ENOENT: no such file or directory, unlink 'C:\shenkar\dev43\first_submition\server\routes\uploads\1722002762414-WhatsApp Image 2024-07-26 at 16.46.06.jpeg'

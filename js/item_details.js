@@ -18,6 +18,7 @@ const fetchItemDetails = (id) => {
 
 const displayItemDetails = (item) => {
     if (item) {
+        console.log('Item Data:', item); // Add this log to see the received data
         document.getElementById('item-details-box').innerHTML = getItemDetailsHTML(item);
         document.getElementById('item-description-box').innerHTML = getItemDescriptionHTML(item);
     } else {
@@ -31,16 +32,10 @@ const getItemDetailsHTML = (item) => `
         <div class="item-detail"><strong>Item Name</strong><span>${item.itemName}</span></div>
         <div class="item-detail"><strong>Category</strong><span>${item.category}</span></div>
         <div class="item-detail"><strong>Color</strong><span>${item.color}</span></div>
-        <div class="item-detail"><strong>Date</strong><span>${formatDate(item.lostDate)}</span></div>
+        <div class="item-detail"><strong>Date</strong><span>${formatDate(item.foundDate || item.lostDate)}</span></div>
         <div class="item-detail"><strong>Status</strong><span>${item.status}</span></div>
-        <div class="item-detail"><strong>Location</strong><span>${item.locationLost}</span></div>
+        <div class="item-detail"><strong>Location</strong><span>${item.locationFound || item.locationLost}</span></div>
     </div>
-`;
-
-const getItemDescriptionHTML = (item) => `
-    <h3>Report Information</h3>
-    <p>${item.description || 'No description provided.'}</p>
-    <img src="${item.imageUrl}" alt="${item.itemName}" class="img-fluid">
 `;
 
 const formatDate = (dateString) => {
@@ -50,6 +45,13 @@ const formatDate = (dateString) => {
     const day = String(date.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
 };
+
+const getItemDescriptionHTML = (item) => `
+    <h3>Report Information</h3>
+    <p>${item.description || 'No description provided.'}</p>
+    <img src="${item.imageUrl}" alt="${item.itemName}" class="img-fluid">
+`;
+
 
 const displayNoItemDetails = () => {
     document.getElementById('item-details-box').innerHTML = '<p>No item details available.</p>';
