@@ -1,6 +1,7 @@
 function logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
+    localStorage.removeItem('profile_pic');
     window.location.href = 'index.html';
 }
 
@@ -14,9 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const username = localStorage.getItem('username');
+    const profilePic = localStorage.getItem('profile_pic');
 
     if (username) {
         document.getElementById('username').innerText = username;
         document.getElementById('sideUsername').innerText = username;
+    }
+    if (profilePic) {
+        document.getElementById('profileImg').src = profilePic;
+        document.getElementById('sideProfileImg').src = profilePic;
     }
 });

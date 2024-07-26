@@ -47,7 +47,7 @@ function getDisplayName(currentPage) {
 function getHrefForCrumb(crumb) {
     switch (crumb) {
         case "Home":
-            return "index.html";
+            return "homePage.html";
         case "Item":
             const selectedItemName = localStorage.getItem('selectedItemName');
             return selectedItemName ? `item.html?item=${selectedItemName}` : "item.html";
@@ -56,7 +56,7 @@ function getHrefForCrumb(crumb) {
         case "Report Lost":
         case "Report Lost Item":
             return "report_lost.html";
-        case "Profile":
+        case "My Profile":
             return "profile.html";
         default:
             return crumb.toLowerCase().replace(/\s/g, '_') + ".html";
