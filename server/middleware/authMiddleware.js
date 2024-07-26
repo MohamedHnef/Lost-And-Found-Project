@@ -4,7 +4,8 @@ const logger = require('../logger');
 const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret';
 
 function authenticateToken(req, res, next) {
-    const token = req.headers['authorization'];
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
     if (!token) return res.sendStatus(401);
 
     jwt.verify(token, JWT_SECRET, (err, user) => {

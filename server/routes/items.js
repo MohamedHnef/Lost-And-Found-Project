@@ -5,7 +5,7 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const logger = require('../logger');
-const { authenticateToken } = require('../middleware/authMiddleware');
+const { authenticateToken, authorizeAdmin } = require('../middleware/authMiddleware');
 
 // Determine if the environment is production
 const isProduction = process.env.NODE_ENV === 'production';
@@ -45,7 +45,6 @@ router.post('/upload', upload.single('image'), (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-
 
 // Endpoint to fetch all items
 router.get('/all-items', (req, res) => {
@@ -143,9 +142,6 @@ router.put('/items/:id', upload.single('editAddImage'), (req, res) => {
   });
 });
 
-
-
-
 // Endpoint to delete an item and its image
 router.delete('/items/:id', (req, res) => {
   const itemId = req.params.id;
@@ -160,7 +156,7 @@ router.delete('/items/:id', (req, res) => {
     }
 
     const imageUrl = results[0].imageUrl;
-    const imagePath = imageUrl ? path.join(__dirname, 'uploads', path.basename(imageUrl)) : null;
+    const imagePath = imageUrl ? path.join(__dirname, '../uploads', path.basename(imageUrl)) : null;
 
     // Delete the item from the database
     pool.query('DELETE FROM tbl_123_posts WHERE id = ?', [itemId], (err) => {
@@ -221,51 +217,50 @@ router.post('/found-items', upload.none(), (req, res) => {
   });
 });
 
+// Endpoint to claim an item with security question verification
+router.post('/claim-item/:id', (req, res) => {
+  const itemId = req.params.id;
+  const { answer } = req.body;
 
-  // Endpoint to claim an item with security question verification
-  router.post('/claim-item/:id', (req, res) => {
-    const itemId = req.params.id;
-    const { answer } = req.body;
-  
-    // Validate input
-    if (!answer) {
-      return res.status(400).json({ error: 'Answer is required' });
+  // Validate input
+  if (!answer) {
+    return res.status(400).json({ error: 'Answer is required' });
+  }
+
+  pool.query('SELECT securityAnswer FROM tbl_123_posts WHERE id = ?', [itemId], (err, results) => {
+    if (err) {
+      logger.error(`Error fetching item for claim: ${err.message}`);
+      return res.status(500).json({ error: 'Internal Server Error' });
     }
-  
-    pool.query('SELECT securityAnswer FROM tbl_123_posts WHERE id = ?', [itemId], (err, results) => {
-      if (err) {
-        logger.error(`Error fetching item for claim: ${err.message}`);
-        return res.status(500).json({ error: 'Internal Server Error' });
-      }
-      if (results.length === 0) {
-        return res.status(404).json({ error: 'Item not found' });
-      }
-  
-      const correctAnswer = results[0].securityAnswer;
-      if (answer === correctAnswer) {
-        logger.info(`Item with ID: ${itemId} claimed successfully`);
-        res.json({ success: true });
-      } else {
-        logger.warn(`Incorrect answer for item with ID: ${itemId}`);
-        res.status(401).json({ error: 'Incorrect answer' });
-      }
-    });
+    if (results.length === 0) {
+      return res.status(404).json({ error: 'Item not found' });
+    }
+
+    const correctAnswer = results[0].securityAnswer;
+    if (answer === correctAnswer) {
+      logger.info(`Item with ID: ${itemId} claimed successfully`);
+      res.json({ success: true });
+    } else {
+      logger.warn(`Incorrect answer for item with ID: ${itemId}`);
+      res.status(401).json({ error: 'Incorrect answer' });
+    }
   });
-
-  router.put('/items/claim/:id', authenticateToken, (req, res) => {
-    const itemId = req.params.id;
-    const { approved } = req.body; //true or false
-    const claimStatus = approved ? 'Approved' : 'Rejected';
-
-    pool.query('UPDATE tbl_123_posts SET claimStatus = ? WHERE id = ?', [claimStatus, itemId], (err, result) => {
-        if (err) {
-            logger.error(`Error updating claim status for item ID ${itemId}: ${err.message}`);
-            return res.status(500).json({ error: 'Internal Server Error' });
-        }
-        logger.info(`Claim status updated for item ID ${itemId} to ${claimStatus}`);
-        res.json({ success: true, claimStatus });
-    });
 });
 
+// Endpoint to update claim status
+router.put('/items/claim/:id', authenticateToken, authorizeAdmin, (req, res) => {
+  const itemId = req.params.id;
+  const { approved } = req.body; //true or false
+  const claimStatus = approved ? 'Approved' : 'Rejected';
+
+  pool.query('UPDATE tbl_123_posts SET claimStatus = ? WHERE id = ?', [claimStatus, itemId], (err, result) => {
+    if (err) {
+      logger.error(`Error updating claim status for item ID ${itemId}: ${err.message}`);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+    logger.info(`Claim status updated for item ID ${itemId} to ${claimStatus}`);
+    res.json({ success: true, claimStatus });
+  });
+});
 
 module.exports = router;
