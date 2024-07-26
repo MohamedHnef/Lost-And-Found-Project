@@ -12476,3 +12476,41 @@
 2024-07-26T20:30:35.447Z info: GET /uploads/default-profile-pic.png
 2024-07-26T20:30:35.448Z info: GET /api/items/1
 2024-07-26T20:30:36.008Z info: Fetched item with id: 1
+2024-07-26T21:07:16.865Z info: Server is running on http://localhost:3000
+2024-07-26T21:07:21.590Z info: GET /
+2024-07-26T21:07:23.128Z info: GET /css/style.css
+2024-07-26T21:07:23.976Z info: GET /js/userAuth.js
+2024-07-26T21:07:26.144Z info: GET /favicon.ico
+2024-07-26T21:07:35.078Z info: POST /api/login
+2024-07-26T21:07:35.788Z info: User logged in: policeman
+2024-07-26T21:07:35.803Z info: GET /adminHomePage.html
+2024-07-26T21:07:35.836Z info: GET /css/style.css
+2024-07-26T21:07:35.840Z info: GET /server/uploads/default-profile-pic.png
+2024-07-26T21:07:36.027Z info: GET /js/adminHome.js
+2024-07-26T21:07:36.058Z info: GET /images/default-profile-pic.png
+2024-07-26T21:07:36.058Z info: GET /images/logo.jpeg
+2024-07-26T21:07:36.099Z info: GET /api/admin-dashboard
+2024-07-26T21:07:55.381Z info: GET /manage_claims.html
+2024-07-26T21:07:55.410Z info: GET /css/style.css
+2024-07-26T21:07:55.412Z info: GET /js/manage_claims.js
+2024-07-26T21:07:55.584Z info: GET /js/userLogout.js
+2024-07-26T21:07:55.607Z info: GET /api/items?claimStatus=Pending
+2024-07-26T21:07:55.608Z info: GET /uploads/default-profile-pic.png
+2024-07-26T21:07:55.609Z info: GET /images/logo.jpeg
+2024-07-26T21:07:55.611Z info: GET /images/default-profile-pic.png
+2024-07-26T21:07:56.160Z info: Fetched limited items
+2024-07-26T21:07:59.051Z info: GET /item.html?id=1
+2024-07-26T21:07:59.086Z info: GET /css/style.css
+2024-07-26T21:07:59.087Z info: GET /images/bell-icon.png
+2024-07-26T21:07:59.087Z info: GET /images/Facebook_Icon.png
+2024-07-26T21:07:59.288Z info: GET /images/insta_icon.png
+2024-07-26T21:07:59.299Z info: GET /js/item_details.js
+2024-07-26T21:07:59.300Z info: GET /js/breadcrumps.js
+2024-07-26T21:07:59.309Z info: GET /js/userLogout.js
+2024-07-26T21:07:59.310Z info: GET /js/adminView.js
+2024-07-26T21:07:59.321Z info: GET /images/logo.jpeg
+2024-07-26T21:07:59.321Z info: GET /images/default-profile-pic.png
+2024-07-26T21:07:59.331Z info: GET /api/items/1
+2024-07-26T21:07:59.335Z info: GET /uploads/default-profile-pic.png
+2024-07-26T21:07:59.870Z info: Fetched item with id: 1
+2024-07-26T21:08:18.661Z info: GET /css/style.css

@@ -70,5 +70,6 @@ const updateClaimStatus = (itemId, approved) => {
 };
 
 const viewItem = (itemId) => {
+    localStorage.setItem('selectedItemId', itemId);
     window.location.href = `item.html?id=${itemId}`;
 };
