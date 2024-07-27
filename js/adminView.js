@@ -1,8 +1,13 @@
 function setAdminView() {
-    const userRole = localStorage.getItem('role');
-    if (userRole == 'admin') {
-        document.getElementById('navbar-title').textContent = 'Lost And Fount - Admin';
-        document.getElementById('nav-items').innerHTML = `
+    const role = localStorage.getItem('role');
+
+    if (role === 'admin') {
+        document.getElementById('navbar-title').textContent = 'Lost And Found - Admin';
+        const navItems = document.getElementById('nav-items');
+        const sideNavItems = document.getElementById('side-nav-items');
+        const breadcrumb = document.getElementById('breadcrumb');
+
+        navItems.innerHTML = `
             <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="adminHomePage.html">Home</a>
             </li>
@@ -11,9 +16,9 @@ function setAdminView() {
             </li>
             <li class="nav-item dropdown profile-dropdown">
                 <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="" alt="Profile" class="profile-img rounded-circle me-2" id="profileImg">
+                    <img src="${localStorage.getItem('profile_pic')}" alt="Profile" class="profile-img rounded-circle me-2" id="profileImg">
                     <div class="profile-info">
-                        <div id="username">Username</div>
+                        <div id="username">${localStorage.getItem('username')}</div>
                         <div class="text-muted">Admin</div>
                     </div>
                 </a>
@@ -23,11 +28,12 @@ function setAdminView() {
                 </ul>
             </li>
         `;
-        document.getElementById('side-nav-items').innerHTML = `
+
+        sideNavItems.innerHTML = `
             <li class="nav-item profile-dropdown">
                 <div class="profile-info">
-                    <img src="" alt="Profile" class="profile-img rounded-circle side" id="sideProfileImg">
-                    <div id="sideUsername">Username</div>
+                    <img src="${localStorage.getItem('profile_pic')}" alt="Profile" class="profile-img rounded-circle side" id="sideProfileImg">
+                    <div id="sideUsername">${localStorage.getItem('username')}</div>
                 </div>
             </li>
             <li class="nav-item">
@@ -41,7 +47,7 @@ function setAdminView() {
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link side" href="#">
+                <a class="nav-link side" href="profile.html">
                     <i class="bi bi-person"></i> My Profile
                 </a>
             </li>
@@ -50,10 +56,6 @@ function setAdminView() {
                     <i class="bi bi-box-arrow-right"></i> Log Out
                 </a>
             </li>
-        `;
-        document.getElementById('breadcrumb').innerHTML = `
-            <li class="breadcrumb-item"><a href="adminHomePage.html">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Item</li>
         `;
     }
 }

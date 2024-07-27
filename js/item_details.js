@@ -3,7 +3,6 @@ const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:300
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const itemId = urlParams.get('id');
-
     if (itemId) {
         fetchItemDetails(itemId);
     } else {
@@ -12,13 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const fetchItemDetails = (id) => {
-    const token = localStorage.getItem('token');
-
-    fetch(`${API_URL}/items/${id}`, {
-        headers: {
-            'Authorization': `Bearer ${token}`
-        }
-    })
+    fetch(`${API_URL}/items/${id}`)
         .then(response => response.json())
         .then(data => displayItemDetails(data))
         .catch(error => console.error('Error fetching data:', error));
