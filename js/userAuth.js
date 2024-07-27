@@ -1,3 +1,4 @@
+
 function toggleView(view) {
     const loginForm = document.getElementById('loginForm');
     const registerForm = document.getElementById('registerForm');
@@ -78,5 +79,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
-

@@ -1,10 +1,12 @@
+const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
+
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById('reportFoundForm');
     form.addEventListener('submit', handleFormSubmit);
     initializeNotification();
 });
 
-const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
+let isSubmitting = false; // Add a flag to prevent duplicate submissions
 
 function getItemDataFromForm(formData, imageUrl) {
     const userId = 1; // Replace with actual user ID logic
@@ -28,7 +30,7 @@ function getItemDataFromForm(formData, imageUrl) {
 
 function uploadImage(file) {
     const formData = new FormData();
-    formData.append('image', file); // Ensure field name is 'image'
+    formData.append('image', file);
     return fetch(`${API_URL}/upload`, {
         method: 'POST',
         body: formData
@@ -39,7 +41,7 @@ function uploadImage(file) {
 }
 
 function submitItemData(itemData) {
-    return fetch(`${API_URL}/found-items`, {  // Correct endpoint for found items
+    return fetch(`${API_URL}/found-items`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -48,7 +50,10 @@ function submitItemData(itemData) {
     })
     .then(handleResponse)
     .then(data => {
+        localStorage.setItem('selectedItemId', data.id);
+        localStorage.setItem('selectedItemStatus', 'Found');
         console.log('Item reported successfully:', data);
+        isSubmitting = false; // Reset flag after successful submission
         return data;
     })
     .catch(handleError('Error submitting item data'));
@@ -56,11 +61,15 @@ function submitItemData(itemData) {
 
 function handleFormSubmit(event) {
     event.preventDefault();
+    if (isSubmitting) return; // Prevent duplicate submissions
+    isSubmitting = true;
+
     const formData = new FormData(event.target);
     const file = formData.get('image');
 
     if (!file || file.size === 0) {
         showNotification('Please upload an image.');
+        isSubmitting = false;
         return;
     }
 
@@ -72,7 +81,10 @@ function handleFormSubmit(event) {
         .then(() => {
             showNotification('Item reported successfully!', { ok: () => window.location.href = 'list_Item.html' });
         })
-        .catch(error => console.error('Failed to report item:', error));
+        .catch(error => {
+            console.error('Failed to report item:', error);
+            isSubmitting = false; // Reset flag in case of error
+        });
 }
 
 function handleResponse(response) {
@@ -85,7 +97,8 @@ function handleResponse(response) {
 function handleError(message) {
     return error => {
         console.error(message, error);
-        showNotification(message); 
+        showNotification(message);
+        isSubmitting = false; // Reset flag in case of error
         throw error;
     };
 }

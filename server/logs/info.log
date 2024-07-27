@@ -1,941 +1,453 @@
-2024-07-26T18:49:48.072Z info: Server is running on http://localhost:3000
-2024-07-26T18:49:49.515Z info: GET /
-2024-07-26T18:49:49.546Z info: GET /css/style.css
-2024-07-26T18:49:49.547Z info: GET /js/userAuth.js
-2024-07-26T18:49:50.978Z info: POST /api/login
-2024-07-26T18:49:51.511Z info: User logged in: aboalmrwan
-2024-07-26T18:49:51.533Z info: GET /homePage.html
-2024-07-26T18:49:51.566Z info: GET /js/userLogout.js
-2024-07-26T18:49:51.569Z info: GET /css/style.css
-2024-07-26T18:49:51.570Z info: GET /images/bell-icon.png
-2024-07-26T18:49:51.570Z info: GET /images/arrow.png
-2024-07-26T18:49:51.586Z info: GET /js/dashboard.js
-2024-07-26T18:49:51.587Z info: GET /js/breadcrumps.js
-2024-07-26T18:49:51.596Z info: GET /images/Facebook_Icon.png
-2024-07-26T18:49:51.596Z info: GET /images/insta_icon.png
-2024-07-26T18:49:51.605Z info: GET /images/logo.jpeg
-2024-07-26T18:49:51.638Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T18:49:51.652Z info: GET /api/items
-2024-07-26T18:49:51.654Z info: GET /api/home-graph-data
-2024-07-26T18:49:52.095Z info: Fetched limited items
-2024-07-26T18:49:53.354Z info: GET /profile.html
-2024-07-26T18:49:53.384Z info: GET /js/profile_data.js
-2024-07-26T18:49:53.385Z info: GET /js/userLogout.js
-2024-07-26T18:49:53.386Z info: GET /css/style.css
-2024-07-26T18:49:53.388Z info: GET /images/bell-icon.png
-2024-07-26T18:49:53.388Z info: GET /images/arrow.png
-2024-07-26T18:49:53.398Z info: GET /js/breadcrumps.js
-2024-07-26T18:49:53.400Z info: GET /images/Facebook_Icon.png
-2024-07-26T18:49:53.405Z info: GET /images/insta_icon.png
-2024-07-26T18:49:53.414Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T18:49:53.416Z info: GET /api/user-items?userId=1
-2024-07-26T18:49:53.416Z info: GET /api/profile-graph-data
-2024-07-26T18:49:53.420Z info: GET /images/logo.jpeg
-2024-07-26T18:49:53.856Z info: Fetched items for user 1
-2024-07-26T18:49:53.861Z info: GET /images/view-icon.png
-2024-07-26T18:49:53.861Z info: GET /images/edit-icon.png
-2024-07-26T18:49:53.862Z info: GET /images/delete-icon.png
-2024-07-26T18:49:56.411Z info: DELETE /api/items/212
-2024-07-26T18:49:57.656Z info: Image file deleted successfully
-2024-07-26T18:49:58.906Z info: GET /profile.html
-2024-07-26T18:49:58.934Z info: GET /js/profile_data.js
-2024-07-26T18:49:58.935Z info: GET /js/userLogout.js
-2024-07-26T18:49:58.936Z info: GET /images/bell-icon.png
-2024-07-26T18:49:58.937Z info: GET /css/style.css
-2024-07-26T18:49:58.939Z info: GET /images/arrow.png
-2024-07-26T18:49:58.947Z info: GET /js/breadcrumps.js
-2024-07-26T18:49:58.948Z info: GET /images/Facebook_Icon.png
-2024-07-26T18:49:58.952Z info: GET /images/insta_icon.png
-2024-07-26T18:49:58.961Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T18:49:58.961Z info: GET /api/user-items?userId=1
-2024-07-26T18:49:58.961Z info: GET /api/profile-graph-data
-2024-07-26T18:49:58.966Z info: GET /images/logo.jpeg
-2024-07-26T18:49:59.404Z info: Fetched items for user 1
-2024-07-26T18:49:59.416Z info: GET /images/view-icon.png
-2024-07-26T18:49:59.417Z info: GET /images/edit-icon.png
-2024-07-26T18:49:59.417Z info: GET /images/delete-icon.png
-2024-07-26T18:50:01.392Z info: DELETE /api/items/213
-2024-07-26T18:50:02.235Z info: Image file deleted successfully
-2024-07-26T18:50:02.959Z info: GET /profile.html
-2024-07-26T18:50:02.980Z info: GET /js/profile_data.js
-2024-07-26T18:50:02.981Z info: GET /js/userLogout.js
-2024-07-26T18:50:02.981Z info: GET /css/style.css
-2024-07-26T18:50:02.981Z info: GET /images/bell-icon.png
-2024-07-26T18:50:02.981Z info: GET /images/arrow.png
-2024-07-26T18:50:02.987Z info: GET /js/breadcrumps.js
-2024-07-26T18:50:02.988Z info: GET /images/Facebook_Icon.png
-2024-07-26T18:50:02.993Z info: GET /images/insta_icon.png
-2024-07-26T18:50:03.001Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T18:50:03.002Z info: GET /api/user-items?userId=1
-2024-07-26T18:50:03.002Z info: GET /api/profile-graph-data
-2024-07-26T18:50:03.006Z info: GET /images/logo.jpeg
-2024-07-26T18:50:03.402Z info: Fetched items for user 1
-2024-07-26T18:50:14.975Z info: GET /report_lost.html
-2024-07-26T18:50:15.002Z info: GET /js/report_lost_item.js
-2024-07-26T18:50:15.003Z info: GET /js/userLogout.js
-2024-07-26T18:50:15.003Z info: GET /images/bell-icon.png
-2024-07-26T18:50:15.003Z info: GET /css/style.css
-2024-07-26T18:50:15.005Z info: GET /images/Facebook_Icon.png
-2024-07-26T18:50:15.012Z info: GET /images/insta_icon.png
-2024-07-26T18:50:15.015Z info: GET /js/breadcrumps.js
-2024-07-26T18:50:15.024Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T18:50:15.029Z info: GET /images/logo.jpeg
-2024-07-26T18:50:38.680Z info: POST /api/upload
-2024-07-26T18:50:38.692Z info: Image uploaded: http://localhost:3000/uploads/1722019838687-Webfirstsub.JPG
-2024-07-26T18:50:38.698Z info: POST /api/lost-items
-2024-07-26T18:50:39.147Z info: Item added with ID: 214
-2024-07-26T18:50:40.099Z info: GET /list_Item.html
-2024-07-26T18:50:40.123Z info: GET /js/filter.js
-2024-07-26T18:50:40.123Z info: GET /js/userLogout.js
-2024-07-26T18:50:40.124Z info: GET /css/style.css
-2024-07-26T18:50:40.124Z info: GET /images/bell-icon.png
-2024-07-26T18:50:40.124Z info: GET /images/search-icon.png
-2024-07-26T18:50:40.131Z info: GET /images/filter-icon.png
-2024-07-26T18:50:40.132Z info: GET /images/sortby-icon.png
-2024-07-26T18:50:40.138Z info: GET /images/Facebook_Icon.png
-2024-07-26T18:50:40.138Z info: GET /js/breadcrumps.js
-2024-07-26T18:50:40.139Z info: GET /images/insta_icon.png
-2024-07-26T18:50:40.148Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T18:50:40.151Z info: GET /images/logo.jpeg
-2024-07-26T18:50:41.258Z info: GET /uploads/1722019838687-Webfirstsub.JPG
-2024-07-26T18:50:43.889Z info: GET /profile.html
-2024-07-26T18:50:43.907Z info: GET /js/profile_data.js
-2024-07-26T18:50:43.907Z info: GET /js/userLogout.js
-2024-07-26T18:50:43.908Z info: GET /css/style.css
-2024-07-26T18:50:43.908Z info: GET /images/bell-icon.png
-2024-07-26T18:50:43.908Z info: GET /images/arrow.png
-2024-07-26T18:50:43.915Z info: GET /js/breadcrumps.js
-2024-07-26T18:50:43.916Z info: GET /images/Facebook_Icon.png
-2024-07-26T18:50:43.922Z info: GET /images/insta_icon.png
-2024-07-26T18:50:43.929Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T18:50:43.929Z info: GET /api/user-items?userId=1
-2024-07-26T18:50:43.930Z info: GET /api/profile-graph-data
-2024-07-26T18:50:43.934Z info: GET /images/logo.jpeg
-2024-07-26T18:50:44.326Z info: Fetched items for user 1
-2024-07-26T18:50:44.331Z info: GET /images/view-icon.png
-2024-07-26T18:50:44.332Z info: GET /images/edit-icon.png
-2024-07-26T18:50:44.332Z info: GET /images/delete-icon.png
-2024-07-26T18:50:45.170Z info: GET /api/items/214
-2024-07-26T18:50:45.611Z info: Fetched item with id: 214
-2024-07-26T18:50:52.979Z info: POST /api/upload
-2024-07-26T18:50:52.981Z error: MulterError: Unexpected field
-    at wrappedFileFilter (C:\shenkar\dev43\first_submition\server\node_modules\multer\index.js:40:19)
-    at Multipart.<anonymous> (C:\shenkar\dev43\first_submition\server\node_modules\multer\lib\make-middleware.js:107:7)
-    at Multipart.emit (node:events:519:28)
-    at HeaderParser.cb (C:\shenkar\dev43\first_submition\server\node_modules\busboy\lib\types\multipart.js:358:14)
-    at HeaderParser.push (C:\shenkar\dev43\first_submition\server\node_modules\busboy\lib\types\multipart.js:162:20)
-    at SBMH.ssCb [as _cb] (C:\shenkar\dev43\first_submition\server\node_modules\busboy\lib\types\multipart.js:394:37)
-    at feed (C:\shenkar\dev43\first_submition\server\node_modules\streamsearch\lib\sbmh.js:248:10)
-    at SBMH.push (C:\shenkar\dev43\first_submition\server\node_modules\streamsearch\lib\sbmh.js:104:16)
-    at Multipart._write (C:\shenkar\dev43\first_submition\server\node_modules\busboy\lib\types\multipart.js:567:19)
-    at writeOrBuffer (node:internal/streams/writable:564:12)
-2024-07-26T18:50:57.582Z info: GET /css/style.css
-2024-07-26T18:56:18.188Z info: PUT /api/items/214
-2024-07-26T18:56:19.949Z info: Item ID 214 updated
-2024-07-26T18:56:19.967Z info: GET /profile.html
-2024-07-26T18:56:19.990Z info: GET /js/profile_data.js
-2024-07-26T18:56:19.991Z info: GET /js/userLogout.js
-2024-07-26T18:56:19.995Z info: GET /css/style.css
-2024-07-26T18:56:19.996Z info: GET /images/bell-icon.png
-2024-07-26T18:56:19.997Z info: GET /images/arrow.png
-2024-07-26T18:56:20.003Z info: GET /js/breadcrumps.js
-2024-07-26T18:56:20.004Z info: GET /images/Facebook_Icon.png
-2024-07-26T18:56:20.018Z info: GET /images/insta_icon.png
-2024-07-26T18:56:20.084Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T18:56:20.085Z info: GET /api/user-items?userId=1
-2024-07-26T18:56:20.085Z info: GET /api/profile-graph-data
-2024-07-26T18:56:20.099Z info: GET /images/logo.jpeg
-2024-07-26T18:56:20.524Z info: Fetched items for user 1
-2024-07-26T18:56:20.536Z info: GET /images/view-icon.png
-2024-07-26T18:56:20.536Z info: GET /images/edit-icon.png
-2024-07-26T18:56:20.537Z info: GET /images/delete-icon.png
-2024-07-26T19:02:29.161Z info: Server is running on http://localhost:3000
-2024-07-26T19:02:30.647Z info: GET /
-2024-07-26T19:02:30.678Z info: GET /css/style.css
-2024-07-26T19:02:30.679Z info: GET /js/userAuth.js
-2024-07-26T19:02:32.095Z info: POST /api/login
-2024-07-26T19:02:32.615Z info: User logged in: aboalmrwan
-2024-07-26T19:02:32.638Z info: GET /homePage.html
-2024-07-26T19:02:32.673Z info: GET /js/userLogout.js
-2024-07-26T19:02:32.674Z info: GET /css/style.css
-2024-07-26T19:02:32.676Z info: GET /images/bell-icon.png
-2024-07-26T19:02:32.677Z info: GET /images/arrow.png
-2024-07-26T19:02:32.685Z info: GET /js/dashboard.js
-2024-07-26T19:02:32.691Z info: GET /js/breadcrumps.js
-2024-07-26T19:02:32.692Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:02:32.698Z info: GET /images/insta_icon.png
-2024-07-26T19:02:32.708Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:02:32.714Z info: GET /images/logo.jpeg
-2024-07-26T19:02:32.770Z info: GET /api/items
-2024-07-26T19:02:32.770Z info: GET /api/home-graph-data
-2024-07-26T19:02:33.196Z info: Fetched limited items
-2024-07-26T19:02:36.160Z info: GET /profile.html
-2024-07-26T19:02:36.192Z info: GET /js/profile_data.js
-2024-07-26T19:02:36.195Z info: GET /js/userLogout.js
-2024-07-26T19:02:36.195Z info: GET /css/style.css
-2024-07-26T19:02:36.196Z info: GET /images/bell-icon.png
-2024-07-26T19:02:36.196Z info: GET /images/arrow.png
-2024-07-26T19:02:36.211Z info: GET /js/breadcrumps.js
-2024-07-26T19:02:36.212Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:02:36.214Z info: GET /images/insta_icon.png
-2024-07-26T19:02:36.221Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:02:36.222Z info: GET /api/user-items?userId=1
-2024-07-26T19:02:36.224Z info: GET /api/profile-graph-data
-2024-07-26T19:02:36.227Z info: GET /images/logo.jpeg
-2024-07-26T19:02:36.648Z info: Fetched items for user 1
-2024-07-26T19:02:36.654Z info: GET /images/view-icon.png
-2024-07-26T19:02:36.655Z info: GET /images/edit-icon.png
-2024-07-26T19:02:36.656Z info: GET /images/delete-icon.png
-2024-07-26T19:02:39.789Z info: GET /api/items/214
-2024-07-26T19:02:40.216Z info: Fetched item with id: 214
-2024-07-26T19:02:45.504Z info: POST /api/upload
-2024-07-26T19:02:45.510Z error: MulterError: Unexpected field
-    at wrappedFileFilter (C:\shenkar\dev43\first_submition\server\node_modules\multer\index.js:40:19)
-    at Multipart.<anonymous> (C:\shenkar\dev43\first_submition\server\node_modules\multer\lib\make-middleware.js:107:7)
-    at Multipart.emit (node:events:519:28)
-    at HeaderParser.cb (C:\shenkar\dev43\first_submition\server\node_modules\busboy\lib\types\multipart.js:358:14)
-    at HeaderParser.push (C:\shenkar\dev43\first_submition\server\node_modules\busboy\lib\types\multipart.js:162:20)
-    at SBMH.ssCb [as _cb] (C:\shenkar\dev43\first_submition\server\node_modules\busboy\lib\types\multipart.js:394:37)
-    at feed (C:\shenkar\dev43\first_submition\server\node_modules\streamsearch\lib\sbmh.js:248:10)
-    at SBMH.push (C:\shenkar\dev43\first_submition\server\node_modules\streamsearch\lib\sbmh.js:104:16)
-    at Multipart._write (C:\shenkar\dev43\first_submition\server\node_modules\busboy\lib\types\multipart.js:567:19)
-    at writeOrBuffer (node:internal/streams/writable:564:12)
-2024-07-26T19:02:48.086Z info: GET /css/style.css
-2024-07-26T19:03:08.198Z info: GET /profile.html
-2024-07-26T19:03:08.207Z info: DELETE /api/items/214
-2024-07-26T19:03:08.222Z info: GET /css/style.css
-2024-07-26T19:03:08.222Z info: GET /js/userLogout.js
-2024-07-26T19:03:08.223Z info: GET /images/bell-icon.png
-2024-07-26T19:03:08.223Z info: GET /images/arrow.png
-2024-07-26T19:03:08.223Z info: GET /js/profile_data.js
-2024-07-26T19:03:08.230Z info: GET /js/breadcrumps.js
-2024-07-26T19:03:08.231Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:03:08.240Z info: GET /images/insta_icon.png
-2024-07-26T19:03:08.274Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:03:08.274Z info: GET /api/user-items?userId=1
-2024-07-26T19:03:08.275Z info: GET /api/profile-graph-data
-2024-07-26T19:03:08.280Z info: GET /images/logo.jpeg
-2024-07-26T19:03:09.154Z info: Fetched items for user 1
-2024-07-26T19:03:09.167Z info: GET /images/view-icon.png
-2024-07-26T19:03:09.168Z info: GET /images/edit-icon.png
-2024-07-26T19:03:09.169Z info: GET /images/delete-icon.png
-2024-07-26T19:03:09.520Z info: Image file deleted successfully
-2024-07-26T19:03:11.987Z info: DELETE /api/items/214
-2024-07-26T19:03:16.367Z info: DELETE /api/items/214
-2024-07-26T19:03:34.062Z info: Server is running on http://localhost:3000
-2024-07-26T19:03:35.578Z info: GET /
-2024-07-26T19:03:35.606Z info: GET /css/style.css
-2024-07-26T19:03:35.608Z info: GET /js/userAuth.js
-2024-07-26T19:03:36.791Z info: POST /api/login
-2024-07-26T19:03:37.329Z info: User logged in: aboalmrwan
-2024-07-26T19:03:37.344Z info: GET /homePage.html
-2024-07-26T19:03:37.366Z info: GET /js/userLogout.js
-2024-07-26T19:03:37.368Z info: GET /css/style.css
-2024-07-26T19:03:37.370Z info: GET /images/arrow.png
-2024-07-26T19:03:37.371Z info: GET /images/bell-icon.png
-2024-07-26T19:03:37.384Z info: GET /js/dashboard.js
-2024-07-26T19:03:37.389Z info: GET /js/breadcrumps.js
-2024-07-26T19:03:37.391Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:03:37.392Z info: GET /images/insta_icon.png
-2024-07-26T19:03:37.402Z info: GET /images/logo.jpeg
-2024-07-26T19:03:37.444Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:03:37.457Z info: GET /api/items
-2024-07-26T19:03:37.458Z info: GET /api/home-graph-data
-2024-07-26T19:03:37.894Z info: Fetched limited items
-2024-07-26T19:03:38.529Z info: GET /profile.html
-2024-07-26T19:03:38.558Z info: GET /js/profile_data.js
-2024-07-26T19:03:38.558Z info: GET /js/userLogout.js
-2024-07-26T19:03:38.559Z info: GET /css/style.css
-2024-07-26T19:03:38.559Z info: GET /images/bell-icon.png
-2024-07-26T19:03:38.561Z info: GET /images/arrow.png
-2024-07-26T19:03:38.570Z info: GET /js/breadcrumps.js
-2024-07-26T19:03:38.571Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:03:38.578Z info: GET /images/insta_icon.png
-2024-07-26T19:03:38.590Z info: GET /images/logo.jpeg
-2024-07-26T19:03:38.603Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:03:38.605Z info: GET /api/user-items?userId=1
-2024-07-26T19:03:38.605Z info: GET /api/profile-graph-data
-2024-07-26T19:03:39.043Z info: Fetched items for user 1
-2024-07-26T19:03:43.863Z info: GET /report_lost.html
-2024-07-26T19:03:43.890Z info: GET /js/report_lost_item.js
-2024-07-26T19:03:43.892Z info: GET /js/userLogout.js
-2024-07-26T19:03:43.892Z info: GET /css/style.css
-2024-07-26T19:03:43.892Z info: GET /images/bell-icon.png
-2024-07-26T19:03:43.893Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:03:43.905Z info: GET /images/insta_icon.png
-2024-07-26T19:03:43.905Z info: GET /js/breadcrumps.js
-2024-07-26T19:03:43.913Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:03:43.922Z info: GET /images/logo.jpeg
-2024-07-26T19:04:01.906Z info: POST /api/upload
-2024-07-26T19:04:01.920Z info: Image uploaded: http://localhost:3000/uploads/1722020641912-WhatsApp Image 2024-07-26 at 16.46.06.jpeg
-2024-07-26T19:04:01.925Z info: POST /api/lost-items
-2024-07-26T19:04:02.375Z info: Item added with ID: 215
-2024-07-26T19:04:03.306Z info: GET /list_Item.html
-2024-07-26T19:04:03.326Z info: GET /js/filter.js
-2024-07-26T19:04:03.328Z info: GET /js/userLogout.js
-2024-07-26T19:04:03.329Z info: GET /css/style.css
-2024-07-26T19:04:03.330Z info: GET /images/bell-icon.png
-2024-07-26T19:04:03.331Z info: GET /images/search-icon.png
-2024-07-26T19:04:03.339Z info: GET /images/filter-icon.png
-2024-07-26T19:04:03.340Z info: GET /images/sortby-icon.png
-2024-07-26T19:04:03.347Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:04:03.347Z info: GET /js/breadcrumps.js
-2024-07-26T19:04:03.348Z info: GET /images/insta_icon.png
-2024-07-26T19:04:03.354Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:04:03.360Z info: GET /images/logo.jpeg
-2024-07-26T19:04:04.424Z info: GET /uploads/1722020641912-WhatsApp%20Image%202024-07-26%20at%2016.46.06.jpeg
-2024-07-26T19:04:07.061Z info: GET /item.html
-2024-07-26T19:04:07.081Z info: GET /js/item_details.js
-2024-07-26T19:04:07.082Z info: GET /js/userLogout.js
-2024-07-26T19:04:07.082Z info: GET /css/style.css
-2024-07-26T19:04:07.082Z info: GET /images/bell-icon.png
-2024-07-26T19:04:07.083Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:04:07.091Z info: GET /images/insta_icon.png
-2024-07-26T19:04:07.092Z info: GET /js/breadcrumps.js
-2024-07-26T19:04:07.103Z info: GET /api/items/215
-2024-07-26T19:04:07.104Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:04:07.108Z info: GET /images/logo.jpeg
-2024-07-26T19:04:07.542Z info: Fetched item with id: 215
-2024-07-26T19:04:07.547Z info: GET /uploads/1722020641912-WhatsApp%20Image%202024-07-26%20at%2016.46.06.jpeg
-2024-07-26T19:04:08.894Z info: GET /uploads/1722020641912-WhatsApp%20Image%202024-07-26%20at%2016.46.06.jpeg
-2024-07-26T19:04:10.518Z info: GET /profile.html
-2024-07-26T19:04:10.535Z info: GET /js/profile_data.js
-2024-07-26T19:04:10.536Z info: GET /js/userLogout.js
-2024-07-26T19:04:10.536Z info: GET /css/style.css
-2024-07-26T19:04:10.537Z info: GET /images/bell-icon.png
-2024-07-26T19:04:10.537Z info: GET /images/arrow.png
-2024-07-26T19:04:10.544Z info: GET /js/breadcrumps.js
-2024-07-26T19:04:10.544Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:04:10.553Z info: GET /images/insta_icon.png
-2024-07-26T19:04:10.560Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:04:10.560Z info: GET /api/user-items?userId=1
-2024-07-26T19:04:10.560Z info: GET /api/profile-graph-data
-2024-07-26T19:04:10.565Z info: GET /images/logo.jpeg
-2024-07-26T19:04:11.001Z info: Fetched items for user 1
-2024-07-26T19:04:11.008Z info: GET /images/view-icon.png
-2024-07-26T19:04:11.008Z info: GET /images/edit-icon.png
-2024-07-26T19:04:11.008Z info: GET /images/delete-icon.png
-2024-07-26T19:04:12.755Z info: GET /api/items/215
-2024-07-26T19:04:13.196Z info: Fetched item with id: 215
-2024-07-26T19:04:17.655Z info: POST /api/upload
-2024-07-26T19:04:17.658Z error: MulterError: Unexpected field
-    at wrappedFileFilter (C:\shenkar\dev43\first_submition\server\node_modules\multer\index.js:40:19)
-    at Multipart.<anonymous> (C:\shenkar\dev43\first_submition\server\node_modules\multer\lib\make-middleware.js:107:7)
-    at Multipart.emit (node:events:519:28)
-    at HeaderParser.cb (C:\shenkar\dev43\first_submition\server\node_modules\busboy\lib\types\multipart.js:358:14)
-    at HeaderParser.push (C:\shenkar\dev43\first_submition\server\node_modules\busboy\lib\types\multipart.js:162:20)
-    at SBMH.ssCb [as _cb] (C:\shenkar\dev43\first_submition\server\node_modules\busboy\lib\types\multipart.js:394:37)
-    at feed (C:\shenkar\dev43\first_submition\server\node_modules\streamsearch\lib\sbmh.js:248:10)
-    at SBMH.push (C:\shenkar\dev43\first_submition\server\node_modules\streamsearch\lib\sbmh.js:104:16)
-    at Multipart._write (C:\shenkar\dev43\first_submition\server\node_modules\busboy\lib\types\multipart.js:567:19)
-    at writeOrBuffer (node:internal/streams/writable:564:12)
-2024-07-26T19:04:20.304Z info: GET /css/style.css
-2024-07-26T19:04:31.950Z info: GET /profile.html
-2024-07-26T19:04:31.959Z info: DELETE /api/items/215
-2024-07-26T19:04:31.973Z info: GET /images/arrow.png
-2024-07-26T19:04:31.974Z info: GET /css/style.css
-2024-07-26T19:04:31.975Z info: GET /js/userLogout.js
-2024-07-26T19:04:31.975Z info: GET /images/bell-icon.png
-2024-07-26T19:04:31.976Z info: GET /js/profile_data.js
-2024-07-26T19:04:31.984Z info: GET /js/breadcrumps.js
-2024-07-26T19:04:31.984Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:04:31.987Z info: GET /images/insta_icon.png
-2024-07-26T19:04:31.997Z info: GET /images/logo.jpeg
-2024-07-26T19:04:32.008Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:04:32.009Z info: GET /api/user-items?userId=1
-2024-07-26T19:04:32.009Z info: GET /api/profile-graph-data
-2024-07-26T19:04:32.897Z info: Fetched items for user 1
-2024-07-26T19:04:32.907Z info: GET /images/view-icon.png
-2024-07-26T19:04:32.908Z info: GET /images/edit-icon.png
-2024-07-26T19:04:32.908Z info: GET /images/delete-icon.png
-2024-07-26T19:04:33.270Z info: Image file deleted successfully
-2024-07-26T19:04:41.526Z info: Server is running on http://localhost:3000
-2024-07-26T19:04:44.023Z info: GET /
-2024-07-26T19:04:44.062Z info: GET /css/style.css
-2024-07-26T19:04:44.064Z info: GET /js/userAuth.js
-2024-07-26T19:04:45.271Z info: POST /api/login
-2024-07-26T19:04:45.768Z info: User logged in: aboalmrwan
-2024-07-26T19:04:45.788Z info: GET /homePage.html
-2024-07-26T19:04:45.829Z info: GET /js/userLogout.js
-2024-07-26T19:04:45.830Z info: GET /css/style.css
-2024-07-26T19:04:45.833Z info: GET /images/bell-icon.png
-2024-07-26T19:04:45.833Z info: GET /images/arrow.png
-2024-07-26T19:04:45.844Z info: GET /js/dashboard.js
-2024-07-26T19:04:45.845Z info: GET /js/breadcrumps.js
-2024-07-26T19:04:45.845Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:04:45.846Z info: GET /images/insta_icon.png
-2024-07-26T19:04:45.860Z info: GET /images/logo.jpeg
-2024-07-26T19:04:45.892Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:04:45.906Z info: GET /api/items
-2024-07-26T19:04:45.911Z info: GET /api/home-graph-data
-2024-07-26T19:04:46.307Z info: Fetched limited items
-2024-07-26T19:04:47.158Z info: GET /profile.html
-2024-07-26T19:04:47.188Z info: GET /js/profile_data.js
-2024-07-26T19:04:47.189Z info: GET /js/userLogout.js
-2024-07-26T19:04:47.190Z info: GET /css/style.css
-2024-07-26T19:04:47.190Z info: GET /images/arrow.png
-2024-07-26T19:04:47.190Z info: GET /images/bell-icon.png
-2024-07-26T19:04:47.198Z info: GET /js/breadcrumps.js
-2024-07-26T19:04:47.200Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:04:47.208Z info: GET /images/insta_icon.png
-2024-07-26T19:04:47.217Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:04:47.218Z info: GET /api/user-items?userId=1
-2024-07-26T19:04:47.219Z info: GET /api/profile-graph-data
-2024-07-26T19:04:47.225Z info: GET /images/logo.jpeg
-2024-07-26T19:04:47.617Z info: Fetched items for user 1
-2024-07-26T19:04:51.761Z info: GET /homePage.html
-2024-07-26T19:04:51.787Z info: GET /js/dashboard.js
-2024-07-26T19:04:51.788Z info: GET /js/userLogout.js
-2024-07-26T19:04:51.789Z info: GET /css/style.css
-2024-07-26T19:04:51.789Z info: GET /images/bell-icon.png
-2024-07-26T19:04:51.789Z info: GET /images/arrow.png
-2024-07-26T19:04:51.802Z info: GET /js/breadcrumps.js
-2024-07-26T19:04:51.802Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:04:51.809Z info: GET /images/insta_icon.png
-2024-07-26T19:04:51.817Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:04:51.823Z info: GET /images/logo.jpeg
-2024-07-26T19:04:51.838Z info: GET /api/items
-2024-07-26T19:04:51.846Z info: GET /api/home-graph-data
-2024-07-26T19:04:52.238Z info: Fetched limited items
-2024-07-26T19:11:10.668Z info: Server is running on http://localhost:3000
-2024-07-26T19:11:12.776Z info: GET /
-2024-07-26T19:11:12.795Z info: GET /css/style.css
-2024-07-26T19:11:12.796Z info: GET /js/userAuth.js
-2024-07-26T19:11:13.739Z info: GET /
-2024-07-26T19:11:13.759Z info: GET /css/style.css
-2024-07-26T19:11:13.760Z info: GET /js/userAuth.js
-2024-07-26T19:11:14.915Z info: POST /api/login
-2024-07-26T19:11:15.452Z info: User logged in: aboalmrwan
-2024-07-26T19:11:15.469Z info: GET /homePage.html
-2024-07-26T19:11:15.502Z info: GET /js/userLogout.js
-2024-07-26T19:11:15.503Z info: GET /css/style.css
-2024-07-26T19:11:15.506Z info: GET /images/bell-icon.png
-2024-07-26T19:11:15.507Z info: GET /images/arrow.png
-2024-07-26T19:11:15.516Z info: GET /js/dashboard.js
-2024-07-26T19:11:15.517Z info: GET /js/breadcrumps.js
-2024-07-26T19:11:15.521Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:11:15.521Z info: GET /images/insta_icon.png
-2024-07-26T19:11:15.532Z info: GET /images/logo.jpeg
-2024-07-26T19:11:15.566Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:11:15.576Z info: GET /api/items
-2024-07-26T19:11:15.576Z info: GET /api/home-graph-data
-2024-07-26T19:11:16.023Z info: Fetched limited items
-2024-07-26T19:11:16.254Z info: GET /report_lost.html
-2024-07-26T19:11:16.292Z info: GET /js/report_lost_item.js
-2024-07-26T19:11:16.293Z info: GET /js/userLogout.js
-2024-07-26T19:11:16.293Z info: GET /css/style.css
-2024-07-26T19:11:16.294Z info: GET /images/bell-icon.png
-2024-07-26T19:11:16.295Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:11:16.301Z info: GET /images/insta_icon.png
-2024-07-26T19:11:16.304Z info: GET /js/breadcrumps.js
-2024-07-26T19:11:16.315Z info: GET /images/logo.jpeg
-2024-07-26T19:11:16.334Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:11:33.351Z info: POST /api/upload
-2024-07-26T19:11:33.362Z info: Image uploaded: http://localhost:3000/uploads/1722021093358-Webfirstsub.JPG
-2024-07-26T19:11:33.368Z info: POST /api/lost-items
-2024-07-26T19:11:33.820Z info: Item added with ID: 216
-2024-07-26T19:11:34.556Z info: GET /list_Item.html
-2024-07-26T19:11:34.575Z info: GET /js/filter.js
-2024-07-26T19:11:34.576Z info: GET /js/userLogout.js
-2024-07-26T19:11:34.578Z info: GET /images/bell-icon.png
-2024-07-26T19:11:34.578Z info: GET /css/style.css
-2024-07-26T19:11:34.579Z info: GET /images/search-icon.png
-2024-07-26T19:11:34.585Z info: GET /images/filter-icon.png
-2024-07-26T19:11:34.586Z info: GET /images/sortby-icon.png
-2024-07-26T19:11:34.591Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:11:34.596Z info: GET /js/breadcrumps.js
-2024-07-26T19:11:34.598Z info: GET /images/insta_icon.png
-2024-07-26T19:11:34.604Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:11:34.608Z info: GET /images/logo.jpeg
-2024-07-26T19:11:35.759Z info: GET /uploads/1722021093358-Webfirstsub.JPG
-2024-07-26T19:11:37.119Z info: GET /item.html
-2024-07-26T19:11:37.137Z info: GET /js/item_details.js
-2024-07-26T19:11:37.138Z info: GET /js/userLogout.js
-2024-07-26T19:11:37.138Z info: GET /css/style.css
-2024-07-26T19:11:37.138Z info: GET /images/bell-icon.png
-2024-07-26T19:11:37.139Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:11:37.146Z info: GET /images/insta_icon.png
-2024-07-26T19:11:37.147Z info: GET /js/breadcrumps.js
-2024-07-26T19:11:37.158Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:11:37.159Z info: GET /api/items/216
-2024-07-26T19:11:37.163Z info: GET /images/logo.jpeg
-2024-07-26T19:11:37.605Z info: Fetched item with id: 216
-2024-07-26T19:11:37.613Z info: GET /uploads/1722021093358-Webfirstsub.JPG
-2024-07-26T19:11:38.933Z info: GET /profile.html
-2024-07-26T19:11:38.953Z info: GET /js/profile_data.js
-2024-07-26T19:11:38.953Z info: GET /js/userLogout.js
-2024-07-26T19:11:38.953Z info: GET /css/style.css
-2024-07-26T19:11:38.954Z info: GET /images/bell-icon.png
-2024-07-26T19:11:38.954Z info: GET /images/arrow.png
-2024-07-26T19:11:38.963Z info: GET /js/breadcrumps.js
-2024-07-26T19:11:38.963Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:11:38.967Z info: GET /images/insta_icon.png
-2024-07-26T19:11:38.975Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:11:38.976Z info: GET /api/user-items?userId=1
-2024-07-26T19:11:38.977Z info: GET /api/profile-graph-data
-2024-07-26T19:11:38.982Z info: GET /images/logo.jpeg
-2024-07-26T19:11:39.424Z info: Fetched items for user 1
-2024-07-26T19:11:39.434Z info: GET /images/view-icon.png
-2024-07-26T19:11:39.434Z info: GET /images/edit-icon.png
-2024-07-26T19:11:39.434Z info: GET /images/delete-icon.png
-2024-07-26T19:11:40.457Z info: GET /api/items/216
-2024-07-26T19:11:40.902Z info: Fetched item with id: 216
-2024-07-26T19:11:47.237Z info: POST /api/upload
-2024-07-26T19:11:47.240Z error: MulterError: Unexpected field
-    at wrappedFileFilter (C:\shenkar\dev43\first_submition\server\node_modules\multer\index.js:40:19)
-    at Multipart.<anonymous> (C:\shenkar\dev43\first_submition\server\node_modules\multer\lib\make-middleware.js:107:7)
-    at Multipart.emit (node:events:519:28)
-    at HeaderParser.cb (C:\shenkar\dev43\first_submition\server\node_modules\busboy\lib\types\multipart.js:358:14)
-    at HeaderParser.push (C:\shenkar\dev43\first_submition\server\node_modules\busboy\lib\types\multipart.js:162:20)
-    at SBMH.ssCb [as _cb] (C:\shenkar\dev43\first_submition\server\node_modules\busboy\lib\types\multipart.js:394:37)
-    at feed (C:\shenkar\dev43\first_submition\server\node_modules\streamsearch\lib\sbmh.js:219:14)
-    at SBMH.push (C:\shenkar\dev43\first_submition\server\node_modules\streamsearch\lib\sbmh.js:104:16)
-    at Multipart._write (C:\shenkar\dev43\first_submition\server\node_modules\busboy\lib\types\multipart.js:567:19)
-    at writeOrBuffer (node:internal/streams/writable:564:12)
-2024-07-26T19:11:47.246Z info: PUT /api/items/216
-2024-07-26T19:11:48.491Z info: Item ID 216 updated
-2024-07-26T19:11:48.508Z info: GET /profile.html
-2024-07-26T19:11:48.536Z info: GET /js/profile_data.js
-2024-07-26T19:11:48.537Z info: GET /js/userLogout.js
-2024-07-26T19:11:48.538Z info: GET /images/bell-icon.png
-2024-07-26T19:11:48.538Z info: GET /css/style.css
-2024-07-26T19:11:48.540Z info: GET /images/arrow.png
-2024-07-26T19:11:48.544Z info: GET /js/breadcrumps.js
-2024-07-26T19:11:48.544Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:11:48.552Z info: GET /images/insta_icon.png
-2024-07-26T19:11:48.560Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:11:48.561Z info: GET /api/user-items?userId=1
-2024-07-26T19:11:48.561Z info: GET /api/profile-graph-data
-2024-07-26T19:11:48.565Z info: GET /images/logo.jpeg
-2024-07-26T19:11:49.008Z info: Fetched items for user 1
-2024-07-26T19:11:49.019Z info: GET /images/view-icon.png
-2024-07-26T19:11:49.019Z info: GET /images/edit-icon.png
-2024-07-26T19:11:49.020Z info: GET /images/delete-icon.png
-2024-07-26T19:11:51.082Z info: GET /item.html?id=216
-2024-07-26T19:11:51.100Z info: GET /js/item_details.js
-2024-07-26T19:11:51.102Z info: GET /js/userLogout.js
-2024-07-26T19:11:51.102Z info: GET /css/style.css
-2024-07-26T19:11:51.102Z info: GET /images/bell-icon.png
-2024-07-26T19:11:51.103Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:11:51.111Z info: GET /images/insta_icon.png
-2024-07-26T19:11:51.111Z info: GET /js/breadcrumps.js
-2024-07-26T19:11:51.125Z info: GET /images/logo.jpeg
-2024-07-26T19:11:51.132Z info: GET /api/items/216
-2024-07-26T19:11:51.132Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:11:51.530Z info: Fetched item with id: 216
-2024-07-26T19:11:51.539Z info: GET /uploads/1722021093358-Webfirstsub.JPG
-2024-07-26T19:12:02.462Z info: GET /profile.html
-2024-07-26T19:12:02.479Z info: GET /js/profile_data.js
-2024-07-26T19:12:02.480Z info: GET /js/userLogout.js
-2024-07-26T19:12:02.480Z info: GET /images/bell-icon.png
-2024-07-26T19:12:02.481Z info: GET /css/style.css
-2024-07-26T19:12:02.482Z info: GET /images/arrow.png
-2024-07-26T19:12:02.488Z info: GET /js/breadcrumps.js
-2024-07-26T19:12:02.489Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:12:02.496Z info: GET /images/insta_icon.png
-2024-07-26T19:12:02.503Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:12:02.503Z info: GET /api/user-items?userId=1
-2024-07-26T19:12:02.504Z info: GET /api/profile-graph-data
-2024-07-26T19:12:02.508Z info: GET /images/logo.jpeg
-2024-07-26T19:12:02.949Z info: Fetched items for user 1
-2024-07-26T19:12:02.956Z info: GET /images/view-icon.png
-2024-07-26T19:12:02.957Z info: GET /images/edit-icon.png
-2024-07-26T19:12:02.957Z info: GET /images/delete-icon.png
-2024-07-26T19:12:04.012Z info: GET /api/items/216
-2024-07-26T19:12:04.408Z info: Fetched item with id: 216
-2024-07-26T19:12:14.930Z info: POST /api/upload
-2024-07-26T19:12:14.931Z error: MulterError: Unexpected field
-    at wrappedFileFilter (C:\shenkar\dev43\first_submition\server\node_modules\multer\index.js:40:19)
-    at Multipart.<anonymous> (C:\shenkar\dev43\first_submition\server\node_modules\multer\lib\make-middleware.js:107:7)
-    at Multipart.emit (node:events:519:28)
-    at HeaderParser.cb (C:\shenkar\dev43\first_submition\server\node_modules\busboy\lib\types\multipart.js:358:14)
-    at HeaderParser.push (C:\shenkar\dev43\first_submition\server\node_modules\busboy\lib\types\multipart.js:162:20)
-    at SBMH.ssCb [as _cb] (C:\shenkar\dev43\first_submition\server\node_modules\busboy\lib\types\multipart.js:394:37)
-    at feed (C:\shenkar\dev43\first_submition\server\node_modules\streamsearch\lib\sbmh.js:219:14)
-    at SBMH.push (C:\shenkar\dev43\first_submition\server\node_modules\streamsearch\lib\sbmh.js:104:16)
-    at Multipart._write (C:\shenkar\dev43\first_submition\server\node_modules\busboy\lib\types\multipart.js:567:19)
-    at writeOrBuffer (node:internal/streams/writable:564:12)
-2024-07-26T19:12:14.934Z info: PUT /api/items/216
-2024-07-26T19:12:15.781Z info: Item ID 216 updated
-2024-07-26T19:12:15.796Z info: GET /profile.html
-2024-07-26T19:12:15.818Z info: GET /js/profile_data.js
-2024-07-26T19:12:15.818Z info: GET /js/userLogout.js
-2024-07-26T19:12:15.819Z info: GET /css/style.css
-2024-07-26T19:12:15.819Z info: GET /images/bell-icon.png
-2024-07-26T19:12:15.820Z info: GET /images/arrow.png
-2024-07-26T19:12:15.826Z info: GET /js/breadcrumps.js
-2024-07-26T19:12:15.826Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:12:15.830Z info: GET /images/insta_icon.png
-2024-07-26T19:12:15.838Z info: GET /images/logo.jpeg
-2024-07-26T19:12:15.845Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:12:15.846Z info: GET /api/user-items?userId=1
-2024-07-26T19:12:15.846Z info: GET /api/profile-graph-data
-2024-07-26T19:12:16.289Z info: Fetched items for user 1
-2024-07-26T19:12:16.298Z info: GET /images/view-icon.png
-2024-07-26T19:12:16.299Z info: GET /images/edit-icon.png
-2024-07-26T19:12:16.299Z info: GET /images/delete-icon.png
-2024-07-26T19:12:17.594Z info: GET /item.html?id=216
-2024-07-26T19:12:17.615Z info: GET /js/item_details.js
-2024-07-26T19:12:17.615Z info: GET /js/userLogout.js
-2024-07-26T19:12:17.616Z info: GET /css/style.css
-2024-07-26T19:12:17.616Z info: GET /images/bell-icon.png
-2024-07-26T19:12:17.618Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:12:17.625Z info: GET /images/insta_icon.png
-2024-07-26T19:12:17.626Z info: GET /js/breadcrumps.js
-2024-07-26T19:12:17.637Z info: GET /api/items/216
-2024-07-26T19:12:17.637Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:12:17.644Z info: GET /images/logo.jpeg
-2024-07-26T19:12:18.035Z info: Fetched item with id: 216
-2024-07-26T19:12:18.044Z info: GET /uploads/1722021093358-Webfirstsub.JPG
-2024-07-26T19:12:19.852Z info: GET /homePage.html
-2024-07-26T19:12:19.872Z info: GET /js/dashboard.js
-2024-07-26T19:12:19.873Z info: GET /js/userLogout.js
-2024-07-26T19:12:19.873Z info: GET /css/style.css
-2024-07-26T19:12:19.873Z info: GET /images/bell-icon.png
-2024-07-26T19:12:19.873Z info: GET /images/arrow.png
-2024-07-26T19:12:19.879Z info: GET /js/breadcrumps.js
-2024-07-26T19:12:19.879Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:12:19.885Z info: GET /images/insta_icon.png
-2024-07-26T19:12:19.892Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:12:19.898Z info: GET /images/logo.jpeg
-2024-07-26T19:12:19.908Z info: GET /api/items
-2024-07-26T19:12:19.911Z info: GET /api/home-graph-data
-2024-07-26T19:12:20.354Z info: Fetched limited items
-2024-07-26T19:12:21.508Z info: GET /list_Item.html
-2024-07-26T19:12:21.526Z info: GET /js/filter.js
-2024-07-26T19:12:21.526Z info: GET /js/userLogout.js
-2024-07-26T19:12:21.526Z info: GET /css/style.css
-2024-07-26T19:12:21.526Z info: GET /images/bell-icon.png
-2024-07-26T19:12:21.527Z info: GET /images/search-icon.png
-2024-07-26T19:12:21.541Z info: GET /images/filter-icon.png
-2024-07-26T19:12:21.541Z info: GET /images/sortby-icon.png
-2024-07-26T19:12:21.542Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:12:21.542Z info: GET /js/breadcrumps.js
-2024-07-26T19:12:21.542Z info: GET /images/insta_icon.png
-2024-07-26T19:12:21.550Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:12:21.553Z info: GET /images/logo.jpeg
-2024-07-26T19:12:22.252Z info: GET /uploads/1722021093358-Webfirstsub.JPG
-2024-07-26T19:12:25.115Z info: GET /item.html
-2024-07-26T19:12:25.135Z info: GET /js/item_details.js
-2024-07-26T19:12:25.136Z info: GET /js/userLogout.js
-2024-07-26T19:12:25.136Z info: GET /css/style.css
-2024-07-26T19:12:25.137Z info: GET /images/bell-icon.png
-2024-07-26T19:12:25.137Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:12:25.144Z info: GET /images/insta_icon.png
-2024-07-26T19:12:25.144Z info: GET /js/breadcrumps.js
-2024-07-26T19:12:25.155Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:12:25.155Z info: GET /api/items/216
-2024-07-26T19:12:25.159Z info: GET /images/logo.jpeg
-2024-07-26T19:12:25.550Z info: Fetched item with id: 216
-2024-07-26T19:12:25.553Z info: GET /uploads/1722021093358-Webfirstsub.JPG
-2024-07-26T19:12:26.476Z info: GET /css/style.css
-2024-07-26T19:12:38.242Z info: GET /profile.html
-2024-07-26T19:12:38.261Z info: GET /js/profile_data.js
-2024-07-26T19:12:38.263Z info: GET /images/bell-icon.png
-2024-07-26T19:12:38.264Z info: GET /images/arrow.png
-2024-07-26T19:12:38.264Z info: GET /js/userLogout.js
-2024-07-26T19:12:38.264Z info: GET /css/style.css
-2024-07-26T19:12:38.272Z info: GET /js/breadcrumps.js
-2024-07-26T19:12:38.273Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:12:38.278Z info: GET /images/insta_icon.png
-2024-07-26T19:12:38.285Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:12:38.286Z info: GET /api/user-items?userId=1
-2024-07-26T19:12:38.286Z info: GET /api/profile-graph-data
-2024-07-26T19:12:38.290Z info: GET /images/logo.jpeg
-2024-07-26T19:12:38.733Z info: Fetched items for user 1
-2024-07-26T19:12:38.740Z info: GET /images/view-icon.png
-2024-07-26T19:12:38.740Z info: GET /images/edit-icon.png
-2024-07-26T19:12:38.741Z info: GET /images/delete-icon.png
-2024-07-26T19:12:40.448Z info: GET /item.html?id=216
-2024-07-26T19:12:40.476Z info: GET /js/item_details.js
-2024-07-26T19:12:40.476Z info: GET /js/userLogout.js
-2024-07-26T19:12:40.476Z info: GET /css/style.css
-2024-07-26T19:12:40.477Z info: GET /images/bell-icon.png
-2024-07-26T19:12:40.477Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:12:40.486Z info: GET /images/insta_icon.png
-2024-07-26T19:12:40.487Z info: GET /js/breadcrumps.js
-2024-07-26T19:12:40.500Z info: GET /images/logo.jpeg
-2024-07-26T19:12:40.506Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:12:40.507Z info: GET /api/items/216
-2024-07-26T19:12:40.902Z info: Fetched item with id: 216
-2024-07-26T19:12:40.911Z info: GET /uploads/1722021093358-Webfirstsub.JPG
-2024-07-26T19:12:42.569Z info: GET /css/style.css
-2024-07-26T19:12:47.292Z info: GET /profile.html
-2024-07-26T19:12:47.315Z info: GET /js/profile_data.js
-2024-07-26T19:12:47.316Z info: GET /js/userLogout.js
-2024-07-26T19:12:47.317Z info: GET /css/style.css
-2024-07-26T19:12:47.317Z info: GET /images/arrow.png
-2024-07-26T19:12:47.317Z info: GET /images/bell-icon.png
-2024-07-26T19:12:47.324Z info: GET /js/breadcrumps.js
-2024-07-26T19:12:47.324Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:12:47.334Z info: GET /images/insta_icon.png
-2024-07-26T19:12:47.339Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:12:47.340Z info: GET /api/user-items?userId=1
-2024-07-26T19:12:47.340Z info: GET /api/profile-graph-data
-2024-07-26T19:12:47.344Z info: GET /images/logo.jpeg
-2024-07-26T19:12:47.785Z info: Fetched items for user 1
-2024-07-26T19:12:47.790Z info: GET /images/view-icon.png
-2024-07-26T19:12:47.790Z info: GET /images/edit-icon.png
-2024-07-26T19:12:47.790Z info: GET /images/delete-icon.png
-2024-07-26T19:12:49.282Z info: GET /homePage.html
-2024-07-26T19:12:49.303Z info: GET /js/dashboard.js
-2024-07-26T19:12:49.303Z info: GET /js/userLogout.js
-2024-07-26T19:12:49.303Z info: GET /css/style.css
-2024-07-26T19:12:49.304Z info: GET /images/bell-icon.png
-2024-07-26T19:12:49.304Z info: GET /images/arrow.png
-2024-07-26T19:12:49.312Z info: GET /js/breadcrumps.js
-2024-07-26T19:12:49.313Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:12:49.318Z info: GET /images/insta_icon.png
-2024-07-26T19:12:49.322Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:12:49.327Z info: GET /images/logo.jpeg
-2024-07-26T19:12:49.336Z info: GET /api/items
-2024-07-26T19:12:49.340Z info: GET /api/home-graph-data
-2024-07-26T19:12:49.731Z info: Fetched limited items
-2024-07-26T19:12:50.832Z info: GET /list_Item.html
-2024-07-26T19:12:50.851Z info: GET /js/filter.js
-2024-07-26T19:12:50.851Z info: GET /js/userLogout.js
-2024-07-26T19:12:50.851Z info: GET /css/style.css
-2024-07-26T19:12:50.852Z info: GET /images/bell-icon.png
-2024-07-26T19:12:50.852Z info: GET /images/search-icon.png
-2024-07-26T19:12:50.859Z info: GET /images/filter-icon.png
-2024-07-26T19:12:50.859Z info: GET /images/sortby-icon.png
-2024-07-26T19:12:50.866Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:12:50.867Z info: GET /js/breadcrumps.js
-2024-07-26T19:12:50.867Z info: GET /images/insta_icon.png
-2024-07-26T19:12:50.872Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:12:50.877Z info: GET /images/logo.jpeg
-2024-07-26T19:12:51.589Z info: GET /uploads/1722021093358-Webfirstsub.JPG
-2024-07-26T19:12:56.596Z info: GET /homePage.html
-2024-07-26T19:12:56.613Z info: GET /js/dashboard.js
-2024-07-26T19:12:56.615Z info: GET /js/userLogout.js
-2024-07-26T19:12:56.616Z info: GET /css/style.css
-2024-07-26T19:12:56.616Z info: GET /images/bell-icon.png
-2024-07-26T19:12:56.617Z info: GET /images/arrow.png
-2024-07-26T19:12:56.626Z info: GET /js/breadcrumps.js
-2024-07-26T19:12:56.626Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:12:56.632Z info: GET /images/insta_icon.png
-2024-07-26T19:12:56.638Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:12:56.643Z info: GET /images/logo.jpeg
-2024-07-26T19:12:56.651Z info: GET /api/items
-2024-07-26T19:12:56.654Z info: GET /api/home-graph-data
-2024-07-26T19:12:57.098Z info: Fetched limited items
-2024-07-26T19:12:57.371Z info: GET /report_found.html
-2024-07-26T19:12:57.390Z info: GET /js/report_found_item.js
-2024-07-26T19:12:57.391Z info: GET /js/userLogout.js
-2024-07-26T19:12:57.391Z info: GET /css/style.css
-2024-07-26T19:12:57.391Z info: GET /images/bell-icon.png
-2024-07-26T19:12:57.391Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:12:57.398Z info: GET /images/insta_icon.png
-2024-07-26T19:12:57.400Z info: GET /js/claim_item.js
-2024-07-26T19:12:57.405Z info: GET /js/breadcrumps.js
-2024-07-26T19:12:57.414Z info: GET /images/logo.jpeg
-2024-07-26T19:12:57.426Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:13:17.488Z info: POST /api/upload
-2024-07-26T19:13:17.503Z info: Image uploaded: http://localhost:3000/uploads/1722021197490-WhatsApp Image 2024-07-24 at 12.49.46.jpeg
-2024-07-26T19:13:17.509Z info: POST /api/found-items
-2024-07-26T19:13:17.909Z info: Item added with ID: 217
-2024-07-26T19:13:18.491Z info: GET /list_Item.html
-2024-07-26T19:13:18.512Z info: GET /js/filter.js
-2024-07-26T19:13:18.513Z info: GET /js/userLogout.js
-2024-07-26T19:13:18.514Z info: GET /css/style.css
-2024-07-26T19:13:18.514Z info: GET /images/bell-icon.png
-2024-07-26T19:13:18.515Z info: GET /images/search-icon.png
-2024-07-26T19:13:18.521Z info: GET /images/filter-icon.png
-2024-07-26T19:13:18.521Z info: GET /images/sortby-icon.png
-2024-07-26T19:13:18.527Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:13:18.528Z info: GET /js/breadcrumps.js
-2024-07-26T19:13:18.528Z info: GET /images/insta_icon.png
-2024-07-26T19:13:18.535Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:13:18.539Z info: GET /images/logo.jpeg
-2024-07-26T19:13:19.345Z info: GET /uploads/1722021093358-Webfirstsub.JPG
-2024-07-26T19:13:19.346Z info: GET /uploads/1722021197490-WhatsApp%20Image%202024-07-24%20at%2012.49.46.jpeg
-2024-07-26T19:13:21.234Z info: GET /item.html
-2024-07-26T19:13:21.253Z info: GET /js/item_details.js
-2024-07-26T19:13:21.254Z info: GET /js/userLogout.js
-2024-07-26T19:13:21.254Z info: GET /css/style.css
-2024-07-26T19:13:21.254Z info: GET /images/bell-icon.png
-2024-07-26T19:13:21.255Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:13:21.262Z info: GET /images/insta_icon.png
-2024-07-26T19:13:21.262Z info: GET /js/breadcrumps.js
-2024-07-26T19:13:21.273Z info: GET /api/items/217
-2024-07-26T19:13:21.274Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:13:21.277Z info: GET /images/logo.jpeg
-2024-07-26T19:13:21.721Z info: Fetched item with id: 217
-2024-07-26T19:13:21.728Z info: GET /uploads/1722021197490-WhatsApp%20Image%202024-07-24%20at%2012.49.46.jpeg
-2024-07-26T19:13:23.730Z info: GET /profile.html
-2024-07-26T19:13:23.756Z info: GET /js/profile_data.js
-2024-07-26T19:13:23.756Z info: GET /js/userLogout.js
-2024-07-26T19:13:23.757Z info: GET /css/style.css
-2024-07-26T19:13:23.757Z info: GET /images/bell-icon.png
-2024-07-26T19:13:23.758Z info: GET /images/arrow.png
-2024-07-26T19:13:23.767Z info: GET /js/breadcrumps.js
-2024-07-26T19:13:23.767Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:13:23.773Z info: GET /images/insta_icon.png
-2024-07-26T19:13:23.780Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:13:23.781Z info: GET /api/user-items?userId=1
-2024-07-26T19:13:23.782Z info: GET /api/profile-graph-data
-2024-07-26T19:13:23.785Z info: GET /images/logo.jpeg
-2024-07-26T19:13:24.179Z info: Fetched items for user 1
-2024-07-26T19:13:24.186Z info: GET /images/view-icon.png
-2024-07-26T19:13:24.187Z info: GET /images/edit-icon.png
-2024-07-26T19:13:24.187Z info: GET /images/delete-icon.png
-2024-07-26T19:13:25.903Z info: GET /api/items/217
-2024-07-26T19:13:26.354Z info: Fetched item with id: 217
-2024-07-26T19:13:31.588Z info: POST /api/upload
-2024-07-26T19:13:31.590Z error: MulterError: Unexpected field
-    at wrappedFileFilter (C:\shenkar\dev43\first_submition\server\node_modules\multer\index.js:40:19)
-    at Multipart.<anonymous> (C:\shenkar\dev43\first_submition\server\node_modules\multer\lib\make-middleware.js:107:7)
-    at Multipart.emit (node:events:519:28)
-    at HeaderParser.cb (C:\shenkar\dev43\first_submition\server\node_modules\busboy\lib\types\multipart.js:358:14)
-    at HeaderParser.push (C:\shenkar\dev43\first_submition\server\node_modules\busboy\lib\types\multipart.js:162:20)
-    at SBMH.ssCb [as _cb] (C:\shenkar\dev43\first_submition\server\node_modules\busboy\lib\types\multipart.js:394:37)
-    at feed (C:\shenkar\dev43\first_submition\server\node_modules\streamsearch\lib\sbmh.js:248:10)
-    at SBMH.push (C:\shenkar\dev43\first_submition\server\node_modules\streamsearch\lib\sbmh.js:104:16)
-    at Multipart._write (C:\shenkar\dev43\first_submition\server\node_modules\busboy\lib\types\multipart.js:567:19)
-    at writeOrBuffer (node:internal/streams/writable:564:12)
-2024-07-26T19:13:36.718Z info: GET /css/style.css
-2024-07-26T19:13:40.384Z info: POST /api/upload
-2024-07-26T19:13:40.386Z error: MulterError: Unexpected field
-    at wrappedFileFilter (C:\shenkar\dev43\first_submition\server\node_modules\multer\index.js:40:19)
-    at Multipart.<anonymous> (C:\shenkar\dev43\first_submition\server\node_modules\multer\lib\make-middleware.js:107:7)
-    at Multipart.emit (node:events:519:28)
-    at HeaderParser.cb (C:\shenkar\dev43\first_submition\server\node_modules\busboy\lib\types\multipart.js:358:14)
-    at HeaderParser.push (C:\shenkar\dev43\first_submition\server\node_modules\busboy\lib\types\multipart.js:162:20)
-    at SBMH.ssCb [as _cb] (C:\shenkar\dev43\first_submition\server\node_modules\busboy\lib\types\multipart.js:394:37)
-    at feed (C:\shenkar\dev43\first_submition\server\node_modules\streamsearch\lib\sbmh.js:248:10)
-    at SBMH.push (C:\shenkar\dev43\first_submition\server\node_modules\streamsearch\lib\sbmh.js:104:16)
-    at Multipart._write (C:\shenkar\dev43\first_submition\server\node_modules\busboy\lib\types\multipart.js:567:19)
-    at writeOrBuffer (node:internal/streams/writable:564:12)
-2024-07-26T19:13:49.891Z info: GET /profile.html
-2024-07-26T19:13:49.914Z info: GET /js/profile_data.js
-2024-07-26T19:13:49.914Z info: GET /js/userLogout.js
-2024-07-26T19:13:49.915Z info: GET /css/style.css
-2024-07-26T19:13:49.915Z info: GET /images/bell-icon.png
-2024-07-26T19:13:49.915Z info: GET /images/arrow.png
-2024-07-26T19:13:49.922Z info: GET /js/breadcrumps.js
-2024-07-26T19:13:49.923Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:13:49.930Z info: GET /images/insta_icon.png
-2024-07-26T19:13:49.940Z info: GET /images/logo.jpeg
-2024-07-26T19:13:49.953Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:13:49.955Z info: GET /api/user-items?userId=1
-2024-07-26T19:13:49.955Z info: GET /api/profile-graph-data
-2024-07-26T19:13:50.351Z info: Fetched items for user 1
-2024-07-26T19:13:50.355Z info: GET /images/view-icon.png
-2024-07-26T19:13:50.356Z info: GET /images/edit-icon.png
-2024-07-26T19:13:50.356Z info: GET /images/delete-icon.png
-2024-07-26T19:13:51.526Z info: GET /item.html?id=217
-2024-07-26T19:13:51.554Z info: GET /js/item_details.js
-2024-07-26T19:13:51.555Z info: GET /js/userLogout.js
-2024-07-26T19:13:51.555Z info: GET /css/style.css
-2024-07-26T19:13:51.555Z info: GET /images/bell-icon.png
-2024-07-26T19:13:51.555Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:13:51.563Z info: GET /images/insta_icon.png
-2024-07-26T19:13:51.563Z info: GET /js/breadcrumps.js
-2024-07-26T19:13:51.579Z info: GET /api/items/217
-2024-07-26T19:13:51.579Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:13:51.582Z info: GET /images/logo.jpeg
-2024-07-26T19:13:52.025Z info: Fetched item with id: 217
-2024-07-26T19:13:52.033Z info: GET /uploads/1722021197490-WhatsApp%20Image%202024-07-24%20at%2012.49.46.jpeg
-2024-07-26T19:13:53.299Z info: GET /images/view-icon.png
-2024-07-26T19:13:53.300Z info: GET /images/edit-icon.png
-2024-07-26T19:13:53.300Z info: GET /images/delete-icon.png
-2024-07-26T19:13:58.190Z info: GET /api/items/217
-2024-07-26T19:13:58.588Z info: Fetched item with id: 217
-2024-07-26T19:14:04.465Z info: PUT /api/items/217
-2024-07-26T19:14:05.310Z info: Item ID 217 updated
-2024-07-26T19:14:05.322Z info: GET /profile.html
-2024-07-26T19:14:05.340Z info: GET /js/profile_data.js
-2024-07-26T19:14:05.342Z info: GET /js/userLogout.js
-2024-07-26T19:14:05.343Z info: GET /css/style.css
-2024-07-26T19:14:05.343Z info: GET /images/bell-icon.png
-2024-07-26T19:14:05.345Z info: GET /images/arrow.png
-2024-07-26T19:14:05.349Z info: GET /js/breadcrumps.js
-2024-07-26T19:14:05.349Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:14:05.355Z info: GET /images/insta_icon.png
-2024-07-26T19:14:05.364Z info: GET /images/logo.jpeg
-2024-07-26T19:14:05.370Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:14:05.371Z info: GET /api/user-items?userId=1
-2024-07-26T19:14:05.371Z info: GET /api/profile-graph-data
-2024-07-26T19:14:05.818Z info: Fetched items for user 1
-2024-07-26T19:14:05.826Z info: GET /images/view-icon.png
-2024-07-26T19:14:05.827Z info: GET /images/edit-icon.png
-2024-07-26T19:14:05.827Z info: GET /images/delete-icon.png
-2024-07-26T19:14:06.958Z info: GET /item.html?id=217
-2024-07-26T19:14:06.979Z info: GET /js/item_details.js
-2024-07-26T19:14:06.980Z info: GET /js/userLogout.js
-2024-07-26T19:14:06.981Z info: GET /css/style.css
-2024-07-26T19:14:06.981Z info: GET /images/bell-icon.png
-2024-07-26T19:14:06.981Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:14:06.991Z info: GET /images/insta_icon.png
-2024-07-26T19:14:06.991Z info: GET /js/breadcrumps.js
-2024-07-26T19:14:07.002Z info: GET /images/logo.jpeg
-2024-07-26T19:14:07.010Z info: GET /api/items/217
-2024-07-26T19:14:07.010Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:14:07.406Z info: Fetched item with id: 217
-2024-07-26T19:14:07.415Z info: GET /uploads/1722021197490-WhatsApp%20Image%202024-07-24%20at%2012.49.46.jpeg
-2024-07-26T19:14:09.691Z info: GET /images/view-icon.png
-2024-07-26T19:14:09.692Z info: GET /images/edit-icon.png
-2024-07-26T19:14:09.692Z info: GET /images/delete-icon.png
-2024-07-26T19:14:11.978Z info: DELETE /api/items/217
-2024-07-26T19:14:12.826Z info: Image file deleted successfully
-2024-07-26T19:14:13.276Z info: GET /profile.html
-2024-07-26T19:14:13.295Z info: GET /js/profile_data.js
-2024-07-26T19:14:13.296Z info: GET /js/userLogout.js
-2024-07-26T19:14:13.297Z info: GET /css/style.css
-2024-07-26T19:14:13.297Z info: GET /images/bell-icon.png
-2024-07-26T19:14:13.298Z info: GET /images/arrow.png
-2024-07-26T19:14:13.306Z info: GET /js/breadcrumps.js
-2024-07-26T19:14:13.307Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:14:13.312Z info: GET /images/insta_icon.png
-2024-07-26T19:14:13.320Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:14:13.320Z info: GET /api/user-items?userId=1
-2024-07-26T19:14:13.321Z info: GET /api/profile-graph-data
-2024-07-26T19:14:13.325Z info: GET /images/logo.jpeg
-2024-07-26T19:14:13.765Z info: Fetched items for user 1
-2024-07-26T19:14:13.776Z info: GET /images/view-icon.png
-2024-07-26T19:14:13.777Z info: GET /images/edit-icon.png
-2024-07-26T19:14:13.778Z info: GET /images/delete-icon.png
-2024-07-26T19:14:16.683Z info: DELETE /api/items/216
-2024-07-26T19:14:17.527Z info: Image file deleted successfully
-2024-07-26T19:14:17.983Z info: GET /profile.html
-2024-07-26T19:14:18.000Z info: GET /js/profile_data.js
-2024-07-26T19:14:18.001Z info: GET /js/userLogout.js
-2024-07-26T19:14:18.001Z info: GET /css/style.css
-2024-07-26T19:14:18.002Z info: GET /images/bell-icon.png
-2024-07-26T19:14:18.002Z info: GET /images/arrow.png
-2024-07-26T19:14:18.010Z info: GET /js/breadcrumps.js
-2024-07-26T19:14:18.010Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:14:18.016Z info: GET /images/insta_icon.png
-2024-07-26T19:14:18.021Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:14:18.021Z info: GET /api/user-items?userId=1
-2024-07-26T19:14:18.022Z info: GET /api/profile-graph-data
-2024-07-26T19:14:18.026Z info: GET /images/logo.jpeg
-2024-07-26T19:14:18.421Z info: Fetched items for user 1
-2024-07-26T19:14:20.959Z info: GET /profile.html
-2024-07-26T19:14:20.980Z info: GET /js/profile_data.js
-2024-07-26T19:14:20.981Z info: GET /js/userLogout.js
-2024-07-26T19:14:20.981Z info: GET /css/style.css
-2024-07-26T19:14:20.981Z info: GET /images/bell-icon.png
-2024-07-26T19:14:20.981Z info: GET /images/arrow.png
-2024-07-26T19:14:20.988Z info: GET /js/breadcrumps.js
-2024-07-26T19:14:20.989Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:14:20.996Z info: GET /images/insta_icon.png
-2024-07-26T19:14:21.001Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:14:21.002Z info: GET /api/user-items?userId=1
-2024-07-26T19:14:21.002Z info: GET /api/profile-graph-data
-2024-07-26T19:14:21.007Z info: GET /images/logo.jpeg
-2024-07-26T19:14:21.446Z info: Fetched items for user 1
-2024-07-26T19:14:22.761Z info: GET /homePage.html
-2024-07-26T19:14:22.776Z info: GET /js/dashboard.js
-2024-07-26T19:14:22.777Z info: GET /js/userLogout.js
-2024-07-26T19:14:22.777Z info: GET /css/style.css
-2024-07-26T19:14:22.777Z info: GET /images/bell-icon.png
-2024-07-26T19:14:22.777Z info: GET /images/arrow.png
-2024-07-26T19:14:22.786Z info: GET /js/breadcrumps.js
-2024-07-26T19:14:22.787Z info: GET /images/Facebook_Icon.png
-2024-07-26T19:14:22.789Z info: GET /images/insta_icon.png
-2024-07-26T19:14:22.795Z info: GET /uploads/1721998673389-Webfirstsub.JPG
-2024-07-26T19:14:22.799Z info: GET /images/logo.jpeg
-2024-07-26T19:14:22.807Z info: GET /api/items
-2024-07-26T19:14:22.809Z info: GET /api/home-graph-data
-2024-07-26T19:14:23.206Z info: Fetched limited items
+2024-07-27T15:11:47.824Z info: GET /profile.html
+2024-07-27T15:11:47.848Z info: GET /js/profile_data.js
+2024-07-27T15:11:47.849Z info: GET /js/userLogout.js
+2024-07-27T15:11:47.852Z info: GET /css/style.css
+2024-07-27T15:11:47.853Z info: GET /images/bell-icon.png
+2024-07-27T15:11:47.854Z info: GET /images/arrow.png
+2024-07-27T15:11:47.864Z info: GET /js/breadcrumps.js
+2024-07-27T15:11:47.865Z info: GET /images/Facebook_Icon.png
+2024-07-27T15:11:47.899Z info: GET /images/insta_icon.png
+2024-07-27T15:11:47.915Z info: GET /uploads/1721998673389-Webfirstsub.JPG
+2024-07-27T15:11:47.916Z info: GET /api/user-items?userId=1&status=Lost
+2024-07-27T15:11:47.916Z info: GET /api/user-items?userId=1&status=Found
+2024-07-27T15:11:47.917Z info: GET /api/profile-graph-data
+2024-07-27T15:11:47.929Z info: GET /images/logo.jpeg
+2024-07-27T15:11:48.395Z info: Fetched items for user 1
+2024-07-27T15:11:48.801Z info: Fetched items for user 1
+2024-07-27T15:11:48.814Z info: GET /images/view-icon.png
+2024-07-27T15:11:48.815Z info: GET /images/edit-icon.png
+2024-07-27T15:11:48.815Z info: GET /images/delete-icon.png
+2024-07-27T15:11:50.544Z info: GET /api/items/25
+2024-07-27T15:11:54.490Z info: PUT /api/items/25
+2024-07-27T15:11:54.491Z info: Update request received for item ID: 25, Status: Lost, Table: tbl_123_lostitems
+2024-07-27T15:11:56.197Z error: Error updating item ID 25 in table: tbl_123_lostitems: ER_BAD_FIELD_ERROR: Unknown column 'foundDate' in 'field list' ER_BAD_FIELD_ERROR: Unknown column 'foundDate' in 'field list'
+2024-07-27T15:14:17.007Z info: GET /profile.html
+2024-07-27T15:14:17.036Z info: GET /js/profile_data.js
+2024-07-27T15:14:17.038Z info: GET /js/userLogout.js
+2024-07-27T15:14:17.039Z info: GET /css/style.css
+2024-07-27T15:14:17.039Z info: GET /images/arrow.png
+2024-07-27T15:14:17.042Z info: GET /images/bell-icon.png
+2024-07-27T15:14:17.063Z info: GET /js/breadcrumps.js
+2024-07-27T15:14:17.067Z info: GET /images/Facebook_Icon.png
+2024-07-27T15:14:17.069Z info: GET /images/insta_icon.png
+2024-07-27T15:14:17.081Z info: GET /images/logo.jpeg
+2024-07-27T15:14:17.132Z info: GET /uploads/1721998673389-Webfirstsub.JPG
+2024-07-27T15:14:17.133Z info: GET /api/user-items?userId=1&status=Lost
+2024-07-27T15:14:17.137Z info: GET /api/user-items?userId=1&status=Found
+2024-07-27T15:14:17.138Z info: GET /api/profile-graph-data
+2024-07-27T15:14:18.102Z info: Fetched items for user 1
+2024-07-27T15:14:18.103Z info: Fetched items for user 1
+2024-07-27T15:14:18.113Z info: GET /images/view-icon.png
+2024-07-27T15:14:18.114Z info: GET /images/edit-icon.png
+2024-07-27T15:14:18.115Z info: GET /images/delete-icon.png
+2024-07-27T15:14:19.333Z info: GET /api/items/25
+2024-07-27T15:14:22.437Z info: PUT /api/items/25
+2024-07-27T15:14:22.440Z info: Update request received for item ID: 25, Status: Lost, Table: tbl_123_lostitems
+2024-07-27T15:14:23.838Z info: Item ID 25 updated successfully in table: tbl_123_lostitems
+2024-07-27T15:14:23.849Z info: GET /profile.html
+2024-07-27T15:14:23.870Z info: GET /js/profile_data.js
+2024-07-27T15:14:23.872Z info: GET /js/userLogout.js
+2024-07-27T15:14:23.873Z info: GET /images/bell-icon.png
+2024-07-27T15:14:23.874Z info: GET /css/style.css
+2024-07-27T15:14:23.875Z info: GET /images/arrow.png
+2024-07-27T15:14:23.882Z info: GET /js/breadcrumps.js
+2024-07-27T15:14:23.883Z info: GET /images/Facebook_Icon.png
+2024-07-27T15:14:23.898Z info: GET /images/insta_icon.png
+2024-07-27T15:14:23.946Z info: GET /images/logo.jpeg
+2024-07-27T15:14:23.964Z info: GET /uploads/1721998673389-Webfirstsub.JPG
+2024-07-27T15:14:23.969Z info: GET /api/user-items?userId=1&status=Lost
+2024-07-27T15:14:23.970Z info: GET /api/user-items?userId=1&status=Found
+2024-07-27T15:14:23.971Z info: GET /api/profile-graph-data
+2024-07-27T15:14:24.670Z info: Fetched items for user 1
+2024-07-27T15:14:24.672Z info: Fetched items for user 1
+2024-07-27T15:14:24.680Z info: GET /images/view-icon.png
+2024-07-27T15:14:24.681Z info: GET /images/edit-icon.png
+2024-07-27T15:14:24.682Z info: GET /images/delete-icon.png
+2024-07-27T15:14:27.085Z info: GET /item.html
+2024-07-27T15:14:27.126Z info: GET /js/item_details.js
+2024-07-27T15:14:27.127Z info: GET /js/userLogout.js
+2024-07-27T15:14:27.127Z info: GET /css/style.css
+2024-07-27T15:14:27.127Z info: GET /images/bell-icon.png
+2024-07-27T15:14:27.128Z info: GET /images/Facebook_Icon.png
+2024-07-27T15:14:27.146Z info: GET /images/insta_icon.png
+2024-07-27T15:14:27.161Z info: GET /js/breadcrumps.js
+2024-07-27T15:14:27.172Z info: GET /api/lost-items/25
+2024-07-27T15:14:27.173Z info: GET /uploads/1721998673389-Webfirstsub.JPG
+2024-07-27T15:14:27.180Z info: GET /images/logo.jpeg
+2024-07-27T15:14:27.932Z info: Fetched lost item with id: 25
+2024-07-27T15:14:27.940Z info: GET /uploads/1722092101440-lost%20and%20found%20use%20case%20.png
+2024-07-27T15:14:36.025Z info: GET /profile.html
+2024-07-27T15:14:36.062Z info: GET /js/profile_data.js
+2024-07-27T15:14:36.065Z info: GET /js/userLogout.js
+2024-07-27T15:14:36.066Z info: GET /images/bell-icon.png
+2024-07-27T15:14:36.067Z info: GET /images/arrow.png
+2024-07-27T15:14:36.068Z info: GET /css/style.css
+2024-07-27T15:14:36.075Z info: GET /js/breadcrumps.js
+2024-07-27T15:14:36.076Z info: GET /images/Facebook_Icon.png
+2024-07-27T15:14:36.085Z info: GET /images/insta_icon.png
+2024-07-27T15:14:36.094Z info: GET /uploads/1721998673389-Webfirstsub.JPG
+2024-07-27T15:14:36.095Z info: GET /api/user-items?userId=1&status=Lost
+2024-07-27T15:14:36.096Z info: GET /api/user-items?userId=1&status=Found
+2024-07-27T15:14:36.097Z info: GET /api/profile-graph-data
+2024-07-27T15:14:36.100Z info: GET /images/logo.jpeg
+2024-07-27T15:14:36.785Z info: Fetched items for user 1
+2024-07-27T15:14:36.789Z info: Fetched items for user 1
+2024-07-27T15:14:36.805Z info: GET /images/view-icon.png
+2024-07-27T15:14:36.806Z info: GET /images/edit-icon.png
+2024-07-27T15:14:36.807Z info: GET /images/delete-icon.png
+2024-07-27T15:14:37.433Z info: GET /api/items/25
+2024-07-27T15:14:52.853Z info: PUT /api/items/25
+2024-07-27T15:14:52.853Z info: Update request received for item ID: 25, Status: Lost, Table: tbl_123_lostitems
+2024-07-27T15:14:54.196Z info: Item ID 25 updated successfully in table: tbl_123_lostitems
+2024-07-27T15:14:54.206Z info: GET /profile.html
+2024-07-27T15:14:54.230Z info: GET /js/profile_data.js
+2024-07-27T15:14:54.231Z info: GET /js/userLogout.js
+2024-07-27T15:14:54.232Z info: GET /css/style.css
+2024-07-27T15:14:54.233Z info: GET /images/bell-icon.png
+2024-07-27T15:14:54.233Z info: GET /images/arrow.png
+2024-07-27T15:14:54.240Z info: GET /js/breadcrumps.js
+2024-07-27T15:14:54.242Z info: GET /images/Facebook_Icon.png
+2024-07-27T15:14:54.248Z info: GET /images/insta_icon.png
+2024-07-27T15:14:54.254Z info: GET /uploads/1721998673389-Webfirstsub.JPG
+2024-07-27T15:14:54.255Z info: GET /api/user-items?userId=1&status=Lost
+2024-07-27T15:14:54.256Z info: GET /api/user-items?userId=1&status=Found
+2024-07-27T15:14:54.257Z info: GET /api/profile-graph-data
+2024-07-27T15:14:54.262Z info: GET /images/logo.jpeg
+2024-07-27T15:14:54.888Z info: Fetched items for user 1
+2024-07-27T15:14:54.890Z info: Fetched items for user 1
+2024-07-27T15:14:54.897Z info: GET /images/view-icon.png
+2024-07-27T15:14:54.898Z info: GET /images/edit-icon.png
+2024-07-27T15:14:54.898Z info: GET /images/delete-icon.png
+2024-07-27T15:14:55.734Z info: GET /item.html
+2024-07-27T15:14:55.768Z info: GET /js/item_details.js
+2024-07-27T15:14:55.769Z info: GET /js/userLogout.js
+2024-07-27T15:14:55.769Z info: GET /css/style.css
+2024-07-27T15:14:55.770Z info: GET /images/bell-icon.png
+2024-07-27T15:14:55.770Z info: GET /images/Facebook_Icon.png
+2024-07-27T15:14:55.783Z info: GET /images/insta_icon.png
+2024-07-27T15:14:55.785Z info: GET /js/breadcrumps.js
+2024-07-27T15:14:55.800Z info: GET /uploads/1721998673389-Webfirstsub.JPG
+2024-07-27T15:14:55.800Z info: GET /api/lost-items/25
+2024-07-27T15:14:55.806Z info: GET /images/logo.jpeg
+2024-07-27T15:14:56.235Z info: Fetched lost item with id: 25
+2024-07-27T15:14:56.240Z info: GET /uploads/1722092101440-lost%20and%20found%20use%20case%20.png
+2024-07-27T15:14:59.340Z info: GET /profile.html
+2024-07-27T15:14:59.371Z info: GET /js/profile_data.js
+2024-07-27T15:14:59.372Z info: GET /js/userLogout.js
+2024-07-27T15:14:59.373Z info: GET /css/style.css
+2024-07-27T15:14:59.373Z info: GET /images/bell-icon.png
+2024-07-27T15:14:59.374Z info: GET /images/arrow.png
+2024-07-27T15:14:59.391Z info: GET /js/breadcrumps.js
+2024-07-27T15:14:59.392Z info: GET /images/Facebook_Icon.png
+2024-07-27T15:14:59.398Z info: GET /images/insta_icon.png
+2024-07-27T15:14:59.407Z info: GET /uploads/1721998673389-Webfirstsub.JPG
+2024-07-27T15:14:59.408Z info: GET /api/user-items?userId=1&status=Lost
+2024-07-27T15:14:59.409Z info: GET /api/user-items?userId=1&status=Found
+2024-07-27T15:14:59.409Z info: GET /api/profile-graph-data
+2024-07-27T15:14:59.413Z info: GET /images/logo.jpeg
+2024-07-27T15:14:59.905Z info: Fetched items for user 1
+2024-07-27T15:14:59.907Z info: Fetched items for user 1
+2024-07-27T15:14:59.914Z info: GET /images/view-icon.png
+2024-07-27T15:14:59.915Z info: GET /images/edit-icon.png
+2024-07-27T15:14:59.915Z info: GET /images/delete-icon.png
+2024-07-27T15:15:01.631Z info: GET /api/items/25
+2024-07-27T15:15:08.675Z info: POST /api/upload
+2024-07-27T15:15:08.688Z info: Image uploaded: http://localhost:3000/uploads/1722093308683-Webfirstsub.JPG
+2024-07-27T15:15:08.696Z info: PUT /api/items/25
+2024-07-27T15:15:08.698Z info: Update request received for item ID: 25, Status: Lost, Table: tbl_123_lostitems
+2024-07-27T15:15:10.235Z info: Item ID 25 updated successfully in table: tbl_123_lostitems
+2024-07-27T15:15:10.243Z info: GET /profile.html
+2024-07-27T15:15:10.265Z info: GET /js/profile_data.js
+2024-07-27T15:15:10.266Z info: GET /js/userLogout.js
+2024-07-27T15:15:10.269Z info: GET /images/bell-icon.png
+2024-07-27T15:15:10.269Z info: GET /images/arrow.png
+2024-07-27T15:15:10.273Z info: GET /css/style.css
+2024-07-27T15:15:10.278Z info: GET /js/breadcrumps.js
+2024-07-27T15:15:10.283Z info: GET /images/Facebook_Icon.png
+2024-07-27T15:15:10.284Z info: GET /images/insta_icon.png
+2024-07-27T15:15:10.293Z info: GET /uploads/1721998673389-Webfirstsub.JPG
+2024-07-27T15:15:10.294Z info: GET /api/user-items?userId=1&status=Lost
+2024-07-27T15:15:10.294Z info: GET /api/user-items?userId=1&status=Found
+2024-07-27T15:15:10.295Z info: GET /api/profile-graph-data
+2024-07-27T15:15:10.302Z info: GET /images/logo.jpeg
+2024-07-27T15:15:10.917Z info: Fetched items for user 1
+2024-07-27T15:15:10.919Z info: Fetched items for user 1
+2024-07-27T15:15:10.924Z info: GET /images/view-icon.png
+2024-07-27T15:15:10.925Z info: GET /images/edit-icon.png
+2024-07-27T15:15:10.926Z info: GET /images/delete-icon.png
+2024-07-27T15:15:12.482Z info: GET /item.html
+2024-07-27T15:15:12.507Z info: GET /js/item_details.js
+2024-07-27T15:15:12.508Z info: GET /js/userLogout.js
+2024-07-27T15:15:12.508Z info: GET /css/style.css
+2024-07-27T15:15:12.509Z info: GET /images/bell-icon.png
+2024-07-27T15:15:12.509Z info: GET /images/Facebook_Icon.png
+2024-07-27T15:15:12.517Z info: GET /images/insta_icon.png
+2024-07-27T15:15:12.518Z info: GET /js/breadcrumps.js
+2024-07-27T15:15:12.531Z info: GET /uploads/1721998673389-Webfirstsub.JPG
+2024-07-27T15:15:12.532Z info: GET /api/lost-items/25
+2024-07-27T15:15:12.538Z info: GET /images/logo.jpeg
+2024-07-27T15:15:13.193Z info: Fetched lost item with id: 25
+2024-07-27T15:15:13.200Z info: GET /uploads/1722092101440-lost%20and%20found%20use%20case%20.png
+2024-07-27T15:15:16.166Z info: GET /profile.html
+2024-07-27T15:15:16.193Z info: GET /js/profile_data.js
+2024-07-27T15:15:16.193Z info: GET /js/userLogout.js
+2024-07-27T15:15:16.194Z info: GET /css/style.css
+2024-07-27T15:15:16.195Z info: GET /images/bell-icon.png
+2024-07-27T15:15:16.195Z info: GET /images/arrow.png
+2024-07-27T15:15:16.206Z info: GET /js/breadcrumps.js
+2024-07-27T15:15:16.207Z info: GET /images/Facebook_Icon.png
+2024-07-27T15:15:16.213Z info: GET /images/insta_icon.png
+2024-07-27T15:15:16.222Z info: GET /uploads/1721998673389-Webfirstsub.JPG
+2024-07-27T15:15:16.223Z info: GET /api/user-items?userId=1&status=Lost
+2024-07-27T15:15:16.224Z info: GET /api/user-items?userId=1&status=Found
+2024-07-27T15:15:16.224Z info: GET /api/profile-graph-data
+2024-07-27T15:15:16.229Z info: GET /images/logo.jpeg
+2024-07-27T15:15:16.991Z info: Fetched items for user 1
+2024-07-27T15:15:16.992Z info: Fetched items for user 1
+2024-07-27T15:15:16.998Z info: GET /images/view-icon.png
+2024-07-27T15:15:16.999Z info: GET /images/edit-icon.png
+2024-07-27T15:15:16.999Z info: GET /images/delete-icon.png
+2024-07-27T15:15:19.774Z info: GET /homePage.html
+2024-07-27T15:15:19.792Z info: GET /js/dashboard.js
+2024-07-27T15:15:19.793Z info: GET /js/userLogout.js
+2024-07-27T15:15:19.793Z info: GET /css/style.css
+2024-07-27T15:15:19.794Z info: GET /images/bell-icon.png
+2024-07-27T15:15:19.796Z info: GET /images/arrow.png
+2024-07-27T15:15:19.804Z info: GET /js/breadcrumps.js
+2024-07-27T15:15:19.805Z info: GET /images/Facebook_Icon.png
+2024-07-27T15:15:19.813Z info: GET /images/insta_icon.png
+2024-07-27T15:15:19.820Z info: GET /uploads/1721998673389-Webfirstsub.JPG
+2024-07-27T15:15:19.825Z info: GET /images/logo.jpeg
+2024-07-27T15:15:19.835Z info: GET /api/lost-items
+2024-07-27T15:15:19.838Z info: GET /api/found-items
+2024-07-27T15:15:19.839Z info: GET /api/home-graph-data
+2024-07-27T15:15:20.765Z info: Fetched lost items
+2024-07-27T15:15:20.767Z info: Fetched found items
+2024-07-27T15:15:20.834Z info: GET /report_found.html
+2024-07-27T15:15:20.864Z info: GET /js/report_found_item.js
+2024-07-27T15:15:20.865Z info: GET /js/userLogout.js
+2024-07-27T15:15:20.866Z info: GET /css/style.css
+2024-07-27T15:15:20.866Z info: GET /images/bell-icon.png
+2024-07-27T15:15:20.866Z info: GET /images/Facebook_Icon.png
+2024-07-27T15:15:20.878Z info: GET /images/insta_icon.png
+2024-07-27T15:15:20.879Z info: GET /js/claim_item.js
+2024-07-27T15:15:20.882Z info: GET /js/breadcrumps.js
+2024-07-27T15:15:20.893Z info: GET /uploads/1721998673389-Webfirstsub.JPG
+2024-07-27T15:15:20.898Z info: GET /images/logo.jpeg
+2024-07-27T15:15:44.024Z info: POST /api/upload
+2024-07-27T15:15:44.028Z info: Image uploaded: http://localhost:3000/uploads/1722093344026-lost and found use case .png
+2024-07-27T15:15:44.035Z info: POST /api/found-items
+2024-07-27T15:15:45.019Z info: Found item added with ID: 7
+2024-07-27T15:15:45.542Z info: GET /list_Item.html
+2024-07-27T15:15:45.570Z info: GET /js/filter.js
+2024-07-27T15:15:45.570Z info: GET /js/userLogout.js
+2024-07-27T15:15:45.571Z info: GET /css/style.css
+2024-07-27T15:15:45.571Z info: GET /images/bell-icon.png
+2024-07-27T15:15:45.573Z info: GET /images/search-icon.png
+2024-07-27T15:15:45.583Z info: GET /images/filter-icon.png
+2024-07-27T15:15:45.584Z info: GET /images/sortby-icon.png
+2024-07-27T15:15:45.590Z info: GET /images/Facebook_Icon.png
+2024-07-27T15:15:45.591Z info: GET /js/breadcrumps.js
+2024-07-27T15:15:45.591Z info: GET /images/insta_icon.png
+2024-07-27T15:15:45.599Z info: GET /api/found-items
+2024-07-27T15:15:45.600Z info: GET /api/lost-items
+2024-07-27T15:15:45.600Z info: GET /uploads/1721998673389-Webfirstsub.JPG
+2024-07-27T15:15:45.608Z info: GET /images/logo.jpeg
+2024-07-27T15:15:46.171Z info: Fetched lost items
+2024-07-27T15:15:46.173Z info: Fetched found items
+2024-07-27T15:15:46.179Z info: GET /uploads/1722092101440-lost%20and%20found%20use%20case%20.png
+2024-07-27T15:15:46.182Z info: GET /uploads/1722093344026-lost%20and%20found%20use%20case%20.png
+2024-07-27T15:15:48.850Z info: GET /item.html
+2024-07-27T15:15:48.877Z info: GET /js/item_details.js
+2024-07-27T15:15:48.877Z info: GET /js/userLogout.js
+2024-07-27T15:15:48.878Z info: GET /css/style.css
+2024-07-27T15:15:48.878Z info: GET /images/bell-icon.png
+2024-07-27T15:15:48.880Z info: GET /images/Facebook_Icon.png
+2024-07-27T15:15:48.888Z info: GET /images/insta_icon.png
+2024-07-27T15:15:48.889Z info: GET /js/breadcrumps.js
+2024-07-27T15:15:48.899Z info: GET /api/found-items/7
+2024-07-27T15:15:48.900Z info: GET /uploads/1721998673389-Webfirstsub.JPG
+2024-07-27T15:15:48.907Z info: GET /images/logo.jpeg
+2024-07-27T15:15:49.447Z info: Fetched found item with id: 7
+2024-07-27T15:15:49.455Z info: GET /uploads/1722093344026-lost%20and%20found%20use%20case%20.png
+2024-07-27T15:15:51.812Z info: GET /profile.html
+2024-07-27T15:15:51.841Z info: GET /js/profile_data.js
+2024-07-27T15:15:51.842Z info: GET /js/userLogout.js
+2024-07-27T15:15:51.845Z info: GET /css/style.css
+2024-07-27T15:15:51.846Z info: GET /images/bell-icon.png
+2024-07-27T15:15:51.846Z info: GET /images/arrow.png
+2024-07-27T15:15:51.853Z info: GET /js/breadcrumps.js
+2024-07-27T15:15:51.854Z info: GET /images/Facebook_Icon.png
+2024-07-27T15:15:51.860Z info: GET /images/insta_icon.png
+2024-07-27T15:15:51.867Z info: GET /uploads/1721998673389-Webfirstsub.JPG
+2024-07-27T15:15:51.867Z info: GET /api/user-items?userId=1&status=Lost
+2024-07-27T15:15:51.869Z info: GET /api/user-items?userId=1&status=Found
+2024-07-27T15:15:51.870Z info: GET /api/profile-graph-data
+2024-07-27T15:15:51.875Z info: GET /images/logo.jpeg
+2024-07-27T15:15:52.715Z info: Fetched items for user 1
+2024-07-27T15:15:52.716Z info: Fetched items for user 1
+2024-07-27T15:15:52.724Z info: GET /images/view-icon.png
+2024-07-27T15:15:52.725Z info: GET /images/edit-icon.png
+2024-07-27T15:15:52.725Z info: GET /images/delete-icon.png
+2024-07-27T15:15:53.791Z info: GET /api/items/7
+2024-07-27T15:16:08.883Z info: PUT /api/items/7
+2024-07-27T15:16:08.884Z info: Update request received for item ID: 7, Status: Found, Table: tbl_123_founditems
+2024-07-27T15:16:10.432Z info: Item ID 7 updated successfully in table: tbl_123_founditems
+2024-07-27T15:16:10.441Z info: GET /profile.html
+2024-07-27T15:16:10.467Z info: GET /js/profile_data.js
+2024-07-27T15:16:10.468Z info: GET /js/userLogout.js
+2024-07-27T15:16:10.469Z info: GET /images/bell-icon.png
+2024-07-27T15:16:10.469Z info: GET /css/style.css
+2024-07-27T15:16:10.471Z info: GET /images/arrow.png
+2024-07-27T15:16:10.475Z info: GET /js/breadcrumps.js
+2024-07-27T15:16:10.476Z info: GET /images/Facebook_Icon.png
+2024-07-27T15:16:10.484Z info: GET /images/insta_icon.png
+2024-07-27T15:16:10.491Z info: GET /uploads/1721998673389-Webfirstsub.JPG
+2024-07-27T15:16:10.492Z info: GET /api/user-items?userId=1&status=Lost
+2024-07-27T15:16:10.492Z info: GET /api/user-items?userId=1&status=Found
+2024-07-27T15:16:10.493Z info: GET /api/profile-graph-data
+2024-07-27T15:16:10.497Z info: GET /images/logo.jpeg
+2024-07-27T15:16:11.353Z info: Fetched items for user 1
+2024-07-27T15:16:11.355Z info: Fetched items for user 1
+2024-07-27T15:16:11.364Z info: GET /images/view-icon.png
+2024-07-27T15:16:11.365Z info: GET /images/edit-icon.png
+2024-07-27T15:16:11.365Z info: GET /images/delete-icon.png
+2024-07-27T15:16:12.470Z info: GET /item.html
+2024-07-27T15:16:12.498Z info: GET /js/item_details.js
+2024-07-27T15:16:12.498Z info: GET /js/userLogout.js
+2024-07-27T15:16:12.499Z info: GET /css/style.css
+2024-07-27T15:16:12.500Z info: GET /images/bell-icon.png
+2024-07-27T15:16:12.501Z info: GET /images/Facebook_Icon.png
+2024-07-27T15:16:12.510Z info: GET /images/insta_icon.png
+2024-07-27T15:16:12.511Z info: GET /js/breadcrumps.js
+2024-07-27T15:16:12.523Z info: GET /images/logo.jpeg
+2024-07-27T15:16:12.532Z info: GET /uploads/1721998673389-Webfirstsub.JPG
+2024-07-27T15:16:12.533Z info: GET /api/found-items/7
+2024-07-27T15:16:13.401Z info: Fetched found item with id: 7
+2024-07-27T15:16:13.410Z info: GET /uploads/1722093344026-lost%20and%20found%20use%20case%20.png
+2024-07-27T15:16:19.761Z info: GET /profile.html
+2024-07-27T15:16:19.785Z info: GET /js/profile_data.js
+2024-07-27T15:16:19.785Z info: GET /js/userLogout.js
+2024-07-27T15:16:19.788Z info: GET /images/bell-icon.png
+2024-07-27T15:16:19.788Z info: GET /css/style.css
+2024-07-27T15:16:19.790Z info: GET /images/arrow.png
+2024-07-27T15:16:19.800Z info: GET /js/breadcrumps.js
+2024-07-27T15:16:19.801Z info: GET /images/Facebook_Icon.png
+2024-07-27T15:16:19.808Z info: GET /images/insta_icon.png
+2024-07-27T15:16:19.815Z info: GET /uploads/1721998673389-Webfirstsub.JPG
+2024-07-27T15:16:19.816Z info: GET /api/user-items?userId=1&status=Lost
+2024-07-27T15:16:19.817Z info: GET /api/user-items?userId=1&status=Found
+2024-07-27T15:16:19.817Z info: GET /api/profile-graph-data
+2024-07-27T15:16:19.824Z info: GET /images/logo.jpeg
+2024-07-27T15:16:20.615Z info: Fetched items for user 1
+2024-07-27T15:16:20.617Z info: Fetched items for user 1
+2024-07-27T15:16:20.625Z info: GET /images/view-icon.png
+2024-07-27T15:16:20.626Z info: GET /images/edit-icon.png
+2024-07-27T15:16:20.627Z info: GET /images/delete-icon.png
+2024-07-27T15:16:24.824Z info: GET /api/items/7
+2024-07-27T15:16:40.687Z info: GET /homePage.html
+2024-07-27T15:16:40.714Z info: GET /js/dashboard.js
+2024-07-27T15:16:40.716Z info: GET /js/userLogout.js
+2024-07-27T15:16:40.716Z info: GET /images/arrow.png
+2024-07-27T15:16:40.717Z info: GET /css/style.css
+2024-07-27T15:16:40.717Z info: GET /images/bell-icon.png
+2024-07-27T15:16:40.726Z info: GET /js/breadcrumps.js
+2024-07-27T15:16:40.727Z info: GET /images/Facebook_Icon.png
+2024-07-27T15:16:40.729Z info: GET /images/insta_icon.png
+2024-07-27T15:16:40.736Z info: GET /uploads/1721998673389-Webfirstsub.JPG
+2024-07-27T15:16:40.744Z info: GET /images/logo.jpeg
+2024-07-27T15:16:40.753Z info: GET /api/lost-items
+2024-07-27T15:16:40.761Z info: GET /api/found-items
+2024-07-27T15:16:40.762Z info: GET /api/home-graph-data
+2024-07-27T15:16:41.371Z info: Fetched lost items
+2024-07-27T15:16:41.373Z info: Fetched found items
+2024-07-27T15:16:43.204Z info: GET /profile.html
+2024-07-27T15:16:43.227Z info: GET /js/profile_data.js
+2024-07-27T15:16:43.228Z info: GET /js/userLogout.js
+2024-07-27T15:16:43.228Z info: GET /css/style.css
+2024-07-27T15:16:43.228Z info: GET /images/bell-icon.png
+2024-07-27T15:16:43.230Z info: GET /images/arrow.png
+2024-07-27T15:16:43.242Z info: GET /js/breadcrumps.js
+2024-07-27T15:16:43.242Z info: GET /images/Facebook_Icon.png
+2024-07-27T15:16:43.245Z info: GET /images/insta_icon.png
+2024-07-27T15:16:43.253Z info: GET /uploads/1721998673389-Webfirstsub.JPG
+2024-07-27T15:16:43.254Z info: GET /api/user-items?userId=1&status=Lost
+2024-07-27T15:16:43.254Z info: GET /api/user-items?userId=1&status=Found
+2024-07-27T15:16:43.255Z info: GET /api/profile-graph-data
+2024-07-27T15:16:43.261Z info: GET /images/logo.jpeg
+2024-07-27T15:16:43.831Z info: Fetched items for user 1
+2024-07-27T15:16:43.833Z info: Fetched items for user 1
+2024-07-27T15:16:43.839Z info: GET /images/view-icon.png
+2024-07-27T15:16:43.839Z info: GET /images/edit-icon.png
+2024-07-27T15:16:43.840Z info: GET /images/delete-icon.png
+2024-07-27T15:16:45.723Z info: DELETE /api/items/25
+2024-07-27T15:16:47.193Z info: Image file deleted successfully
+2024-07-27T15:16:47.837Z info: GET /profile.html
+2024-07-27T15:16:47.865Z info: GET /js/profile_data.js
+2024-07-27T15:16:47.866Z info: GET /js/userLogout.js
+2024-07-27T15:16:47.867Z info: GET /css/style.css
+2024-07-27T15:16:47.868Z info: GET /images/bell-icon.png
+2024-07-27T15:16:47.868Z info: GET /images/arrow.png
+2024-07-27T15:16:47.876Z info: GET /js/breadcrumps.js
+2024-07-27T15:16:47.877Z info: GET /images/Facebook_Icon.png
+2024-07-27T15:16:47.886Z info: GET /images/insta_icon.png
+2024-07-27T15:16:47.893Z info: GET /uploads/1721998673389-Webfirstsub.JPG
+2024-07-27T15:16:47.894Z info: GET /api/user-items?userId=1&status=Lost
+2024-07-27T15:16:47.896Z info: GET /api/user-items?userId=1&status=Found
+2024-07-27T15:16:47.896Z info: GET /api/profile-graph-data
+2024-07-27T15:16:47.901Z info: GET /images/logo.jpeg
+2024-07-27T15:16:48.627Z info: Fetched items for user 1
+2024-07-27T15:16:48.628Z info: Fetched items for user 1
+2024-07-27T15:16:48.640Z info: GET /images/view-icon.png
+2024-07-27T15:16:48.641Z info: GET /images/edit-icon.png
+2024-07-27T15:16:48.642Z info: GET /images/delete-icon.png
+2024-07-27T15:16:50.329Z info: DELETE /api/items/7
+2024-07-27T15:16:52.108Z info: Image file deleted successfully
+2024-07-27T15:16:52.940Z info: GET /profile.html
+2024-07-27T15:16:52.963Z info: GET /js/profile_data.js
+2024-07-27T15:16:52.964Z info: GET /js/userLogout.js
+2024-07-27T15:16:52.964Z info: GET /css/style.css
+2024-07-27T15:16:52.966Z info: GET /images/bell-icon.png
+2024-07-27T15:16:52.966Z info: GET /images/arrow.png
+2024-07-27T15:16:52.977Z info: GET /js/breadcrumps.js
+2024-07-27T15:16:52.977Z info: GET /images/Facebook_Icon.png
+2024-07-27T15:16:52.981Z info: GET /images/insta_icon.png
+2024-07-27T15:16:52.989Z info: GET /uploads/1721998673389-Webfirstsub.JPG
+2024-07-27T15:16:52.990Z info: GET /api/user-items?userId=1&status=Lost
+2024-07-27T15:16:52.991Z info: GET /api/user-items?userId=1&status=Found
+2024-07-27T15:16:52.991Z info: GET /api/profile-graph-data
+2024-07-27T15:16:52.996Z info: GET /images/logo.jpeg
+2024-07-27T15:16:53.658Z info: Fetched items for user 1
+2024-07-27T15:16:53.660Z info: Fetched items for user 1
+2024-07-27T15:16:56.915Z info: GET /homePage.html
+2024-07-27T15:16:56.937Z info: GET /js/dashboard.js
+2024-07-27T15:16:56.937Z info: GET /js/userLogout.js
+2024-07-27T15:16:56.937Z info: GET /css/style.css
+2024-07-27T15:16:56.938Z info: GET /images/bell-icon.png
+2024-07-27T15:16:56.938Z info: GET /images/arrow.png
+2024-07-27T15:16:56.952Z info: GET /js/breadcrumps.js
+2024-07-27T15:16:56.953Z info: GET /images/Facebook_Icon.png
+2024-07-27T15:16:56.959Z info: GET /images/insta_icon.png
+2024-07-27T15:16:56.967Z info: GET /uploads/1721998673389-Webfirstsub.JPG
+2024-07-27T15:16:56.973Z info: GET /images/logo.jpeg
+2024-07-27T15:16:56.982Z info: GET /api/lost-items
+2024-07-27T15:16:56.988Z info: GET /api/found-items
+2024-07-27T15:16:56.989Z info: GET /api/home-graph-data
+2024-07-27T15:16:57.694Z info: Fetched lost items
+2024-07-27T15:16:57.696Z info: Fetched found items
+2024-07-27T15:17:00.698Z info: GET /homePage.html
+2024-07-27T15:17:00.725Z info: GET /js/dashboard.js
+2024-07-27T15:17:00.726Z info: GET /js/userLogout.js
+2024-07-27T15:17:00.726Z info: GET /css/style.css
+2024-07-27T15:17:00.727Z info: GET /images/bell-icon.png
+2024-07-27T15:17:00.730Z info: GET /images/arrow.png
+2024-07-27T15:17:00.737Z info: GET /js/breadcrumps.js
+2024-07-27T15:17:00.738Z info: GET /images/Facebook_Icon.png
+2024-07-27T15:17:00.744Z info: GET /images/insta_icon.png
+2024-07-27T15:17:00.755Z info: GET /images/logo.jpeg
+2024-07-27T15:17:00.765Z info: GET /uploads/1721998673389-Webfirstsub.JPG
+2024-07-27T15:17:00.776Z info: GET /api/lost-items
+2024-07-27T15:17:00.776Z info: GET /api/found-items
+2024-07-27T15:17:00.777Z info: GET /api/home-graph-data
+2024-07-27T15:17:01.216Z info: Fetched lost items
+2024-07-27T15:17:01.217Z info: Fetched found items
