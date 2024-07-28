@@ -48,7 +48,10 @@ router.post('/upload', upload.single('image'), (req, res) => {
 
 // Endpoint to fetch all items
 router.get('/all-items', (req, res) => {
-  pool.query('SELECT * FROM tbl_123_posts', (err, results) => {
+  const queryLostItems = 'SELECT *, "lost" as itemType FROM tbl_123_lostitems';
+  const queryFoundItems = 'SELECT *, "found" as itemType FROM tbl_123_founditems';
+
+  pool.query(`${queryLostItems} UNION ${queryFoundItems}`, (err, results) => {
     if (err) {
       logger.error(`Error fetching all items: ${err.message}`);
       return res.status(500).json({ error: 'Internal Server Error' });
@@ -60,7 +63,10 @@ router.get('/all-items', (req, res) => {
 
 // Endpoint to fetch limited items
 router.get('/items', (req, res) => {
-  pool.query('SELECT * FROM tbl_123_posts LIMIT 4', (err, results) => {
+  const queryLostItems = 'SELECT *, "lost" as itemType FROM tbl_123_lostitems LIMIT 4';
+  const queryFoundItems = 'SELECT *, "found" as itemType FROM tbl_123_founditems LIMIT 4';
+
+  pool.query(`${queryLostItems} UNION ${queryFoundItems}`, (err, results) => {
     if (err) {
       logger.error(`Error fetching limited items: ${err.message}`);
       return res.status(500).json({ error: 'Internal Server Error' });
@@ -76,7 +82,10 @@ router.get('/user-items', (req, res) => {
   if (!userId) {
     return res.status(400).json({ error: 'Missing userId query parameter' });
   }
-  pool.query('SELECT * FROM tbl_123_posts WHERE userId = ?', [userId], (err, results) => {
+  const queryLostItems = 'SELECT *, "lost" as itemType FROM tbl_123_lostitems WHERE userId = ?';
+  const queryFoundItems = 'SELECT *, "found" as itemType FROM tbl_123_founditems WHERE userId = ?';
+
+  pool.query(`${queryLostItems} UNION ${queryFoundItems}`, [userId, userId], (err, results) => {
     if (err) {
       logger.error(`Error fetching user items: ${err.message}`);
       return res.status(500).json({ error: 'Internal Server Error' });
@@ -89,7 +98,10 @@ router.get('/user-items', (req, res) => {
 // Endpoint to fetch a specific item by id
 router.get('/items/:id', (req, res) => {
   const itemId = req.params.id;
-  pool.query('SELECT * FROM tbl_123_posts WHERE id = ?', [itemId], (err, results) => {
+  const queryLostItems = 'SELECT *, "lost" as itemType FROM tbl_123_lostitems WHERE id = ?';
+  const queryFoundItems = 'SELECT *, "found" as itemType FROM tbl_123_founditems WHERE id = ?';
+
+  pool.query(`${queryLostItems} UNION ${queryFoundItems}`, [itemId, itemId], (err, results) => {
     if (err) {
       logger.error(`Error fetching item by id: ${err.message}`);
       return res.status(500).json({ error: 'Internal Server Error' });
@@ -107,8 +119,9 @@ router.get('/items/:id', (req, res) => {
 // Endpoint to add a new item
 router.post('/items', (req, res) => {
   const newItem = req.body;
+  const table = newItem.type === 'lost' ? 'tbl_123_lostitems' : 'tbl_123_founditems';
   logger.info(`Adding new item: ${JSON.stringify(newItem)}`);
-  pool.query('INSERT INTO tbl_123_posts SET ?', newItem, (err, result) => {
+  pool.query(`INSERT INTO ${table} SET ?`, newItem, (err, result) => {
     if (err) {
       logger.error(`Error adding new item: ${err.message}`);
       return res.status(500).json({ error: 'Internal Server Error' });
@@ -122,6 +135,7 @@ router.post('/items', (req, res) => {
 router.put('/items/:id', upload.single('editAddImage'), (req, res) => {
   const itemId = req.params.id;
   const updatedItem = req.body;
+  const table = updatedItem.type === 'lost' ? 'tbl_123_lostitems' : 'tbl_123_founditems';
 
   if (req.file) {
       updatedItem.imageUrl = `${baseUrl}/uploads/${req.file.filename}`;
@@ -132,7 +146,7 @@ router.put('/items/:id', upload.single('editAddImage'), (req, res) => {
   }
 
   logger.info(`Updating item ID ${itemId}: ${JSON.stringify(updatedItem)}`);
-  pool.query('UPDATE tbl_123_posts SET ? WHERE id = ?', [updatedItem, itemId], (err) => {
+  pool.query(`UPDATE ${table} SET ? WHERE id = ?`, [updatedItem, itemId], (err) => {
       if (err) {
           logger.error(`Error updating item ID ${itemId}: ${err.message}`);
           return res.status(500).json({ error: 'Internal Server Error' });
@@ -146,7 +160,10 @@ router.put('/items/:id', upload.single('editAddImage'), (req, res) => {
 router.delete('/items/:id', (req, res) => {
   const itemId = req.params.id;
   // First, fetch the item to get the image URL
-  pool.query('SELECT imageUrl FROM tbl_123_posts WHERE id = ?', [itemId], (err, results) => {
+  const queryLostItems = 'SELECT imageUrl FROM tbl_123_lostitems WHERE id = ?';
+  const queryFoundItems = 'SELECT imageUrl FROM tbl_123_founditems WHERE id = ?';
+
+  pool.query(`${queryLostItems} UNION ${queryFoundItems}`, [itemId, itemId], (err, results) => {
     if (err) {
       logger.error(`Error fetching item for deletion: ${err.message}`);
       return res.status(500).json({ error: 'Internal Server Error' });
@@ -157,9 +174,10 @@ router.delete('/items/:id', (req, res) => {
 
     const imageUrl = results[0].imageUrl;
     const imagePath = imageUrl ? path.join(__dirname, '../uploads', path.basename(imageUrl)) : null;
+    const table = results[0].itemType === 'lost' ? 'tbl_123_lostitems' : 'tbl_123_founditems';
 
     // Delete the item from the database
-    pool.query('DELETE FROM tbl_123_posts WHERE id = ?', [itemId], (err) => {
+    pool.query(`DELETE FROM ${table} WHERE id = ?`, [itemId], (err) => {
       if (err) {
         logger.error(`Error deleting item: ${err.message}`);
         return res.status(500).json({ error: 'Internal Server Error' });
@@ -207,9 +225,45 @@ router.post('/found-items', upload.none(), (req, res) => {
     userId: userId
   };
 
-  pool.query('INSERT INTO tbl_123_posts SET ?', newItem, (err, result) => {
+  pool.query('INSERT INTO tbl_123_founditems SET ?', newItem, (err, result) => {
     if (err) {
       logger.error(`Error reporting found item: ${err.message}`);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+    logger.info(`Item added with ID: ${result.insertId}`);
+    res.json({ id: result.insertId, ...newItem });
+  });
+});
+
+// Endpoint to report a lost item
+router.post('/lost-items', upload.none(), (req, res) => {
+  const { itemName, locationLost, lostDate, category, color, description, contactEmail, contactPhone, securityQuestion, securityAnswer, imageUrl, userId } = req.body;
+
+  console.log('Received Data:', req.body); // Debugging log
+
+  if (!itemName || !locationLost || !lostDate || !category || !color || !contactEmail || !contactPhone || !securityQuestion || !securityAnswer) {
+    return res.status(400).json({ error: 'All fields except description are required' });
+  }
+
+  const newItem = {
+    itemName,
+    locationLost,
+    lostDate,
+    category,
+    color,
+    description: description || null,
+    contactEmail,
+    contactPhone,
+    securityQuestion,
+    securityAnswer,
+    status: 'Lost',
+    imageUrl: imageUrl || null,
+    userId: userId
+  };
+
+  pool.query('INSERT INTO tbl_123_lostitems SET ?', newItem, (err, result) => {
+    if (err) {
+      logger.error(`Error reporting lost item: ${err.message}`);
       return res.status(500).json({ error: 'Internal Server Error' });
     }
     logger.info(`Item added with ID: ${result.insertId}`);
@@ -227,7 +281,10 @@ router.post('/claim-item/:id', (req, res) => {
     return res.status(400).json({ error: 'Answer is required' });
   }
 
-  pool.query('SELECT securityAnswer FROM tbl_123_posts WHERE id = ?', [itemId], (err, results) => {
+  const queryLostItems = 'SELECT securityAnswer FROM tbl_123_lostitems WHERE id = ?';
+  const queryFoundItems = 'SELECT securityAnswer FROM tbl_123_founditems WHERE id = ?';
+
+  pool.query(`${queryLostItems} UNION ${queryFoundItems}`, [itemId, itemId], (err, results) => {
     if (err) {
       logger.error(`Error fetching item for claim: ${err.message}`);
       return res.status(500).json({ error: 'Internal Server Error' });
@@ -247,61 +304,23 @@ router.post('/claim-item/:id', (req, res) => {
   });
 });
 
-// Endpoint to update claim status
+
+// ******************************************************************************************
+// Endpoint to update claim status for an item (for admin)
 router.put('/items/claim/:id', authenticateToken, authorizeAdmin, (req, res) => {
   const itemId = req.params.id;
   const { approved } = req.body; //true or false
   const claimStatus = approved ? 'Approved' : 'Rejected';
 
-  pool.query('UPDATE tbl_123_posts SET claimStatus = ? WHERE id = ?', [claimStatus, itemId], (err, result) => {
+  const table = claimStatus === 'Approved' ? 'tbl_123_founditems' : 'tbl_123_lostitems';
+
+  pool.query(`UPDATE ${table} SET claimStatus = ? WHERE id = ?`, [claimStatus, itemId], (err, result) => {
     if (err) {
       logger.error(`Error updating claim status for item ID ${itemId}: ${err.message}`);
       return res.status(500).json({ error: 'Internal Server Error' });
     }
     logger.info(`Claim status updated for item ID ${itemId} to ${claimStatus}`);
     res.json({ success: true, claimStatus });
-  });
-});
-
-router.get('/admin-dashboard', authenticateToken, authorizeAdmin, (req, res) => {
-  const dashboardData = {
-      totalApproved: 0,
-      totalRejected: 0,
-      totalPending: 0,
-      recentActivities: []
-  };
-
-  pool.query('SELECT COUNT(*) AS totalApproved FROM tbl_123_posts WHERE claimStatus = "Approved"', (err, results) => {
-      if (err) {
-          logger.error(`Error fetching total approved items: ${err.message}`);
-          return res.status(500).json({ error: 'Internal Server Error' });
-      }
-      dashboardData.totalApproved = results[0].totalApproved;
-
-      pool.query('SELECT COUNT(*) AS totalRejected FROM tbl_123_posts WHERE claimStatus = "Rejected"', (err, results) => {
-          if (err) {
-              logger.error(`Error fetching total rejected items: ${err.message}`);
-              return res.status(500).json({ error: 'Internal Server Error' });
-          }
-          dashboardData.totalRejected = results[0].totalRejected;
-
-          pool.query('SELECT COUNT(*) AS totalPending FROM tbl_123_posts WHERE claimStatus = "Pending"', (err, results) => {
-              if (err) {
-                  logger.error(`Error fetching total pending items: ${err.message}`);
-                  return res.status(500).json({ error: 'Internal Server Error' });
-              }
-              dashboardData.totalPending = results[0].totalPending;
-
-              pool.query('SELECT itemName, claimant, claimStatus AS action, timestamp FROM tbl_123_posts WHERE claimStatus IN ("Approved", "Rejected") ORDER BY timestamp DESC LIMIT 10', (err, results) => {
-                  if (err) {
-                      logger.error(`Error fetching recent activities: ${err.message}`);
-                      return res.status(500).json({ error: 'Internal Server Error' });
-                  }
-                  dashboardData.recentActivities = results;
-                  res.json(dashboardData);
-              });
-          });
-      });
   });
 });
 
