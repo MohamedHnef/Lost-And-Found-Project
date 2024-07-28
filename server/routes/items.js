@@ -44,6 +44,8 @@ router.post('/upload', upload.single('image'), (req, res) => {
   }
 });
 
+
+
 // Endpoint to fetch lost items
 router.get('/lost-items', (req, res) => {
   pool.query('SELECT * FROM tbl_123_lostitems', (err, results) => {
@@ -149,6 +151,7 @@ router.get('/user-items', (req, res) => {
   });
 });
 
+
 // Endpoint to fetch a specific item by id (used in edit functionality)
 router.get('/items/:id', (req, res) => {
   const itemId = req.params.id;
@@ -237,6 +240,7 @@ router.put('/items/:id', upload.single('image'), (req, res) => {
 
 
 
+
 // Endpoint to delete an item and its image
 router.delete('/items/:id', (req, res) => {
   const itemId = req.params.id;
@@ -284,42 +288,93 @@ router.post('/lost-items', upload.single('image'), (req, res) => {
   const { itemName, locationLost, lostDate, timeLost, category, color, description, contactEmail, contactPhone, userId } = req.body;
   const imageUrl = req.file ? `${baseUrl}/uploads/${req.file.filename}` : req.body.imageUrl;
 
-  if (!itemName || !locationLost || !lostDate || !timeLost || !category || !color || !contactEmail || !contactPhone) {
-    return res.status(400).json({ error: 'All fields except description are required' });
+  if (!itemName || !locationLost || !lostDate || !timeLost || !category || !color || !contactEmail || !contactPhone || !userId) {
+      return res.status(400).json({ error: 'All fields except description are required' });
   }
 
   const newItem = {
-    itemName,
-    locationLost,
-    lostDate,
-    timeLost,
-    category,
-    color,
-    description: description || null,
-    contactEmail,
-    contactPhone,
-    status: 'Lost',
-    imageUrl: imageUrl,
-    userId: userId
+      itemName,
+      locationLost,
+      lostDate,
+      timeLost,
+      category,
+      color,
+      description: description || null,
+      contactEmail,
+      contactPhone,
+      status: 'Lost',
+      imageUrl: imageUrl,
+      userId: userId
   };
 
   pool.query('INSERT INTO tbl_123_lostitems SET ?', newItem, (err, result) => {
-    if (err) {
-      logger.error(`Error reporting lost item: ${err.message}`);
-      return res.status(500).json({ error: 'Internal Server Error' });
-    }
-    newItem.id = result.insertId;
-    logger.info(`Lost item added with ID: ${result.insertId}`);
-    res.json(newItem);
+      if (err) {
+          logger.error(`Error reporting lost item: ${err.message}`);
+          return res.status(500).json({ error: 'Internal Server Error' });
+      }
+      newItem.id = result.insertId;
+      logger.info(`Lost item added with ID: ${result.insertId}`);
+      res.json(newItem);
   });
 });
+
+// Function to match found items with lost items and create notifications
+const matchFoundItem = async (foundItem) => {
+  try {
+      const query = `
+          SELECT * FROM tbl_123_lostitems
+          WHERE itemName = ? AND category = ? AND color = ? AND status = 'Lost'
+      `;
+      const values = [foundItem.itemName, foundItem.category, foundItem.color];
+
+      const results = await new Promise((resolve, reject) => {
+          pool.query(query, values, (err, results) => {
+              if (err) {
+                  logger.error(`Error executing query: ${err.message}`);
+                  return reject(err);
+              }
+              resolve(results);
+          });
+      });
+
+      logger.info(`Results from matchFoundItem: ${JSON.stringify(results)}`);
+
+      if (Array.isArray(results) && results.length > 0) {
+          for (const lostItem of results) {
+              const message = `Your lost item "${lostItem.itemName}" might have been found. Check the found items list.`;
+              const notification = {
+                  userId: lostItem.userId,
+                  message: message,
+              };
+              logger.info(`Creating notification for userId: ${lostItem.userId}`);
+              await new Promise((resolve, reject) => {
+                  pool.query('INSERT INTO tbl_123_notifications SET ?', notification, (err) => {
+                      if (err) {
+                          logger.error(`Error inserting notification: ${err.message}`);
+                          return reject(err);
+                      }
+                      resolve();
+                  });
+              });
+              logger.info(`Notification sent to user ${lostItem.userId} for lost item ${lostItem.id}`);
+          }
+      } else {
+          logger.info('No matching lost items found.');
+      }
+
+      return results;
+  } catch (err) {
+      logger.error(`Error matching found item: ${err.message}`);
+      throw new Error('Error matching found item');
+  }
+};
 
 // Endpoint to report a found item
 router.post('/found-items', upload.single('image'), (req, res) => {
   const { itemName, locationFound, foundDate, foundTime, category, color, description, contactEmail, contactPhone, securityQuestion, securityAnswer, userId } = req.body;
   const imageUrl = req.file ? `${baseUrl}/uploads/${req.file.filename}` : req.body.imageUrl;
 
-  if (!itemName || !locationFound || !foundDate || !foundTime || !category || !color || !contactEmail || !contactPhone || !securityQuestion || !securityAnswer) {
+  if (!itemName || !locationFound || !foundDate || !foundTime || !category || !color || !contactEmail || !contactPhone || !securityQuestion || !securityAnswer || !userId) {
     return res.status(400).json({ error: 'All fields except description are required' });
   }
 
@@ -350,42 +405,36 @@ router.post('/found-items', upload.single('image'), (req, res) => {
     res.json(newItem);
   });
 });
-
-// Endpoint to claim an item with security question verification
-router.post('/claim-item/:id', (req, res) => {
+router.post('/claim-item/:id', async (req, res) => {
   const itemId = req.params.id;
   const { answer } = req.body;
 
-  // Validate input
   if (!answer) {
-    return res.status(400).json({ error: 'Answer is required' });
+      return res.status(400).json({ error: 'Answer is required' });
   }
 
-  const lostItemQuery = 'SELECT securityAnswer FROM tbl_123_lostitems WHERE id = ?';
-  const foundItemQuery = 'SELECT securityAnswer FROM tbl_123_founditems WHERE id = ?';
+  try {
+      const [lostItems, foundItems] = await Promise.all([
+          pool.query('SELECT securityAnswer FROM tbl_123_lostitems WHERE id = ?', [itemId]),
+          pool.query('SELECT securityAnswer FROM tbl_123_founditems WHERE id = ?', [itemId])
+      ]);
 
-  Promise.all([
-    new Promise((resolve, reject) => pool.query(lostItemQuery, [itemId], (err, results) => err ? reject(err) : resolve(results))),
-    new Promise((resolve, reject) => pool.query(foundItemQuery, [itemId], (err, results) => err ? reject(err) : resolve(results)))
-  ]).then(([lostItemResults, foundItemResults]) => {
-    const item = lostItemResults[0] || foundItemResults[0];
+      const item = lostItems[0] || foundItems[0];
+      if (!item) {
+          return res.status(404).json({ error: 'Item not found' });
+      }
 
-    if (!item) {
-      return res.status(404).json({ error: 'Item not found' });
-    }
-
-    const correctAnswer = item.securityAnswer;
-    if (answer === correctAnswer) {
-      logger.info(`Item with ID: ${itemId} claimed successfully`);
-      res.json({ success: true });
-    } else {
-      logger.warn(`Incorrect answer for item with ID: ${itemId}`);
-      res.status(401).json({ error: 'Incorrect answer' });
-    }
-  }).catch(err => {
-    logger.error(`Error fetching item for claim: ${err.message}`);
-    res.status(500).json({ error: 'Internal Server Error' });
-  });
+      if (answer === item.securityAnswer) {
+          logger.info(`Item with ID: ${itemId} claimed successfully`);
+          res.json({ success: true });
+      } else {
+          logger.warn(`Incorrect answer for item with ID: ${itemId}`);
+          res.status(401).json({ error: 'Incorrect answer' });
+      }
+  } catch (err) {
+      logger.error(`Error fetching item for claim: ${err.message}`);
+      res.status(500).json({ error: 'Internal Server Error' });
+  }
 });
 
 module.exports = router;

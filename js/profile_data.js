@@ -1,7 +1,7 @@
 const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
 
 document.addEventListener("DOMContentLoaded", () => {
-    const userId = 1; 
+    const userId = localStorage.getItem('userId'); // Fetch user ID from localStorage
     if (!userId) {
         console.error('User ID is missing');
         return;
@@ -117,7 +117,6 @@ const populateEditForm = (item, status) => {
     document.getElementById('editContactEmail').value = item.contactEmail || '';
     document.getElementById('editContactPhone').value = item.contactPhone || '';
 };
-
 
 const confirmDeleteItem = (id, status) => {
     showNotification('Are you sure you want to delete this item?', {
@@ -250,7 +249,6 @@ const submitUpdate = (itemId, updateData, status) => {
         showNotification(`Failed to update item: ${error.message}`);
     });
 };
-
 
 const initializeNotification = () => {
     const notification = document.getElementById('notification');

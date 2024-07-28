@@ -1,81 +1,83 @@
-
-function toggleView(view) {
-    const loginForm = document.getElementById('loginForm');
-    const registerForm = document.getElementById('registerForm');
-    const loginTab = document.getElementById('loginTab');
-    const registerTab = document.getElementById('registerTab');
-
-    if (view === 'login') {
-        loginForm.style.display = 'block';
-        registerForm.style.display = 'none';
-        loginTab.classList.add('active');
-        registerTab.classList.remove('active');
-    } else {
-        loginForm.style.display = 'none';
-        registerForm.style.display = 'block';
-        loginTab.classList.remove('active');
-        registerTab.classList.add('active');
-    }
-}
-
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('registerForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
+    const loginForm = document.getElementById('loginForm');
+    if (loginForm) {
+        loginForm.addEventListener('submit', handleLoginFormSubmit);
+    }
 
-        const formData = new FormData(e.target);
-        const data = Object.fromEntries(formData.entries());
-        const profilePicInput = document.getElementById('profilePic');
+    const registerForm = document.getElementById('registerForm');
+    if (registerForm) {
+        registerForm.addEventListener('submit', handleRegisterFormSubmit);
+    }
+});
 
-        // Prepare a FormData object to send to the server
-        const fullFormData = new FormData();
-        fullFormData.append('username', data.username);
-        fullFormData.append('email', data.email);
-        fullFormData.append('phone', data.phone);
-        fullFormData.append('password', data.password);
+function handleLoginFormSubmit(event) {
+    event.preventDefault();
 
-        // Append profile picture if provided
-        if (profilePicInput.files.length > 0) {
-            fullFormData.append('profilePic', profilePicInput.files[0]);
-        }
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
 
-        const response = await fetch('/api/register', {
-            method: 'POST',
-            body: fullFormData
-        });
-
-        const result = await response.json();
-        if (response.ok) {
-            alert('Registration successful');
-            window.location.href = 'index.html';
-        } else {
-            alert(`Error: ${result.error}`);
-        }
-    });
-
-    document.getElementById('loginForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        const formData = new FormData(e.target);
-        const data = Object.fromEntries(formData.entries());
-
-        const response = await fetch('/api/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
-
-        const result = await response.json();
-        console.log(`Login Result: ${JSON.stringify(result)}`);
-        if (response.ok) {
-            localStorage.setItem('token', result.token);
-            localStorage.setItem('username', result.user.username);
-            localStorage.setItem('profile_pic', result.user.profilePicture);
-            // alert(`Login successful. Profile Picture URL: ${result.user.profilePicture}`);
+    fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.token) {
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('userId', data.user.id); // Store userId
             window.location.href = 'homePage.html';
         } else {
-            alert(`Error: ${result.error}`);
+            console.error('Login failed:', data.error);
+            showNotification('Login failed. Please check your username and password.');
         }
+    })
+    .catch(error => {
+        console.error('Error during login:', error);
+        showNotification('An error occurred during login. Please try again.');
     });
-});
+}
+
+
+function handleRegisterFormSubmit(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+
+    fetch('/api/register', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.id) {
+            showNotification('Registration successful! Please log in.', {
+                ok: () => window.location.href = 'index.html'
+            });
+        } else {
+            console.error('Registration failed:', data.error);
+            showNotification('Registration failed. Please try again.');
+        }
+    })
+    .catch(error => {
+        console.error('Error during registration:', error);
+        showNotification('An error occurred during registration. Please try again.');
+    });
+}
+
+function showNotification(message, actions = { ok: null }) {
+    const notification = document.getElementById('notification');
+    const notificationMessage = document.getElementById('notification-message');
+    const notificationButton = document.getElementById('notification-button');
+
+    notificationMessage.textContent = message;
+    notificationButton.style.display = 'block';
+
+    if (actions.ok) {
+        notificationButton.onclick = actions.ok;
+    } else {
+        notificationButton.onclick = () => notification.style.display = 'none';
+    }
+
+    notification.style.display = 'flex';
+}

@@ -7,21 +7,21 @@ const logger = require('./logger');
 const authRoutes = require('./routes/auth');
 const itemRoutes = require('./routes/items');
 const graphsRoutes = require('./routes/graphs');
-
-// const protectedRoutes = require('./routes/protected');
+const notificationsRouter = require('./routes/notifications');
+const protectedRoutes = require('./routes/protected');
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 const allowedOrigins = [
-    'https://lost-and-found-project.onrender.com',
-    'http://localhost:3000',
-    'http://127.0.0.1:5501',
-    'http://se.shenkar.ac.il'
+    process.env.ALLOWED_ORIGIN_1 || 'https://lost-and-found-project.onrender.com',
+    process.env.ALLOWED_ORIGIN_2 || 'http://localhost:3000',
+    process.env.ALLOWED_ORIGIN_3 || 'http://127.0.0.1:5501',
+    process.env.ALLOWED_ORIGIN_4 || 'http://se.shenkar.ac.il'
 ];
 
 app.use(cors({
-    origin: function(origin, callback) {
+    origin: function (origin, callback) {
         if (!origin) return callback(null, true);
         if (allowedOrigins.indexOf(origin) === -1) {
             const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
@@ -47,24 +47,32 @@ if (!fs.existsSync(uploadsDir)) {
 }
 app.use('/uploads', express.static(uploadsDir));
 
+// Use routes
 app.use('/api', authRoutes);
 app.use('/api', itemRoutes);
 app.use('/api', graphsRoutes);
+app.use('/api/notifications', notificationsRouter);
+app.use('/api', protectedRoutes);
 
 app.get('/', (req, res) => {
     res.json({ message: 'Welcome to the Lost and Found API' });
 });
 
+// Handle 404 errors
+app.use((req, res, next) => {
+    res.status(404).json({ error: 'Not Found' });
+});
 
-
+// Error-handling middleware
 app.use((err, req, res, next) => {
     logger.error(err.stack);
     res.status(500).json({ error: 'Internal Server Error' });
 });
 
 app.listen(port, () => {
-    console.log(`Server is running on ${process.env.NODE_ENV === 'production' ? 'https://lost-and-found-project.onrender.com' : `http://localhost:${port}`}`);
-    logger.info(`Server is running on ${process.env.NODE_ENV === 'production' ? 'https://lost-and-found-project.onrender.com' : `http://localhost:${port}`}`);
+    const url = process.env.NODE_ENV === 'production' ? 'https://lost-and-found-project.onrender.com' : `http://localhost:${port}`;
+    console.log(`Server is running on ${url}`);
+    logger.info(`Server is running on ${url}`);
 });
 
 module.exports = app;

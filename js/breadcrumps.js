@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", initBreadcrumbs);
 
 function initBreadcrumbs() {

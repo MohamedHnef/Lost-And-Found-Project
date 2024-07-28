@@ -9,7 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
 let isSubmitting = false; // Add a flag to prevent duplicate submissions
 
 function getItemDataFromForm(formData, imageUrl) {
-    const userId = 1; // Replace with actual user ID logic
+    const userId = localStorage.getItem('userId'); // Get the actual user ID from localStorage
+    if (!userId) {
+        alert('User ID is missing. Please log in again.');
+        throw new Error('User ID is missing.');
+    }
     return {
         itemName: formData.get('itemName'),
         locationLost: formData.get('locationLost'),
@@ -22,7 +26,7 @@ function getItemDataFromForm(formData, imageUrl) {
         contactPhone: formData.get('contactPhone'),
         status: 'Lost',
         imageUrl: imageUrl,
-        userId: userId
+        userId: userId // Use the actual user ID
     };
 }
 

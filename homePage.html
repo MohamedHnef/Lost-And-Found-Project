@@ -11,7 +11,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/dashboard.js" defer></script>
     <script src="js/breadcrumps.js" defer></script>
-    <script src="js/userLogout.js"></script>
+    <script src="js/userLogout.js" defer></script>
+    <script src="js/sendingNotifications.js" defer></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -42,8 +43,14 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Add Feedback</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><img src="images/bell-icon.png" alt=""></a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="images/bell-icon.png" alt="">
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationDropdown" id="notificationList">
+                                <li class="dropdown-header">Notifications</li>
+                                <!-- Notifications will be injected here -->
+                            </ul>
                         </li>
                         <li class="nav-item dropdown profile-dropdown">
                             <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -87,7 +94,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link side" href="#">
+                        <a class="nav-link side" href="report_found.html">
                             <i class="bi bi-bell"></i> Report Found
                         </a>
                     </li>
@@ -116,7 +123,7 @@
         </div>
     </header>
     <main class="wrapper">
-    <section class="main-content">
+        <section class="main-content">
             <nav class="breadcrumb" aria-label="breadcrumb">
                 <ol class="breadcrumb" id="breadcrumb"></ol>
             </nav>

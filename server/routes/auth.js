@@ -14,7 +14,6 @@ const baseUrl = isProduction ? 'https://lost-and-found-project.onrender.com' : '
 const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret';
 const DEFAULT_PROFILE_PIC = `${baseUrl}/uploads/default-profile-pic.png`; // Path to your default profile picture
 
-
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
       const uploadPath = path.join(__dirname, '../uploads');
@@ -26,8 +25,9 @@ const storage = multer.diskStorage({
     filename: function (req, file, cb) {
       cb(null, Date.now() + '-' + file.originalname);
     }
-  });
-  const upload = multer({ storage: storage });
+});
+const upload = multer({ storage: storage });
+
 // Register a new user
 router.post('/register', upload.single('profilePic'), async (req, res) => {
     try {
@@ -85,8 +85,9 @@ router.post('/login', (req, res) => {
             message: 'Login successful',
             token,
             user: {
+                id: user.id, // Add this line
                 username: user.username,
-                profilePicture: user.profile_pic  
+                profilePicture: user.profile_pic
             }
         });
     });
