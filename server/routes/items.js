@@ -426,35 +426,44 @@ router.post('/claim-item/:id', async (req, res) => {
   }
 
   try {
-      const [lostItems, foundItems] = await Promise.all([
-          pool.query('SELECT securityAnswer FROM tbl_123_lostitems WHERE id = ?', [itemId]),
-          pool.query('SELECT securityAnswer FROM tbl_123_founditems WHERE id = ?', [itemId])
-      ]);
+      const query = `
+          SELECT securityAnswer, status FROM tbl_123_${req.query.status === 'Found' ? 'founditems' : 'lostitems'}
+          WHERE id = ?
+      `;
+      const [item] = await new Promise((resolve, reject) => {
+          pool.query(query, [itemId], (err, results) => {
+              if (err) {
+                  return reject(err);
+              }
+              resolve(results);
+          });
+      });
 
-      const item = lostItems[0] || foundItems[0];
       if (!item) {
           return res.status(404).json({ error: 'Item not found' });
       }
 
       if (answer === item.securityAnswer) {
-          logger.info(`Item with ID: ${itemId} claimed successfully`);
+          const updateQuery = `
+              UPDATE tbl_123_${req.query.status === 'Found' ? 'founditems' : 'lostitems'}
+              SET status = 'Claimed'
+              WHERE id = ?
+          `;
+          await new Promise((resolve, reject) => {
+              pool.query(updateQuery, [itemId], (err) => {
+                  if (err) {
+                      return reject(err);
+                  }
+                  resolve();
+              });
+          });
+
           res.json({ success: true });
       } else {
-          logger.warn(`Incorrect answer for item with ID: ${itemId}`);
           res.status(401).json({ error: 'Incorrect answer' });
       }
   } catch (err) {
-      logger.error(`Error fetching item for claim: ${err.message}`);
       res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
-router.post('/test-match', async (req, res) => {
-  const foundItem = req.body;
-  try {
-      const results = await matchFoundItem(foundItem);
-      res.json({ success: true, results });
-  } catch (error) {
-      res.status(500).json({ success: false, error: error.message });
   }
 });
 

@@ -143,3 +143,312 @@
 2024-07-28T18:55:15.718Z info: Fetched found items
 2024-07-28T18:55:15.720Z info: Fetched lost items
 2024-07-28T18:55:16.024Z info: Marked notifications as read: 21
+2024-07-28T19:08:48.125Z info: Server is running on http://localhost:3000
+2024-07-28T19:08:49.785Z info: GET /
+2024-07-28T19:08:49.816Z info: GET /css/style.css
+2024-07-28T19:08:49.817Z info: GET /js/userAuth.js
+2024-07-28T19:08:51.008Z info: POST /api/login
+2024-07-28T19:08:51.676Z info: User logged in: aboalmrwan
+2024-07-28T19:08:51.697Z info: GET /homePage.html
+2024-07-28T19:08:51.721Z info: GET /css/style.css
+2024-07-28T19:08:51.721Z info: GET /images/bell-icon.png
+2024-07-28T19:08:51.722Z info: GET /images/arrow.png
+2024-07-28T19:08:51.730Z info: GET /js/dashboard.js
+2024-07-28T19:08:51.737Z info: GET /js/breadcrumps.js
+2024-07-28T19:08:51.739Z info: GET /js/userLogout.js
+2024-07-28T19:08:51.740Z info: GET /js/sendingNotifications.js
+2024-07-28T19:08:51.741Z info: GET /images/Facebook_Icon.png
+2024-07-28T19:08:51.742Z info: GET /images/insta_icon.png
+2024-07-28T19:08:51.751Z info: GET /images/logo.jpeg
+2024-07-28T19:08:51.787Z info: GET /api/notifications/11
+2024-07-28T19:08:51.789Z info: GET /api/lost-items
+2024-07-28T19:08:51.790Z info: GET /api/found-items
+2024-07-28T19:08:51.790Z info: GET /api/home-graph-data
+2024-07-28T19:08:52.534Z info: Fetched notifications for user 11
+2024-07-28T19:08:52.539Z info: PUT /api/notifications/mark-read
+2024-07-28T19:08:52.973Z info: Fetched found items
+2024-07-28T19:08:53.115Z info: Fetched lost items
+2024-07-28T19:08:53.116Z info: Marked notifications as read: 21
+2024-07-28T19:08:54.180Z info: GET /item.html?id=58&status=Found
+2024-07-28T19:08:54.203Z info: GET /js/item_details.js
+2024-07-28T19:08:54.204Z info: GET /js/userLogout.js
+2024-07-28T19:08:54.205Z info: GET /css/style.css
+2024-07-28T19:08:54.206Z info: GET /images/bell-icon.png
+2024-07-28T19:08:54.206Z info: GET /images/Facebook_Icon.png
+2024-07-28T19:08:54.214Z info: GET /images/insta_icon.png
+2024-07-28T19:08:54.216Z info: GET /js/breadcrumps.js
+2024-07-28T19:08:54.225Z info: GET /api/found-items/58
+2024-07-28T19:08:54.231Z info: GET /images/logo.jpeg
+2024-07-28T19:08:54.677Z info: Fetched found item with id: 58
+2024-07-28T19:08:54.684Z info: GET /uploads/1722191236765-lost%20and%20found%20use%20case%20.png
+2024-07-28T19:08:55.661Z info: GET /api/items/58?status=Found
+2024-07-28T19:08:59.985Z info: POST /api/claim-item/58
+2024-07-28T19:09:05.525Z info: GET /css/style.css
+2024-07-28T19:09:14.206Z info: GET /
+2024-07-28T19:09:14.230Z info: GET /css/style.css
+2024-07-28T19:09:14.231Z info: GET /js/userAuth.js
+2024-07-28T19:09:15.295Z info: POST /api/login
+2024-07-28T19:09:15.983Z info: User logged in: aboalmrwan
+2024-07-28T19:09:15.998Z info: GET /homePage.html
+2024-07-28T19:09:16.020Z info: GET /css/style.css
+2024-07-28T19:09:16.021Z info: GET /images/bell-icon.png
+2024-07-28T19:09:16.022Z info: GET /images/arrow.png
+2024-07-28T19:09:16.038Z info: GET /js/dashboard.js
+2024-07-28T19:09:16.041Z info: GET /js/breadcrumps.js
+2024-07-28T19:09:16.047Z info: GET /js/userLogout.js
+2024-07-28T19:09:16.047Z info: GET /js/sendingNotifications.js
+2024-07-28T19:09:16.048Z info: GET /images/Facebook_Icon.png
+2024-07-28T19:09:16.048Z info: GET /images/insta_icon.png
+2024-07-28T19:09:16.059Z info: GET /images/logo.jpeg
+2024-07-28T19:09:16.094Z info: GET /api/notifications/11
+2024-07-28T19:09:16.095Z info: GET /api/lost-items
+2024-07-28T19:09:16.096Z info: GET /api/found-items
+2024-07-28T19:09:16.096Z info: GET /api/home-graph-data
+2024-07-28T19:09:16.603Z info: Fetched lost items
+2024-07-28T19:09:16.605Z info: Fetched found items
+2024-07-28T19:09:16.606Z info: Fetched notifications for user 11
+2024-07-28T19:09:16.616Z info: PUT /api/notifications/mark-read
+2024-07-28T19:09:17.075Z info: Marked notifications as read: 21
+2024-07-28T19:09:18.619Z info: GET /item.html?id=58&status=Found
+2024-07-28T19:09:18.639Z info: GET /js/item_details.js
+2024-07-28T19:09:18.640Z info: GET /js/userLogout.js
+2024-07-28T19:09:18.641Z info: GET /css/style.css
+2024-07-28T19:09:18.641Z info: GET /images/bell-icon.png
+2024-07-28T19:09:18.643Z info: GET /images/Facebook_Icon.png
+2024-07-28T19:09:18.654Z info: GET /images/insta_icon.png
+2024-07-28T19:09:18.655Z info: GET /js/breadcrumps.js
+2024-07-28T19:09:18.664Z info: GET /api/found-items/58
+2024-07-28T19:09:18.668Z info: GET /images/logo.jpeg
+2024-07-28T19:09:19.150Z info: Fetched found item with id: 58
+2024-07-28T19:09:19.155Z info: GET /uploads/1722191236765-lost%20and%20found%20use%20case%20.png
+2024-07-28T19:09:20.086Z info: GET /api/items/58?status=Found
+2024-07-28T19:09:21.366Z info: GET /css/style.css
+2024-07-28T19:10:33.322Z info: GET /item.html?id=58&status=Found
+2024-07-28T19:10:33.340Z info: GET /js/item_details.js
+2024-07-28T19:10:33.340Z info: GET /js/userLogout.js
+2024-07-28T19:10:33.341Z info: GET /images/bell-icon.png
+2024-07-28T19:10:33.341Z info: GET /css/style.css
+2024-07-28T19:10:33.342Z info: GET /images/Facebook_Icon.png
+2024-07-28T19:10:33.350Z info: GET /images/insta_icon.png
+2024-07-28T19:10:33.350Z info: GET /js/breadcrumps.js
+2024-07-28T19:10:33.364Z info: GET /api/found-items/58
+2024-07-28T19:10:33.372Z info: GET /images/logo.jpeg
+2024-07-28T19:10:34.327Z info: Fetched found item with id: 58
+2024-07-28T19:10:34.336Z info: GET /uploads/1722191236765-lost%20and%20found%20use%20case%20.png
+2024-07-28T19:10:37.924Z info: GET /api/items/58?status=Found
+2024-07-28T19:10:51.671Z info: Server is running on http://localhost:3000
+2024-07-28T19:10:53.111Z info: GET /
+2024-07-28T19:10:53.137Z info: GET /css/style.css
+2024-07-28T19:10:53.138Z info: GET /js/userAuth.js
+2024-07-28T19:10:55.735Z info: POST /api/login
+2024-07-28T19:10:56.392Z info: User logged in: aboalmrwan
+2024-07-28T19:10:56.408Z info: GET /homePage.html
+2024-07-28T19:10:56.434Z info: GET /css/style.css
+2024-07-28T19:10:56.435Z info: GET /images/bell-icon.png
+2024-07-28T19:10:56.435Z info: GET /images/arrow.png
+2024-07-28T19:10:56.445Z info: GET /js/dashboard.js
+2024-07-28T19:10:56.447Z info: GET /js/breadcrumps.js
+2024-07-28T19:10:56.454Z info: GET /js/userLogout.js
+2024-07-28T19:10:56.455Z info: GET /js/sendingNotifications.js
+2024-07-28T19:10:56.456Z info: GET /images/Facebook_Icon.png
+2024-07-28T19:10:56.457Z info: GET /images/insta_icon.png
+2024-07-28T19:10:56.461Z info: GET /api/notifications/11
+2024-07-28T19:10:56.466Z info: GET /images/logo.jpeg
+2024-07-28T19:10:56.500Z info: GET /api/lost-items
+2024-07-28T19:10:56.505Z info: GET /api/found-items
+2024-07-28T19:10:56.506Z info: GET /api/home-graph-data
+2024-07-28T19:10:56.938Z info: Fetched notifications for user 11
+2024-07-28T19:10:56.944Z info: PUT /api/notifications/mark-read
+2024-07-28T19:10:57.515Z info: Marked notifications as read: 21
+2024-07-28T19:10:57.517Z info: Fetched found items
+2024-07-28T19:10:57.518Z info: Fetched lost items
+2024-07-28T19:10:58.134Z info: GET /item.html?id=58&status=Found
+2024-07-28T19:10:58.156Z info: GET /images/Facebook_Icon.png
+2024-07-28T19:10:58.156Z info: GET /js/item_details.js
+2024-07-28T19:10:58.157Z info: GET /js/userLogout.js
+2024-07-28T19:10:58.157Z info: GET /css/style.css
+2024-07-28T19:10:58.157Z info: GET /images/bell-icon.png
+2024-07-28T19:10:58.163Z info: GET /images/insta_icon.png
+2024-07-28T19:10:58.163Z info: GET /js/breadcrumps.js
+2024-07-28T19:10:58.172Z info: GET /api/found-items/58
+2024-07-28T19:10:58.177Z info: GET /images/logo.jpeg
+2024-07-28T19:10:58.640Z info: Fetched found item with id: 58
+2024-07-28T19:10:58.647Z info: GET /uploads/1722191236765-lost%20and%20found%20use%20case%20.png
+2024-07-28T19:10:59.385Z info: GET /css/style.css
+2024-07-28T19:12:02.993Z info: GET /item.html?id=58&status=Found
+2024-07-28T19:12:03.010Z info: GET /js/item_details.js
+2024-07-28T19:12:03.011Z info: GET /js/userLogout.js
+2024-07-28T19:12:03.012Z info: GET /css/style.css
+2024-07-28T19:12:03.014Z info: GET /images/bell-icon.png
+2024-07-28T19:12:03.014Z info: GET /images/Facebook_Icon.png
+2024-07-28T19:12:03.021Z info: GET /images/insta_icon.png
+2024-07-28T19:12:03.026Z info: GET /js/breadcrumps.js
+2024-07-28T19:12:03.034Z info: GET /images/logo.jpeg
+2024-07-28T19:12:03.070Z info: GET /api/found-items/58
+2024-07-28T19:12:04.037Z info: Fetched found item with id: 58
+2024-07-28T19:12:04.039Z info: GET /api/found-items/58
+2024-07-28T19:12:04.044Z info: GET /uploads/1722191236765-lost%20and%20found%20use%20case%20.png
+2024-07-28T19:12:04.565Z info: Fetched found item with id: 58
+2024-07-28T19:12:06.156Z info: GET /css/style.css
+2024-07-28T19:12:08.091Z info: GET /api/items/58?status=Found
+2024-07-28T19:12:09.070Z info: GET /api/items/58?status=Found
+2024-07-28T19:12:13.395Z info: POST /api/claim-item/58?status=Found
+2024-07-28T19:12:13.397Z info: POST /api/claim-item/58?status=Found
+2024-07-28T19:12:28.825Z info: GET /homePage.html
+2024-07-28T19:12:28.844Z info: GET /js/dashboard.js
+2024-07-28T19:12:28.845Z info: GET /css/style.css
+2024-07-28T19:12:28.846Z info: GET /images/arrow.png
+2024-07-28T19:12:28.847Z info: GET /images/bell-icon.png
+2024-07-28T19:12:28.858Z info: GET /js/breadcrumps.js
+2024-07-28T19:12:28.858Z info: GET /js/userLogout.js
+2024-07-28T19:12:28.859Z info: GET /js/sendingNotifications.js
+2024-07-28T19:12:28.859Z info: GET /images/insta_icon.png
+2024-07-28T19:12:28.860Z info: GET /images/Facebook_Icon.png
+2024-07-28T19:12:28.870Z info: GET /api/notifications/11
+2024-07-28T19:12:28.874Z info: GET /images/logo.jpeg
+2024-07-28T19:12:28.882Z info: GET /api/lost-items
+2024-07-28T19:12:28.885Z info: GET /api/found-items
+2024-07-28T19:12:28.885Z info: GET /api/home-graph-data
+2024-07-28T19:12:29.588Z info: Fetched lost items
+2024-07-28T19:12:29.589Z info: Fetched notifications for user 11
+2024-07-28T19:12:29.594Z info: PUT /api/notifications/mark-read
+2024-07-28T19:12:30.121Z info: Fetched found items
+2024-07-28T19:12:30.703Z info: Marked notifications as read: 21
+2024-07-28T19:12:32.812Z info: GET /item.html?id=58&status=Found
+2024-07-28T19:12:32.832Z info: GET /js/item_details.js
+2024-07-28T19:12:32.832Z info: GET /js/userLogout.js
+2024-07-28T19:12:32.833Z info: GET /css/style.css
+2024-07-28T19:12:32.833Z info: GET /images/bell-icon.png
+2024-07-28T19:12:32.833Z info: GET /images/Facebook_Icon.png
+2024-07-28T19:12:32.844Z info: GET /images/insta_icon.png
+2024-07-28T19:12:32.845Z info: GET /js/breadcrumps.js
+2024-07-28T19:12:32.849Z info: GET /api/found-items/58
+2024-07-28T19:12:32.853Z info: GET /images/logo.jpeg
+2024-07-28T19:12:33.314Z info: Fetched found item with id: 58
+2024-07-28T19:12:33.317Z info: GET /api/found-items/58
+2024-07-28T19:12:33.320Z info: GET /uploads/1722191236765-lost%20and%20found%20use%20case%20.png
+2024-07-28T19:12:33.826Z info: Fetched found item with id: 58
+2024-07-28T19:12:33.903Z info: GET /api/items/58?status=Found
+2024-07-28T19:12:34.599Z info: GET /api/items/58?status=Found
+2024-07-28T19:12:37.899Z info: POST /api/claim-item/58?status=Found
+2024-07-28T19:12:37.900Z info: POST /api/claim-item/58?status=Found
+2024-07-28T19:17:33.461Z info: GET /homePage.html
+2024-07-28T19:17:33.480Z info: GET /js/dashboard.js
+2024-07-28T19:17:33.480Z info: GET /css/style.css
+2024-07-28T19:17:33.481Z info: GET /images/bell-icon.png
+2024-07-28T19:17:33.482Z info: GET /images/arrow.png
+2024-07-28T19:17:33.490Z info: GET /js/breadcrumps.js
+2024-07-28T19:17:33.491Z info: GET /js/userLogout.js
+2024-07-28T19:17:33.495Z info: GET /js/sendingNotifications.js
+2024-07-28T19:17:33.495Z info: GET /images/Facebook_Icon.png
+2024-07-28T19:17:33.495Z info: GET /images/insta_icon.png
+2024-07-28T19:17:33.500Z info: GET /api/notifications/11
+2024-07-28T19:17:33.507Z info: GET /images/logo.jpeg
+2024-07-28T19:17:33.513Z info: GET /api/lost-items
+2024-07-28T19:17:33.515Z info: GET /api/found-items
+2024-07-28T19:17:33.516Z info: GET /api/home-graph-data
+2024-07-28T19:17:34.387Z info: Fetched notifications for user 11
+2024-07-28T19:17:34.392Z info: PUT /api/notifications/mark-read
+2024-07-28T19:17:34.453Z info: Fetched lost items
+2024-07-28T19:17:34.454Z info: Fetched found items
+2024-07-28T19:17:34.901Z info: Marked notifications as read: 21
+2024-07-28T19:17:35.891Z info: GET /item.html?id=58&status=Found
+2024-07-28T19:17:35.915Z info: GET /js/item_details.js
+2024-07-28T19:17:35.916Z info: GET /js/userLogout.js
+2024-07-28T19:17:35.916Z info: GET /css/style.css
+2024-07-28T19:17:35.916Z info: GET /images/bell-icon.png
+2024-07-28T19:17:35.918Z info: GET /images/Facebook_Icon.png
+2024-07-28T19:17:35.926Z info: GET /images/insta_icon.png
+2024-07-28T19:17:35.927Z info: GET /js/breadcrumps.js
+2024-07-28T19:17:35.936Z info: GET /api/found-items/58
+2024-07-28T19:17:35.942Z info: GET /images/logo.jpeg
+2024-07-28T19:17:36.408Z info: Fetched found item with id: 58
+2024-07-28T19:17:36.411Z info: GET /api/found-items/58
+2024-07-28T19:17:36.415Z info: GET /uploads/1722191236765-lost%20and%20found%20use%20case%20.png
+2024-07-28T19:17:36.880Z info: Fetched found item with id: 58
+2024-07-28T19:17:37.108Z info: GET /api/items/58?status=Found
+2024-07-28T19:17:37.602Z info: GET /api/items/58?status=Found
+2024-07-28T19:17:40.983Z info: POST /api/claim-item/58?status=Found
+2024-07-28T19:17:40.984Z info: POST /api/claim-item/58?status=Found
+2024-07-28T19:18:54.670Z info: GET /api/items/58?status=Found
+2024-07-28T19:18:55.695Z info: GET /api/items/58?status=Found
+2024-07-28T19:18:57.394Z info: POST /api/claim-item/58?status=Found
+2024-07-28T19:18:57.395Z info: POST /api/claim-item/58?status=Found
+2024-07-28T19:19:03.667Z info: GET /homePage.html
+2024-07-28T19:19:03.691Z info: GET /js/dashboard.js
+2024-07-28T19:19:03.693Z info: GET /css/style.css
+2024-07-28T19:19:03.693Z info: GET /images/arrow.png
+2024-07-28T19:19:03.693Z info: GET /images/bell-icon.png
+2024-07-28T19:19:03.702Z info: GET /js/breadcrumps.js
+2024-07-28T19:19:03.703Z info: GET /js/userLogout.js
+2024-07-28T19:19:03.710Z info: GET /js/sendingNotifications.js
+2024-07-28T19:19:03.711Z info: GET /images/Facebook_Icon.png
+2024-07-28T19:19:03.711Z info: GET /images/insta_icon.png
+2024-07-28T19:19:03.717Z info: GET /api/notifications/11
+2024-07-28T19:19:03.721Z info: GET /images/logo.jpeg
+2024-07-28T19:19:03.728Z info: GET /api/lost-items
+2024-07-28T19:19:03.730Z info: GET /api/found-items
+2024-07-28T19:19:03.730Z info: GET /api/home-graph-data
+2024-07-28T19:19:04.198Z info: Fetched notifications for user 11
+2024-07-28T19:19:04.207Z info: PUT /api/notifications/mark-read
+2024-07-28T19:19:04.220Z info: Fetched lost items
+2024-07-28T19:19:04.711Z info: Fetched found items
+2024-07-28T19:19:04.748Z info: Marked notifications as read: 21
+2024-07-28T19:19:05.104Z info: GET /homePage.html
+2024-07-28T19:19:05.118Z info: GET /js/dashboard.js
+2024-07-28T19:19:05.119Z info: GET /css/style.css
+2024-07-28T19:19:05.119Z info: GET /images/bell-icon.png
+2024-07-28T19:19:05.119Z info: GET /images/arrow.png
+2024-07-28T19:19:05.125Z info: GET /js/breadcrumps.js
+2024-07-28T19:19:05.125Z info: GET /js/userLogout.js
+2024-07-28T19:19:05.131Z info: GET /js/sendingNotifications.js
+2024-07-28T19:19:05.131Z info: GET /images/Facebook_Icon.png
+2024-07-28T19:19:05.131Z info: GET /images/insta_icon.png
+2024-07-28T19:19:05.140Z info: GET /images/logo.jpeg
+2024-07-28T19:19:05.148Z info: GET /api/notifications/11
+2024-07-28T19:19:05.149Z info: GET /api/lost-items
+2024-07-28T19:19:05.149Z info: GET /api/found-items
+2024-07-28T19:19:05.150Z info: GET /api/home-graph-data
+2024-07-28T19:19:05.591Z info: Fetched lost items
+2024-07-28T19:19:05.599Z info: Fetched found items
+2024-07-28T19:19:05.604Z info: Fetched notifications for user 11
+2024-07-28T19:19:05.609Z info: PUT /api/notifications/mark-read
+2024-07-28T19:19:06.075Z info: Marked notifications as read: 21
+2024-07-28T19:19:08.746Z info: GET /item.html?id=58&status=Found
+2024-07-28T19:19:08.768Z info: GET /js/item_details.js
+2024-07-28T19:19:08.768Z info: GET /js/userLogout.js
+2024-07-28T19:19:08.769Z info: GET /css/style.css
+2024-07-28T19:19:08.769Z info: GET /images/bell-icon.png
+2024-07-28T19:19:08.769Z info: GET /images/Facebook_Icon.png
+2024-07-28T19:19:08.777Z info: GET /images/insta_icon.png
+2024-07-28T19:19:08.780Z info: GET /js/breadcrumps.js
+2024-07-28T19:19:08.785Z info: GET /api/found-items/58
+2024-07-28T19:19:08.790Z info: GET /images/logo.jpeg
+2024-07-28T19:19:09.263Z info: Fetched found item with id: 58
+2024-07-28T19:19:09.267Z info: GET /api/found-items/58
+2024-07-28T19:19:09.271Z info: GET /uploads/1722191236765-lost%20and%20found%20use%20case%20.png
+2024-07-28T19:19:09.878Z info: Fetched found item with id: 58
+2024-07-28T19:19:10.062Z info: GET /api/items/58?status=Found
+2024-07-28T19:19:10.514Z info: GET /api/items/58?status=Found
+2024-07-28T19:19:12.553Z info: POST /api/claim-item/58?status=Found
+2024-07-28T19:19:12.554Z info: POST /api/claim-item/58?status=Found
+2024-07-28T19:19:14.049Z info: GET /homePage.html
+2024-07-28T19:19:14.069Z info: GET /js/dashboard.js
+2024-07-28T19:19:14.069Z info: GET /css/style.css
+2024-07-28T19:19:14.070Z info: GET /images/bell-icon.png
+2024-07-28T19:19:14.070Z info: GET /images/arrow.png
+2024-07-28T19:19:14.081Z info: GET /js/breadcrumps.js
+2024-07-28T19:19:14.081Z info: GET /js/userLogout.js
+2024-07-28T19:19:14.086Z info: GET /js/sendingNotifications.js
+2024-07-28T19:19:14.087Z info: GET /images/Facebook_Icon.png
+2024-07-28T19:19:14.087Z info: GET /images/insta_icon.png
+2024-07-28T19:19:14.093Z info: GET /api/notifications/11
+2024-07-28T19:19:14.097Z info: GET /images/logo.jpeg
+2024-07-28T19:19:14.104Z info: GET /api/lost-items
+2024-07-28T19:19:14.105Z info: GET /api/found-items
+2024-07-28T19:19:14.106Z info: GET /api/home-graph-data
+2024-07-28T19:19:14.533Z info: Fetched notifications for user 11
+2024-07-28T19:19:14.539Z info: PUT /api/notifications/mark-read
+2024-07-28T19:19:14.540Z info: Fetched lost items
+2024-07-28T19:19:14.644Z info: Fetched found items
+2024-07-28T19:19:15.033Z info: Marked notifications as read: 21
