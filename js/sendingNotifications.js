@@ -43,12 +43,13 @@ function displayNotifications(notifications) {
     
     notifications.forEach(notification => {
         const listItem = document.createElement('li');
-        listItem.textContent = notification.message;
+        listItem.innerHTML = notification.message; // Use innerHTML to include the link
         notificationList.appendChild(listItem);
     });
     
     markNotificationsAsRead(notificationIds);
 }
+
 
 async function markNotificationsAsRead(notificationIds) {
     if (notificationIds.length === 0) {

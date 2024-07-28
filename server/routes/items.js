@@ -74,17 +74,17 @@ router.get('/found-items', (req, res) => {
 router.get('/lost-items/:id', (req, res) => {
   const itemId = req.params.id;
   pool.query('SELECT * FROM tbl_123_lostitems WHERE id = ?', [itemId], (err, results) => {
-    if (err) {
-      logger.error(`Error fetching lost item by id: ${err.message}`);
-      return res.status(500).json({ error: 'Internal Server Error' });
-    }
-    if (results.length > 0) {
-      logger.info(`Fetched lost item with id: ${itemId}`);
-      res.json(results[0]);
-    } else {
-      logger.warn(`Lost item not found with id: ${itemId}`);
-      res.status(404).json({ error: 'Lost item not found' });
-    }
+      if (err) {
+          logger.error(`Error fetching lost item by id: ${err.message}`);
+          return res.status(500).json({ error: 'Internal Server Error' });
+      }
+      if (results.length > 0) {
+          logger.info(`Fetched lost item with id: ${itemId}`);
+          res.json(results[0]);
+      } else {
+          logger.warn(`Lost item not found with id: ${itemId}`);
+          res.status(404).json({ error: 'Lost item not found' });
+      }
   });
 });
 
@@ -92,19 +92,20 @@ router.get('/lost-items/:id', (req, res) => {
 router.get('/found-items/:id', (req, res) => {
   const itemId = req.params.id;
   pool.query('SELECT * FROM tbl_123_founditems WHERE id = ?', [itemId], (err, results) => {
-    if (err) {
-      logger.error(`Error fetching found item by id: ${err.message}`);
-      return res.status(500).json({ error: 'Internal Server Error' });
-    }
-    if (results.length > 0) {
-      logger.info(`Fetched found item with id: ${itemId}`);
-      res.json(results[0]);
-    } else {
-      logger.warn(`Found item not found with id: ${itemId}`);
-      res.status(404).json({ error: 'Found item not found' });
-    }
+      if (err) {
+          logger.error(`Error fetching found item by id: ${err.message}`);
+          return res.status(500).json({ error: 'Internal Server Error' });
+      }
+      if (results.length > 0) {
+          logger.info(`Fetched found item with id: ${itemId}`);
+          res.json(results[0]);
+      } else {
+          logger.warn(`Found item not found with id: ${itemId}`);
+          res.status(404).json({ error: 'Found item not found' });
+      }
   });
 });
+
 
 // Endpoint to fetch all items (lost and found)
 router.get('/all-items', (req, res) => {
@@ -321,6 +322,8 @@ router.post('/lost-items', upload.single('image'), (req, res) => {
 // Function to match found items with lost items and create notifications
 const matchFoundItem = async (foundItem) => {
   try {
+      logger.info(`Matching found item with ID: ${foundItem.id}`);
+      
       const query = `
           SELECT * FROM tbl_123_lostitems
           WHERE itemName = ? AND category = ? AND color = ? AND status = 'Lost'
@@ -333,6 +336,7 @@ const matchFoundItem = async (foundItem) => {
                   logger.error(`Error executing query: ${err.message}`);
                   return reject(err);
               }
+              logger.info(`Query results: ${JSON.stringify(results)}`);
               resolve(results);
           });
       });
@@ -341,10 +345,14 @@ const matchFoundItem = async (foundItem) => {
 
       if (Array.isArray(results) && results.length > 0) {
           for (const lostItem of results) {
-              const message = `Your lost item "${lostItem.itemName}" might have been found. Check the found items list.`;
+              logger.info(`Found match for lost item with ID: ${lostItem.id}`);
+              const itemUrl = `${baseUrl}/item.html?id=${foundItem.id}&status=Found`; // Ensure correct foundItem.id is used
+              logger.info(`Generated item URL: ${itemUrl}`);
+              const message = `Your lost item "${lostItem.itemName}" might have been found. Check the found items list. <a href="${itemUrl}">View Item</a>`;
               const notification = {
                   userId: lostItem.userId,
                   message: message,
+                  isRead: false
               };
               logger.info(`Creating notification for userId: ${lostItem.userId}`);
               await new Promise((resolve, reject) => {
@@ -353,6 +361,7 @@ const matchFoundItem = async (foundItem) => {
                           logger.error(`Error inserting notification: ${err.message}`);
                           return reject(err);
                       }
+                      logger.info(`Notification inserted for userId: ${lostItem.userId}`);
                       resolve();
                   });
               });
@@ -368,6 +377,8 @@ const matchFoundItem = async (foundItem) => {
       throw new Error('Error matching found item');
   }
 };
+
+
 
 // Endpoint to report a found item
 router.post('/found-items', upload.single('image'), (req, res) => {
@@ -405,6 +416,7 @@ router.post('/found-items', upload.single('image'), (req, res) => {
     res.json(newItem);
   });
 });
+
 router.post('/claim-item/:id', async (req, res) => {
   const itemId = req.params.id;
   const { answer } = req.body;
@@ -436,5 +448,15 @@ router.post('/claim-item/:id', async (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+router.post('/test-match', async (req, res) => {
+  const foundItem = req.body;
+  try {
+      const results = await matchFoundItem(foundItem);
+      res.json({ success: true, results });
+  } catch (error) {
+      res.status(500).json({ success: false, error: error.message });
+  }
+});
+
 
 module.exports = router;
