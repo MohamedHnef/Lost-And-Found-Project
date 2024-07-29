@@ -1,40 +1,80 @@
-document.addEventListener("DOMContentLoaded", () => {
-    fetchPendingClaims();
-});
+function fetchAdminClaims() {
+    const token = sessionStorage.getItem('token');
+    
+    fetch(`${API_URL}/claim-requests?claimStatus=pendingApproval`, {
+        headers: { 'Authorization': `Bearer ${token}` }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to fetch claims');
+        }
+        return response.json();
+    })
+    .then(data => {
+        const claimsTable = document.getElementById('claimsTable').getElementsByTagName('tbody')[0];
+        claimsTable.innerHTML = '';
 
-const fetchPendingClaims = () => {
-    fetch(`${API_URL}/admin/pending-claims`)
-    .then(response => response.json())
-    .then(claims => {
-        const tbody = document.getElementById('claimsTable').querySelector('tbody');
-        tbody.innerHTML = '';
-        claims.forEach(claim => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${claim.itemName}</td>
-                <td>${claim.claimant}</td>
-                <td>
-                    <button onclick="handleClaim(${claim.id}, 'Approve')">Approve</button>
-                    <button onclick="handleClaim(${claim.id}, 'Reject')">Reject</button>
-                </td>
-            `;
-            tbody.appendChild(row);
+        data.forEach(item => {
+            const row = claimsTable.insertRow();
+            row.insertCell(0).innerText = item.itemName || 'N/A';
+            row.insertCell(1).innerText = item.claimant || 'N/A';
+
+            const actionsCell = row.insertCell(2);
+
+            const approveButton = document.createElement('button');
+            approveButton.innerText = 'Approve';
+            approveButton.className = 'btn btn-success me-2';
+            approveButton.onclick = () => updateClaimStatus(item.id, true);
+            actionsCell.appendChild(approveButton);
+
+            const rejectButton = document.createElement('button');
+            rejectButton.innerText = 'Reject';
+            rejectButton.className = 'btn btn-danger me-2';
+            rejectButton.onclick = () => updateClaimStatus(item.id, false);
+            actionsCell.appendChild(rejectButton);
+
+            const viewButton = document.createElement('button');
+            viewButton.innerText = 'View';
+            viewButton.className = 'btn btn-info';
+            viewButton.onclick = () => viewItem(item.itemId, item.status); // Ensure status is passed
+            actionsCell.appendChild(viewButton);
         });
     })
-    .catch(error => console.error('Error fetching pending claims:', error));
-};
+    .catch(error => console.error('Error fetching claims:', error));
+}
 
-const handleClaim = (claimId, action) => {
-    const comments = prompt(`Enter comments for ${action.toLowerCase()}ing this claim:`);
-    fetch(`${API_URL}/admin/handle-claim`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ claimId, action, comments })
+// Function to update claim status
+function updateClaimStatus(requestId, approved) {
+    const token = sessionStorage.getItem('token');
+    
+    fetch(`${API_URL}/claim-requests/${requestId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ approved })
     })
-    .then(response => response.json())
-    .then(result => {
-        alert(result.message);
-        fetchPendingClaims(); // Refresh the list of pending claims
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to update claim status');
+        }
+        return response.json();
     })
-    .catch(error => console.error(`Error ${action.toLowerCase()}ing claim:`, error));
-};
+    .then(data => {
+        console.log(`Claim ${data.status}`);
+        alert(`Claim ${data.status}`);
+        fetchAdminClaims(); // Refresh the claims table
+    })
+    .catch(error => console.error('Error updating claim status:', error));
+}
+
+// Function to view item details
+function viewItem(itemId, status) {
+    window.location.href = `item.html?id=${itemId}&status=${status}`;
+}
+
+// Ensure fetchAdminClaims is called after DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    fetchAdminClaims();
+});

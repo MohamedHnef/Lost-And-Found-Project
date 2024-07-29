@@ -11,7 +11,7 @@ function toggleView(view) {
             loginForm.style.display = 'block';
             registerForm.style.display = 'none';
             loginTab.classList.add('active');
-            registerTab.classList.remove('active');
+            loginTab.classList.remove('active');
         } else {
             loginForm.style.display = 'none';
             registerForm.style.display = 'block';
@@ -37,8 +37,8 @@ function toggleRoleView(role) {
 }
 
 function loadProfileInformation() {
-    const username = localStorage.getItem('username');
-    const profilePicture = localStorage.getItem('profilePicture');
+    const username = sessionStorage.getItem('username');
+    const profilePicture = sessionStorage.getItem('profilePicture');
 
     const usernameElem = document.getElementById('username');
     const sideUsernameElem = document.getElementById('sideUsername');
@@ -52,7 +52,7 @@ function loadProfileInformation() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const role = localStorage.getItem('role');
+    const role = sessionStorage.getItem('role');
     if (role) {
         toggleRoleView(role);
     }

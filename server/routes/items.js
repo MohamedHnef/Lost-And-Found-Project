@@ -158,24 +158,26 @@ router.get('/user-items', (req, res) => {
 // Endpoint to fetch a specific item by id (used in edit functionality)
 router.get('/items/:id', (req, res) => {
   const itemId = req.params.id;
+  const status = req.query.status;
 
-  const lostItemQuery = 'SELECT * FROM tbl_123_lostitems WHERE id = ?';
-  const foundItemQuery = 'SELECT * FROM tbl_123_founditems WHERE id = ?';
+  const query = status === 'Found' 
+    ? 'SELECT * FROM tbl_123_founditems WHERE id = ?' 
+    : 'SELECT * FROM tbl_123_lostitems WHERE id = ?';
 
-  Promise.all([
-    new Promise((resolve, reject) => pool.query(lostItemQuery, [itemId], (err, results) => err ? reject(err) : resolve(results))),
-    new Promise((resolve, reject) => pool.query(foundItemQuery, [itemId], (err, results) => err ? reject(err) : resolve(results)))
-  ]).then(([lostItemResults, foundItemResults]) => {
-    const item = lostItemResults[0] || foundItemResults[0];
+  pool.query(query, [itemId], (err, results) => {
+    if (err) {
+      console.error(`Error querying items: ${err.message}`);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    const item = results[0];
 
     if (!item) {
+      console.error(`Item not found with ID: ${itemId}`);
       return res.status(404).json({ error: 'Item not found' });
     }
 
     res.json(item);
-  }).catch(err => {
-    logger.error(`Error fetching item: ${err.message}`);
-    res.status(500).json({ error: 'Internal Server Error' });
   });
 });
 
@@ -430,41 +432,96 @@ router.post('/found-items', upload.single('image'), (req, res) => {
 // Endpoint to handle claim submission
 router.post('/claim-item/:id', authenticateToken, async (req, res) => {
   const itemId = req.params.id;
-  const { answer } = req.body;
+  const { answer, status } = req.body;
   const userId = req.user.id;
 
   try {
-      const [item] = await new Promise((resolve, reject) => {
-          pool.query('SELECT securityQuestion, securityAnswer FROM tbl_123_founditems WHERE id = ?', [itemId], (err, results) => {
-              if (err) return reject(err);
-              resolve(results);
-          });
+    const query = status === 'Found'
+      ? 'SELECT securityAnswer FROM tbl_123_founditems WHERE id = ?'
+      : 'SELECT securityAnswer FROM tbl_123_lostitems WHERE id = ?';
+
+    const [item] = await new Promise((resolve, reject) => {
+      pool.query(query, [itemId], (err, results) => {
+        if (err) return reject(err);
+        resolve(results);
+      });
+    });
+
+    if (!item) return res.status(404).json({ error: 'Item not found' });
+
+    if (answer === item.securityAnswer) {
+      const claimRequest = {
+        itemId: itemId,
+        userId: userId,
+        status: 'PendingApproval',
+        claimedAt: new Date(),
+        securityQuestion: item.securityQuestion,
+        securityAnswer: item.securityAnswer,
+        itemName: item.itemName,
+        claimant: req.user.username,
+      };
+
+      await new Promise((resolve, reject) => {
+        pool.query('INSERT INTO tbl_123_claim_requests SET ?', claimRequest, (err) => {
+          if (err) return reject(err);
+          resolve();
+        });
       });
 
-      if (!item) return res.status(404).json({ error: 'Item not found' });
-
-      if (answer === item.securityAnswer) {
-          const claimRequest = {
-              itemId: itemId,
-              userId: userId,
-              status: 'PendingApproval',
-              claimedAt: new Date()
-          };
-
-          await new Promise((resolve, reject) => {
-              pool.query('INSERT INTO tbl_123_claim_requests SET ?', claimRequest, (err) => {
-                  if (err) return reject(err);
-                  resolve();
-              });
-          });
-
-          res.json({ success: true, message: 'Claim request has been submitted for admin approval.' });
-      } else {
-          res.status(401).json({ error: 'Incorrect answer' });
-      }
+      res.json({ success: true, message: 'Claim request has been submitted for admin approval.' });
+    } else {
+      res.status(401).json({ error: 'Incorrect answer' });
+    }
   } catch (err) {
-      console.error(`Error handling claim request: ${err.message}`, err);
-      res.status(500).json({ error: 'Internal Server Error', details: err.message });
+    console.error(`Error handling claim request: ${err.message}`, err);
+    res.status(500).json({ error: 'Internal Server Error', details: err.message });
   }
 });
+
+router.get('/claim-requests', authenticateToken, (req, res) => {
+  const claimStatus = req.query.claimStatus || 'pendingApproval';
+
+  // Basic query to ensure user table join works
+  const query = `
+    SELECT 
+      cr.id, 
+      cr.itemId, 
+      cr.userId, 
+      cr.status, 
+      cr.claimedAt, 
+      cr.securityQuestion, 
+      cr.securityAnswer, 
+      cr.itemName AS claimItemName, 
+      u.username AS claimant
+    FROM tbl_123_claim_requests cr
+    JOIN tbl_123_users u ON cr.userId = u.id
+    WHERE cr.status = ?
+  `;
+
+  pool.query(query, [claimStatus], (err, results) => {
+      if (err) {
+          console.error('Error fetching claim requests:', err);
+          return res.status(500).json({ error: 'Internal Server Error' });
+      }
+      res.json(results);
+  });
+});
+
+// Endpoint to update claim status
+router.put('/claim-requests/:id', authenticateToken, (req, res) => {
+  const requestId = req.params.id;
+  const { approved } = req.body;
+  const status = approved ? 'Approved' : 'Rejected';
+
+  pool.query('UPDATE tbl_123_claim_requests SET status = ? WHERE id = ?', [status, requestId], (err) => {
+      if (err) {
+          console.error('Error updating claim status:', err);
+          return res.status(500).json({ error: 'Internal Server Error' });
+      }
+      res.json({ success: true, status });
+  });
+});
+
+
+
 module.exports = router;

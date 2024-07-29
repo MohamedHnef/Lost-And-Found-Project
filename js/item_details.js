@@ -35,7 +35,9 @@
     });
 
     const fetchItemDetails = (id, status) => {
-        const url = status === 'Found' ? `${API_URL}/found-items/${id}` : `${API_URL}/lost-items/${id}`;
+        const url = `${API_URL}/items/${id}?status=${status}`;
+        console.log(`Fetching item details from URL: ${url}`); // Log the URL being fetched
+    
         fetch(url)
             .then(response => {
                 if (!response.ok) {
@@ -54,6 +56,7 @@
                 displayNoItemDetails();
             });
     };
+    
 
     const displayItemDetails = (item) => {
         if (item) {
@@ -114,19 +117,20 @@
 
     const submitSecurityAnswer = (id, status) => {
         const answer = document.getElementById('security-answer').value;
-        const userId = localStorage.getItem('userId'); // Ensure userId is set in localStorage
+        const userId = sessionStorage.getItem('userId'); // Ensure userId is set in sessionStorage
     
         if (!userId) {
             showNotification('User ID is missing. Please log in again.');
             return;
         }
     
-        fetch(`${API_URL}/claim-item/${id}?status=${status}`, {
+        fetch(`${API_URL}/claim-item/${id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${sessionStorage.getItem('token')}`
             },
-            body: JSON.stringify({ answer, userId }) // Ensure userId is included in the body
+            body: JSON.stringify({ answer, status }) // Ensure status is included in the body
         })
         .then(response => response.json())
         .then(result => {
