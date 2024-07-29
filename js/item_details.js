@@ -1,3 +1,4 @@
+
 (function() {
     const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
 
@@ -114,12 +115,19 @@
 
     const submitSecurityAnswer = (id, status) => {
         const answer = document.getElementById('security-answer').value;
+        const userId = localStorage.getItem('userId'); // Ensure userId is set in localStorage
+    
+        if (!userId) {
+            showNotification('User ID is missing. Please log in again.');
+            return;
+        }
+    
         fetch(`${API_URL}/claim-item/${id}?status=${status}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ answer })
+            body: JSON.stringify({ answer, userId }) // Ensure userId is included in the body
         })
         .then(response => response.json())
         .then(result => {
@@ -134,6 +142,7 @@
             console.error('Error submitting answer:', error);
         });
     };
+    
 
     const showNotification = (message) => {
         const notification = document.createElement('div');

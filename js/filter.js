@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function () {
     initDataFetching();
     initFilters();
@@ -54,7 +55,7 @@ function createCard(item) {
 
     return `
         <div class="col">
-            <a href="item.html" class="card-link" data-item-id="${item.id}" data-item-status="${item.status}">
+            <a href="item.html?id=${item.id}&status=${item.status}" class="card-link" data-item-id="${item.id}" data-item-status="${item.status}">
                 <div class="card list-item-card">
                     <img src="${item.imageUrl}" class="card-img-top" alt="${item.itemName}">
                     <div class="card-body">
@@ -71,6 +72,7 @@ function createCard(item) {
             </a>
         </div>`;
 }
+
 
 function formatDate(dateString) {
     const date = new Date(dateString);

@@ -12,13 +12,19 @@
         event.preventDefault();
         const itemId = document.getElementById('itemId').value;
         const answer = document.getElementById('claimSecurityAnswer').value;
+        const userId = localStorage.getItem('userId'); // Ensure userId is set in localStorage
 
-        fetch(`${API_URL}/claim-item/${itemId}`, {
+        if (!userId) {
+            showNotification('User ID is missing. Please log in again.', 'error');
+            return;
+        }
+
+        fetch(`${API_URL}/claim-item/${itemId}?status=Found`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ answer })
+            body: JSON.stringify({ answer, userId }) // Ensure userId is included in the body
         })
         .then(response => {
             if (!response.ok) throw new Error('Failed to claim item');
@@ -26,7 +32,7 @@
         })
         .then(data => {
             if (data.success) {
-                showNotification('Item claimed successfully!', 'success');
+                showNotification('Claim request submitted for admin approval!', 'success');
                 setTimeout(() => {
                     window.location.href = 'index.html';
                 }, 2000);

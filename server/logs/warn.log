@@ -1,9 +1,16 @@
-2024-07-28T18:18:39.757Z error: Error marking notifications as read: ER_BAD_FIELD_ERROR: Unknown column 'isRead' in 'field list'
-2024-07-28T18:18:41.547Z warn: Found item not found with id: 48
-2024-07-28T18:20:49.629Z warn: Found item not found with id: 48
-2024-07-28T18:21:51.147Z error: Error marking notifications as read: ER_BAD_FIELD_ERROR: Unknown column 'isRead' in 'field list'
-2024-07-28T18:21:52.704Z warn: Found item not found with id: 48
-2024-07-28T18:27:43.759Z warn: Found item not found with id: 48
-2024-07-28T18:42:01.890Z warn: Found item not found with id: 48
-2024-07-28T18:42:10.037Z warn: Found item not found with id: 48
-2024-07-28T18:45:30.152Z warn: Found item not found with id: 50
+2024-07-28T22:55:27.863Z warn: Lost item not found with id: 58
+2024-07-28T22:55:28.316Z warn: Lost item not found with id: 58
+2024-07-28T22:58:16.563Z warn: Found item not found with id: 58
+2024-07-28T22:58:17.116Z warn: Found item not found with id: 58
+2024-07-28T22:59:18.109Z warn: Found item not found with id: 58
+2024-07-28T22:59:18.646Z warn: Found item not found with id: 58
+2024-07-28T23:02:35.820Z warn: Found item not found with id: 58
+2024-07-28T23:02:36.226Z warn: Found item not found with id: 58
+2024-07-28T23:07:54.322Z warn: Found item not found with id: 58
+2024-07-28T23:07:54.762Z warn: Found item not found with id: 58
+2024-07-28T23:16:28.152Z warn: Found item not found with id: 58
+2024-07-28T23:16:28.583Z warn: Found item not found with id: 58
+2024-07-28T23:39:46.726Z warn: Lost item not found with id: 62
+2024-07-28T23:39:47.495Z warn: Lost item not found with id: 62
+2024-07-28T23:51:47.791Z warn: Found item not found with id: 63
+2024-07-28T23:51:48.226Z warn: Found item not found with id: 63

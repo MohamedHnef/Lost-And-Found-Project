@@ -1,3 +1,4 @@
+
 const express = require('express');
 const router = express.Router();
 const pool = require('../db');
@@ -380,56 +381,66 @@ const matchFoundItem = async (foundItem) => {
 
 
 
+
 // Endpoint to report a found item
 router.post('/found-items', upload.single('image'), (req, res) => {
   const { itemName, locationFound, foundDate, foundTime, category, color, description, contactEmail, contactPhone, securityQuestion, securityAnswer, userId } = req.body;
   const imageUrl = req.file ? `${baseUrl}/uploads/${req.file.filename}` : req.body.imageUrl;
 
   if (!itemName || !locationFound || !foundDate || !foundTime || !category || !color || !contactEmail || !contactPhone || !securityQuestion || !securityAnswer || !userId) {
-    return res.status(400).json({ error: 'All fields except description are required' });
+      return res.status(400).json({ error: 'All fields except description are required' });
   }
 
   const newItem = {
-    itemName,
-    locationFound,
-    foundDate,
-    foundTime,
-    category,
-    color,
-    description: description || null,
-    contactEmail,
-    contactPhone,
-    securityQuestion,
-    securityAnswer,
-    status: 'Found',
-    imageUrl: imageUrl,
-    userId: userId
+      itemName,
+      locationFound,
+      foundDate,
+      foundTime,
+      category,
+      color,
+      description: description || null,
+      contactEmail,
+      contactPhone,
+      securityQuestion,
+      securityAnswer,
+      status: 'Found',
+      imageUrl: imageUrl,
+      userId: userId
   };
 
   pool.query('INSERT INTO tbl_123_founditems SET ?', newItem, (err, result) => {
-    if (err) {
-      logger.error(`Error reporting found item: ${err.message}`);
-      return res.status(500).json({ error: 'Internal Server Error' });
-    }
-    newItem.id = result.insertId;
-    logger.info(`Found item added with ID: ${result.insertId}`);
-    res.json(newItem);
+      if (err) {
+          logger.error(`Error reporting found item: ${err.message}`);
+          return res.status(500).json({ error: 'Internal Server Error' });
+      }
+      newItem.id = result.insertId;
+      logger.info(`Found item added with ID: ${result.insertId}`);
+
+      // Call matchFoundItem function to match with lost items
+      matchFoundItem(newItem).then(() => {
+          res.json(newItem);
+      }).catch(err => {
+          logger.error(`Error matching found item: ${err.message}`);
+          res.status(500).json({ error: 'Error matching found item', details: err.message });
+      });
   });
 });
+// end point for claiming an item
 
 router.post('/claim-item/:id', async (req, res) => {
   const itemId = req.params.id;
-  const { answer } = req.body;
+  const { answer, userId } = req.body;
+  const status = req.query.status;
 
-  if (!answer) {
-      return res.status(400).json({ error: 'Answer is required' });
+  if (!answer || !status || !userId) {
+      console.error('Missing required fields:', { answer, status, userId });
+      return res.status(400).json({ error: 'Answer, status, and userId are required' });
   }
 
   try {
-      const query = `
-          SELECT securityAnswer, status FROM tbl_123_${req.query.status === 'Found' ? 'founditems' : 'lostitems'}
-          WHERE id = ?
-      `;
+      const tableName = status === 'Found' ? 'tbl_123_founditems' : 'tbl_123_lostitems';
+      const query = `SELECT securityQuestion, securityAnswer FROM ${tableName} WHERE id = ?`;
+
       const [item] = await new Promise((resolve, reject) => {
           pool.query(query, [itemId], (err, results) => {
               if (err) {
@@ -444,13 +455,17 @@ router.post('/claim-item/:id', async (req, res) => {
       }
 
       if (answer === item.securityAnswer) {
-          const updateQuery = `
-              UPDATE tbl_123_${req.query.status === 'Found' ? 'founditems' : 'lostitems'}
-              SET status = 'Claimed'
-              WHERE id = ?
-          `;
+          // Insert claim request into the tbl_123_claim_requests table
+          const claimRequest = {
+              itemId: itemId,
+              userId: userId,
+              status: 'PendingApproval',
+              securityQuestion: item.securityQuestion,
+              securityAnswer: item.securityAnswer,
+              claimedAt: new Date()
+          };
           await new Promise((resolve, reject) => {
-              pool.query(updateQuery, [itemId], (err) => {
+              pool.query('INSERT INTO tbl_123_claim_requests SET ?', claimRequest, (err) => {
                   if (err) {
                       return reject(err);
                   }
@@ -458,14 +473,18 @@ router.post('/claim-item/:id', async (req, res) => {
               });
           });
 
-          res.json({ success: true });
+          res.json({ success: true, message: 'Claim request has been submitted for admin approval.' });
       } else {
           res.status(401).json({ error: 'Incorrect answer' });
       }
   } catch (err) {
-      res.status(500).json({ error: 'Internal Server Error' });
+      console.error(`Error handling claim request: ${err.message}`, err);
+      res.status(500).json({ error: 'Internal Server Error', details: err.message });
   }
 });
+
+
+
 
 
 module.exports = router;
