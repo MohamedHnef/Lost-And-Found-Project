@@ -4,7 +4,6 @@ const pool = require('../db');
 const { authenticateToken } = require('../middleware/authMiddleware');
 const logger = require('../logger');
 
-// Example of a protected route
 router.get('/protected', authenticateToken, (req, res) => {
     pool.query('SELECT * FROM tbl_123_users WHERE id = ?', [req.user.id], (err, results) => {
         if (err) {

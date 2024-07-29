@@ -1,16 +1,20 @@
-2024-07-28T22:55:27.863Z warn: Lost item not found with id: 58
-2024-07-28T22:55:28.316Z warn: Lost item not found with id: 58
-2024-07-28T22:58:16.563Z warn: Found item not found with id: 58
-2024-07-28T22:58:17.116Z warn: Found item not found with id: 58
-2024-07-28T22:59:18.109Z warn: Found item not found with id: 58
-2024-07-28T22:59:18.646Z warn: Found item not found with id: 58
-2024-07-28T23:02:35.820Z warn: Found item not found with id: 58
-2024-07-28T23:02:36.226Z warn: Found item not found with id: 58
-2024-07-28T23:07:54.322Z warn: Found item not found with id: 58
-2024-07-28T23:07:54.762Z warn: Found item not found with id: 58
-2024-07-28T23:16:28.152Z warn: Found item not found with id: 58
-2024-07-28T23:16:28.583Z warn: Found item not found with id: 58
-2024-07-28T23:39:46.726Z warn: Lost item not found with id: 62
-2024-07-28T23:39:47.495Z warn: Lost item not found with id: 62
-2024-07-28T23:51:47.791Z warn: Found item not found with id: 63
-2024-07-28T23:51:48.226Z warn: Found item not found with id: 63
+2024-07-29T13:02:01.607Z error: Error fetching recent activities: ER_BAD_FIELD_ERROR: Unknown column 'itemName' in 'field list'
+2024-07-29T13:02:01.607Z error: Error fetching dashboard data: ER_BAD_FIELD_ERROR: Unknown column 'itemName' in 'field list'
+2024-07-29T14:24:22.552Z warn: Invalid username
+2024-07-29T14:24:25.166Z warn: Invalid username
+2024-07-29T14:27:21.000Z warn: Invalid token.
+2024-07-29T14:36:12.081Z warn: Invalid token.
+2024-07-29T14:36:25.869Z warn: Invalid username
+2024-07-29T14:38:42.144Z warn: Invalid token.
+2024-07-29T14:44:05.706Z warn: Invalid token.
+2024-07-29T15:45:29.315Z warn: Invalid token.
+2024-07-29T15:45:59.194Z warn: Invalid token.
+2024-07-29T15:46:53.425Z warn: Invalid token.
+2024-07-29T16:18:03.227Z warn: Invalid token.
+2024-07-29T16:19:06.764Z warn: Invalid password
+2024-07-29T16:20:26.709Z warn: Access denied. Token missing.
+2024-07-29T16:20:56.717Z warn: Access denied. Token missing.
+2024-07-29T16:21:13.413Z warn: Access denied. Token missing.
+2024-07-29T16:22:16.132Z warn: Access denied. Token missing.
+2024-07-29T16:33:34.228Z warn: Found item not found with id: 73
+2024-07-29T16:36:04.032Z warn: Invalid token.

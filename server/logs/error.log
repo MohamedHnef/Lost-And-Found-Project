@@ -1,0 +1,2 @@
+2024-07-29T13:02:01.607Z error: Error fetching recent activities: ER_BAD_FIELD_ERROR: Unknown column 'itemName' in 'field list'
+2024-07-29T13:02:01.607Z error: Error fetching dashboard data: ER_BAD_FIELD_ERROR: Unknown column 'itemName' in 'field list'

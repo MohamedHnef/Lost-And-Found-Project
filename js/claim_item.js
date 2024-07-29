@@ -1,4 +1,4 @@
-(function() {
+/* (function() {
     const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -12,19 +12,13 @@
         event.preventDefault();
         const itemId = document.getElementById('itemId').value;
         const answer = document.getElementById('claimSecurityAnswer').value;
-        const userId = localStorage.getItem('userId'); // Ensure userId is set in localStorage
 
-        if (!userId) {
-            showNotification('User ID is missing. Please log in again.', 'error');
-            return;
-        }
-
-        fetch(`${API_URL}/claim-item/${itemId}?status=Found`, {
+        fetch(`${API_URL}/claim-item/${itemId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ answer, userId }) // Ensure userId is included in the body
+            body: JSON.stringify({ answer })
         })
         .then(response => {
             if (!response.ok) throw new Error('Failed to claim item');
@@ -32,7 +26,7 @@
         })
         .then(data => {
             if (data.success) {
-                showNotification('Claim request submitted for admin approval!', 'success');
+                showNotification('Item claimed successfully!', 'success');
                 setTimeout(() => {
                     window.location.href = 'index.html';
                 }, 2000);
@@ -70,4 +64,4 @@
         document.getElementById('claimSecurityQuestion').value = securityQuestion;
         claimSection.style.display = 'block';
     };
-})();
+})(); */
