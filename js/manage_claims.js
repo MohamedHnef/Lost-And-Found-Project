@@ -1,75 +1,40 @@
-const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
-
-document.addEventListener('DOMContentLoaded', () => {
-    fetchClaims();
+document.addEventListener("DOMContentLoaded", () => {
+    fetchPendingClaims();
 });
 
-const fetchClaims = () => {
-    const token = localStorage.getItem('token');
-
-    fetch(`${API_URL}/items?claimStatus=Pending`, {
-        headers: { 'Authorization': `Bearer ${token}` }
+const fetchPendingClaims = () => {
+    fetch(`${API_URL}/admin/pending-claims`)
+    .then(response => response.json())
+    .then(claims => {
+        const tbody = document.getElementById('claimsTable').querySelector('tbody');
+        tbody.innerHTML = '';
+        claims.forEach(claim => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${claim.itemName}</td>
+                <td>${claim.claimant}</td>
+                <td>
+                    <button onclick="handleClaim(${claim.id}, 'Approve')">Approve</button>
+                    <button onclick="handleClaim(${claim.id}, 'Reject')">Reject</button>
+                </td>
+            `;
+            tbody.appendChild(row);
+        });
     })
-        .then(response => response.json())
-        .then(data => {
-            const claimsTable = document.getElementById('claimsTable').getElementsByTagName('tbody')[0];
-            claimsTable.innerHTML = '';
-
-            data.forEach(item => {
-                const row = claimsTable.insertRow();
-                row.insertCell(0).innerText = item.itemName;
-                row.insertCell(1).innerText = item.claimant;
-
-                const actionsCell = row.insertCell(2);
-
-                const approveButton = document.createElement('button');
-                approveButton.innerText = 'Approve';
-                approveButton.className = 'btn btn-success me-2';
-                approveButton.onclick = () => updateClaimStatus(item.id, true);
-                actionsCell.appendChild(approveButton);
-
-                const rejectButton = document.createElement('button');
-                rejectButton.innerText = 'Reject';
-                rejectButton.className = 'btn btn-danger me-2';
-                rejectButton.onclick = () => updateClaimStatus(item.id, false);
-                actionsCell.appendChild(rejectButton);
-
-                const viewButton = document.createElement('button');
-                viewButton.innerText = 'View';
-                viewButton.className = 'btn btn-info';
-                viewButton.onclick = () => viewItem(item.id);
-                actionsCell.appendChild(viewButton);
-            });
-        })
-        .catch(error => console.error('Error fetching claims:', error));
+    .catch(error => console.error('Error fetching pending claims:', error));
 };
 
-const updateClaimStatus = (itemId, approved) => {
-    const token = localStorage.getItem('token');
-
-    fetch(`${API_URL}/items/claim/${itemId}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify({ approved })
+const handleClaim = (claimId, action) => {
+    const comments = prompt(`Enter comments for ${action.toLowerCase()}ing this claim:`);
+    fetch(`${API_URL}/admin/handle-claim`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ claimId, action, comments })
     })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Forbidden');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log(`Claim ${data.claimStatus}`);
-            alert(`Claim ${data.claimStatus}`); // Add alert for response
-            fetchClaims(); // Refresh the claims table
-        })
-        .catch(error => console.error('Error updating claim status:', error));
-};
-
-const viewItem = (itemId) => {
-    localStorage.setItem('selectedItemId', itemId);
-    window.location.href = `item.html?id=${itemId}`;
+    .then(response => response.json())
+    .then(result => {
+        alert(result.message);
+        fetchPendingClaims(); // Refresh the list of pending claims
+    })
+    .catch(error => console.error(`Error ${action.toLowerCase()}ing claim:`, error));
 };

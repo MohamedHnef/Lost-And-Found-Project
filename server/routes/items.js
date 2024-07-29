@@ -1,3 +1,4 @@
+
 const express = require('express');
 const router = express.Router();
 const pool = require('../db');
@@ -5,7 +6,7 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const logger = require('../logger');
-const { authenticateToken, authorizeAdmin } = require('../middleware/authMiddleware');
+const { authenticateToken } = require('../middleware/authMiddleware');
 
 // Determine if the environment is production
 const isProduction = process.env.NODE_ENV === 'production';
@@ -37,42 +38,94 @@ router.post('/upload', upload.single('image'), (req, res) => {
       return res.status(400).json({ error: 'No file uploaded' });
     }
     const imageUrl = `${baseUrl}/uploads/${req.file.filename}`;
-    
     logger.info(`Image uploaded: ${imageUrl}`);
     res.json({ imageUrl });
   } catch (err) {
-    logger.error(`Error handling file upload: ${err.message}`);
-    res.status(500).json({ error: 'Internal Server Error' });
+    logger.error(`Error handling file upload: ${err.message}`, err);
+    res.status(500).json({ error: 'Internal Server Error', details: err.message });
   }
 });
 
-// Endpoint to fetch all items
-router.get('/all-items', (req, res) => {
-  const queryLostItems = 'SELECT *, "lost" as itemType FROM tbl_123_lostitems';
-  const queryFoundItems = 'SELECT *, "found" as itemType FROM tbl_123_founditems';
 
-  pool.query(`${queryLostItems} UNION ${queryFoundItems}`, (err, results) => {
+
+// Endpoint to fetch lost items
+router.get('/lost-items', (req, res) => {
+  pool.query('SELECT * FROM tbl_123_lostitems', (err, results) => {
     if (err) {
-      logger.error(`Error fetching all items: ${err.message}`);
+      logger.error(`Error fetching lost items: ${err.message}`);
       return res.status(500).json({ error: 'Internal Server Error' });
     }
-    logger.info('Fetched all items');
+    logger.info('Fetched lost items');
     res.json(results);
   });
 });
 
-// Endpoint to fetch limited items
-router.get('/items', (req, res) => {
-  const queryLostItems = 'SELECT *, "lost" as itemType FROM tbl_123_lostitems LIMIT 4';
-  const queryFoundItems = 'SELECT *, "found" as itemType FROM tbl_123_founditems LIMIT 4';
-
-  pool.query(`${queryLostItems} UNION ${queryFoundItems}`, (err, results) => {
+// Endpoint to fetch found items
+router.get('/found-items', (req, res) => {
+  pool.query('SELECT * FROM tbl_123_founditems', (err, results) => {
     if (err) {
-      logger.error(`Error fetching limited items: ${err.message}`);
+      logger.error(`Error fetching found items: ${err.message}`);
       return res.status(500).json({ error: 'Internal Server Error' });
     }
-    logger.info('Fetched limited items');
+    logger.info('Fetched found items');
     res.json(results);
+  });
+});
+
+// Endpoint to fetch a specific lost item by id
+router.get('/lost-items/:id', (req, res) => {
+  const itemId = req.params.id;
+  pool.query('SELECT * FROM tbl_123_lostitems WHERE id = ?', [itemId], (err, results) => {
+      if (err) {
+          logger.error(`Error fetching lost item by id: ${err.message}`);
+          return res.status(500).json({ error: 'Internal Server Error' });
+      }
+      if (results.length > 0) {
+          logger.info(`Fetched lost item with id: ${itemId}`);
+          res.json(results[0]);
+      } else {
+          logger.warn(`Lost item not found with id: ${itemId}`);
+          res.status(404).json({ error: 'Lost item not found' });
+      }
+  });
+});
+
+// Endpoint to fetch a specific found item by id
+router.get('/found-items/:id', (req, res) => {
+  const itemId = req.params.id;
+  pool.query('SELECT * FROM tbl_123_founditems WHERE id = ?', [itemId], (err, results) => {
+      if (err) {
+          logger.error(`Error fetching found item by id: ${err.message}`);
+          return res.status(500).json({ error: 'Internal Server Error' });
+      }
+      if (results.length > 0) {
+          logger.info(`Fetched found item with id: ${itemId}`);
+          res.json(results[0]);
+      } else {
+          logger.warn(`Found item not found with id: ${itemId}`);
+          res.status(404).json({ error: 'Found item not found' });
+      }
+  });
+});
+
+
+// Endpoint to fetch all items (lost and found)
+router.get('/all-items', (req, res) => {
+  const lostItemsQuery = 'SELECT * FROM tbl_123_lostitems';
+  const foundItemsQuery = 'SELECT * FROM tbl_123_founditems';
+  
+  Promise.all([
+    new Promise((resolve, reject) => pool.query(lostItemsQuery, (err, results) => err ? reject(err) : resolve(results))),
+    new Promise((resolve, reject) => pool.query(foundItemsQuery, (err, results) => err ? reject(err) : resolve(results)))
+  ])
+  .then(([lostItems, foundItems]) => {
+    const allItems = [...lostItems, ...foundItems];
+    logger.info('Fetched all items');
+    res.json(allItems);
+  })
+  .catch(err => {
+    logger.error(`Error fetching all items: ${err.message}`);
+    res.status(500).json({ error: 'Internal Server Error' });
   });
 });
 
@@ -82,246 +135,336 @@ router.get('/user-items', (req, res) => {
   if (!userId) {
     return res.status(400).json({ error: 'Missing userId query parameter' });
   }
-  const queryLostItems = 'SELECT *, "lost" as itemType FROM tbl_123_lostitems WHERE userId = ?';
-  const queryFoundItems = 'SELECT *, "found" as itemType FROM tbl_123_founditems WHERE userId = ?';
-
-  pool.query(`${queryLostItems} UNION ${queryFoundItems}`, [userId, userId], (err, results) => {
-    if (err) {
-      logger.error(`Error fetching user items: ${err.message}`);
-      return res.status(500).json({ error: 'Internal Server Error' });
-    }
+  
+  const lostItemsQuery = 'SELECT * FROM tbl_123_lostitems WHERE userId = ?';
+  const foundItemsQuery = 'SELECT * FROM tbl_123_founditems WHERE userId = ?';
+  
+  Promise.all([
+    new Promise((resolve, reject) => pool.query(lostItemsQuery, [userId], (err, results) => err ? reject(err) : resolve(results))),
+    new Promise((resolve, reject) => pool.query(foundItemsQuery, [userId], (err, results) => err ? reject(err) : resolve(results)))
+  ])
+  .then(([lostItems, foundItems]) => {
+    const userItems = [...lostItems, ...foundItems];
     logger.info(`Fetched items for user ${userId}`);
-    res.json(results);
+    res.json(userItems);
+  })
+  .catch(err => {
+    logger.error(`Error fetching user items: ${err.message}`);
+    res.status(500).json({ error: 'Internal Server Error' });
   });
 });
 
-// Endpoint to fetch a specific item by id
+
+// Endpoint to fetch a specific item by id (used in edit functionality)
 router.get('/items/:id', (req, res) => {
   const itemId = req.params.id;
-  const queryLostItems = 'SELECT *, "lost" as itemType FROM tbl_123_lostitems WHERE id = ?';
-  const queryFoundItems = 'SELECT *, "found" as itemType FROM tbl_123_founditems WHERE id = ?';
 
-  pool.query(`${queryLostItems} UNION ${queryFoundItems}`, [itemId, itemId], (err, results) => {
-    if (err) {
-      logger.error(`Error fetching item by id: ${err.message}`);
-      return res.status(500).json({ error: 'Internal Server Error' });
+  const lostItemQuery = 'SELECT * FROM tbl_123_lostitems WHERE id = ?';
+  const foundItemQuery = 'SELECT * FROM tbl_123_founditems WHERE id = ?';
+
+  Promise.all([
+    new Promise((resolve, reject) => pool.query(lostItemQuery, [itemId], (err, results) => err ? reject(err) : resolve(results))),
+    new Promise((resolve, reject) => pool.query(foundItemQuery, [itemId], (err, results) => err ? reject(err) : resolve(results)))
+  ]).then(([lostItemResults, foundItemResults]) => {
+    const item = lostItemResults[0] || foundItemResults[0];
+
+    if (!item) {
+      return res.status(404).json({ error: 'Item not found' });
     }
-    if (results.length > 0) {
-      logger.info(`Fetched item with id: ${itemId}`);
-      res.json(results[0]);
-    } else {
-      logger.warn(`Item not found with id: ${itemId}`);
-      res.status(404).json({ error: 'Item not found' });
-    }
+
+    res.json(item);
+  }).catch(err => {
+    logger.error(`Error fetching item: ${err.message}`);
+    res.status(500).json({ error: 'Internal Server Error' });
   });
 });
 
-// Endpoint to add a new item
-router.post('/items', (req, res) => {
-  const newItem = req.body;
-  const table = newItem.type === 'lost' ? 'tbl_123_lostitems' : 'tbl_123_founditems';
-  logger.info(`Adding new item: ${JSON.stringify(newItem)}`);
-  pool.query(`INSERT INTO ${table} SET ?`, newItem, (err, result) => {
-    if (err) {
-      logger.error(`Error adding new item: ${err.message}`);
-      return res.status(500).json({ error: 'Internal Server Error' });
-    }
-    logger.info(`Item added with ID: ${result.insertId}`);
-    res.json({ id: result.insertId, ...newItem });
-  });
-});
-
-// Endpoint to update an item
-router.put('/items/:id', upload.single('editAddImage'), (req, res) => {
+router.put('/items/:id', upload.single('image'), (req, res) => {
   const itemId = req.params.id;
   const updatedItem = req.body;
-  const table = updatedItem.type === 'lost' ? 'tbl_123_lostitems' : 'tbl_123_founditems';
+  const tableName = updatedItem.status === 'Lost' ? 'tbl_123_lostitems' : 'tbl_123_founditems';
 
-  if (req.file) {
-      updatedItem.imageUrl = `${baseUrl}/uploads/${req.file.filename}`;
-  }
+  logger.info(`Update request received for item ID: ${itemId}, Status: ${updatedItem.status}, Table: ${tableName}`);
 
-  if (updatedItem.locationLost) {
-      updatedItem.locationFound = updatedItem.locationLost;
-  }
+  const query = `SELECT * FROM ${tableName} WHERE id = ?`;
 
-  logger.info(`Updating item ID ${itemId}: ${JSON.stringify(updatedItem)}`);
-  pool.query(`UPDATE ${table} SET ? WHERE id = ?`, [updatedItem, itemId], (err) => {
+  pool.query(query, [itemId], (err, results) => {
       if (err) {
-          logger.error(`Error updating item ID ${itemId}: ${err.message}`);
-          return res.status(500).json({ error: 'Internal Server Error' });
+          logger.error(`Error fetching item for update: ${err.message}`, err);
+          return res.status(500).json({ error: 'Internal Server Error', details: err.message });
       }
-      logger.info(`Item ID ${itemId} updated`);
-      res.json({ success: true });
+
+      if (results.length === 0) {
+          logger.warn(`Item not found with ID: ${itemId} in table: ${tableName}`);
+          return res.status(404).json({ error: 'Item not found' });
+      }
+
+      const currentItem = results[0];
+
+      // Handle image update
+      if (req.file) {
+          const oldImagePath = currentItem.imageUrl ? path.join(__dirname, '../uploads', path.basename(currentItem.imageUrl)) : null;
+          if (oldImagePath && fs.existsSync(oldImagePath)) {
+              fs.unlinkSync(oldImagePath);
+          }
+          updatedItem.imageUrl = `${baseUrl}/uploads/${req.file.filename}`;
+      } else {
+          updatedItem.imageUrl = currentItem.imageUrl;
+      }
+
+      // Remove fields that do not exist in the table for the specific item status
+      if (tableName === 'tbl_123_lostitems') {
+          delete updatedItem.locationFound;
+          delete updatedItem.foundDate;
+          delete updatedItem.foundTime;
+      } else if (tableName === 'tbl_123_founditems') {
+          delete updatedItem.locationLost;
+          delete updatedItem.lostDate;
+          delete updatedItem.timeLost;
+      }
+
+      // Remove empty fields from the update object
+      Object.keys(updatedItem).forEach(key => {
+          if (updatedItem[key] === '') {
+              delete updatedItem[key];
+          }
+      });
+
+      pool.query(`UPDATE ${tableName} SET ? WHERE id = ?`, [updatedItem, itemId], (err) => {
+          if (err) {
+              logger.error(`Error updating item ID ${itemId} in table: ${tableName}: ${err.message}`, err);
+              return res.status(500).json({ error: 'Internal Server Error', details: err.message });
+          }
+          logger.info(`Item ID ${itemId} updated successfully in table: ${tableName}`);
+          res.json({ success: true });
+      });
   });
 });
+
+
+
 
 // Endpoint to delete an item and its image
 router.delete('/items/:id', (req, res) => {
   const itemId = req.params.id;
-  // First, fetch the item to get the image URL
-  const queryLostItems = 'SELECT imageUrl FROM tbl_123_lostitems WHERE id = ?';
-  const queryFoundItems = 'SELECT imageUrl FROM tbl_123_founditems WHERE id = ?';
 
-  pool.query(`${queryLostItems} UNION ${queryFoundItems}`, [itemId, itemId], (err, results) => {
-    if (err) {
-      logger.error(`Error fetching item for deletion: ${err.message}`);
-      return res.status(500).json({ error: 'Internal Server Error' });
-    }
-    if (results.length === 0) {
+  const lostItemQuery = 'SELECT imageUrl FROM tbl_123_lostitems WHERE id = ?';
+  const foundItemQuery = 'SELECT imageUrl FROM tbl_123_founditems WHERE id = ?';
+  
+  Promise.all([
+    new Promise((resolve, reject) => pool.query(lostItemQuery, [itemId], (err, results) => err ? reject(err) : resolve(results))),
+    new Promise((resolve, reject) => pool.query(foundItemQuery, [itemId], (err, results) => err ? reject(err) : resolve(results)))
+  ]).then(([lostItemResults, foundItemResults]) => {
+    const item = lostItemResults[0] || foundItemResults[0];
+    
+    if (!item) {
       return res.status(404).json({ error: 'Item not found' });
     }
 
-    const imageUrl = results[0].imageUrl;
+    const imageUrl = item.imageUrl;
     const imagePath = imageUrl ? path.join(__dirname, '../uploads', path.basename(imageUrl)) : null;
-    const table = results[0].itemType === 'lost' ? 'tbl_123_lostitems' : 'tbl_123_founditems';
 
-    // Delete the item from the database
-    pool.query(`DELETE FROM ${table} WHERE id = ?`, [itemId], (err) => {
+    const deleteQuery = `DELETE FROM ${lostItemResults.length > 0 ? 'tbl_123_lostitems' : 'tbl_123_founditems'} WHERE id = ?`;
+    
+    pool.query(deleteQuery, [itemId], (err) => {
       if (err) {
         logger.error(`Error deleting item: ${err.message}`);
         return res.status(500).json({ error: 'Internal Server Error' });
       }
 
-      if (imagePath) {
+      if (imagePath && fs.existsSync(imagePath)) {
         // Delete the image file if it exists
-        fs.unlink(imagePath, (err) => {
-          if (err) {
-            logger.error(`Error deleting image file: ${err.message}`);
-          } else {
-            logger.info('Image file deleted successfully');
-          }
-        });
+        fs.unlinkSync(imagePath);
+        logger.info('Image file deleted successfully');
       }
 
       res.json({ success: true });
     });
-  });
-});
-
-// Endpoint to report a found item
-router.post('/found-items', upload.none(), (req, res) => {
-  const { itemName, locationFound, foundDate, category, color, description, contactEmail, contactPhone, securityQuestion, securityAnswer, imageUrl, userId } = req.body;
-
-  console.log('Received Data:', req.body); // Debugging log
-
-  if (!itemName || !locationFound || !foundDate || !category || !color || !contactEmail || !contactPhone || !securityQuestion || !securityAnswer) {
-    return res.status(400).json({ error: 'All fields except description are required' });
-  }
-
-  const newItem = {
-    itemName,
-    locationFound,
-    foundDate,
-    category,
-    color,
-    description: description || null,
-    contactEmail,
-    contactPhone,
-    securityQuestion,
-    securityAnswer,
-    status: 'Found',
-    imageUrl: imageUrl || null,
-    userId: userId
-  };
-
-  pool.query('INSERT INTO tbl_123_founditems SET ?', newItem, (err, result) => {
-    if (err) {
-      logger.error(`Error reporting found item: ${err.message}`);
-      return res.status(500).json({ error: 'Internal Server Error' });
-    }
-    logger.info(`Item added with ID: ${result.insertId}`);
-    res.json({ id: result.insertId, ...newItem });
+  }).catch(err => {
+    logger.error(`Error fetching item for deletion: ${err.message}`);
+    res.status(500).json({ error: 'Internal Server Error' });
   });
 });
 
 // Endpoint to report a lost item
-router.post('/lost-items', upload.none(), (req, res) => {
-  const { itemName, locationLost, lostDate, category, color, description, contactEmail, contactPhone, securityQuestion, securityAnswer, imageUrl, userId } = req.body;
+router.post('/lost-items', upload.single('image'), (req, res) => {
+  const { itemName, locationLost, lostDate, timeLost, category, color, description, contactEmail, contactPhone, userId } = req.body;
+  const imageUrl = req.file ? `${baseUrl}/uploads/${req.file.filename}` : req.body.imageUrl;
 
-  console.log('Received Data:', req.body); // Debugging log
-
-  if (!itemName || !locationLost || !lostDate || !category || !color || !contactEmail || !contactPhone || !securityQuestion || !securityAnswer) {
-    return res.status(400).json({ error: 'All fields except description are required' });
+  if (!itemName || !locationLost || !lostDate || !timeLost || !category || !color || !contactEmail || !contactPhone || !userId) {
+      return res.status(400).json({ error: 'All fields except description are required' });
   }
 
   const newItem = {
-    itemName,
-    locationLost,
-    lostDate,
-    category,
-    color,
-    description: description || null,
-    contactEmail,
-    contactPhone,
-    securityQuestion,
-    securityAnswer,
-    status: 'Lost',
-    imageUrl: imageUrl || null,
-    userId: userId
+      itemName,
+      locationLost,
+      lostDate,
+      timeLost,
+      category,
+      color,
+      description: description || null,
+      contactEmail,
+      contactPhone,
+      status: 'Lost',
+      imageUrl: imageUrl,
+      userId: userId
   };
 
   pool.query('INSERT INTO tbl_123_lostitems SET ?', newItem, (err, result) => {
-    if (err) {
-      logger.error(`Error reporting lost item: ${err.message}`);
-      return res.status(500).json({ error: 'Internal Server Error' });
-    }
-    logger.info(`Item added with ID: ${result.insertId}`);
-    res.json({ id: result.insertId, ...newItem });
+      if (err) {
+          logger.error(`Error reporting lost item: ${err.message}`);
+          return res.status(500).json({ error: 'Internal Server Error' });
+      }
+      newItem.id = result.insertId;
+      logger.info(`Lost item added with ID: ${result.insertId}`);
+      res.json(newItem);
   });
 });
 
-// Endpoint to claim an item with security question verification
-router.post('/claim-item/:id', (req, res) => {
-  const itemId = req.params.id;
-  const { answer } = req.body;
+// Function to match found items with lost items and create notifications
+const matchFoundItem = async (foundItem) => {
+  try {
+      logger.info(`Matching found item with ID: ${foundItem.id}`);
+      
+      const query = `
+          SELECT * FROM tbl_123_lostitems
+          WHERE itemName = ? AND category = ? AND color = ? AND status = 'Lost'
+      `;
+      const values = [foundItem.itemName, foundItem.category, foundItem.color];
 
-  // Validate input
-  if (!answer) {
-    return res.status(400).json({ error: 'Answer is required' });
+      const results = await new Promise((resolve, reject) => {
+          pool.query(query, values, (err, results) => {
+              if (err) {
+                  logger.error(`Error executing query: ${err.message}`);
+                  return reject(err);
+              }
+              logger.info(`Query results: ${JSON.stringify(results)}`);
+              resolve(results);
+          });
+      });
+
+      logger.info(`Results from matchFoundItem: ${JSON.stringify(results)}`);
+
+      if (Array.isArray(results) && results.length > 0) {
+          for (const lostItem of results) {
+              logger.info(`Found match for lost item with ID: ${lostItem.id}`);
+              const itemUrl = `${baseUrl}/item.html?id=${foundItem.id}&status=Found`; // Ensure correct foundItem.id is used
+              logger.info(`Generated item URL: ${itemUrl}`);
+              const message = `Your lost item "${lostItem.itemName}" might have been found. Check the found items list. <a href="${itemUrl}">View Item</a>`;
+              const notification = {
+                  userId: lostItem.userId,
+                  message: message,
+                  isRead: false
+              };
+              logger.info(`Creating notification for userId: ${lostItem.userId}`);
+              await new Promise((resolve, reject) => {
+                  pool.query('INSERT INTO tbl_123_notifications SET ?', notification, (err) => {
+                      if (err) {
+                          logger.error(`Error inserting notification: ${err.message}`);
+                          return reject(err);
+                      }
+                      logger.info(`Notification inserted for userId: ${lostItem.userId}`);
+                      resolve();
+                  });
+              });
+              logger.info(`Notification sent to user ${lostItem.userId} for lost item ${lostItem.id}`);
+          }
+      } else {
+          logger.info('No matching lost items found.');
+      }
+
+      return results;
+  } catch (err) {
+      logger.error(`Error matching found item: ${err.message}`);
+      throw new Error('Error matching found item');
+  }
+};
+
+
+
+
+// Endpoint to report a found item
+router.post('/found-items', upload.single('image'), (req, res) => {
+  const { itemName, locationFound, foundDate, foundTime, category, color, description, contactEmail, contactPhone, securityQuestion, securityAnswer, userId } = req.body;
+  const imageUrl = req.file ? `${baseUrl}/uploads/${req.file.filename}` : req.body.imageUrl;
+
+  if (!itemName || !locationFound || !foundDate || !foundTime || !category || !color || !contactEmail || !contactPhone || !securityQuestion || !securityAnswer || !userId) {
+      return res.status(400).json({ error: 'All fields except description are required' });
   }
 
-  const queryLostItems = 'SELECT securityAnswer FROM tbl_123_lostitems WHERE id = ?';
-  const queryFoundItems = 'SELECT securityAnswer FROM tbl_123_founditems WHERE id = ?';
+  const newItem = {
+      itemName,
+      locationFound,
+      foundDate,
+      foundTime,
+      category,
+      color,
+      description: description || null,
+      contactEmail,
+      contactPhone,
+      securityQuestion,
+      securityAnswer,
+      status: 'Found',
+      imageUrl: imageUrl,
+      userId: userId
+  };
 
-  pool.query(`${queryLostItems} UNION ${queryFoundItems}`, [itemId, itemId], (err, results) => {
-    if (err) {
-      logger.error(`Error fetching item for claim: ${err.message}`);
-      return res.status(500).json({ error: 'Internal Server Error' });
-    }
-    if (results.length === 0) {
-      return res.status(404).json({ error: 'Item not found' });
-    }
+  pool.query('INSERT INTO tbl_123_founditems SET ?', newItem, (err, result) => {
+      if (err) {
+          logger.error(`Error reporting found item: ${err.message}`);
+          return res.status(500).json({ error: 'Internal Server Error' });
+      }
+      newItem.id = result.insertId;
+      logger.info(`Found item added with ID: ${result.insertId}`);
 
-    const correctAnswer = results[0].securityAnswer;
-    if (answer === correctAnswer) {
-      logger.info(`Item with ID: ${itemId} claimed successfully`);
-      res.json({ success: true });
-    } else {
-      logger.warn(`Incorrect answer for item with ID: ${itemId}`);
-      res.status(401).json({ error: 'Incorrect answer' });
-    }
+      // Call matchFoundItem function to match with lost items
+      matchFoundItem(newItem).then(() => {
+          res.json(newItem);
+      }).catch(err => {
+          logger.error(`Error matching found item: ${err.message}`);
+          res.status(500).json({ error: 'Error matching found item', details: err.message });
+      });
   });
 });
 
-
-// ******************************************************************************************
-// Endpoint to update claim status for an item (for admin)
-router.put('/items/claim/:id', authenticateToken, authorizeAdmin, (req, res) => {
+// Endpoint to handle claim submission
+router.post('/claim-item/:id', authenticateToken, async (req, res) => {
   const itemId = req.params.id;
-  const { approved } = req.body; //true or false
-  const claimStatus = approved ? 'Approved' : 'Rejected';
+  const { answer } = req.body;
+  const userId = req.user.id;
 
-  const table = claimStatus === 'Approved' ? 'tbl_123_founditems' : 'tbl_123_lostitems';
+  try {
+      const [item] = await new Promise((resolve, reject) => {
+          pool.query('SELECT securityQuestion, securityAnswer FROM tbl_123_founditems WHERE id = ?', [itemId], (err, results) => {
+              if (err) return reject(err);
+              resolve(results);
+          });
+      });
 
-  pool.query(`UPDATE ${table} SET claimStatus = ? WHERE id = ?`, [claimStatus, itemId], (err, result) => {
-    if (err) {
-      logger.error(`Error updating claim status for item ID ${itemId}: ${err.message}`);
-      return res.status(500).json({ error: 'Internal Server Error' });
-    }
-    logger.info(`Claim status updated for item ID ${itemId} to ${claimStatus}`);
-    res.json({ success: true, claimStatus });
-  });
+      if (!item) return res.status(404).json({ error: 'Item not found' });
+
+      if (answer === item.securityAnswer) {
+          const claimRequest = {
+              itemId: itemId,
+              userId: userId,
+              status: 'PendingApproval',
+              claimedAt: new Date()
+          };
+
+          await new Promise((resolve, reject) => {
+              pool.query('INSERT INTO tbl_123_claim_requests SET ?', claimRequest, (err) => {
+                  if (err) return reject(err);
+                  resolve();
+              });
+          });
+
+          res.json({ success: true, message: 'Claim request has been submitted for admin approval.' });
+      } else {
+          res.status(401).json({ error: 'Incorrect answer' });
+      }
+  } catch (err) {
+      console.error(`Error handling claim request: ${err.message}`, err);
+      res.status(500).json({ error: 'Internal Server Error', details: err.message });
+  }
 });
-
 module.exports = router;

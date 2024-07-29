@@ -8,27 +8,25 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
-// Determine if the environment is production
 const isProduction = process.env.NODE_ENV === 'production';
 const baseUrl = isProduction ? 'https://lost-and-found-project.onrender.com' : 'http://localhost:3000';
 const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret';
-const DEFAULT_PROFILE_PIC = `${baseUrl}/uploads/default-profile-pic.png`; // Path to your default profile picture
-
+const DEFAULT_PROFILE_PIC = `${baseUrl}/uploads/default-profile-pic.png`;
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      const uploadPath = path.join(__dirname, '../uploads');
-      if (!fs.existsSync(uploadPath)) {
-        fs.mkdirSync(uploadPath, { recursive: true });
-      }
-      cb(null, uploadPath);
+        const uploadPath = path.join(__dirname, '../uploads');
+        if (!fs.existsSync(uploadPath)) {
+            fs.mkdirSync(uploadPath, { recursive: true });
+        }
+        cb(null, uploadPath);
     },
     filename: function (req, file, cb) {
-      cb(null, Date.now() + '-' + file.originalname);
+        cb(null, Date.now() + '-' + file.originalname);
     }
-  });
-  const upload = multer({ storage: storage });
-// Register a new user
+});
+const upload = multer({ storage: storage });
+
 router.post('/register', upload.single('profilePic'), async (req, res) => {
     try {
         const { username, email, password, phone } = req.body;
@@ -51,9 +49,9 @@ router.post('/register', upload.single('profilePic'), async (req, res) => {
     }
 });
 
-// Login a user
 router.post('/login', (req, res) => {
     const { username, password } = req.body;
+    console.log(`Login attempt: username=${username}, password=${password}`);
 
     pool.query('SELECT * FROM tbl_123_users WHERE username = ?', [username], async (err, results) => {
         if (err) {
@@ -67,8 +65,10 @@ router.post('/login', (req, res) => {
         }
 
         const user = results[0];
+        console.log(`User found: ${JSON.stringify(user)}`);
 
         const isMatch = await bcrypt.compare(password, user.password);
+        console.log(`Password match: ${isMatch}`);
 
         if (!isMatch) {
             logger.warn('Invalid password');
@@ -82,9 +82,10 @@ router.post('/login', (req, res) => {
             message: 'Login successful',
             token,
             user: {
+                id: user.id,
                 username: user.username,
                 role: user.role,
-                profilePicture: user.profile_pic  
+                profilePicture: user.profile_pic
             }
         });
     });

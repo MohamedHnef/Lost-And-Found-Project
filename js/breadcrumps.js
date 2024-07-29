@@ -46,11 +46,9 @@ function getDisplayName(currentPage) {
 
 function getHrefForCrumb(crumb) {
     const role = localStorage.getItem('role');
-    const isAdmin = role === 'admin';
-
     switch (crumb) {
         case "Home":
-            return isAdmin ? "adminHomePage.html" : "homePage.html";
+            return role === 'admin' ? "adminHomePage.html" : "homePage.html";
         case "Item":
             const selectedItemName = localStorage.getItem('selectedItemName');
             return selectedItemName ? `item.html?item=${selectedItemName}` : "item.html";

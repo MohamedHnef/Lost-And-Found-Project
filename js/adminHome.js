@@ -1,30 +1,36 @@
 const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
     fetchAdminDashboardData();
 });
 
 const fetchAdminDashboardData = () => {
-    const token = localStorage.getItem('token');
-    fetch(`${API_URL}/admin-dashboard`, {
-        headers: { 'Authorization': `Bearer ${token}` }
+    fetch(`${API_URL}/admin/dashboard-data`, {
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
     })
     .then(response => response.json())
     .then(data => {
-        document.getElementById('totalApproved').innerText = data.totalApproved;
-        document.getElementById('totalRejected').innerText = data.totalRejected;
-        document.getElementById('totalPending').innerText = data.totalPending;
-        
-        const activitiesTable = document.getElementById('activitiesTable').getElementsByTagName('tbody')[0];
-        activitiesTable.innerHTML = '';
-
-        data.recentActivities.forEach(activity => {
-            const row = activitiesTable.insertRow();
-            row.insertCell(0).innerText = activity.itemName;
-            row.insertCell(1).innerText = activity.claimant;
-            row.insertCell(2).innerText = activity.action;
-            row.insertCell(3).innerText = new Date(activity.timestamp).toLocaleString();
-        });
+        document.getElementById('totalApproved').textContent = data.totalApproved;
+        document.getElementById('totalRejected').textContent = data.totalRejected;
+        document.getElementById('totalPending').textContent = data.totalPending;
+        populateRecentActivities(data.recentActivities);
     })
-    .catch(error => console.error('Error fetching admin dashboard data:', error));
+    .catch(error => console.error('Error fetching dashboard data:', error));
+};
+
+const populateRecentActivities = (activities) => {
+    const tbody = document.getElementById('activitiesTable').querySelector('tbody');
+    tbody.innerHTML = '';
+    activities.forEach(activity => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${activity.itemName}</td>
+            <td>${activity.claimant || 'Unknown'}</td>
+            <td>${activity.status}</td>
+            <td>${new Date(activity.timestamp).toLocaleString()}</td>
+        `;
+        tbody.appendChild(row);
+    });
 };

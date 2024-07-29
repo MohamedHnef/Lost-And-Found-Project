@@ -1,3 +1,4 @@
+
 const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
 
 window.onload = () => {
@@ -6,24 +7,27 @@ window.onload = () => {
 };
 
 const populateItemsTable = () => {
-    fetch(`${API_URL}/items`)
-        .then(response => response.json())
-        .then(data => {
-            const itemsTable = document.getElementById('itemsTable');
-            itemsTable.innerHTML = '';
+    Promise.all([
+        fetch(`${API_URL}/lost-items`).then(response => response.json()),
+        fetch(`${API_URL}/found-items`).then(response => response.json())
+    ])
+    .then(([lostItems, foundItems]) => {
+        const itemsTable = document.getElementById('itemsTable');
+        itemsTable.innerHTML = '';
 
-            data.forEach(item => {
-                const row = document.createElement('tr');
+        const allItems = [...lostItems, ...foundItems];
+        allItems.forEach(item => {
+            const row = document.createElement('tr');
 
-                row.appendChild(createTableCell(item.itemName));
-                row.appendChild(createTableCell(new Date(item.lostDate).toLocaleDateString()));
-                row.appendChild(createTableCell(item.locationLost));
-                row.appendChild(createStatusCell(item.status));
+            row.appendChild(createTableCell(item.itemName));
+            row.appendChild(createTableCell(new Date(item.lostDate || item.foundDate).toLocaleDateString()));
+            row.appendChild(createTableCell(item.locationLost || item.locationFound));
+            row.appendChild(createStatusCell(item.status));
 
-                itemsTable.appendChild(row);
-            });
-        })
-        .catch(error => console.error('Error fetching items:', error));
+            itemsTable.appendChild(row);
+        });
+    })
+    .catch(error => console.error('Error fetching items:', error));
 };
 
 const createTableCell = (text) => {

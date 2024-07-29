@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -232,72 +233,74 @@
         </div>
     </div>
 
-    <!-- Edit Item Modal -->
-    <div class="modal fade" id="editItemModal" tabindex="-1" aria-labelledby="editItemModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editItemModalLabel">Edit Item</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="editItemForm" class="row form" enctype="multipart/form-data">
-                        <input type="hidden" id="editItemId" name="editItemId">
-                        <div class="col-lg-6 mb-3 form">
-                            <label for="editItemName" class="form-label">Item Name</label>
-                            <input type="text" class="form-control" id="editItemName" name="editItemName" required>
-                        </div>
-                        <div class="col-lg-6 mb-3 form">
-                            <label for="editLocationLost" class="form-label">Location Lost</label>
-                            <input type="text" class="form-control" id="editLocationLost" name="editLocationLost" required>
-                        </div>
-                        <div class="col-lg-6 mb-3 form">
-                            <label for="editLostDate" class="form-label">Lost Date</label>
-                            <input type="date" class="form-control" id="editLostDate" name="editLostDate" required>
-                        </div>
-                        <div class="col-lg-6 mb-3 form">
-                            <label for="editTimeLost" class="form-label">Time Lost</label>
-                            <input type="time" class="form-control" id="editTimeLost" name="editTimeLost" required>
-                        </div>
-                        <div class="col-lg-6 mb-3 form">
-                            <label for="editCategory" class="form-label">Category</label>
-                            <select class="form-select" id="editCategory" name="editCategory" required>
-                                <option value="" disabled>Select Category</option>
-                                <option>Electronics</option>
-                                <option>Personal Items</option>
-                                <option>Books and Documents</option>
-                                <option>Sports and Recreation</option>
-                                <option>Home and Office</option>
-                                <option>Pets and Animals</option>
-                                <option>Vehicles and Transportation</option>
-                            </select>
-                        </div>
-                        <div class="col-lg-6 mb-3 form">
-                            <label for="editItemColor" class="form-label">Item Color</label>
-                            <input type="text" class="form-control" id="editItemColor" name="editItemColor" required>
-                        </div>
-                        <div class="col-lg-6 mb-3 form">
-                            <label for="editDescription" class="form-label">Description</label>
-                            <textarea class="form-control" id="editDescription" name="editDescription" rows="3"></textarea>
-                        </div>
-                        <div class="col-lg-6 mb-3 form">
-                            <label for="editContactEmail" class="form-label">Contact Information</label>
-                            <input type="email" class="form-control" id="editContactEmail" name="editContactEmail" required>
-                            <input type="text" class="form-control mt-2" id="editContactPhone" name="editContactPhone" required>
-                        </div>
-                        <div class="col-lg-6 mb-3 form">
-                            <label for="editAddImage" class="form-label">Add Image</label>
-                            <input type="file" class="custom-file-input" id="editAddImage" name="editAddImage" accept="image/*">
-                            <label class="custom-file-label" for="editAddImage">Choose file</label>
-                            <small class="form-text text-muted">Accepted formats: JPEG, PNG, GIF</small>
-                        </div>
-                        <div class="col-12 text-center">
-                            <button type="submit" class="btn btn-primary">Save Changes</button>
-                        </div>
-                    </form>
-                </div>
+   <!-- Edit Item Modal -->
+<div class="modal fade" id="editItemModal" tabindex="-1" aria-labelledby="editItemModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editItemModalLabel">Edit Item</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editItemForm" class="row form" enctype="multipart/form-data">
+                    <input type="hidden" id="editItemId" name="editItemId">
+                    <input type="hidden" id="editItemStatus" name="editItemStatus">
+                    <div class="col-lg-6 mb-3 form">
+                        <label for="editItemName" class="form-label">Item Name</label>
+                        <input type="text" class="form-control" id="editItemName" name="editItemName" required>
+                    </div>
+                    <div class="col-lg-6 mb-3 form">
+                        <label for="editLocationLost" class="form-label">Location Lost</label>
+                        <input type="text" class="form-control" id="editLocationLost" name="editLocationLost" required>
+                    </div>
+                    <div class="col-lg-6 mb-3 form">
+                        <label for="editLostDate" class="form-label">Lost Date</label>
+                        <input type="date" class="form-control" id="editLostDate" name="editLostDate" required>
+                    </div>
+                    <div class="col-lg-6 mb-3 form">
+                        <label for="editTimeLost" class="form-label">Time Lost</label>
+                        <input type="time" class="form-control" id="editTimeLost" name="editTimeLost" required>
+                    </div>
+                    <div class="col-lg-6 mb-3 form">
+                        <label for="editCategory" class="form-label">Category</label>
+                        <select class="form-select" id="editCategory" name="editCategory" required>
+                            <option value="" disabled>Select Category</option>
+                            <option>Electronics</option>
+                            <option>Personal Items</option>
+                            <option>Books and Documents</option>
+                            <option>Sports and Recreation</option>
+                            <option>Home and Office</option>
+                            <option>Pets and Animals</option>
+                            <option>Vehicles and Transportation</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-6 mb-3 form">
+                        <label for="editItemColor" class="form-label">Item Color</label>
+                        <input type="text" class="form-control" id="editItemColor" name="editItemColor" required>
+                    </div>
+                    <div class="col-lg-6 mb-3 form">
+                        <label for="editDescription" class="form-label">Description</label>
+                        <textarea class="form-control" id="editDescription" name="editDescription" rows="3"></textarea>
+                    </div>
+                    <div class="col-lg-6 mb-3 form">
+                        <label for="editContactEmail" class="form-label">Contact Information</label>
+                        <input type="email" class="form-control" id="editContactEmail" name="editContactEmail" required>
+                        <input type="text" class="form-control mt-2" id="editContactPhone" name="editContactPhone" required>
+                    </div>
+                    <div class="col-lg-6 mb-3 form">
+                        <label for="editAddImage" class="form-label">Add Image</label>
+                        <input type="file" class="custom-file-input" id="editAddImage" name="editAddImage" accept="image/*">
+                        <label class="custom-file-label" for="editAddImage">Choose file</label>
+                        <small class="form-text text-muted">Accepted formats: JPEG, PNG, GIF</small>
+                    </div>
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
+
 </body>
 </html>
