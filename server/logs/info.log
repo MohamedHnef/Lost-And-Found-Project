@@ -1354,3 +1354,40 @@
 2024-07-30T20:04:48.694Z info: User logged in: aboalmrwan
 2024-07-30T20:04:49.172Z info: Fetched found items
 2024-07-30T20:04:49.207Z info: Fetched lost items
+2024-07-30T21:27:39.997Z info: Server is running on http://localhost:3000
+2024-07-30T21:27:43.158Z info: User logged in: aboalmrwan
+2024-07-30T21:27:44.168Z info: Fetched lost items
+2024-07-30T21:27:44.202Z info: Fetched found items
+2024-07-30T21:27:58.160Z info: Fetched lost items
+2024-07-30T21:27:58.163Z info: Fetched found items
+2024-07-30T21:32:55.200Z info: Image uploaded: http://localhost:3000/uploads/1722375175199-should-you-become-nurse.jpg
+2024-07-30T21:32:55.639Z info: Lost item added with ID: 138
+2024-07-30T21:33:39.637Z info: Fetched lost items
+2024-07-30T21:33:40.062Z info: Fetched found items
+2024-07-30T21:33:41.831Z info: Fetched found items
+2024-07-30T21:33:41.836Z info: Fetched lost items
+2024-07-30T21:33:47.940Z info: Fetched items for user 11
+2024-07-30T21:33:48.386Z info: Fetched items for user 11
+2024-07-30T21:33:56.252Z info: Fetched items for user 11
+2024-07-30T21:33:56.254Z info: Fetched items for user 11
+2024-07-30T21:34:03.929Z info: Fetched lost items
+2024-07-30T21:34:03.955Z info: Fetched found items
+2024-07-30T21:34:06.875Z info: Fetched found items
+2024-07-30T21:34:06.881Z info: Fetched lost items
+2024-07-30T21:38:06.847Z info: Fetched lost items
+2024-07-30T21:38:06.857Z info: Fetched found items
+2024-07-30T22:24:26.331Z info: Server is running on http://localhost:3000
+2024-07-30T22:24:29.289Z info: User logged in: aboalmrwan
+2024-07-30T22:24:30.338Z info: Fetched lost items
+2024-07-30T22:24:30.345Z info: Fetched found items
+2024-07-30T22:25:22.118Z info: Server is running on http://localhost:3000
+2024-07-30T22:25:24.791Z info: User logged in: aboalmrwan
+2024-07-30T22:25:25.892Z info: Fetched found items
+2024-07-30T22:25:25.940Z info: Fetched lost items
+2024-07-30T22:25:44.220Z info: Fetched items for user 11
+2024-07-30T22:25:44.223Z info: Fetched items for user 11
+2024-07-30T22:25:48.507Z info: Image file deleted successfully
+2024-07-30T22:25:49.499Z info: Fetched items for user 11
+2024-07-30T22:25:49.517Z info: Fetched items for user 11
+2024-07-30T22:25:51.008Z info: Fetched lost items
+2024-07-30T22:25:51.029Z info: Fetched found items
