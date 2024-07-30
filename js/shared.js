@@ -11,7 +11,7 @@ function toggleView(view) {
             loginForm.style.display = 'block';
             registerForm.style.display = 'none';
             loginTab.classList.add('active');
-            loginTab.classList.remove('active');
+            registerTab.classList.remove('active');
         } else {
             loginForm.style.display = 'none';
             registerForm.style.display = 'block';

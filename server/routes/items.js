@@ -160,9 +160,21 @@ router.get('/items/:id', (req, res) => {
   const itemId = req.params.id;
   const status = req.query.status;
 
-  const query = status === 'Found' 
-    ? 'SELECT * FROM tbl_123_founditems WHERE id = ?' 
-    : 'SELECT * FROM tbl_123_lostitems WHERE id = ?';
+  console.log('Fetching item with ID:', itemId, 'and Status:', status);
+
+  let query;
+  if (status === 'PendingApproval') {
+    query = 'SELECT * FROM tbl_123_claim_requests WHERE id = ?';
+  } else if (status === 'Found') {
+    query = 'SELECT * FROM tbl_123_founditems WHERE id = ?';
+  } else if (status === 'Lost') {
+    query = 'SELECT * FROM tbl_123_lostitems WHERE id = ?';
+  } else {
+    console.error('Invalid status:', status);
+    return res.status(400).json({ error: 'Invalid status' });
+  }
+
+  console.log('Executing query:', query, 'with itemId:', itemId);
 
   pool.query(query, [itemId], (err, results) => {
     if (err) {
@@ -173,11 +185,49 @@ router.get('/items/:id', (req, res) => {
     const item = results[0];
 
     if (!item) {
-      console.error(`Item not found with ID: ${itemId}`);
-      return res.status(404).json({ error: 'Item not found' });
-    }
+      console.log(`Item not found in table for status: ${status}`);
 
-    res.json(item);
+      // If item not found in claim_requests, check founditems or lostitems based on status
+      if (status === 'PendingApproval') {
+        // Check founditems if not found in claim_requests
+        const fallbackQuery = 'SELECT * FROM tbl_123_founditems WHERE id = ?';
+        pool.query(fallbackQuery, [itemId], (fallbackErr, fallbackResults) => {
+          if (fallbackErr) {
+            console.error(`Error querying fallback items: ${fallbackErr.message}`);
+            return res.status(500).json({ error: 'Internal Server Error' });
+          }
+
+          const fallbackItem = fallbackResults[0];
+
+          if (!fallbackItem) {
+            console.error(`Item not found with ID: ${itemId} in founditems`);
+            return res.status(404).json({ error: 'Item not found' });
+          }
+
+          res.json(fallbackItem);
+        });
+      } else if (status === 'Found' || status === 'Lost') {
+        // Check lostitems if not found in founditems
+        const fallbackQuery = 'SELECT * FROM tbl_123_lostitems WHERE id = ?';
+        pool.query(fallbackQuery, [itemId], (fallbackErr, fallbackResults) => {
+          if (fallbackErr) {
+            console.error(`Error querying fallback items: ${fallbackErr.message}`);
+            return res.status(500).json({ error: 'Internal Server Error' });
+          }
+
+          const fallbackItem = fallbackResults[0];
+
+          if (!fallbackItem) {
+            console.error(`Item not found with ID: ${itemId} in lostitems`);
+            return res.status(404).json({ error: 'Item not found' });
+          }
+
+          res.json(fallbackItem);
+        });
+      }
+    } else {
+      res.json(item);
+    }
   });
 });
 
@@ -432,56 +482,53 @@ router.post('/found-items', upload.single('image'), (req, res) => {
 // Endpoint to handle claim submission
 router.post('/claim-item/:id', authenticateToken, async (req, res) => {
   const itemId = req.params.id;
-  const { answer, status } = req.body;
+  const { answer, status, itemName, claimant } = req.body;
   const userId = req.user.id;
 
   try {
-    const query = status === 'Found'
-      ? 'SELECT securityAnswer FROM tbl_123_founditems WHERE id = ?'
-      : 'SELECT securityAnswer FROM tbl_123_lostitems WHERE id = ?';
-
-    const [item] = await new Promise((resolve, reject) => {
-      pool.query(query, [itemId], (err, results) => {
-        if (err) return reject(err);
-        resolve(results);
-      });
-    });
-
-    if (!item) return res.status(404).json({ error: 'Item not found' });
-
-    if (answer === item.securityAnswer) {
-      const claimRequest = {
-        itemId: itemId,
-        userId: userId,
-        status: 'PendingApproval',
-        claimedAt: new Date(),
-        securityQuestion: item.securityQuestion,
-        securityAnswer: item.securityAnswer,
-        itemName: item.itemName,
-        claimant: req.user.username,
-      };
-
-      await new Promise((resolve, reject) => {
-        pool.query('INSERT INTO tbl_123_claim_requests SET ?', claimRequest, (err) => {
-          if (err) return reject(err);
-          resolve();
-        });
+      const [item] = await new Promise((resolve, reject) => {
+          pool.query(
+              status === 'Found' ? 'SELECT * FROM tbl_123_founditems WHERE id = ?' : 'SELECT * FROM tbl_123_lostitems WHERE id = ?',
+              [itemId],
+              (err, results) => err ? reject(err) : resolve(results)
+          );
       });
 
-      res.json({ success: true, message: 'Claim request has been submitted for admin approval.' });
-    } else {
-      res.status(401).json({ error: 'Incorrect answer' });
-    }
+      if (!item) {
+          return res.status(404).json({ error: 'Item not found' });
+      }
+
+      if (answer === item.securityAnswer) {
+          const claimRequest = {
+              itemId,
+              userId,
+              status: 'PendingApproval',
+              claimedAt: new Date(),
+              securityQuestion: item.securityQuestion,
+              securityAnswer: item.securityAnswer,
+              itemName: itemName || item.itemName,
+              claimant: claimant || req.user.username,
+          };
+
+          await new Promise((resolve, reject) => {
+              pool.query('INSERT INTO tbl_123_claim_requests SET ?', claimRequest, (err) => err ? reject(err) : resolve());
+          });
+
+          res.json({ success: true, message: 'Claim request has been submitted for admin approval.' });
+      } else {
+          res.status(401).json({ error: 'Incorrect answer' });
+      }
   } catch (err) {
-    console.error(`Error handling claim request: ${err.message}`, err);
-    res.status(500).json({ error: 'Internal Server Error', details: err.message });
+      console.error(`Error handling claim request: ${err.message}`, err);
+      res.status(500).json({ error: 'Internal Server Error', details: err.message });
   }
 });
+
+
 
 router.get('/claim-requests', authenticateToken, (req, res) => {
   const claimStatus = req.query.claimStatus || 'pendingApproval';
 
-  // Basic query to ensure user table join works
   const query = `
     SELECT 
       cr.id, 
@@ -491,10 +538,12 @@ router.get('/claim-requests', authenticateToken, (req, res) => {
       cr.claimedAt, 
       cr.securityQuestion, 
       cr.securityAnswer, 
-      cr.itemName AS claimItemName, 
+      COALESCE(l.itemName, f.itemName) AS itemName, 
       u.username AS claimant
     FROM tbl_123_claim_requests cr
     JOIN tbl_123_users u ON cr.userId = u.id
+    LEFT JOIN tbl_123_lostitems l ON cr.itemId = l.id
+    LEFT JOIN tbl_123_founditems f ON cr.itemId = f.id
     WHERE cr.status = ?
   `;
 
@@ -521,6 +570,81 @@ router.put('/claim-requests/:id', authenticateToken, (req, res) => {
       res.json({ success: true, status });
   });
 });
+
+// recent activities admin homepage
+
+router.get('/admin/dashboard-data', authenticateToken, (req, res) => {
+  const summaryQuery = `
+      SELECT 
+          SUM(CASE WHEN status = 'Approved' THEN 1 ELSE 0 END) AS approvedCount,
+          SUM(CASE WHEN status = 'Rejected' THEN 1 ELSE 0 END) AS rejectedCount,
+          SUM(CASE WHEN status = 'PendingApproval' THEN 1 ELSE 0 END) AS pendingCount
+      FROM tbl_123_claim_requests;
+  `;
+
+  const activitiesQuery = `
+      SELECT cr.action, cr.timestamp, cr.itemName, u.username AS claimant
+      FROM tbl_123_claim_requests cr
+      JOIN tbl_123_users u ON cr.userId = u.id
+      WHERE cr.action IS NOT NULL
+      ORDER BY cr.timestamp DESC
+      LIMIT 10;
+  `;
+
+  Promise.all([
+      new Promise((resolve, reject) => pool.query(summaryQuery, (err, results) => err ? reject(err) : resolve(results[0]))),
+      new Promise((resolve, reject) => pool.query(activitiesQuery, (err, results) => err ? reject(err) : resolve(results)))
+  ])
+  .then(([summary, recentActivities]) => {
+      res.json({ summary, recentActivities });
+  })
+  .catch(err => {
+      console.error('Error fetching dashboard data:', err);
+      res.status(500).json({ error: 'Internal Server Error' });
+  });
+});
+
+router.post('/log-activity', authenticateToken, (req, res) => {
+  const { requestId, action } = req.body;
+
+  const query = `
+      UPDATE tbl_123_claim_requests
+      SET status = ?, action = ?, timestamp = ?
+      WHERE id = ?
+  `;
+
+  const values = [action, action, new Date(), requestId];
+
+  pool.query(query, values, (err) => {
+      if (err) {
+          console.error('Error logging activity:', err);
+          return res.status(500).json({ error: 'Internal Server Error' });
+      }
+      res.json({ success: true, message: 'Activity logged successfully' });
+  });
+});
+
+// Fetch Recent Activities Endpoint
+router.get('/recent-activities', authenticateToken, (req, res) => {
+  const query = `
+      SELECT cr.itemName, u.username AS claimant, cr.action, cr.timestamp
+      FROM tbl_123_claim_requests cr
+      JOIN tbl_123_users u ON cr.userId = u.id
+      WHERE cr.action IS NOT NULL
+      ORDER BY cr.timestamp DESC
+      LIMIT 10;
+  `;
+
+  pool.query(query, (err, results) => {
+      if (err) {
+          console.error('Error fetching recent activities:', err);
+          return res.status(500).json({ error: 'Internal Server Error' });
+      }
+      res.json(results);
+  });
+});
+
+
 
 
 

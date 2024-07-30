@@ -83,7 +83,7 @@ const createActionsCell = (id, status) => {
 const viewItem = (id, status) => {
     localStorage.setItem('selectedItemId', id);
     localStorage.setItem('selectedItemStatus', status);
-    window.location.href = `item.html`;
+    window.location.href = `item.html?id=${itemId}&status=${status}`;
 };
 
 const editItem = (id, status) => {

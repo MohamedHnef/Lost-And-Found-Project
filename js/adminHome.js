@@ -2,6 +2,7 @@ const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:300
 
 document.addEventListener("DOMContentLoaded", () => {
     fetchDashboardData();
+    fetchRecentActivities();
 });
 
 function fetchDashboardData() {
@@ -15,34 +16,54 @@ function fetchDashboardData() {
         return response.json();
     })
     .then(data => {
-        populateRecentActivities(data.recentActivities);
-        updateSummary(data.summary);
+        updateSummary(data);
     })
     .catch(error => {
         console.error('Error fetching dashboard data:', error);
     });
 }
 
-function populateRecentActivities(activities) {
-    const activitiesContainer = document.getElementById('recent-activities');
-    if (!activitiesContainer) return;
+function fetchRecentActivities() {
+    fetch(`${API_URL}/recent-activities`, {
+        headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to fetch recent activities');
+        }
+        return response.json();
+    })
+    .then(data => {
+        populateRecentActivities(data);
+    })
+    .catch(error => {
+        console.error('Error fetching recent activities:', error);
+    });
+}
 
-    activitiesContainer.innerHTML = '';
+function populateRecentActivities(activities) {
+    const activitiesTableBody = document.getElementById('activitiesTable').getElementsByTagName('tbody')[0];
+    if (!activitiesTableBody) return;
+
+    activitiesTableBody.innerHTML = '';
 
     if (Array.isArray(activities)) {
         activities.forEach(activity => {
-            const activityElement = document.createElement('div');
-            activityElement.classList.add('activity-item');
-            activityElement.textContent = `${activity.action} - ${activity.timestamp}`;
-            activitiesContainer.appendChild(activityElement);
+            const row = activitiesTableBody.insertRow();
+            row.insertCell(0).innerText = activity.itemName;
+            row.insertCell(1).innerText = activity.claimant;
+            row.insertCell(2).innerText = activity.action;
+            row.insertCell(3).innerText = new Date(activity.timestamp).toLocaleString();
         });
     }
 }
 
 function updateSummary(summary) {
-    const approvedCountElem = document.getElementById('approved-count');
-    const rejectedCountElem = document.getElementById('rejected-count');
+    const approvedCountElem = document.getElementById('totalApproved');
+    const rejectedCountElem = document.getElementById('totalRejected');
+    const pendingCountElem = document.getElementById('totalPending');
 
     if (approvedCountElem) approvedCountElem.textContent = summary.approvedCount;
     if (rejectedCountElem) rejectedCountElem.textContent = summary.rejectedCount;
+    if (pendingCountElem) pendingCountElem.textContent = summary.pendingCount;
 }
