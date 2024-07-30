@@ -7,7 +7,49 @@ document.addEventListener("DOMContentLoaded", () => {
     if (document.getElementById('loginForm')) {
         toggleView('login');
     }
+
+    const loginForm = document.getElementById('loginForm');
+    if (loginForm) {
+        loginForm.addEventListener('submit', handleLoginFormSubmit, { once: true });
+    }
+
+    const registerForm = document.getElementById('registerForm');
+    if (registerForm) {
+        registerForm.addEventListener('submit', handleRegisterFormSubmit, { once: true });
+    }
 });
+
+function handleLoginFormSubmit(event) {
+    event.preventDefault();
+    console.log('Login form submitted');
+
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.token) {
+            sessionStorage.setItem('token', data.token);
+            sessionStorage.setItem('userId', data.user.id);
+            sessionStorage.setItem('role', data.user.role);
+            sessionStorage.setItem('profilePicture', data.user.profile_pic);
+            window.location.href = data.user.role === 'admin' ? 'adminHomePage.html' : 'homePage.html';
+        } else {
+            console.error('Login failed:', data.error);
+            showNotification('Login failed. Please check your username and password.');
+        }
+    })
+    .catch(error => {
+        console.error('Error during login:', error);
+        showNotification('An error occurred during login. Please try again.');
+    });
+}
+
 
 function toggleView(view) {
     const loginForm = document.getElementById('loginForm');
@@ -30,42 +72,11 @@ function toggleView(view) {
     }
 }
 
-function handleLoginFormSubmit(event) {
-    event.preventDefault();
 
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-
-    fetch('/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.token) {
-            sessionStorage.setItem('token', data.token);
-            sessionStorage.setItem('userId', data.user.id);
-            sessionStorage.setItem('role', data.user.role);
-            sessionStorage.setItem('profilePicture', data.user.profilePicture);
-            if (data.user.role === 'admin') {
-                window.location.href = 'adminHomePage.html';
-            } else {
-                window.location.href = 'homePage.html';
-            }
-        } else {
-            console.error('Login failed:', data.error);
-            showNotification('Login failed. Please check your username and password.');
-        }
-    })
-    .catch(error => {
-        console.error('Error during login:', error);
-        showNotification('An error occurred during login. Please try again.');
-    });
-}
 
 function handleRegisterFormSubmit(event) {
     event.preventDefault();
+    console.log('Register form submitted');  // Debugging log
 
     const formData = new FormData(event.target);
 

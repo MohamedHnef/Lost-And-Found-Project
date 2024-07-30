@@ -788,3 +788,81 @@
 2024-07-30T15:00:47.797Z info: Fetched lost items
 2024-07-30T15:00:47.837Z info: Fetched found items
 2024-07-30T15:00:56.273Z info: User logged in: policeman
+2024-07-30T15:05:33.799Z info: Server is running on http://localhost:3000
+2024-07-30T15:11:14.635Z info: User logged in: aboalmrwan
+2024-07-30T15:11:15.821Z info: Fetched found items
+2024-07-30T15:11:16.182Z info: Fetched lost items
+2024-07-30T15:20:33.612Z info: Fetched found items
+2024-07-30T15:20:33.614Z info: Fetched lost items
+2024-07-30T15:22:07.617Z info: Fetched found items
+2024-07-30T15:22:08.137Z info: Fetched lost items
+2024-07-30T15:24:21.596Z info: Fetched items for user 14
+2024-07-30T15:24:22.078Z info: Fetched items for user 14
+2024-07-30T15:25:22.440Z info: Fetched found items
+2024-07-30T15:25:23.053Z info: Fetched lost items
+2024-07-30T15:25:29.955Z info: Fetched lost items
+2024-07-30T15:25:30.172Z info: Fetched found items
+2024-07-30T15:25:42.510Z info: Fetched lost items
+2024-07-30T15:25:42.961Z info: Fetched found items
+2024-07-30T15:28:06.069Z info: Fetched items for user 14
+2024-07-30T15:28:06.071Z info: Fetched items for user 14
+2024-07-30T15:39:43.563Z info: Fetched items for user 14
+2024-07-30T15:39:43.572Z info: Fetched items for user 14
+2024-07-30T15:44:48.471Z info: Server is running on http://localhost:3000
+2024-07-30T15:44:52.891Z info: Fetched items for user 14
+2024-07-30T15:44:52.924Z info: Fetched items for user 14
+2024-07-30T15:45:00.436Z info: User logged in: aboalmrwan
+2024-07-30T15:45:01.337Z info: Fetched lost items
+2024-07-30T15:45:01.360Z info: Fetched found items
+2024-07-30T15:45:13.243Z info: Fetched lost items
+2024-07-30T15:45:13.276Z info: Fetched found items
+2024-07-30T15:45:23.072Z info: Fetched items for user 14
+2024-07-30T15:45:23.096Z info: Fetched items for user 14
+2024-07-30T15:45:27.700Z info: Fetched lost items
+2024-07-30T15:45:27.717Z info: Fetched found items
+2024-07-30T15:47:58.602Z info: Fetched found items
+2024-07-30T15:47:58.673Z info: Fetched lost items
+2024-07-30T15:56:54.944Z info: Server is running on http://localhost:3000
+2024-07-30T15:57:07.978Z info: User logged in: aboalmrwan
+2024-07-30T15:57:09.271Z info: Fetched found items
+2024-07-30T15:57:09.347Z info: Fetched lost items
+2024-07-30T15:57:47.385Z info: Image uploaded: http://localhost:3000/uploads/1722355067376-gucciWallet.jpeg
+2024-07-30T15:57:47.857Z info: Lost item added with ID: 127
+2024-07-30T15:57:49.710Z info: Fetched lost items
+2024-07-30T15:57:49.749Z info: Fetched found items
+2024-07-30T15:57:52.704Z info: Fetched lost items
+2024-07-30T15:57:52.741Z info: Fetched found items
+2024-07-30T15:58:19.830Z info: Fetched lost items
+2024-07-30T15:58:19.869Z info: Fetched found items
+2024-07-30T15:58:32.893Z info: User logged in: roma
+2024-07-30T15:58:33.539Z info: Fetched found items
+2024-07-30T15:58:33.568Z info: Fetched lost items
+2024-07-30T15:58:54.249Z info: Fetched found items
+2024-07-30T15:58:54.256Z info: Fetched lost items
+2024-07-30T15:59:19.630Z info: Image uploaded: http://localhost:3000/uploads/1722355159628-gucciWallet.jpeg
+2024-07-30T15:59:20.041Z info: Found item added with ID: 116
+2024-07-30T15:59:20.041Z info: Matching found item with ID: 116
+2024-07-30T15:59:20.480Z info: Query results: [{"id":127,"itemName":"letsSee","lostDate":"2024-07-29T21:00:00.000Z","timeLost":"18:57:00","locationLost":"Deir Hanna","category":"Personal Items","status":"Lost","color":"Black","imageUrl":"http://localhost:3000/uploads/1722355067376-gucciWallet.jpeg","description":null,"contactEmail":"amir.kh28@hotmail.com","contactPhone":"0546773232","securityQuestion":null,"securityAnswer":null,"userId":14,"created_at":"2024-07-30T05:57:46.000Z"}]
+2024-07-30T15:59:20.480Z info: Results from matchFoundItem: [{"id":127,"itemName":"letsSee","lostDate":"2024-07-29T21:00:00.000Z","timeLost":"18:57:00","locationLost":"Deir Hanna","category":"Personal Items","status":"Lost","color":"Black","imageUrl":"http://localhost:3000/uploads/1722355067376-gucciWallet.jpeg","description":null,"contactEmail":"amir.kh28@hotmail.com","contactPhone":"0546773232","securityQuestion":null,"securityAnswer":null,"userId":14,"created_at":"2024-07-30T05:57:46.000Z"}]
+2024-07-30T15:59:20.480Z info: Found match for lost item with ID: 127
+2024-07-30T15:59:20.480Z info: Generated item URL: http://localhost:3000/item.html?id=116&status=Found
+2024-07-30T15:59:20.480Z info: Creating notification for userId: 14
+2024-07-30T15:59:20.930Z info: Notification inserted for userId: 14
+2024-07-30T15:59:20.930Z info: Notification sent to user 14 for lost item 127
+2024-07-30T15:59:22.592Z info: Fetched found items
+2024-07-30T15:59:22.620Z info: Fetched lost items
+2024-07-30T15:59:25.648Z info: Fetched items for user 14
+2024-07-30T15:59:26.098Z info: Fetched items for user 14
+2024-07-30T16:00:20.565Z info: Fetched lost items
+2024-07-30T16:00:20.579Z info: Fetched found items
+2024-07-30T16:00:28.024Z info: User logged in: aboalmrwan
+2024-07-30T16:00:28.686Z info: Fetched found items
+2024-07-30T16:00:28.725Z info: Fetched lost items
+2024-07-30T16:00:31.090Z info: Fetched items for user 14
+2024-07-30T16:00:31.530Z info: Fetched items for user 14
+2024-07-30T16:08:03.621Z info: Image uploaded: http://localhost:3000/uploads/1722355683620-gucciWallet.jpeg
+2024-07-30T16:08:04.494Z info: Lost item added with ID: 128
+2024-07-30T16:08:06.012Z info: Fetched lost items
+2024-07-30T16:08:06.405Z info: Fetched found items
+2024-07-30T16:08:08.260Z info: Fetched items for user 14
+2024-07-30T16:08:08.725Z info: Fetched items for user 14

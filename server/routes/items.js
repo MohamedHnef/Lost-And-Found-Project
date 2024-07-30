@@ -135,10 +135,10 @@ router.get('/user-items', (req, res) => {
   if (!userId) {
     return res.status(400).json({ error: 'Missing userId query parameter' });
   }
-  
+
   const lostItemsQuery = 'SELECT * FROM tbl_123_lostitems WHERE userId = ?';
   const foundItemsQuery = 'SELECT * FROM tbl_123_founditems WHERE userId = ?';
-  
+
   Promise.all([
     new Promise((resolve, reject) => pool.query(lostItemsQuery, [userId], (err, results) => err ? reject(err) : resolve(results))),
     new Promise((resolve, reject) => pool.query(foundItemsQuery, [userId], (err, results) => err ? reject(err) : resolve(results)))
