@@ -68,4 +68,16 @@ router.get('/dashboard-data', authenticateToken, async (req, res) => {
     }
 });
 
+router.get('/claim-requests', authenticateToken, (req, res) => {
+    const claimStatus = req.query.claimStatus || 'PendingApproval';
+
+    pool.query('SELECT * FROM tbl_123_claim_requests WHERE status = ?', [claimStatus], (err, results) => {
+        if (err) {
+            console.error('Error fetching claim requests:', err);
+            return res.status(500).json({ error: 'Internal Server Error' });
+        }
+        res.json(results);
+    });
+});
+
 module.exports = router;

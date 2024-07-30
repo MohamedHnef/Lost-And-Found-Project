@@ -1,2 +1,11 @@
 2024-07-29T13:02:01.607Z error: Error fetching recent activities: ER_BAD_FIELD_ERROR: Unknown column 'itemName' in 'field list'
 2024-07-29T13:02:01.607Z error: Error fetching dashboard data: ER_BAD_FIELD_ERROR: Unknown column 'itemName' in 'field list'
+2024-07-30T16:56:45.300Z error: Error registering new user: ER_DUP_ENTRY: Duplicate entry 'user11' for key 'username'
+2024-07-30T16:59:14.675Z error: Error registering new user: ER_DUP_ENTRY: Duplicate entry 'user111' for key 'username'
+2024-07-30T17:02:56.803Z error: Error registering new user: ER_DUP_ENTRY: Duplicate entry 'aaa' for key 'username'
+2024-07-30T17:04:13.216Z error: Error registering new user: ER_DUP_ENTRY: Duplicate entry 'zxzxzx' for key 'username'
+2024-07-30T17:13:12.488Z error: Server error: (intermediate value) is not iterable
+2024-07-30T18:33:38.097Z error: Error deleting item: ER_ROW_IS_REFERENCED_2: Cannot delete or update a parent row: a foreign key constraint fails (`dbShnkr24stud`.`tbl_123_claim_requests`, CONSTRAINT `tbl_123_claim_requests_ibfk_1` FOREIGN KEY (`itemId`) REFERENCES `tbl_123_founditems` (`id`))
+2024-07-30T18:33:42.166Z error: Error deleting item: ER_ROW_IS_REFERENCED_2: Cannot delete or update a parent row: a foreign key constraint fails (`dbShnkr24stud`.`tbl_123_claim_requests`, CONSTRAINT `tbl_123_claim_requests_ibfk_1` FOREIGN KEY (`itemId`) REFERENCES `tbl_123_founditems` (`id`))
+2024-07-30T19:56:52.258Z error: Username already exists
+2024-07-30T19:57:22.657Z error: Username already exists

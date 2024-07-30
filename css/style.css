@@ -1318,3 +1318,40 @@ img.img-fluid {
     background-color: #fff;
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 }
+
+
+
+.notification-box {
+    position: relative;
+}
+.notification-box .dropdown-menu {
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.notification-box .dropdown-header {
+    background-color: #00b8ff;
+    color: white;
+    font-weight: bold;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.notification-box .dropdown-menu li {
+    padding: 10px;
+}
+.notification-box .dropdown-menu li:not(.dropdown-header):hover {
+    background-color: #f1f1f1;
+}
+.notification-box .notification-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.notification-box .notification-item .notification-message {
+    flex: 1;
+}
+.notification-box .notification-item .notification-time {
+    margin-left: 10px;
+    font-size: 0.85em;
+    color: #888;
+}

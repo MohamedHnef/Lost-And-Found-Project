@@ -7,7 +7,89 @@ document.addEventListener("DOMContentLoaded", () => {
     if (document.getElementById('loginForm')) {
         toggleView('login');
     }
+
+    const loginForm = document.getElementById('loginForm');
+    if (loginForm) {
+        loginForm.addEventListener('submit', handleLoginFormSubmit, { once: true });
+    }
+
+    const registerForm = document.getElementById('registerForm');
+    if (registerForm) {
+        registerForm.addEventListener('submit', handleRegisterFormSubmit, { once: true });
+    }
 });
+
+let isLoginSubmitting = false;
+let isRegisterSubmitting = false;
+
+function handleLoginFormSubmit(event) {
+    event.preventDefault();
+    
+    if (isLoginSubmitting) return;
+    isLoginSubmitting = true;
+
+    console.log('Login form submitted');
+
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+    })
+    .then(response => response.json())
+    .then(data => {
+        isLoginSubmitting = false;
+        if (data.token) {
+            sessionStorage.setItem('token', data.token);
+            sessionStorage.setItem('userId', data.user.id);
+            sessionStorage.setItem('role', data.user.role);
+            sessionStorage.setItem('username', data.user.username);
+            sessionStorage.setItem('profile_pic', data.user.profilePicture);
+            window.location.href = data.user.role === 'admin' ? 'adminHomePage.html' : 'homePage.html';
+        } else {
+            console.error('Login failed:', data.error);
+            showNotification('Login failed. Please check your username and password.');
+        }
+    })
+    .catch(error => {
+        isLoginSubmitting = false;
+        console.error('Error during login:', error);
+        showNotification('An error occurred during login. Please try again.');
+    });
+}
+
+function handleRegisterFormSubmit(event) {
+    event.preventDefault();
+    
+    if (isRegisterSubmitting) return;
+    isRegisterSubmitting = true;
+
+    const formData = new FormData(event.target);
+
+    fetch('/api/register', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        isRegisterSubmitting = false;
+        if (data.id) {
+            showNotification('Registration successful! Please log in.', {
+                ok: () => window.location.href = 'index.html'
+            });
+        } else {
+            console.error('Registration failed:', data.error);
+            showNotification('Registration failed. Please try again.');
+        }
+    })
+    .catch(error => {
+        isRegisterSubmitting = false;
+        console.error('Error during registration:', error);
+        showNotification('An error occurred during registration. Please try again.');
+    });
+}
 
 function toggleView(view) {
     const loginForm = document.getElementById('loginForm');
@@ -30,66 +112,6 @@ function toggleView(view) {
     }
 }
 
-function handleLoginFormSubmit(event) {
-    event.preventDefault();
-
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-
-    fetch('/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.token) {
-            sessionStorage.setItem('token', data.token);
-            sessionStorage.setItem('userId', data.user.id);
-            sessionStorage.setItem('role', data.user.role);
-            sessionStorage.setItem('profilePicture', data.user.profilePicture);
-            if (data.user.role === 'admin') {
-                window.location.href = 'adminHomePage.html';
-            } else {
-                window.location.href = 'homePage.html';
-            }
-        } else {
-            console.error('Login failed:', data.error);
-            showNotification('Login failed. Please check your username and password.');
-        }
-    })
-    .catch(error => {
-        console.error('Error during login:', error);
-        showNotification('An error occurred during login. Please try again.');
-    });
-}
-
-function handleRegisterFormSubmit(event) {
-    event.preventDefault();
-
-    const formData = new FormData(event.target);
-
-    fetch('/api/register', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.id) {
-            showNotification('Registration successful! Please log in.', {
-                ok: () => window.location.href = 'index.html'
-            });
-        } else {
-            console.error('Registration failed:', data.error);
-            showNotification('Registration failed. Please try again.');
-        }
-    })
-    .catch(error => {
-        console.error('Error during registration:', error);
-        showNotification('An error occurred during registration. Please try again.');
-    });
-}
-
 function toggleRoleView(role) {
     const adminLinks = document.getElementById('adminLinks');
     const userLinks = document.getElementById('userLinks');
@@ -107,7 +129,7 @@ function toggleRoleView(role) {
 
 function loadProfileInformation() {
     const username = sessionStorage.getItem('username');
-    const profilePicture = sessionStorage.getItem('profilePicture');
+    const profilePicture = sessionStorage.getItem('profile_pic');
 
     const usernameElem = document.getElementById('username');
     const sideUsernameElem = document.getElementById('sideUsername');
