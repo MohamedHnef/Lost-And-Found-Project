@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
@@ -11,7 +12,8 @@ const countsRoutes = require('./routes/counts');
 const notificationsRouter = require('./routes/notifications');
 const protectedRoutes = require('./routes/protected');
 const adminRouter = require('./routes/admin');
-const itemDetailsRoutes = require('./routes/itemDetails');  // Add this line
+const itemDetailsRoutes = require('./routes/itemDetails');
+const emailRoutes = require('./routes/emailRoutes'); // Add this line
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -53,7 +55,8 @@ app.use('/api/notifications', notificationsRouter);
 app.use('/api', protectedRoutes);
 app.use('/api/admin', adminRouter);
 app.use('/api', countsRoutes);
-app.use('/api', itemDetailsRoutes);  // Add this line
+app.use('/api', itemDetailsRoutes);
+app.use('/api', emailRoutes);  // Add this line
 
 app.get('/', (req, res) => {
     res.json({ message: 'Welcome to the Lost and Found API' });

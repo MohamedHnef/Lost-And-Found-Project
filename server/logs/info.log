@@ -178,3 +178,82 @@
 2024-07-31T16:48:55.943Z info: Fetching detailed item information with ID: 137
 2024-07-31T16:48:56.443Z info: Claim query results: [{"id":13,"itemId":137,"userId":11,"status":"PendingApproval","claimedAt":"2024-07-31T15:18:28.000Z","securityQuestion":"asd ","securityAnswer":"asd","itemName":"suzi","claimant":"aboalmrwan","action":null,"timestamp":"2024-07-31T05:18:28.000Z"}]
 2024-07-31T16:48:56.876Z info: Additional query results: [{"category":"Electronics","color":"black","foundDate":"2024-07-26T21:00:00.000Z","locationFound":"sakhnin"}]
+2024-07-31T17:08:45.452Z info: Server is running on http://localhost:3000
+2024-07-31T17:08:51.586Z info: User logged in: aboalmrwan
+2024-07-31T17:08:52.618Z info: Fetched lost items
+2024-07-31T17:08:52.686Z info: Fetched found items
+2024-07-31T17:08:54.657Z info: Fetched lost items
+2024-07-31T17:08:54.678Z info: Fetched found items
+2024-07-31T17:09:16.284Z info: Fetched lost items
+2024-07-31T17:09:16.297Z info: Fetched found items
+2024-07-31T17:09:18.715Z info: Fetched lost items
+2024-07-31T17:09:18.718Z info: Fetched found items
+2024-07-31T17:09:34.710Z info: Fetched found items
+2024-07-31T17:09:34.715Z info: Fetched lost items
+2024-07-31T17:10:08.608Z info: Image uploaded: http://localhost:3000/uploads/1722445808603-diagram.png
+2024-07-31T17:10:10.395Z info: Fetched found items
+2024-07-31T17:10:10.398Z info: Fetched lost items
+2024-07-31T17:10:12.653Z info: Fetched items for user 11
+2024-07-31T17:10:12.657Z info: Fetched items for user 11
+2024-07-31T17:10:22.072Z info: Fetched items for user 11
+2024-07-31T17:10:22.087Z info: Fetched items for user 11
+2024-07-31T17:10:25.961Z info: Fetched items for user 11
+2024-07-31T17:10:25.963Z info: Fetched items for user 11
+2024-07-31T17:10:40.291Z info: User logged in: roma
+2024-07-31T17:10:40.777Z info: Fetched lost items
+2024-07-31T17:10:40.801Z info: Fetched found items
+2024-07-31T17:11:18.889Z info: Image uploaded: http://localhost:3000/uploads/1722445878886-diagram.png
+2024-07-31T17:11:20.275Z info: Received request to send notification email for item found with ID:
+2024-07-31T17:11:20.664Z info: Sending email to: signutre.31@gmail.com for item: shlomo
+2024-07-31T17:11:21.420Z info: API called successfully. Returned data: {"id":8}
+2024-07-31T17:11:21.528Z info: Fetched found items
+2024-07-31T17:11:21.529Z info: Fetched lost items
+2024-07-31T17:11:21.955Z info: Email sent successfully. Returned data: null
+2024-07-31T17:11:23.583Z info: Fetched items for user 15
+2024-07-31T17:11:23.585Z info: Fetched items for user 15
+2024-07-31T17:11:32.895Z error: Error deleting item: ER_ROW_IS_REFERENCED_2: Cannot delete or update a parent row: a foreign key constraint fails (`dbShnkr24stud`.`tbl_123_claim_requests`, CONSTRAINT `tbl_123_claim_requests_ibfk_1` FOREIGN KEY (`itemId`) REFERENCES `tbl_123_founditems` (`id`))
+2024-07-31T17:12:09.007Z error: Error deleting item: ER_ROW_IS_REFERENCED_2: Cannot delete or update a parent row: a foreign key constraint fails (`dbShnkr24stud`.`tbl_123_claim_requests`, CONSTRAINT `tbl_123_claim_requests_ibfk_1` FOREIGN KEY (`itemId`) REFERENCES `tbl_123_founditems` (`id`))
+2024-07-31T17:12:16.828Z info: Fetched items for user 15
+2024-07-31T17:12:16.829Z info: Fetched items for user 15
+2024-07-31T17:12:25.328Z info: Fetched lost items
+2024-07-31T17:12:25.337Z info: Fetched found items
+2024-07-31T17:12:31.949Z info: User logged in: aboalmrwan
+2024-07-31T17:12:32.420Z info: Fetched lost items
+2024-07-31T17:12:32.437Z info: Fetched found items
+2024-07-31T17:21:24.726Z info: Received request to send notification email for item found with ID:
+2024-07-31T17:21:25.497Z info: Sending email to: signutre.31@gmail.com for item: shlomo
+2024-07-31T17:21:26.125Z info: API called successfully. Returned data: {"id":9}
+2024-07-31T17:21:26.680Z info: Email sent successfully. Returned data: null
+2024-07-31T17:27:15.615Z info: Server is running on http://localhost:3000
+2024-07-31T17:27:18.791Z info: User logged in: aboalmrwan
+2024-07-31T17:27:19.715Z info: Fetched found items
+2024-07-31T17:27:19.721Z info: Fetched lost items
+2024-07-31T17:27:45.625Z info: Image uploaded: http://localhost:3000/uploads/1722446865622-diagram.png
+2024-07-31T17:27:47.302Z info: Fetched found items
+2024-07-31T17:27:47.304Z info: Fetched lost items
+2024-07-31T17:27:52.815Z info: User logged in: roma
+2024-07-31T17:27:53.298Z info: Fetched lost items
+2024-07-31T17:27:53.317Z info: Fetched found items
+2024-07-31T17:27:55.566Z info: Fetched lost items
+2024-07-31T17:27:55.571Z info: Fetched found items
+2024-07-31T17:28:00.717Z info: User logged in: liza
+2024-07-31T17:28:01.185Z info: Fetched lost items
+2024-07-31T17:28:01.189Z info: Fetched found items
+2024-07-31T17:28:28.377Z info: Image uploaded: http://localhost:3000/uploads/1722446908376-should-you-become-nurse.jpg
+2024-07-31T17:28:29.541Z info: Received request to send notification email for item found with ID: 145
+2024-07-31T17:28:29.935Z info: Sending email to: signutre.31@gmail.com for item: ameer
+2024-07-31T17:28:30.582Z info: API called successfully. Returned data: {"id":10}
+2024-07-31T17:28:30.607Z info: Fetched lost items
+2024-07-31T17:28:30.609Z info: Fetched found items
+2024-07-31T17:28:31.159Z info: Email sent successfully. Returned data: null
+2024-07-31T17:28:44.558Z info: Fetched lost items
+2024-07-31T17:28:44.561Z info: Fetched found items
+2024-07-31T17:29:03.609Z info: User logged in: aboalmrwan
+2024-07-31T17:29:04.068Z info: Fetched lost items
+2024-07-31T17:29:04.071Z info: Fetched found items
+2024-07-31T17:29:12.565Z info: Fetched found items
+2024-07-31T17:29:12.569Z info: Fetched lost items
+2024-07-31T17:29:18.940Z info: User logged in: policeman
+2024-07-31T17:29:28.990Z info: Fetching detailed item information with ID: 145
+2024-07-31T17:29:29.369Z info: Claim query results: [{"id":16,"itemId":145,"userId":11,"status":"PendingApproval","claimedAt":"2024-07-31T17:29:10.000Z","securityQuestion":"asd","securityAnswer":"asd","itemName":"ameer","claimant":"aboalmrwan","action":null,"timestamp":"2024-07-31T07:29:11.000Z"}]
+2024-07-31T17:29:29.746Z info: Additional query results: [{"category":"Electronics","color":"black","foundDate":"2024-07-26T21:00:00.000Z","locationFound":"sakhnin"}]

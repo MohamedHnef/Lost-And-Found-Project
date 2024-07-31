@@ -1,5 +1,3 @@
-
-
 const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -31,7 +29,8 @@ function handleFormSubmit(event) {
             const itemData = getItemDataFromForm(formData, imageUrl);
             return submitItemData(itemData);
         })
-        .then(() => {
+        .then(data => {
+            sendEmailNotification(data.id); 
             showNotification('Item reported successfully!', { ok: () => window.location.href = 'list_Item.html' });
         })
         .catch(error => {
@@ -94,6 +93,31 @@ function submitItemData(itemData) {
     })
     .catch(handleError('Error submitting item data'));
 }
+
+function sendEmailNotification(itemId) {
+    fetch(`${API_URL}/item-found`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${sessionStorage.getItem('api_key')}` // Add this if you have authentication
+        },
+        body: JSON.stringify({ itemId })
+    })
+    .then(response => response.text()) // Get the response as text
+    .then(text => {
+        console.log('Notification email response text:', text);
+        try {
+            const data = JSON.parse(text); // Parse the text as JSON
+            console.log('Notification email sent:', data);
+        } catch (error) {
+            console.warn('Response is not valid JSON:', text);
+        }
+    })
+    .catch(error => {
+        console.error('Error sending notification email:', error);
+    });
+}
+
 
 function handleResponse(response) {
     if (!response.ok) {
