@@ -173,3 +173,8 @@
 2024-07-31T16:34:11.077Z info: Fetching detailed item information with ID: 137
 2024-07-31T16:34:11.603Z info: Claim query results: [{"id":13,"itemId":137,"userId":11,"status":"PendingApproval","claimedAt":"2024-07-31T15:18:28.000Z","securityQuestion":"asd ","securityAnswer":"asd","itemName":"suzi","claimant":"aboalmrwan","action":null,"timestamp":"2024-07-31T05:18:28.000Z"}]
 2024-07-31T16:34:12.280Z info: Additional query results: [{"category":"Electronics","color":"black","foundDate":"2024-07-26T21:00:00.000Z","locationFound":"sakhnin"}]
+2024-07-31T16:48:42.268Z info: Server is running on http://localhost:3000
+2024-07-31T16:48:50.821Z info: User logged in: policeman
+2024-07-31T16:48:55.943Z info: Fetching detailed item information with ID: 137
+2024-07-31T16:48:56.443Z info: Claim query results: [{"id":13,"itemId":137,"userId":11,"status":"PendingApproval","claimedAt":"2024-07-31T15:18:28.000Z","securityQuestion":"asd ","securityAnswer":"asd","itemName":"suzi","claimant":"aboalmrwan","action":null,"timestamp":"2024-07-31T05:18:28.000Z"}]
+2024-07-31T16:48:56.876Z info: Additional query results: [{"category":"Electronics","color":"black","foundDate":"2024-07-26T21:00:00.000Z","locationFound":"sakhnin"}]
