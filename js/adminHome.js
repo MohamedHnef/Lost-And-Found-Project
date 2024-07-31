@@ -1,25 +1,27 @@
 const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
 
 document.addEventListener("DOMContentLoaded", () => {
-    fetchDashboardData();
+    fetchClaimCounts();
     fetchRecentActivities();
 });
 
-function fetchDashboardData() {
-    fetch(`${API_URL}/admin/dashboard-data`, {
+function fetchClaimCounts() {
+    fetch(`${API_URL}/claim-counts`, {
         headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` }
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error('Failed to fetch dashboard data');
+            throw new Error('Failed to fetch claim counts');
         }
         return response.json();
     })
     .then(data => {
-        updateSummary(data);
+        document.getElementById('totalApproved').innerText = data.approved;
+        document.getElementById('totalRejected').innerText = data.rejected;
+        document.getElementById('totalPending').innerText = data.pending;
     })
     .catch(error => {
-        console.error('Error fetching dashboard data:', error);
+        console.error('Error fetching claim counts:', error);
     });
 }
 
@@ -56,14 +58,4 @@ function populateRecentActivities(activities) {
             row.insertCell(3).innerText = new Date(activity.timestamp).toLocaleString();
         });
     }
-}
-
-function updateSummary(summary) {
-    const approvedCountElem = document.getElementById('totalApproved');
-    const rejectedCountElem = document.getElementById('totalRejected');
-    const pendingCountElem = document.getElementById('totalPending');
-
-    if (approvedCountElem) approvedCountElem.textContent = summary.approvedCount;
-    if (rejectedCountElem) rejectedCountElem.textContent = summary.rejectedCount;
-    if (pendingCountElem) pendingCountElem.textContent = summary.pendingCount;
 }
