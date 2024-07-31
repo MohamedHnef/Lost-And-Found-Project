@@ -1,3 +1,4 @@
+
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
@@ -7,8 +8,10 @@ const logger = require('./logger');
 const authRoutes = require('./routes/auth');
 const itemRoutes = require('./routes/items');
 const graphsRoutes = require('./routes/graphs');
+const countsRoutes = require('./routes/counts');
 const notificationsRouter = require('./routes/notifications');
 const protectedRoutes = require('./routes/protected');
+const adminRouter = require('./routes/admin');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -31,11 +34,6 @@ app.use(cors({
     }
 }));
 
-app.use((req, res, next) => {
-    logger.info(`${req.method} ${req.url}`);
-    next();
-});
-
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
@@ -53,6 +51,8 @@ app.use('/api', itemRoutes);
 app.use('/api', graphsRoutes);
 app.use('/api/notifications', notificationsRouter);
 app.use('/api', protectedRoutes);
+app.use('/api/admin', adminRouter);
+app.use('/api', countsRoutes);
 
 app.get('/', (req, res) => {
     res.json({ message: 'Welcome to the Lost and Found API' });

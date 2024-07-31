@@ -1,7 +1,8 @@
+
 const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
 
 document.addEventListener("DOMContentLoaded", () => {
-    const userId = localStorage.getItem('userId'); // Fetch user ID from localStorage
+    const userId = sessionStorage.getItem('userId'); // Fetch user ID from sessionStorage
     if (!userId) {
         console.error('User ID is missing');
         return;
@@ -13,14 +14,14 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const populateTableWithData = (userId) => {
-    console.log('Fetching items for user:', userId); // Debugging information
+    console.log('Fetching items for user:', userId);
     Promise.all([
         fetch(`${API_URL}/user-items?userId=${userId}&status=Lost`).then(response => response.json()),
         fetch(`${API_URL}/user-items?userId=${userId}&status=Found`).then(response => response.json())
     ])
     .then(([lostItems, foundItems]) => {
-        console.log('Lost items:', lostItems); // Debugging information
-        console.log('Found items:', foundItems); // Debugging information
+        console.log('Lost items:', lostItems);
+        console.log('Found items:', foundItems);
 
         const reportsTbody = document.getElementById('reports-tbody');
         if (!reportsTbody) {
@@ -28,8 +29,8 @@ const populateTableWithData = (userId) => {
             return;
         }
         reportsTbody.innerHTML = '';
-        const allItems = [...new Map([...lostItems, ...foundItems].map(item => [item.id, item])).values()]; // Ensure unique items
-        console.log('All items (merged and unique):', allItems); // Debugging information
+        const allItems = [...new Map([...lostItems, ...foundItems].map(item => [item.id, item])).values()];
+        console.log('All items (merged and unique):', allItems);
 
         allItems.forEach(item => {
             const row = document.createElement('tr');
@@ -83,25 +84,25 @@ const createActionsCell = (id, status) => {
 const viewItem = (id, status) => {
     localStorage.setItem('selectedItemId', id);
     localStorage.setItem('selectedItemStatus', status);
-    window.location.href = `item.html`;
+    window.location.href = `item.html?id=${id}&status=${status}`;
 };
 
 const editItem = (id, status) => {
-    const url = `${API_URL}/items/${id}`;
+    const url = `${API_URL}/items/${id}?status=${status}`;
     fetch(url)
-        .then(response => {
-            if (!response.ok) throw new Error('Failed to fetch item data');
-            return response.json();
-        })
-        .then(item => {
-            populateEditForm(item, status);
-            const editModal = new bootstrap.Modal(document.getElementById('editItemModal'));
-            editModal.show();
-        })
-        .catch(error => {
-            console.error('Error fetching item data:', error);
-            showNotification('Failed to fetch item data. Please try again.');
-        });
+      .then(response => {
+        if (!response.ok) throw new Error('Failed to fetch item data');
+        return response.json();
+      })
+      .then(item => {
+        populateEditForm(item, status);
+        const editModal = new bootstrap.Modal(document.getElementById('editItemModal'));
+        editModal.show();
+      })
+      .catch(error => {
+        console.error('Error fetching item data:', error);
+        showNotification('Failed to fetch item data. Please try again.');
+      });
 };
 
 const populateEditForm = (item, status) => {
@@ -197,7 +198,6 @@ const handleEditFormSubmit = (event) => {
         status: status
     };
 
-    // Remove null fields from the update data
     Object.keys(updateData).forEach(key => {
         if (updateData[key] === null) {
             delete updateData[key];

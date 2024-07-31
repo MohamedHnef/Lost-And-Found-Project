@@ -1,2 +1,0 @@
-2024-07-28T18:18:39.757Z error: Error marking notifications as read: ER_BAD_FIELD_ERROR: Unknown column 'isRead' in 'field list'
-2024-07-28T18:21:51.147Z error: Error marking notifications as read: ER_BAD_FIELD_ERROR: Unknown column 'isRead' in 'field list'

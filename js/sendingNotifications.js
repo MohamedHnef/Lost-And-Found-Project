@@ -3,11 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function fetchNotifications() {
-    const userId = localStorage.getItem('userId');
-    console.log(`Fetched userId from localStorage: ${userId}`);
+    const userId = sessionStorage.getItem('userId');
+    console.log(`Fetched userId from sessionStorage: ${userId}`);
     
     if (!userId) {
-        console.error('User ID not found in localStorage');
+        console.error('User ID not found in sessionStorage');
         return;
     }
     
@@ -49,7 +49,6 @@ function displayNotifications(notifications) {
     
     markNotificationsAsRead(notificationIds);
 }
-
 
 async function markNotificationsAsRead(notificationIds) {
     if (notificationIds.length === 0) {

@@ -1,9 +1,0 @@
-2024-07-28T18:18:39.757Z error: Error marking notifications as read: ER_BAD_FIELD_ERROR: Unknown column 'isRead' in 'field list'
-2024-07-28T18:18:41.547Z warn: Found item not found with id: 48
-2024-07-28T18:20:49.629Z warn: Found item not found with id: 48
-2024-07-28T18:21:51.147Z error: Error marking notifications as read: ER_BAD_FIELD_ERROR: Unknown column 'isRead' in 'field list'
-2024-07-28T18:21:52.704Z warn: Found item not found with id: 48
-2024-07-28T18:27:43.759Z warn: Found item not found with id: 48
-2024-07-28T18:42:01.890Z warn: Found item not found with id: 48
-2024-07-28T18:42:10.037Z warn: Found item not found with id: 48
-2024-07-28T18:45:30.152Z warn: Found item not found with id: 50

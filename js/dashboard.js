@@ -1,8 +1,10 @@
+
 const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
 
 window.onload = () => {
     populateItemsTable();
     initializeChart();
+    updateItemCounts();
 };
 
 const populateItemsTable = () => {
@@ -72,4 +74,21 @@ const initializeChart = () => {
             });
         })
         .catch(error => console.error('Error fetching chart data:', error));
+};
+
+
+const updateItemCounts = () => {
+    Promise.all([
+        fetch(`${API_URL}/lost-items-count`).then(response => response.json()),
+        fetch(`${API_URL}/found-items-count`).then(response => response.json()),
+        fetch(`${API_URL}/claimed-items-count`).then(response => response.json()),
+        fetch(`${API_URL}/unclaimed-items-count`).then(response => response.json())
+    ])
+    .then(([lostCountData, foundCountData, claimedCountData, unclaimedCountData]) => {
+        document.querySelector('.lost-items-count').textContent = lostCountData.lostCount;
+        document.querySelector('.found-items-count').textContent = foundCountData.foundCount;
+        document.querySelector('.claimed-items-count').textContent = claimedCountData.claimedCount;
+        document.querySelector('.unclaimed-items-count').textContent = unclaimedCountData.unclaimedCount;
+    })
+    .catch(error => console.error('Error fetching item counts:', error));
 };

@@ -1,3 +1,5 @@
+
+
 const express = require('express');
 const router = express.Router();
 const pool = require('../db');
@@ -5,6 +7,7 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const logger = require('../logger');
+const { authenticateToken } = require('../middleware/authMiddleware');
 
 // Determine if the environment is production
 const isProduction = process.env.NODE_ENV === 'production';
@@ -133,10 +136,10 @@ router.get('/user-items', (req, res) => {
   if (!userId) {
     return res.status(400).json({ error: 'Missing userId query parameter' });
   }
-  
+
   const lostItemsQuery = 'SELECT * FROM tbl_123_lostitems WHERE userId = ?';
   const foundItemsQuery = 'SELECT * FROM tbl_123_founditems WHERE userId = ?';
-  
+
   Promise.all([
     new Promise((resolve, reject) => pool.query(lostItemsQuery, [userId], (err, results) => err ? reject(err) : resolve(results))),
     new Promise((resolve, reject) => pool.query(foundItemsQuery, [userId], (err, results) => err ? reject(err) : resolve(results)))
@@ -156,24 +159,76 @@ router.get('/user-items', (req, res) => {
 // Endpoint to fetch a specific item by id (used in edit functionality)
 router.get('/items/:id', (req, res) => {
   const itemId = req.params.id;
+  const status = req.query.status;
 
-  const lostItemQuery = 'SELECT * FROM tbl_123_lostitems WHERE id = ?';
-  const foundItemQuery = 'SELECT * FROM tbl_123_founditems WHERE id = ?';
+  console.log('Fetching item with ID:', itemId, 'and Status:', status);
 
-  Promise.all([
-    new Promise((resolve, reject) => pool.query(lostItemQuery, [itemId], (err, results) => err ? reject(err) : resolve(results))),
-    new Promise((resolve, reject) => pool.query(foundItemQuery, [itemId], (err, results) => err ? reject(err) : resolve(results)))
-  ]).then(([lostItemResults, foundItemResults]) => {
-    const item = lostItemResults[0] || foundItemResults[0];
+  let query;
+  if (status === 'PendingApproval') {
+    query = 'SELECT * FROM tbl_123_claim_requests WHERE id = ?';
+  } else if (status === 'Found') {
+    query = 'SELECT * FROM tbl_123_founditems WHERE id = ?';
+  } else if (status === 'Lost') {
+    query = 'SELECT * FROM tbl_123_lostitems WHERE id = ?';
+  } else {
+    console.error('Invalid status:', status);
+    return res.status(400).json({ error: 'Invalid status' });
+  }
 
-    if (!item) {
-      return res.status(404).json({ error: 'Item not found' });
+  console.log('Executing query:', query, 'with itemId:', itemId);
+
+  pool.query(query, [itemId], (err, results) => {
+    if (err) {
+      console.error(`Error querying items: ${err.message}`);
+      return res.status(500).json({ error: 'Internal Server Error' });
     }
 
-    res.json(item);
-  }).catch(err => {
-    logger.error(`Error fetching item: ${err.message}`);
-    res.status(500).json({ error: 'Internal Server Error' });
+    const item = results[0];
+
+    if (!item) {
+      console.log(`Item not found in table for status: ${status}`);
+
+      // If item not found in claim_requests, check founditems or lostitems based on status
+      if (status === 'PendingApproval') {
+        // Check founditems if not found in claim_requests
+        const fallbackQuery = 'SELECT * FROM tbl_123_founditems WHERE id = ?';
+        pool.query(fallbackQuery, [itemId], (fallbackErr, fallbackResults) => {
+          if (fallbackErr) {
+            console.error(`Error querying fallback items: ${fallbackErr.message}`);
+            return res.status(500).json({ error: 'Internal Server Error' });
+          }
+
+          const fallbackItem = fallbackResults[0];
+
+          if (!fallbackItem) {
+            console.error(`Item not found with ID: ${itemId} in founditems`);
+            return res.status(404).json({ error: 'Item not found' });
+          }
+
+          res.json(fallbackItem);
+        });
+      } else if (status === 'Found' || status === 'Lost') {
+        // Check lostitems if not found in founditems
+        const fallbackQuery = 'SELECT * FROM tbl_123_lostitems WHERE id = ?';
+        pool.query(fallbackQuery, [itemId], (fallbackErr, fallbackResults) => {
+          if (fallbackErr) {
+            console.error(`Error querying fallback items: ${fallbackErr.message}`);
+            return res.status(500).json({ error: 'Internal Server Error' });
+          }
+
+          const fallbackItem = fallbackResults[0];
+
+          if (!fallbackItem) {
+            console.error(`Item not found with ID: ${itemId} in lostitems`);
+            return res.status(404).json({ error: 'Item not found' });
+          }
+
+          res.json(fallbackItem);
+        });
+      }
+    } else {
+      res.json(item);
+    }
   });
 });
 
@@ -380,63 +435,64 @@ const matchFoundItem = async (foundItem) => {
 
 
 
+
 // Endpoint to report a found item
 router.post('/found-items', upload.single('image'), (req, res) => {
   const { itemName, locationFound, foundDate, foundTime, category, color, description, contactEmail, contactPhone, securityQuestion, securityAnswer, userId } = req.body;
   const imageUrl = req.file ? `${baseUrl}/uploads/${req.file.filename}` : req.body.imageUrl;
 
   if (!itemName || !locationFound || !foundDate || !foundTime || !category || !color || !contactEmail || !contactPhone || !securityQuestion || !securityAnswer || !userId) {
-    return res.status(400).json({ error: 'All fields except description are required' });
+      return res.status(400).json({ error: 'All fields except description are required' });
   }
 
   const newItem = {
-    itemName,
-    locationFound,
-    foundDate,
-    foundTime,
-    category,
-    color,
-    description: description || null,
-    contactEmail,
-    contactPhone,
-    securityQuestion,
-    securityAnswer,
-    status: 'Found',
-    imageUrl: imageUrl,
-    userId: userId
+      itemName,
+      locationFound,
+      foundDate,
+      foundTime,
+      category,
+      color,
+      description: description || null,
+      contactEmail,
+      contactPhone,
+      securityQuestion,
+      securityAnswer,
+      status: 'Found',
+      imageUrl: imageUrl,
+      userId: userId
   };
 
   pool.query('INSERT INTO tbl_123_founditems SET ?', newItem, (err, result) => {
-    if (err) {
-      logger.error(`Error reporting found item: ${err.message}`);
-      return res.status(500).json({ error: 'Internal Server Error' });
-    }
-    newItem.id = result.insertId;
-    logger.info(`Found item added with ID: ${result.insertId}`);
-    res.json(newItem);
+      if (err) {
+          logger.error(`Error reporting found item: ${err.message}`);
+          return res.status(500).json({ error: 'Internal Server Error' });
+      }
+      newItem.id = result.insertId;
+      logger.info(`Found item added with ID: ${result.insertId}`);
+
+      // Call matchFoundItem function to match with lost items
+      matchFoundItem(newItem).then(() => {
+          res.json(newItem);
+      }).catch(err => {
+          logger.error(`Error matching found item: ${err.message}`);
+          res.status(500).json({ error: 'Error matching found item', details: err.message });
+      });
   });
 });
 
-router.post('/claim-item/:id', async (req, res) => {
+// Endpoint to handle claim submission
+router.post('/claim-item/:id', authenticateToken, async (req, res) => {
   const itemId = req.params.id;
-  const { answer } = req.body;
-
-  if (!answer) {
-      return res.status(400).json({ error: 'Answer is required' });
-  }
+  const { answer, status, itemName, claimant } = req.body;
+  const userId = req.user.id;
 
   try {
-      const query = `
-          SELECT securityAnswer, status FROM tbl_123_${req.query.status === 'Found' ? 'founditems' : 'lostitems'}
-          WHERE id = ?
-      `;
       const [item] = await new Promise((resolve, reject) => {
-          pool.query(query, [itemId], (err, results) => {
-              if (err) {
-                  return reject(err);
-              }
-              resolve(results);
-          });
+          pool.query(
+              status === 'Found' ? 'SELECT * FROM tbl_123_founditems WHERE id = ?' : 'SELECT * FROM tbl_123_lostitems WHERE id = ?',
+              [itemId],
+              (err, results) => err ? reject(err) : resolve(results)
+          );
       });
 
       if (!item) {
@@ -444,28 +500,197 @@ router.post('/claim-item/:id', async (req, res) => {
       }
 
       if (answer === item.securityAnswer) {
-          const updateQuery = `
-              UPDATE tbl_123_${req.query.status === 'Found' ? 'founditems' : 'lostitems'}
-              SET status = 'Claimed'
-              WHERE id = ?
-          `;
+          const claimRequest = {
+              itemId,
+              userId,
+              status: 'PendingApproval',
+              claimedAt: new Date(),
+              securityQuestion: item.securityQuestion,
+              securityAnswer: item.securityAnswer,
+              itemName: itemName || item.itemName,
+              claimant: claimant || req.user.username,
+          };
+
           await new Promise((resolve, reject) => {
-              pool.query(updateQuery, [itemId], (err) => {
-                  if (err) {
-                      return reject(err);
-                  }
-                  resolve();
-              });
+              pool.query('INSERT INTO tbl_123_claim_requests SET ?', claimRequest, (err) => err ? reject(err) : resolve());
           });
 
-          res.json({ success: true });
+          res.json({ success: true, message: 'Claim request has been submitted for admin approval.' });
       } else {
           res.status(401).json({ error: 'Incorrect answer' });
       }
   } catch (err) {
-      res.status(500).json({ error: 'Internal Server Error' });
+      console.error(`Error handling claim request: ${err.message}`, err);
+      res.status(500).json({ error: 'Internal Server Error', details: err.message });
   }
 });
+
+
+
+router.get('/claim-requests', authenticateToken, (req, res) => {
+  const claimStatus = req.query.claimStatus || 'pendingApproval';
+
+  const query = `
+    SELECT 
+      cr.id, 
+      cr.itemId, 
+      cr.userId, 
+      cr.status, 
+      cr.claimedAt, 
+      cr.securityQuestion, 
+      cr.securityAnswer, 
+      COALESCE(l.itemName, f.itemName) AS itemName, 
+      u.username AS claimant
+    FROM tbl_123_claim_requests cr
+    JOIN tbl_123_users u ON cr.userId = u.id
+    LEFT JOIN tbl_123_lostitems l ON cr.itemId = l.id
+    LEFT JOIN tbl_123_founditems f ON cr.itemId = f.id
+    WHERE cr.status = ?
+  `;
+
+  pool.query(query, [claimStatus], (err, results) => {
+      if (err) {
+          console.error('Error fetching claim requests:', err);
+          return res.status(500).json({ error: 'Internal Server Error' });
+      }
+      res.json(results);
+  });
+});
+
+// Endpoint to update claim status
+router.put('/claim-requests/:id', authenticateToken, (req, res) => {
+  const requestId = req.params.id;
+  const { approved } = req.body;
+  const status = approved ? 'Approved' : 'Rejected';
+
+  pool.query('UPDATE tbl_123_claim_requests SET status = ? WHERE id = ?', [status, requestId], (err) => {
+      if (err) {
+          console.error('Error updating claim status:', err);
+          return res.status(500).json({ error: 'Internal Server Error' });
+      }
+      res.json({ success: true, status });
+  });
+});
+
+// recent activities admin homepage
+
+router.get('/admin/dashboard-data', authenticateToken, (req, res) => {
+  const summaryQuery = `
+      SELECT 
+          SUM(CASE WHEN status = 'Approved' THEN 1 ELSE 0 END) AS approvedCount,
+          SUM(CASE WHEN status = 'Rejected' THEN 1 ELSE 0 END) AS rejectedCount,
+          SUM(CASE WHEN status = 'PendingApproval' THEN 1 ELSE 0 END) AS pendingCount
+      FROM tbl_123_claim_requests;
+  `;
+
+  const activitiesQuery = `
+      SELECT cr.action, cr.timestamp, cr.itemName, u.username AS claimant
+      FROM tbl_123_claim_requests cr
+      JOIN tbl_123_users u ON cr.userId = u.id
+      WHERE cr.action IS NOT NULL
+      ORDER BY cr.timestamp DESC
+      LIMIT 10;
+  `;
+
+  Promise.all([
+      new Promise((resolve, reject) => pool.query(summaryQuery, (err, results) => err ? reject(err) : resolve(results[0]))),
+      new Promise((resolve, reject) => pool.query(activitiesQuery, (err, results) => err ? reject(err) : resolve(results)))
+  ])
+  .then(([summary, recentActivities]) => {
+      res.json({ summary, recentActivities });
+  })
+  .catch(err => {
+      console.error('Error fetching dashboard data:', err);
+      res.status(500).json({ error: 'Internal Server Error' });
+  });
+});
+
+router.post('/log-activity', authenticateToken, (req, res) => {
+  const { requestId, action } = req.body;
+
+  const query = `
+      UPDATE tbl_123_claim_requests
+      SET status = ?, action = ?, timestamp = ?
+      WHERE id = ?
+  `;
+
+  const values = [action, action, new Date(), requestId];
+
+  pool.query(query, values, (err) => {
+      if (err) {
+          console.error('Error logging activity:', err);
+          return res.status(500).json({ error: 'Internal Server Error' });
+      }
+      res.json({ success: true, message: 'Activity logged successfully' });
+  });
+});
+
+// Fetch Recent Activities Endpoint
+router.get('/recent-activities', authenticateToken, (req, res) => {
+  const query = `
+      SELECT cr.itemName, u.username AS claimant, cr.action, cr.timestamp
+      FROM tbl_123_claim_requests cr
+      JOIN tbl_123_users u ON cr.userId = u.id
+      WHERE cr.action IS NOT NULL
+      ORDER BY cr.timestamp DESC
+      LIMIT 10;
+  `;
+
+  pool.query(query, (err, results) => {
+      if (err) {
+          console.error('Error fetching recent activities:', err);
+          return res.status(500).json({ error: 'Internal Server Error' });
+      }
+      res.json(results);
+  });
+});
+
+// New endpoint to fetch detailed item information for the modal
+router.get('/item-details/:id', (req, res) => {
+  const itemId = req.params.id;
+
+  console.log('Fetching detailed item information with ID:', itemId);
+
+  // Fetch basic details from tbl_123_claim_requests
+  const claimQuery = 'SELECT * FROM tbl_123_claim_requests WHERE itemId = ?';
+
+  pool.query(claimQuery, [itemId], (err, claimResults) => {
+    if (err) {
+      console.error(`Error querying tbl_123_claim_requests: ${err.message}`);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    console.log('Claim query results:', claimResults);
+
+    let item = claimResults[0];
+
+    if (!item) {
+      console.log(`Item not found in tbl_123_claim_requests for itemId: ${itemId}`);
+      return res.status(404).json({ error: 'Item not found' });
+    }
+
+    // Determine the correct table to fetch additional details
+    const additionalQuery = 'SELECT category, color, foundDate, locationFound FROM tbl_123_founditems WHERE id = ?';
+
+    pool.query(additionalQuery, [itemId], (additionalErr, additionalResults) => {
+      if (additionalErr) {
+        console.error(`Error querying additional details: ${additionalErr.message}`);
+        return res.status(500).json({ error: 'Internal Server Error' });
+      }
+
+      console.log('Additional query results:', additionalResults);
+
+      let additionalDetails = additionalResults[0];
+
+      if (additionalDetails) {
+        item = { ...item, ...additionalDetails };
+      }
+
+      res.json(item);
+    });
+  });
+});
+
 
 
 module.exports = router;
