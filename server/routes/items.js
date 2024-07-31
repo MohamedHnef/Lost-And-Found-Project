@@ -1,3 +1,5 @@
+
+
 const express = require('express');
 const router = express.Router();
 const pool = require('../db');
@@ -291,6 +293,7 @@ router.put('/items/:id', upload.single('image'), (req, res) => {
       });
   });
 });
+
 
 
 
@@ -641,51 +644,7 @@ router.get('/recent-activities', authenticateToken, (req, res) => {
       res.json(results);
   });
 });
-// New endpoint to fetch detailed item information for the modal
-router.get('/item-details/:id', (req, res) => {
-  const itemId = req.params.id;
 
-  console.log('Fetching detailed item information with ID:', itemId);
-
-  // Fetch basic details from tbl_123_claim_requests
-  const claimQuery = 'SELECT * FROM tbl_123_claim_requests WHERE itemId = ?';
-
-  pool.query(claimQuery, [itemId], (err, claimResults) => {
-    if (err) {
-      console.error(`Error querying tbl_123_claim_requests: ${err.message}`);
-      return res.status(500).json({ error: 'Internal Server Error' });
-    }
-
-    console.log('Claim query results:', claimResults);
-
-    let item = claimResults[0];
-
-    if (!item) {
-      console.log(`Item not found in tbl_123_claim_requests for itemId: ${itemId}`);
-      return res.status(404).json({ error: 'Item not found' });
-    }
-
-    // Determine the correct table to fetch additional details
-    const additionalQuery = 'SELECT category, color, foundDate, locationFound FROM tbl_123_founditems WHERE id = ?';
-
-    pool.query(additionalQuery, [itemId], (additionalErr, additionalResults) => {
-      if (additionalErr) {
-        console.error(`Error querying additional details: ${additionalErr.message}`);
-        return res.status(500).json({ error: 'Internal Server Error' });
-      }
-
-      console.log('Additional query results:', additionalResults);
-
-      let additionalDetails = additionalResults[0];
-
-      if (additionalDetails) {
-        item = { ...item, ...additionalDetails };
-      }
-
-      res.json(item);
-    });
-  });
-});
 
 
 
