@@ -1,3 +1,4 @@
+
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
@@ -7,6 +8,7 @@ const logger = require('./logger');
 const authRoutes = require('./routes/auth');
 const itemRoutes = require('./routes/items');
 const graphsRoutes = require('./routes/graphs');
+const countsRoutes = require('./routes/counts');
 const notificationsRouter = require('./routes/notifications');
 const protectedRoutes = require('./routes/protected');
 const adminRouter = require('./routes/admin');
@@ -50,6 +52,7 @@ app.use('/api', graphsRoutes);
 app.use('/api/notifications', notificationsRouter);
 app.use('/api', protectedRoutes);
 app.use('/api/admin', adminRouter);
+app.use('/api', countsRoutes);
 
 app.get('/', (req, res) => {
     res.json({ message: 'Welcome to the Lost and Found API' });

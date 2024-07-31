@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +12,8 @@
     <script src="js/profile_data.js" defer></script>
     <script src="js/breadcrumps.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/userLogout.js"></script>
+    <script src="js/userLogout.js" defer></script>
+    <script src="js/sendingNotifications.js" defer></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -42,8 +44,13 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Add Feedback</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><img src="images/bell-icon.png" alt=""></a>
+                        <li class="nav-item dropdown notification-box">
+                            <a class="nav-link" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="images/bell-icon.png" alt="">
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationDropdown" id="notificationList">
+                                <li class="dropdown-header">Notifications</li>
+                            </ul>
                         </li>
                         <li class="nav-item dropdown profile-dropdown">
                             <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -56,7 +63,7 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Settings</a></li>
                                 <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
-                                <li><a class="dropdown-item" href="#">Log Out</a></li>
+                                <li><a class="dropdown-item" href="#logout">Log Out</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -107,7 +114,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link side" href="#">
+                        <a class="nav-link side" href="#logout">
                             <i class="bi bi-box-arrow-right"></i> Log Out
                         </a>
                     </li>

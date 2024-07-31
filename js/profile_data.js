@@ -1,3 +1,4 @@
+
 const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -87,7 +88,7 @@ const viewItem = (id, status) => {
 };
 
 const editItem = (id, status) => {
-    const url = `${API_URL}/items/${id}`;
+    const url = `${API_URL}/items/${id}?status=${status}`;
     fetch(url)
       .then(response => {
         if (!response.ok) throw new Error('Failed to fetch item data');
@@ -102,7 +103,7 @@ const editItem = (id, status) => {
         console.error('Error fetching item data:', error);
         showNotification('Failed to fetch item data. Please try again.');
       });
-  };
+};
 
 const populateEditForm = (item, status) => {
     document.getElementById('editItemId').value = item.id;

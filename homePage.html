@@ -1,6 +1,6 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +17,6 @@
     <script src="js/breadcrumps.js" defer></script>
     <script src="js/userLogout.js" defer></script>
     <script src="js/sendingNotifications.js" defer></script>
-    <script src="js/shared.js" defer></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -35,7 +34,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="homePage.html">Home</a>
+                        <a class="nav-link activee" aria-current="page" href="homePage.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="report_lost.html">Report Lost</a>
@@ -49,7 +48,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Add Feedback</a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown notification-box">
                         <a class="nav-link" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="images/bell-icon.png" alt="">
                         </a>
@@ -69,7 +68,7 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Settings</a></li>
                             <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
-                            <li><a class="dropdown-item" href="index.html">Log Out</a></li>
+                            <li><a class="dropdown-item" href="#logout">Log Out</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -120,7 +119,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link side" href="#">
+                    <a class="nav-link side" href="#logout">
                         <i class="bi bi-box-arrow-right"></i> Log Out
                     </a>
                 </li>
@@ -131,7 +130,7 @@
     <main class="wrapper">
         <section class="main-content">
             <nav class="breadcrumb" aria-label="breadcrumb">
-                <ol class="breadcrumb" id="breadcrumb"></ol>
+                <ol class="breadcrumb" id="breadcrumb"></ol> 
             </nav>
             <div class="row gx-5">
                 <div class="col-12 col-md-6 col-lg-3 mb-3">
@@ -139,7 +138,7 @@
                         <div class="card-body">
                             <div>
                                 <h5 class="card-title">Lost Items</h5>
-                                <h6 class="card-subtitle">135</h6>
+                                <h6 class="card-subtitle lost-items-count">0</h6>
                             </div>
                             <div>
                                 <a href="#" class="card-link">
@@ -154,7 +153,7 @@
                         <div class="card-body">
                             <div>
                                 <h5 class="card-title">Found Items</h5>
-                                <h6 class="card-subtitle">98</h6>
+                                <h6 class="card-subtitle found-items-count">0</h6>
                             </div>
                             <div>
                                 <a href="#" class="card-link">
@@ -169,7 +168,7 @@
                         <div class="card-body">
                             <div>
                                 <h5 class="card-title">Claimed Items</h5>
-                                <h6 class="card-subtitle">210</h6>
+                                <h6 class="card-subtitle claimed-items-count">0</h6>
                             </div>
                             <div>
                                 <a href="#" class="card-link">
@@ -184,7 +183,7 @@
                         <div class="card-body">
                             <div>
                                 <h5 class="card-title">Unclaimed Items</h5>
-                                <h6 class="card-subtitle">13</h6>
+                                <h6 class="card-subtitle unclaimed-items-count">0</h6>
                             </div>
                             <div>
                                 <a href="#" class="card-link">
@@ -195,6 +194,7 @@
                     </div>
                 </div>
             </div>
+            
 
             <div class="row gx-5">
                 <div class="col-lg-6 mb-3">

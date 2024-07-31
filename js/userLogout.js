@@ -1,8 +1,8 @@
 
 function logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('username');
-    localStorage.removeItem('profile_pic');
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('username');
+    sessionStorage.removeItem('profile_pic');
     window.location.href = 'index.html';
 }
 
@@ -15,8 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const username = localStorage.getItem('username');
-    const profilePic = localStorage.getItem('profile_pic');
+    const username = sessionStorage.getItem('username');
+    const profilePic = sessionStorage.getItem('profile_pic');
 
     if (username) {
         document.getElementById('username').innerText = username;
