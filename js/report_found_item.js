@@ -1,71 +1,20 @@
+
+
 const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
 
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById('reportFoundForm');
-    form.addEventListener('submit', handleFormSubmit);
+    if (form) {
+        form.addEventListener('submit', handleFormSubmit, { once: true });
+    }
     initializeNotification();
 });
 
-let isSubmitting = false; // Add a flag to prevent duplicate submissions
-
-function getItemDataFromForm(formData, imageUrl) {
-    const userId = localStorage.getItem('userId'); // Get the actual user ID from localStorage
-    if (!userId) {
-        alert('User ID is missing. Please log in again.');
-        throw new Error('User ID is missing.');
-    }
-    return {
-        itemName: formData.get('itemName'),
-        locationFound: formData.get('locationFound'),
-        foundDate: formData.get('foundDate'),
-        foundTime: formData.get('foundTime'),
-        category: formData.get('category'),
-        color: formData.get('color'),
-        description: formData.get('description'),
-        contactEmail: formData.get('contactEmail'),
-        contactPhone: formData.get('contactPhone'),
-        securityQuestion: formData.get('securityQuestion'),
-        securityAnswer: formData.get('securityAnswer'),
-        status: 'Found',
-        imageUrl: imageUrl,
-        userId: userId // Use the actual user ID
-    };
-}
-
-function uploadImage(file) {
-    const formData = new FormData();
-    formData.append('image', file);
-    return fetch(`${API_URL}/upload`, {
-        method: 'POST',
-        body: formData
-    })
-    .then(handleResponse)
-    .then(data => data.imageUrl)
-    .catch(handleError('Error uploading image'));
-}
-
-function submitItemData(itemData) {
-    return fetch(`${API_URL}/found-items`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(itemData)
-    })
-    .then(handleResponse)
-    .then(data => {
-        localStorage.setItem('selectedItemId', data.id);
-        localStorage.setItem('selectedItemStatus', 'Found');
-        console.log('Item reported successfully:', data);
-        isSubmitting = false; // Reset flag after successful submission
-        return data;
-    })
-    .catch(handleError('Error submitting item data'));
-}
+let isSubmitting = false;
 
 function handleFormSubmit(event) {
     event.preventDefault();
-    if (isSubmitting) return; // Prevent duplicate submissions
+    if (isSubmitting) return;
     isSubmitting = true;
 
     const formData = new FormData(event.target);
@@ -87,8 +36,63 @@ function handleFormSubmit(event) {
         })
         .catch(error => {
             console.error('Failed to report item:', error);
-            isSubmitting = false; // Reset flag in case of error
+            isSubmitting = false;
+            showNotification('Failed to report item. Please try again.');
         });
+}
+
+function uploadImage(file) {
+    const formData = new FormData();
+    formData.append('image', file);
+    return fetch(`${API_URL}/upload`, {
+        method: 'POST',
+        body: formData
+    })
+    .then(handleResponse)
+    .then(data => data.imageUrl)
+    .catch(handleError('Error uploading image'));
+}
+
+function getItemDataFromForm(formData, imageUrl) {
+    const userId = sessionStorage.getItem('userId');
+    if (!userId) {
+        showNotification('User ID is missing. Please log in again.');
+        throw new Error('User ID is missing.');
+    }
+    return {
+        itemName: formData.get('itemName'),
+        locationFound: formData.get('locationFound'),
+        foundDate: formData.get('foundDate'),
+        foundTime: formData.get('foundTime'),
+        category: formData.get('category'),
+        color: formData.get('color'),
+        description: formData.get('description'),
+        contactEmail: formData.get('contactEmail'),
+        contactPhone: formData.get('contactPhone'),
+        securityQuestion: formData.get('securityQuestion'),
+        securityAnswer: formData.get('securityAnswer'),
+        status: 'Found',
+        imageUrl: imageUrl,
+        userId: userId
+    };
+}
+
+function submitItemData(itemData) {
+    return fetch(`${API_URL}/found-items`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(itemData)
+    })
+    .then(handleResponse)
+    .then(data => {
+        sessionStorage.setItem('selectedItemId', data.id);
+        sessionStorage.setItem('selectedItemStatus', 'Found');
+        isSubmitting = false;
+        return data;
+    })
+    .catch(handleError('Error submitting item data'));
 }
 
 function handleResponse(response) {
@@ -102,12 +106,12 @@ function handleError(message) {
     return error => {
         console.error(message, error);
         showNotification(message);
-        isSubmitting = false; // Reset flag in case of error
+        isSubmitting = false;
         throw error;
     };
 }
 
-const initializeNotification = () => {
+function initializeNotification() {
     const notification = document.getElementById('notification');
     const notificationYes = document.getElementById('notification-yes');
     const notificationNo = document.getElementById('notification-no');
@@ -118,9 +122,9 @@ const initializeNotification = () => {
     });
     notificationNo.addEventListener('click', hideNotification);
     notificationButton.addEventListener('click', hideNotification);
-};
+}
 
-const showNotification = (message, actions = { yes: null, no: null, ok: null }) => {
+function showNotification(message, actions = { yes: null, no: null, ok: null }) {
     const notification = document.getElementById('notification');
     const notificationMessage = document.getElementById('notification-message');
     const notificationYes = document.getElementById('notification-yes');
@@ -143,9 +147,9 @@ const showNotification = (message, actions = { yes: null, no: null, ok: null }) 
     }
 
     notification.style.display = 'flex';
-};
+}
 
-const hideNotification = () => {
+function hideNotification() {
     const notification = document.getElementById('notification');
     notification.style.display = 'none';
-};
+}

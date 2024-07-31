@@ -1,16 +1,5 @@
-2024-07-28T22:55:27.863Z warn: Lost item not found with id: 58
-2024-07-28T22:55:28.316Z warn: Lost item not found with id: 58
-2024-07-28T22:58:16.563Z warn: Found item not found with id: 58
-2024-07-28T22:58:17.116Z warn: Found item not found with id: 58
-2024-07-28T22:59:18.109Z warn: Found item not found with id: 58
-2024-07-28T22:59:18.646Z warn: Found item not found with id: 58
-2024-07-28T23:02:35.820Z warn: Found item not found with id: 58
-2024-07-28T23:02:36.226Z warn: Found item not found with id: 58
-2024-07-28T23:07:54.322Z warn: Found item not found with id: 58
-2024-07-28T23:07:54.762Z warn: Found item not found with id: 58
-2024-07-28T23:16:28.152Z warn: Found item not found with id: 58
-2024-07-28T23:16:28.583Z warn: Found item not found with id: 58
-2024-07-28T23:39:46.726Z warn: Lost item not found with id: 62
-2024-07-28T23:39:47.495Z warn: Lost item not found with id: 62
-2024-07-28T23:51:47.791Z warn: Found item not found with id: 63
-2024-07-28T23:51:48.226Z warn: Found item not found with id: 63
+2024-07-31T14:40:42.232Z error: Error deleting item: ER_ROW_IS_REFERENCED_2: Cannot delete or update a parent row: a foreign key constraint fails (`dbShnkr24stud`.`tbl_123_claim_requests`, CONSTRAINT `tbl_123_claim_requests_ibfk_1` FOREIGN KEY (`itemId`) REFERENCES `tbl_123_founditems` (`id`))
+2024-07-31T14:40:48.949Z error: Error deleting item: ER_ROW_IS_REFERENCED_2: Cannot delete or update a parent row: a foreign key constraint fails (`dbShnkr24stud`.`tbl_123_claim_requests`, CONSTRAINT `tbl_123_claim_requests_ibfk_1` FOREIGN KEY (`itemId`) REFERENCES `tbl_123_founditems` (`id`))
+2024-07-31T14:41:15.432Z error: Error deleting item: ER_ROW_IS_REFERENCED_2: Cannot delete or update a parent row: a foreign key constraint fails (`dbShnkr24stud`.`tbl_123_claim_requests`, CONSTRAINT `tbl_123_claim_requests_ibfk_1` FOREIGN KEY (`itemId`) REFERENCES `tbl_123_founditems` (`id`))
+2024-07-31T14:41:16.240Z error: Error deleting item: ER_ROW_IS_REFERENCED_2: Cannot delete or update a parent row: a foreign key constraint fails (`dbShnkr24stud`.`tbl_123_claim_requests`, CONSTRAINT `tbl_123_claim_requests_ibfk_1` FOREIGN KEY (`itemId`) REFERENCES `tbl_123_founditems` (`id`))
+2024-07-31T14:41:22.359Z error: Error deleting item: ER_ROW_IS_REFERENCED_2: Cannot delete or update a parent row: a foreign key constraint fails (`dbShnkr24stud`.`tbl_123_claim_requests`, CONSTRAINT `tbl_123_claim_requests_ibfk_1` FOREIGN KEY (`itemId`) REFERENCES `tbl_123_founditems` (`id`))
