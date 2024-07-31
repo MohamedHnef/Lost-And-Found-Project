@@ -42,7 +42,7 @@ const register = async (req, res) => {
           return res.status(500).json({ error: 'Internal Server Error' });
         }
 
-        const profilePicture = req.file ? `${baseUrl}/uploads/${req.file.filename}` : DEFAULT_PROFILE_PIC;
+        const profilePicture = req.file ? `https://lost-and-found-project.onrender.com/uploads/${req.file.filename}` : DEFAULT_PROFILE_PIC;
         const newUser = {
           username,
           email,
