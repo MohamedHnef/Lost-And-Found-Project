@@ -114,3 +114,164 @@
 2024-07-31T14:39:51.764Z info: User logged in: aboalmrwan
 2024-07-31T14:39:53.032Z info: Fetched lost items
 2024-07-31T14:39:53.444Z info: Fetched found items
+2024-07-31T15:46:00.931Z info: Server is running on http://localhost:3000
+2024-07-31T15:46:11.451Z info: User logged in: aboalmrwan
+2024-07-31T15:46:13.031Z info: Fetched lost items
+2024-07-31T15:46:13.185Z info: Fetched found items
+2024-07-31T15:46:51.747Z info: Image uploaded: http://localhost:3000/uploads/1722440811741-lostPhone.jpg
+2024-07-31T15:46:52.321Z info: Lost item added with ID: 147
+2024-07-31T15:46:54.763Z info: Fetched found items
+2024-07-31T15:46:54.785Z info: Fetched lost items
+2024-07-31T15:46:58.989Z info: Fetched items for user 11
+2024-07-31T15:46:59.076Z info: Fetched items for user 11
+2024-07-31T15:47:06.733Z info: Fetched items for user 11
+2024-07-31T15:47:06.782Z info: Fetched items for user 11
+2024-07-31T15:47:14.500Z info: Update request received for item ID: 147, Status: Lost, Table: tbl_123_lostitems
+2024-07-31T15:47:17.775Z info: Item ID 147 updated successfully in table: tbl_123_lostitems
+2024-07-31T15:47:18.672Z info: Fetched items for user 11
+2024-07-31T15:47:18.745Z info: Fetched items for user 11
+2024-07-31T15:47:49.993Z info: User logged in: roma
+2024-07-31T15:47:50.885Z info: Fetched found items
+2024-07-31T15:47:50.890Z info: Fetched lost items
+2024-07-31T15:48:19.902Z info: Image uploaded: http://localhost:3000/uploads/1722440899900-lostPhone.jpg
+2024-07-31T15:48:20.425Z info: Found item added with ID: 138
+2024-07-31T15:48:20.425Z info: Matching found item with ID: 138
+2024-07-31T15:48:20.934Z info: Query results: [{"id":147,"itemName":"lostmyshitt","lostDate":"2024-07-29T21:00:00.000Z","timeLost":"18:46:00","locationLost":"Deir Hanna","category":"Personal Items","status":"Lost","color":"Black","imageUrl":"http://localhost:3000/uploads/1722440811741-lostPhone.jpg","description":null,"contactEmail":"amir.kh28@hotmail.com","contactPhone":"0546773232","securityQuestion":null,"securityAnswer":null,"userId":11,"created_at":"2024-07-31T05:46:52.000Z"}]
+2024-07-31T15:48:20.934Z info: Results from matchFoundItem: [{"id":147,"itemName":"lostmyshitt","lostDate":"2024-07-29T21:00:00.000Z","timeLost":"18:46:00","locationLost":"Deir Hanna","category":"Personal Items","status":"Lost","color":"Black","imageUrl":"http://localhost:3000/uploads/1722440811741-lostPhone.jpg","description":null,"contactEmail":"amir.kh28@hotmail.com","contactPhone":"0546773232","securityQuestion":null,"securityAnswer":null,"userId":11,"created_at":"2024-07-31T05:46:52.000Z"}]
+2024-07-31T15:48:20.934Z info: Found match for lost item with ID: 147
+2024-07-31T15:48:20.935Z info: Generated item URL: http://localhost:3000/item.html?id=138&status=Found
+2024-07-31T15:48:20.935Z info: Creating notification for userId: 11
+2024-07-31T15:48:21.458Z info: Notification inserted for userId: 11
+2024-07-31T15:48:21.458Z info: Notification sent to user 11 for lost item 147
+2024-07-31T15:48:23.579Z info: Fetched lost items
+2024-07-31T15:48:23.622Z info: Fetched found items
+2024-07-31T15:48:38.933Z info: User logged in: aboalmrwan
+2024-07-31T15:48:39.701Z info: Fetched lost items
+2024-07-31T15:48:40.194Z info: Fetched found items
+2024-07-31T15:49:00.218Z info: Fetched found items
+2024-07-31T15:49:00.534Z info: Fetched lost items
+2024-07-31T15:49:09.646Z info: User logged in: policeman
+2024-07-31T15:57:09.287Z info: Server is running on http://localhost:3000
+2024-07-31T15:59:14.719Z info: Server is running on http://localhost:3000
+2024-07-31T16:14:26.512Z info: Server is running on http://localhost:3000
+2024-07-31T16:14:37.576Z info: User logged in: aboalmrwan
+2024-07-31T16:14:38.750Z info: Fetched found items
+2024-07-31T16:14:38.784Z info: Fetched lost items
+2024-07-31T16:15:11.402Z info: Image uploaded: http://localhost:3000/uploads/1722442511399-lostPhone.jpg
+2024-07-31T16:15:11.876Z info: Lost item added with ID: 148
+2024-07-31T16:15:13.979Z info: Fetched found items
+2024-07-31T16:15:14.000Z info: Fetched lost items
+2024-07-31T16:15:22.881Z info: User logged in: roma
+2024-07-31T16:15:23.616Z info: Fetched lost items
+2024-07-31T16:15:23.741Z info: Fetched found items
+2024-07-31T16:16:02.438Z info: Image uploaded: http://localhost:3000/uploads/1722442562437-lostPhone.jpg
+2024-07-31T16:16:02.936Z info: Found item added with ID: 139
+2024-07-31T16:16:02.937Z info: Matching found item with ID: 139
+2024-07-31T16:16:03.592Z info: Query results: [{"id":148,"itemName":"myass","lostDate":"2024-07-30T21:00:00.000Z","timeLost":"19:14:00","locationLost":"Deir Hanna","category":"Personal Items","status":"Lost","color":"Black","imageUrl":"http://localhost:3000/uploads/1722442511399-lostPhone.jpg","description":null,"contactEmail":"signutre.31@gmail.com","contactPhone":"0546773232","securityQuestion":null,"securityAnswer":null,"userId":11,"created_at":"2024-07-31T06:15:11.000Z"}]
+2024-07-31T16:16:03.593Z info: Results from matchFoundItem: [{"id":148,"itemName":"myass","lostDate":"2024-07-30T21:00:00.000Z","timeLost":"19:14:00","locationLost":"Deir Hanna","category":"Personal Items","status":"Lost","color":"Black","imageUrl":"http://localhost:3000/uploads/1722442511399-lostPhone.jpg","description":null,"contactEmail":"signutre.31@gmail.com","contactPhone":"0546773232","securityQuestion":null,"securityAnswer":null,"userId":11,"created_at":"2024-07-31T06:15:11.000Z"}]
+2024-07-31T16:16:03.593Z info: Found match for lost item with ID: 148
+2024-07-31T16:16:03.593Z info: Generated item URL: http://localhost:3000/item.html?id=139&status=Found
+2024-07-31T16:16:03.593Z info: Creating notification for userId: 11
+2024-07-31T16:16:04.219Z info: Notification inserted for userId: 11
+2024-07-31T16:16:04.220Z info: Notification sent to user 11 for lost item 148
+2024-07-31T16:16:06.089Z info: Fetched lost items
+2024-07-31T16:16:06.108Z info: Fetched found items
+2024-07-31T16:16:44.342Z info: User logged in: aboalmrwan
+2024-07-31T16:16:45.061Z info: Fetched lost items
+2024-07-31T16:16:45.100Z info: Fetched found items
+2024-07-31T16:24:33.994Z info: Server is running on http://localhost:3000
+2024-07-31T16:24:47.699Z info: Fetched found items
+2024-07-31T16:24:49.365Z info: Fetched lost items
+2024-07-31T16:24:53.450Z info: User logged in: aboalmrwan
+2024-07-31T16:24:54.696Z info: Fetched lost items
+2024-07-31T16:24:54.977Z info: Fetched found items
+2024-07-31T16:26:11.751Z info: Image uploaded: http://localhost:3000/uploads/1722443171746-lostPhone.jpg
+2024-07-31T16:26:14.358Z info: Lost item added with ID: 149
+2024-07-31T16:26:16.790Z info: Fetched lost items
+2024-07-31T16:26:17.201Z info: Fetched found items
+2024-07-31T16:26:26.747Z info: User logged in: roma
+2024-07-31T16:26:27.459Z info: Fetched found items
+2024-07-31T16:26:27.487Z info: Fetched lost items
+2024-07-31T16:26:57.008Z info: Image uploaded: http://localhost:3000/uploads/1722443217006-lostPhone.jpg
+2024-07-31T16:26:57.457Z info: Found item added with ID: 140
+2024-07-31T16:26:57.458Z info: Matching found item with ID: 140
+2024-07-31T16:26:57.921Z info: Query results: [{"id":149,"itemName":"myDick","lostDate":"2024-07-30T21:00:00.000Z","timeLost":"19:25:00","locationLost":"Deir Hanna","category":"Personal Items","status":"Lost","color":"Black","imageUrl":"http://localhost:3000/uploads/1722443171746-lostPhone.jpg","description":null,"contactEmail":"signutre.31@gmail.com","contactPhone":"0546773232","securityQuestion":null,"securityAnswer":null,"userId":11,"created_at":"2024-07-31T06:26:14.000Z"}]
+2024-07-31T16:26:57.921Z info: Results from matchFoundItem: [{"id":149,"itemName":"myDick","lostDate":"2024-07-30T21:00:00.000Z","timeLost":"19:25:00","locationLost":"Deir Hanna","category":"Personal Items","status":"Lost","color":"Black","imageUrl":"http://localhost:3000/uploads/1722443171746-lostPhone.jpg","description":null,"contactEmail":"signutre.31@gmail.com","contactPhone":"0546773232","securityQuestion":null,"securityAnswer":null,"userId":11,"created_at":"2024-07-31T06:26:14.000Z"}]
+2024-07-31T16:26:57.921Z info: Found match for lost item with ID: 149
+2024-07-31T16:26:57.921Z info: Generated item URL: http://localhost:3000/item.html?id=140&status=Found
+2024-07-31T16:26:57.922Z info: Creating notification for userId: 11
+2024-07-31T16:26:58.493Z info: Notification inserted for userId: 11
+2024-07-31T16:26:58.493Z info: Notification sent to user 11 for lost item 149
+2024-07-31T16:27:01.630Z info: Fetched found items
+2024-07-31T16:27:01.833Z info: Fetched lost items
+2024-07-31T16:27:51.359Z info: User logged in: aboalmrwan
+2024-07-31T16:27:52.075Z info: Fetched lost items
+2024-07-31T16:27:52.081Z info: Fetched found items
+2024-07-31T16:34:11.136Z info: Server is running on http://localhost:3000
+2024-07-31T16:34:29.353Z info: User logged in: aboalmrwan
+2024-07-31T16:34:30.932Z info: Fetched lost items
+2024-07-31T16:34:31.541Z info: Fetched found items
+2024-07-31T16:34:59.777Z info: Image uploaded: http://localhost:3000/uploads/1722443699774-lostPhone.jpg
+2024-07-31T16:35:02.287Z info: Lost item added with ID: 150
+2024-07-31T16:35:04.620Z info: Fetched lost items
+2024-07-31T16:35:04.623Z info: Fetched found items
+2024-07-31T16:35:13.529Z info: User logged in: roma
+2024-07-31T16:35:14.337Z info: Fetched lost items
+2024-07-31T16:35:14.538Z info: Fetched found items
+2024-07-31T16:35:48.682Z info: Image uploaded: http://localhost:3000/uploads/1722443748681-lostPhone.jpg
+2024-07-31T16:35:49.081Z info: Found item added with ID: 141
+2024-07-31T16:35:49.082Z info: Matching found item with ID: 141
+2024-07-31T16:35:49.683Z info: Query results: [{"id":150,"itemName":"pleaseWork","lostDate":"2024-07-30T21:00:00.000Z","timeLost":"19:34:00","locationLost":"Deir Hanna","category":"Personal Items","status":"Lost","color":"Black","imageUrl":"http://localhost:3000/uploads/1722443699774-lostPhone.jpg","description":null,"contactEmail":"signutre.31@gmail.com","contactPhone":"1244535","securityQuestion":null,"securityAnswer":null,"userId":11,"created_at":"2024-07-31T06:35:02.000Z"}]
+2024-07-31T16:35:49.684Z info: Results from matchFoundItem: [{"id":150,"itemName":"pleaseWork","lostDate":"2024-07-30T21:00:00.000Z","timeLost":"19:34:00","locationLost":"Deir Hanna","category":"Personal Items","status":"Lost","color":"Black","imageUrl":"http://localhost:3000/uploads/1722443699774-lostPhone.jpg","description":null,"contactEmail":"signutre.31@gmail.com","contactPhone":"1244535","securityQuestion":null,"securityAnswer":null,"userId":11,"created_at":"2024-07-31T06:35:02.000Z"}]
+2024-07-31T16:35:49.684Z info: Found match for lost item with ID: 150
+2024-07-31T16:35:49.684Z info: Generated item URL: http://localhost:3000/item.html?id=141&status=Found
+2024-07-31T16:35:49.684Z info: Creating notification for userId: 11
+2024-07-31T16:35:50.125Z info: Notification inserted for userId: 11
+2024-07-31T16:35:50.126Z info: Notification sent to user 11 for lost item 150
+2024-07-31T16:35:52.100Z info: Fetched lost items
+2024-07-31T16:35:52.384Z info: Fetched found items
+2024-07-31T16:40:59.803Z info: Server is running on http://localhost:3000
+2024-07-31T16:41:10.085Z info: User logged in: aboalmrwan
+2024-07-31T16:41:11.304Z info: Fetched lost items
+2024-07-31T16:41:11.315Z info: Fetched found items
+2024-07-31T16:41:41.498Z info: Image uploaded: http://localhost:3000/uploads/1722444101493-lostPhone.jpg
+2024-07-31T16:41:41.897Z info: Lost item added with ID: 151
+2024-07-31T16:41:43.551Z info: Fetched lost items
+2024-07-31T16:41:43.555Z info: Fetched found items
+2024-07-31T16:41:52.527Z info: User logged in: roma
+2024-07-31T16:41:53.169Z info: Fetched lost items
+2024-07-31T16:41:53.173Z info: Fetched found items
+2024-07-31T16:42:35.575Z info: Image uploaded: http://localhost:3000/uploads/1722444155559-lostPhone.jpg
+2024-07-31T16:42:35.970Z info: Found item added with ID: 142
+2024-07-31T16:42:35.971Z info: Matching found item with ID: 142
+2024-07-31T16:42:36.353Z info: Query results: [{"id":151,"itemName":"pleasepleaseWORK","lostDate":"2024-07-30T21:00:00.000Z","timeLost":"19:41:00","locationLost":"Deir Hanna","category":"Personal Items","status":"Lost","color":"Black","imageUrl":"http://localhost:3000/uploads/1722444101493-lostPhone.jpg","description":null,"contactEmail":"signutre.31@gmail.com","contactPhone":"1244535","securityQuestion":null,"securityAnswer":null,"userId":11,"created_at":"2024-07-31T06:41:41.000Z"}]
+2024-07-31T16:42:36.354Z info: Results from matchFoundItem: [{"id":151,"itemName":"pleasepleaseWORK","lostDate":"2024-07-30T21:00:00.000Z","timeLost":"19:41:00","locationLost":"Deir Hanna","category":"Personal Items","status":"Lost","color":"Black","imageUrl":"http://localhost:3000/uploads/1722444101493-lostPhone.jpg","description":null,"contactEmail":"signutre.31@gmail.com","contactPhone":"1244535","securityQuestion":null,"securityAnswer":null,"userId":11,"created_at":"2024-07-31T06:41:41.000Z"}]
+2024-07-31T16:42:36.354Z info: Found match for lost item with ID: 151
+2024-07-31T16:42:36.354Z info: Generated item URL: http://localhost:3000/item.html?id=142&status=Found
+2024-07-31T16:42:36.354Z info: Creating notification for userId: 11
+2024-07-31T16:42:36.740Z info: Notification inserted for userId: 11
+2024-07-31T16:42:36.741Z info: Notification sent to user 11 for lost item 151
+2024-07-31T16:48:20.657Z info: Fetched found items
+2024-07-31T16:48:20.676Z info: Fetched lost items
+2024-07-31T16:48:49.647Z info: Fetched found items
+2024-07-31T16:48:49.649Z info: Fetched lost items
+2024-07-31T16:49:15.296Z info: Image uploaded: http://localhost:3000/uploads/1722444555295-lostPhone.jpg
+2024-07-31T16:49:15.695Z info: Found item added with ID: 143
+2024-07-31T16:49:15.695Z info: Matching found item with ID: 143
+2024-07-31T16:49:16.095Z info: Query results: [{"id":151,"itemName":"pleasepleaseWORK","lostDate":"2024-07-30T21:00:00.000Z","timeLost":"19:41:00","locationLost":"Deir Hanna","category":"Personal Items","status":"Lost","color":"Black","imageUrl":"http://localhost:3000/uploads/1722444101493-lostPhone.jpg","description":null,"contactEmail":"signutre.31@gmail.com","contactPhone":"1244535","securityQuestion":null,"securityAnswer":null,"userId":11,"created_at":"2024-07-31T06:41:41.000Z"}]
+2024-07-31T16:49:16.095Z info: Results from matchFoundItem: [{"id":151,"itemName":"pleasepleaseWORK","lostDate":"2024-07-30T21:00:00.000Z","timeLost":"19:41:00","locationLost":"Deir Hanna","category":"Personal Items","status":"Lost","color":"Black","imageUrl":"http://localhost:3000/uploads/1722444101493-lostPhone.jpg","description":null,"contactEmail":"signutre.31@gmail.com","contactPhone":"1244535","securityQuestion":null,"securityAnswer":null,"userId":11,"created_at":"2024-07-31T06:41:41.000Z"}]
+2024-07-31T16:49:16.095Z info: Found match for lost item with ID: 151
+2024-07-31T16:49:16.095Z info: Generated item URL: http://localhost:3000/item.html?id=143&status=Found
+2024-07-31T16:49:16.096Z info: Creating notification for userId: 11
+2024-07-31T16:49:16.487Z info: Notification inserted for userId: 11
+2024-07-31T16:49:16.487Z info: Notification sent to user 11 for lost item 151
+2024-07-31T16:49:27.030Z info: Fetched lost items
+2024-07-31T16:49:27.034Z info: Fetched found items
+2024-07-31T16:49:55.960Z info: Fetched lost items
+2024-07-31T16:49:55.967Z info: Fetched found items
+2024-07-31T16:50:15.138Z info: User logged in: aboalmrwan
+2024-07-31T16:50:15.770Z info: Fetched lost items
+2024-07-31T16:50:15.773Z info: Fetched found items
+2024-07-31T16:50:27.497Z info: Fetched lost items
+2024-07-31T16:50:27.504Z info: Fetched found items
+2024-07-31T16:50:36.664Z info: User logged in: policeman
