@@ -691,6 +691,39 @@ router.get('/item-details/:id', (req, res) => {
   });
 });
 
+// Endpoint to fetch counts of approved, rejected, and pending claims
+router.get('/claim-counts', (req, res) => {
+  const approvedQuery = 'SELECT COUNT(*) AS count FROM tbl_123_claim_requests WHERE status = "Approved"';
+  const rejectedQuery = 'SELECT COUNT(*) AS count FROM tbl_123_claim_requests WHERE status = "Rejected"';
+  const pendingQuery = 'SELECT COUNT(*) AS count FROM tbl_123_claim_requests WHERE status = "PendingApproval"';
+
+  pool.query(approvedQuery, (approvedErr, approvedResults) => {
+    if (approvedErr) {
+      console.error(`Error querying approved claims: ${approvedErr.message}`);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    pool.query(rejectedQuery, (rejectedErr, rejectedResults) => {
+      if (rejectedErr) {
+        console.error(`Error querying rejected claims: ${rejectedErr.message}`);
+        return res.status(500).json({ error: 'Internal Server Error' });
+      }
+
+      pool.query(pendingQuery, (pendingErr, pendingResults) => {
+        if (pendingErr) {
+          console.error(`Error querying pending claims: ${pendingErr.message}`);
+          return res.status(500).json({ error: 'Internal Server Error' });
+        }
+
+        res.json({
+          approved: approvedResults[0].count,
+          rejected: rejectedResults[0].count,
+          pending: pendingResults[0].count,
+        });
+      });
+    });
+  });
+});
 
 
 module.exports = router;
