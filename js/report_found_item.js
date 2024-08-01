@@ -98,16 +98,15 @@ function sendEmailNotification(itemId) {
     fetch(`${API_URL}/item-found`, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${sessionStorage.getItem('api_key')}` 
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify({ itemId })
     })
-    .then(response => response.text()) // Get the response as text
+    .then(response => response.text()) 
     .then(text => {
         console.log('Notification email response text:', text);
         try {
-            const data = JSON.parse(text); // Parse the text as JSON
+            const data = JSON.parse(text); 
             console.log('Notification email sent:', data);
         } catch (error) {
             console.warn('Response is not valid JSON:', text);
@@ -117,7 +116,6 @@ function sendEmailNotification(itemId) {
         console.error('Error sending notification email:', error);
     });
 }
-
 
 function handleResponse(response) {
     if (!response.ok) {

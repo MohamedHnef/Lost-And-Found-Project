@@ -1,4 +1,5 @@
 
+
 function fetchAdminClaims() {
     const token = sessionStorage.getItem('token');
 
@@ -87,7 +88,6 @@ function showItemModal(itemId, status) {
     return `${year}-${month}-${day}`;
   }  
   
-// Function to update claim status
 function updateClaimStatus(requestId, approved) {
     const token = sessionStorage.getItem('token');
     const action = approved ? 'Approved' : 'Rejected';
@@ -109,8 +109,7 @@ function updateClaimStatus(requestId, approved) {
         .then(data => {
             logActivity(requestId, action);
             console.log(`Claim ${data.status}`);
-            alert(`Claim ${data.status}`);
-            fetchAdminClaims(); // Refresh the claims table
+            fetchAdminClaims(); 
         })
         .catch(error => console.error('Error updating claim status:', error));
 }
@@ -138,7 +137,7 @@ function logActivity(requestId, action) {
         .catch(error => console.error('Error logging activity:', error));
 }
 
-// Ensure fetchAdminClaims is called after DOM is loaded
+
 document.addEventListener('DOMContentLoaded', () => {
     fetchAdminClaims();
 });

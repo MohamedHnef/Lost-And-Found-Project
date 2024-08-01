@@ -64,7 +64,6 @@ function getHrefForCrumb(crumb) {
     }
 };
 
-// Additional function to preserve the item selection
 function handleItemLinkClick(itemName) {
     localStorage.setItem('selectedItemName', itemName);
     window.location.href = `item.html?item=${itemName}`;

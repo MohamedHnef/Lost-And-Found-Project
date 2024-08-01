@@ -1,3 +1,4 @@
+
 (function() {
     const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
 
@@ -5,7 +6,7 @@
         const urlParams = new URLSearchParams(window.location.search);
         const selectedItemId = urlParams.get('id');
         const selectedItemStatus = urlParams.get('status');
-        const role = sessionStorage.getItem('role'); // Get the role from session storage
+        const role = sessionStorage.getItem('role'); 
 
         if (selectedItemId && selectedItemStatus) {
             fetchItemDetails(selectedItemId, selectedItemStatus);
@@ -34,7 +35,6 @@
             });
         }
 
-        // Ensure correct header is displayed based on role
         if (role) {
             toggleRoleView(role);
         }
@@ -173,6 +173,6 @@
 
     window.closeNotificationAndRedirect = () => {
         document.querySelector('.notification').remove();
-        window.location.href = 'homePage.html'; // Redirect to home page
+        window.location.href = 'homePage.html'; 
     };
 })();
