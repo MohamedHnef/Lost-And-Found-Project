@@ -1,5 +1,3 @@
-import { API_URL } from './config.js'; 
-
 document.addEventListener("DOMContentLoaded", () => {
     const role = sessionStorage.getItem('role');
     if (role) {
