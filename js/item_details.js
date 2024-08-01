@@ -6,7 +6,7 @@
         const urlParams = new URLSearchParams(window.location.search);
         const selectedItemId = urlParams.get('id');
         const selectedItemStatus = urlParams.get('status');
-        const role = sessionStorage.getItem('role'); 
+        const role = sessionStorage.getItem('role'); // Get the role from session storage
 
         if (selectedItemId && selectedItemStatus) {
             fetchItemDetails(selectedItemId, selectedItemStatus);
@@ -35,6 +35,7 @@
             });
         }
 
+        // Ensure correct header is displayed based on role
         if (role) {
             toggleRoleView(role);
         }
@@ -173,6 +174,6 @@
 
     window.closeNotificationAndRedirect = () => {
         document.querySelector('.notification').remove();
-        window.location.href = 'homePage.html'; 
+        window.location.href = 'homePage.html'; // Redirect to home page
     };
 })();
