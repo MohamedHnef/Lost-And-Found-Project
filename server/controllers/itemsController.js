@@ -1,4 +1,3 @@
-// controllers/itemsController.js
 
 const pool = require('../db');
 const path = require('path');
@@ -315,6 +314,7 @@ const reportFoundItem = (req, res) => {
     });
   });
 };
+
 
 const claimItem = async (req, res) => {
   const itemId = req.params.id;
