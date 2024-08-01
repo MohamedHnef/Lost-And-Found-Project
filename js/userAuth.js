@@ -1,14 +1,3 @@
-if (typeof API_URL === 'undefined') {
-    let API_URL;
-    if (window.location.hostname === 'localhost') {
-        API_URL = 'http://localhost:3000/api';
-    } else if (window.location.hostname === 'se.shenkar.ac.il') {
-        API_URL = 'https://lost-and-found-project.onrender.com/api';
-    } else {
-        API_URL = 'https://lost-and-found-project.onrender.com/api';
-    }
-}
-
 document.addEventListener("DOMContentLoaded", () => {
     const role = sessionStorage.getItem('role');
     if (role) {
@@ -45,7 +34,8 @@ function handleLoginFormSubmit(event) {
     fetch(`${API_URL}/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
+        body: JSON.stringify({ username, password }),
+        credentials: 'include' // Include cookies in the request
     })
     .then(response => response.json())
     .then(data => {
@@ -69,7 +59,6 @@ function handleLoginFormSubmit(event) {
     });
 }
 
-
 function handleRegisterFormSubmit(event) {
     event.preventDefault();
     
@@ -78,9 +67,10 @@ function handleRegisterFormSubmit(event) {
 
     const formData = new FormData(event.target);
 
-    fetch('/api/register', {
+    fetch(`${API_URL}/register`, {
         method: 'POST',
-        body: formData
+        body: formData,
+        credentials: 'include' // Include cookies in the request
     })
     .then(response => response.json())
     .then(data => {

@@ -56,6 +56,16 @@ const register = async (req, res) => {
             return res.status(500).json({ error: 'Internal Server Error' });
           }
           logger.info(`User registered with ID: ${result.insertId}`);
+
+          // Auto-login after registration
+          const token = jwt.sign({ id: result.insertId, role: newUser.role }, JWT_SECRET, { expiresIn: '1h' });
+          
+          res.cookie('token', token, { httpOnly: true, sameSite: 'None', secure: isProduction });
+          res.cookie('userId', result.insertId, { httpOnly: true, sameSite: 'None', secure: isProduction });
+          res.cookie('role', newUser.role, { httpOnly: true, sameSite: 'None', secure: isProduction });
+          res.cookie('username', newUser.username, { httpOnly: true, sameSite: 'None', secure: isProduction });
+          res.cookie('profile_pic', newUser.profile_pic, { httpOnly: true, sameSite: 'None', secure: isProduction });
+
           res.json({ id: result.insertId, ...newUser });
         });
       });
@@ -92,6 +102,13 @@ const login = (req, res) => {
     const token = jwt.sign({ id: user.id, role: user.role }, JWT_SECRET, { expiresIn: '1h' });
 
     logger.info(`User logged in: ${user.username}`);
+    
+    res.cookie('token', token, { httpOnly: true, sameSite: 'None', secure: isProduction });
+    res.cookie('userId', user.id, { httpOnly: true, sameSite: 'None', secure: isProduction });
+    res.cookie('role', user.role, { httpOnly: true, sameSite: 'None', secure: isProduction });
+    res.cookie('username', user.username, { httpOnly: true, sameSite: 'None', secure: isProduction });
+    res.cookie('profile_pic', user.profile_pic, { httpOnly: true, sameSite: 'None', secure: isProduction });
+
     res.json({
       message: 'Login successful',
       token,
