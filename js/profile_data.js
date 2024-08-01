@@ -1,3 +1,6 @@
+
+const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
+
 document.addEventListener("DOMContentLoaded", () => {
     const userId = sessionStorage.getItem('userId'); 
     if (!userId) {
@@ -11,15 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const populateTableWithData = (userId) => {
-    console.log('Fetching items for user:', userId);
     Promise.all([
         fetch(`${API_URL}/user-items?userId=${userId}&status=Lost`).then(response => response.json()),
         fetch(`${API_URL}/user-items?userId=${userId}&status=Found`).then(response => response.json())
     ])
     .then(([lostItems, foundItems]) => {
-        console.log('Lost items:', lostItems);
-        console.log('Found items:', foundItems);
-
         const reportsTbody = document.getElementById('reports-tbody');
         if (!reportsTbody) {
             console.error('Reports tbody element not found');
@@ -27,7 +26,6 @@ const populateTableWithData = (userId) => {
         }
         reportsTbody.innerHTML = '';
         const allItems = [...new Map([...lostItems, ...foundItems].map(item => [item.id, item])).values()];
-        console.log('All items (merged and unique):', allItems);
 
         allItems.forEach(item => {
             const row = document.createElement('tr');

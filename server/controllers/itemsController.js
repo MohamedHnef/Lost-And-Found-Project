@@ -475,6 +475,7 @@ const getRecentActivities = (req, res) => {
 
 const matchFoundItem = async (foundItem) => {
   try {
+    const frontendBaseUrl = process.env.FRONTEND_BASE_URL ;
     const query = `
       SELECT * FROM tbl_123_lostitems
       WHERE itemName = ? AND category = ? AND color = ? AND status = 'Lost'
@@ -493,7 +494,7 @@ const matchFoundItem = async (foundItem) => {
 
     if (Array.isArray(results) && results.length > 0) {
       for (const lostItem of results) {
-        const itemUrl = `${baseUrl}/item.html?id=${foundItem.id}&status=Found&userId=${lostItem.userId}`;
+        const itemUrl = `${frontendBaseUrl}/item.html?id=${foundItem.id}&status=Found`;
         const message = `Your lost item "${lostItem.itemName}" might have been found. Check the found items list. <a href="${itemUrl}">View Item</a>`;
         const notification = {
           userId: lostItem.userId,
@@ -517,6 +518,7 @@ const matchFoundItem = async (foundItem) => {
     throw new Error('Error matching found item');
   }
 };
+
 
 
 module.exports = {

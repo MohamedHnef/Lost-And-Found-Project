@@ -1,3 +1,5 @@
+const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
+
 document.addEventListener("DOMContentLoaded", () => {
     const role = sessionStorage.getItem('role');
     if (role) {
@@ -27,15 +29,13 @@ function handleLoginFormSubmit(event) {
     
     if (isLoginSubmitting) return;
     isLoginSubmitting = true;
-
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
     fetch(`${API_URL}/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
-        credentials: 'include' // This is important for allowing credentials
+        body: JSON.stringify({ username, password })
     })
     .then(response => response.json())
     .then(data => {
@@ -59,7 +59,6 @@ function handleLoginFormSubmit(event) {
     });
 }
 
-
 function handleRegisterFormSubmit(event) {
     event.preventDefault();
     
@@ -70,8 +69,7 @@ function handleRegisterFormSubmit(event) {
 
     fetch(`${API_URL}/register`, {
         method: 'POST',
-        body: formData,
-        credentials: 'include' // This is important for allowing credentials
+        body: formData
     })
     .then(response => response.json())
     .then(data => {
