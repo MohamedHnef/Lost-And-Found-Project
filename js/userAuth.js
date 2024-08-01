@@ -1,3 +1,5 @@
+import { API_URL } from './config.js'; 
+
 document.addEventListener("DOMContentLoaded", () => {
     const role = sessionStorage.getItem('role');
     if (role) {
@@ -35,7 +37,7 @@ function handleLoginFormSubmit(event) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
-        credentials: 'include' // Include cookies in the request
+        credentials: 'include' // This is important for allowing credentials
     })
     .then(response => response.json())
     .then(data => {
@@ -59,6 +61,7 @@ function handleLoginFormSubmit(event) {
     });
 }
 
+
 function handleRegisterFormSubmit(event) {
     event.preventDefault();
     
@@ -70,7 +73,7 @@ function handleRegisterFormSubmit(event) {
     fetch(`${API_URL}/register`, {
         method: 'POST',
         body: formData,
-        credentials: 'include' // Include cookies in the request
+        credentials: 'include' // This is important for allowing credentials
     })
     .then(response => response.json())
     .then(data => {
