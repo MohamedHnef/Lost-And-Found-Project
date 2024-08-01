@@ -252,34 +252,34 @@ nav {
     font-size: 0.75rem;
     opacity: 0.6;
 }
-/* Media query for screens 1400px wide or less */
+
 @media (max-width: 1400px) {
     .navbar .navbar-brand {
-        font-size: 1.25rem; /* Adjust font size */
+        font-size: 1.25rem; 
     }
 
     .navbar .navbar-nav .nav-link {
-        font-size: 1.25rem; /* Adjust nav link font size */
-        padding-right: 1.5rem; /* Reduce padding */
+        font-size: 1.25rem; 
+        padding-right: 1.5rem; 
     }
 
     .navbar .navbar-nav .profile-dropdown .profile-info {
-        font-size: 1.25rem; /* Adjust profile info font size */
+        font-size: 1.25rem; 
     }
 
     .navbar .profile-dropdown .profile-img {
-        width: 4rem; /* Adjust profile image size */
+        width: 4rem; 
         height: 4rem;
     }
 
     .logo {
-        width: 80px; /* Adjust logo size */
+        width: 80px; 
         height: 80px;
-        margin-left: 40px; /* Adjust margin */
+        margin-left: 40px; 
     }
 }
 
-/* Media query for screens 1300px wide or less */
+
 @media (max-width: 1300px) {
     .navbar .navbar-brand {
         font-size: 1.125rem;
@@ -302,7 +302,7 @@ nav {
     }
 }
 
-/* Media query for screens 1200px wide or less */
+
 @media (max-width: 1200px) {
     .navbar .navbar-brand {
         font-size: 1rem;
@@ -325,7 +325,7 @@ nav {
     }
 }
 
-/* Media query for screens 1100px wide or less */
+
 @media (max-width: 1100px) {
     .navbar .navbar-brand {
         font-size: 0.95rem;
@@ -347,7 +347,7 @@ nav {
         margin-left: 25px;
     }
 }
-/* Media query for screens 1050px wide or less */
+
 @media (max-width: 1080px) {
     .navbar .navbar-brand {
         font-size: 0.800rem;
@@ -369,7 +369,7 @@ nav {
         margin-left: 20px;
     }
 }
-/* Media query for screens 1000px wide or less */
+
 @media (max-width: 1000px) {
     .navbar .navbar-brand {
         font-size: 0.875rem;
@@ -392,7 +392,7 @@ nav {
     }
 }
 
-/* Media query for screens 990px wide or less */
+
 @media (max-width: 990px) {
     .navbar .navbar-brand {
         font-size: 0.825rem;
@@ -713,7 +713,7 @@ canvas {
     overflow-x: auto;
     width: 100%;
 }
- /* Ensure the container-flex behaves as expected */
+ 
 .container-flex {
     display: flex;
     justify-content: space-between;
@@ -751,7 +751,7 @@ canvas {
     text-align: left;
 }
 
-/* Media queries for responsiveness */
+
 @media (max-width: 1200px) {
     .responsive-reports-table th,
     .responsive-reports-table td {
@@ -799,7 +799,7 @@ canvas {
         font-size: 16px;
     }
 } 
-/* Media queries for responsiveness */
+
 @media (max-width: 1400px) {
     .table.reports-table th,
     .table.reports-table td {
@@ -955,7 +955,6 @@ canvas {
 .table td {
     white-space: nowrap;
     text-overflow: ellipsis;
-    /* overflow: hidden; */
     color: #0AA2C0;
 }
 
@@ -1629,7 +1628,7 @@ img.img-fluid {
 .statusProfile-lost {
     background-color: #D9534F;
 }
-/* New responsive classes */
+
 .responsive-container-flex {
     display: flex;
     flex-direction: column;

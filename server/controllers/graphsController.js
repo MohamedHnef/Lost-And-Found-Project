@@ -1,10 +1,8 @@
-// controllers/graphsController.js
-
 const path = require('path');
 const logger = require('../logger');
 
 const getProfileGraphData = (req, res) => {
-  const filePath = path.join(__dirname, '../..', 'data', 'profileGraph.json');
+  const filePath = path.join(__dirname, '../', 'data', 'profileGraph.json');
   res.sendFile(filePath, (err) => {
     if (err) {
       logger.error(`Error serving profileGraph.json: ${err.message}`);
@@ -14,7 +12,7 @@ const getProfileGraphData = (req, res) => {
 };
 
 const getHomeGraphData = (req, res) => {
-  const filePath = path.join(__dirname, '../..', 'data', 'homeGraph.json');
+  const filePath = path.join(__dirname, '../', 'data', 'homeGraph.json');
   res.sendFile(filePath, (err) => {
     if (err) {
       logger.error(`Error serving homeGraph.json: ${err.message}`);

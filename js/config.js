@@ -7,8 +7,7 @@
     } else {
         API_URL = 'https://lost-and-found-project.onrender.com';
     }
-    console.log('API URL from config.js:', API_URL); // Debugging log
+    console.log('API URL from config.js:', API_URL);
 
-    // Make API_URL globally accessible
     window.API_URL = API_URL;
 })();

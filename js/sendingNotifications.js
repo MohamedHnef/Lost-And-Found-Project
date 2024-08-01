@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function fetchNotifications() {
     const userId = sessionStorage.getItem('userId');
-    console.log(`Fetched userId from sessionStorage: ${userId}`);
 
     if (!userId) {
         console.error('User ID not found in sessionStorage');
@@ -14,7 +13,6 @@ async function fetchNotifications() {
     try {
         const response = await fetch(`${API_URL}/notifications/${userId}`);
         const text = await response.text();
-        console.log('Response text:', text);
 
         if (response.ok) {
             const data = JSON.parse(text);
@@ -22,7 +20,6 @@ async function fetchNotifications() {
                 console.error('Fetched data is not an array:', data);
                 return;
             }
-            console.log('Fetched notifications:', data);
             displayNotifications(data);
         } else {
             console.error('Failed to fetch notifications:', text);
@@ -33,8 +30,6 @@ async function fetchNotifications() {
 }
 
 function displayNotifications(notifications) {
-    console.log('Notifications is an array with length:', notifications.length);
-
     const notificationList = document.getElementById('notificationList');
     notificationList.innerHTML = '';
 
@@ -44,11 +39,10 @@ function displayNotifications(notifications) {
     }
 
     const notificationIds = notifications.map(notification => notification.id);
-    console.log('Notification IDs to mark as read:', notificationIds);
 
     notifications.forEach(notification => {
         const listItem = document.createElement('li');
-        listItem.innerHTML = notification.message; // Use innerHTML to include the link
+        listItem.innerHTML = notification.message; 
         notificationList.appendChild(listItem);
     });
 
@@ -71,7 +65,6 @@ async function markNotificationsAsRead(notificationIds) {
         });
 
         const data = await response.json();
-        console.log('Marked notifications as read:', data);
     } catch (error) {
         console.error('Error marking notifications as read:', error);
     }

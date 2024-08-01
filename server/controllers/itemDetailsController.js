@@ -1,5 +1,3 @@
-// controllers/itemDetailsController.js
-
 const pool = require('../db');
 const logger = require('../logger');
 
@@ -8,7 +6,6 @@ const getItemDetails = (req, res) => {
 
   logger.info(`Fetching detailed item information with ID: ${itemId}`);
 
-  // Fetch basic details from tbl_123_claim_requests
   const claimQuery = 'SELECT * FROM tbl_123_claim_requests WHERE itemId = ?';
 
   pool.query(claimQuery, [itemId], (err, claimResults) => {
@@ -26,7 +23,6 @@ const getItemDetails = (req, res) => {
       return res.status(404).json({ error: 'Item not found' });
     }
 
-    // Determine the correct table to fetch additional details
     const additionalQuery = 'SELECT category, color, foundDate, locationFound FROM tbl_123_founditems WHERE id = ?';
 
     pool.query(additionalQuery, [itemId], (additionalErr, additionalResults) => {

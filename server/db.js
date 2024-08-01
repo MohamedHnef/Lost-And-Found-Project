@@ -1,7 +1,6 @@
 const mysql = require('mysql');
 const dotenv = require('dotenv');
 
-// Load environment variables from .env file
 dotenv.config();
 
 const pool = mysql.createPool({
@@ -18,7 +17,7 @@ pool.getConnection((err, connection) => {
     return;
   }
   console.log('Connected to the MySQL database.');
-  connection.release(); // release the connection back to the pool
+  connection.release(); 
 });
 
 module.exports = pool;

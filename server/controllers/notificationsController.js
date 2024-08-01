@@ -25,6 +25,7 @@ const markNotificationsRead = (req, res) => {
   });
 };
 
+
 module.exports = {
   getUserNotifications,
   markNotificationsRead

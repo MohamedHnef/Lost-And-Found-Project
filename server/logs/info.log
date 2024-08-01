@@ -257,9 +257,20 @@
 2024-07-31T17:29:28.990Z info: Fetching detailed item information with ID: 145
 2024-07-31T17:29:29.369Z info: Claim query results: [{"id":16,"itemId":145,"userId":11,"status":"PendingApproval","claimedAt":"2024-07-31T17:29:10.000Z","securityQuestion":"asd","securityAnswer":"asd","itemName":"ameer","claimant":"aboalmrwan","action":null,"timestamp":"2024-07-31T07:29:11.000Z"}]
 2024-07-31T17:29:29.746Z info: Additional query results: [{"category":"Electronics","color":"black","foundDate":"2024-07-26T21:00:00.000Z","locationFound":"sakhnin"}]
-2024-07-31T21:21:44.810Z info: Server is running on http://localhost:3000
-2024-08-01T08:58:59.530Z info: Server is running on http://localhost:3000
-2024-08-01T09:43:18.125Z info: Server is running on https://lost-and-found-project.onrender.com
-2024-08-01T10:28:47.293Z info: Server is running on https://lost-and-found-project.onrender.com
-2024-08-01T16:19:07.541Z info: Server is running on https://lost-and-found-project.onrender.com
-2024-08-01T16:40:24.015Z info: Server is running on https://lost-and-found-project.onrender.com
+2024-07-31T20:52:15.386Z info: Server is running on http://localhost:3000
+2024-07-31T20:52:24.832Z warn: Invalid username
+2024-08-01T17:17:04.453Z info: Server is running on http://localhost:3000
+2024-08-01T17:17:12.730Z info: Fetched lost items
+2024-08-01T17:17:13.168Z info: Fetched found items
+2024-08-01T17:23:20.711Z info: Server is running on http://localhost:3000
+2024-08-01T17:23:28.448Z info: User logged in: alo
+2024-08-01T17:23:29.538Z info: Fetched lost items
+2024-08-01T17:23:29.547Z info: Fetched found items
+2024-08-01T17:23:38.385Z info: Fetched found items
+2024-08-01T17:23:38.438Z info: Fetched lost items
+2024-08-01T17:43:05.053Z info: Server is running on https://lost-and-found-project.onrender.com
+2024-08-01T17:48:27.942Z info: Server is running on https://lost-and-found-project.onrender.com
+2024-08-01T17:58:37.629Z info: Server is running on https://lost-and-found-project.onrender.com
+2024-08-01T18:04:36.059Z info: Server is running on https://lost-and-found-project.onrender.com
+2024-08-01T18:15:26.803Z info: Server is running on https://lost-and-found-project.onrender.com
+2024-08-01T18:19:54.015Z info: Server is running on https://lost-and-found-project.onrender.com

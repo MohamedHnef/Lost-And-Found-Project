@@ -1,5 +1,3 @@
-// routes/graphs.js
-
 const express = require('express');
 const router = express.Router();
 const graphsController = require('../controllers/graphsController');

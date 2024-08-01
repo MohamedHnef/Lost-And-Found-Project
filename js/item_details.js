@@ -5,11 +5,11 @@
         const urlParams = new URLSearchParams(window.location.search);
         const selectedItemId = urlParams.get('id');
         const selectedItemStatus = urlParams.get('status');
-        const userId = urlParams.get('userId'); // Get userId from URL parameters
-        const role = sessionStorage.getItem('role'); // Get the role from session storage
+        const userId = urlParams.get('userId'); 
+        const role = sessionStorage.getItem('role'); 
 
         if (userId) {
-            sessionStorage.setItem('userId', userId); // Save userId to sessionStorage
+            sessionStorage.setItem('userId', userId); 
         }
 
         if (selectedItemId && selectedItemStatus) {
@@ -39,7 +39,6 @@
             });
         }
 
-        // Ensure correct header is displayed based on role
         if (role) {
             toggleRoleView(role);
         }
@@ -127,12 +126,9 @@
         const answer = document.getElementById('security-answer').value;
         const userId = sessionStorage.getItem('userId');
         const username = sessionStorage.getItem('username');
-        const token = sessionStorage.getItem('token');  // Ensure token is retrieved
+        const token = sessionStorage.getItem('token'); 
     
         const itemName = document.querySelector('.item-details .item-detail:nth-child(1) span').textContent;
-
-        console.log('Token:', token);  // Debugging log
-        console.log('User ID:', userId);  // Debugging log
 
         if (!userId) {
             showNotification('User ID is missing. Please log in again.');
@@ -143,7 +139,7 @@
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`  // Include token in the request
+                'Authorization': `Bearer ${token}`  
             },
             body: JSON.stringify({ answer, status, itemName, claimant: username, userId })
         })
@@ -183,6 +179,6 @@
 
     window.closeNotificationAndRedirect = () => {
         document.querySelector('.notification').remove();
-        window.location.href = 'homePage.html'; // Redirect to home page
+        window.location.href = 'homePage.html'; 
     };
 })();
