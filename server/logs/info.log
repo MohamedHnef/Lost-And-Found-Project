@@ -1,0 +1,297 @@
+2024-07-31T00:41:48.555Z info: Server is running on http://localhost:3000
+2024-07-31T00:41:51.806Z info: User logged in: aboalmrwan
+2024-07-31T00:41:52.825Z info: Fetched lost items
+2024-07-31T00:41:52.839Z info: Fetched found items
+2024-07-31T14:19:29.533Z info: Server is running on http://localhost:3000
+2024-07-31T14:20:15.567Z info: User logged in: aboalmrwan
+2024-07-31T14:20:17.739Z info: Fetched found items
+2024-07-31T14:20:18.116Z info: Fetched lost items
+2024-07-31T14:20:21.041Z info: Fetched found items
+2024-07-31T14:20:21.725Z info: Fetched lost items
+2024-07-31T14:20:51.281Z info: Image uploaded: http://localhost:3000/uploads/1722435651277-diagram.png
+2024-07-31T14:20:53.162Z info: Fetched lost items
+2024-07-31T14:20:53.264Z info: Fetched found items
+2024-07-31T14:20:56.519Z info: Fetched items for user 11
+2024-07-31T14:20:56.614Z info: Fetched items for user 11
+2024-07-31T14:21:05.458Z info: Fetched found items
+2024-07-31T14:21:05.522Z info: Fetched lost items
+2024-07-31T14:21:12.182Z info: User logged in: roma
+2024-07-31T14:21:12.813Z info: Fetched found items
+2024-07-31T14:21:13.142Z info: Fetched lost items
+2024-07-31T14:21:36.034Z info: Image uploaded: http://localhost:3000/uploads/1722435696032-diagram.png
+2024-07-31T14:34:42.812Z info: Server is running on http://localhost:3000
+2024-07-31T14:34:47.852Z info: User logged in: roma
+2024-07-31T14:34:49.448Z info: Fetched found items
+2024-07-31T14:34:50.267Z info: Fetched lost items
+2024-07-31T14:35:11.489Z info: Image uploaded: http://localhost:3000/uploads/1722436511486-diagram.png
+2024-07-31T14:39:35.663Z info: Server is running on http://localhost:3000
+2024-07-31T14:39:38.497Z info: User logged in: roma
+2024-07-31T14:39:39.744Z info: Fetched lost items
+2024-07-31T14:39:43.980Z info: Fetched found items
+2024-07-31T14:40:05.731Z info: Image uploaded: http://localhost:3000/uploads/1722436805728-should-you-become-nurse.jpg
+2024-07-31T14:40:08.548Z info: Fetched lost items
+2024-07-31T14:40:08.999Z info: Fetched found items
+2024-07-31T14:40:22.957Z info: Fetched items for user 15
+2024-07-31T14:40:22.959Z info: Fetched items for user 15
+2024-07-31T14:40:38.864Z info: Fetched items for user 15
+2024-07-31T14:40:38.879Z info: Fetched items for user 15
+2024-07-31T14:40:42.232Z error: Error deleting item: ER_ROW_IS_REFERENCED_2: Cannot delete or update a parent row: a foreign key constraint fails (`dbShnkr24stud`.`tbl_123_claim_requests`, CONSTRAINT `tbl_123_claim_requests_ibfk_1` FOREIGN KEY (`itemId`) REFERENCES `tbl_123_founditems` (`id`))
+2024-07-31T14:40:48.949Z error: Error deleting item: ER_ROW_IS_REFERENCED_2: Cannot delete or update a parent row: a foreign key constraint fails (`dbShnkr24stud`.`tbl_123_claim_requests`, CONSTRAINT `tbl_123_claim_requests_ibfk_1` FOREIGN KEY (`itemId`) REFERENCES `tbl_123_founditems` (`id`))
+2024-07-31T14:40:55.661Z info: Fetched items for user 15
+2024-07-31T14:40:55.695Z info: Fetched items for user 15
+2024-07-31T14:41:00.571Z info: Fetched items for user 15
+2024-07-31T14:41:00.572Z info: Fetched items for user 15
+2024-07-31T14:41:15.432Z error: Error deleting item: ER_ROW_IS_REFERENCED_2: Cannot delete or update a parent row: a foreign key constraint fails (`dbShnkr24stud`.`tbl_123_claim_requests`, CONSTRAINT `tbl_123_claim_requests_ibfk_1` FOREIGN KEY (`itemId`) REFERENCES `tbl_123_founditems` (`id`))
+2024-07-31T14:41:16.240Z error: Error deleting item: ER_ROW_IS_REFERENCED_2: Cannot delete or update a parent row: a foreign key constraint fails (`dbShnkr24stud`.`tbl_123_claim_requests`, CONSTRAINT `tbl_123_claim_requests_ibfk_1` FOREIGN KEY (`itemId`) REFERENCES `tbl_123_founditems` (`id`))
+2024-07-31T14:41:22.359Z error: Error deleting item: ER_ROW_IS_REFERENCED_2: Cannot delete or update a parent row: a foreign key constraint fails (`dbShnkr24stud`.`tbl_123_claim_requests`, CONSTRAINT `tbl_123_claim_requests_ibfk_1` FOREIGN KEY (`itemId`) REFERENCES `tbl_123_founditems` (`id`))
+2024-07-31T14:41:27.130Z info: Fetched items for user 15
+2024-07-31T14:41:27.185Z info: Fetched items for user 15
+2024-07-31T14:41:44.520Z info: Fetched lost items
+2024-07-31T14:41:44.540Z info: Fetched found items
+2024-07-31T14:42:05.859Z info: Image uploaded: http://localhost:3000/uploads/1722436925857-diagram.png
+2024-07-31T14:42:08.867Z info: Fetched found items
+2024-07-31T14:42:09.347Z info: Fetched lost items
+2024-07-31T14:42:13.948Z info: Fetched items for user 15
+2024-07-31T14:42:14.504Z info: Fetched items for user 15
+2024-07-31T14:42:19.264Z info: Fetched items for user 15
+2024-07-31T14:42:19.269Z info: Fetched items for user 15
+2024-07-31T14:42:24.167Z info: Fetched lost items
+2024-07-31T14:42:24.168Z info: Fetched found items
+2024-07-31T14:52:08.136Z info: Server is running on http://localhost:3000
+2024-07-31T14:52:16.751Z info: User logged in: roma
+2024-07-31T14:52:18.133Z info: Fetched lost items
+2024-07-31T14:52:18.190Z info: Fetched found items
+2024-07-31T14:52:37.800Z info: Image uploaded: http://localhost:3000/uploads/1722437557793-diagram.png
+2024-07-31T14:52:39.770Z info: Fetched found items
+2024-07-31T14:52:39.813Z info: Fetched lost items
+2024-07-31T14:52:53.926Z info: Fetched found items
+2024-07-31T14:52:54.010Z info: Fetched lost items
+2024-07-31T14:54:57.905Z info: Server is running on http://localhost:3000
+2024-07-31T14:55:03.686Z info: User logged in: aboalmrwan
+2024-07-31T14:55:04.804Z info: Fetched lost items
+2024-07-31T14:55:05.329Z info: Fetched found items
+2024-07-31T14:55:23.287Z info: Image uploaded: http://localhost:3000/uploads/1722437723281-diagram.png
+2024-07-31T14:55:25.483Z info: Fetched lost items
+2024-07-31T14:55:25.516Z info: Fetched found items
+2024-07-31T14:55:27.619Z info: Fetched items for user 11
+2024-07-31T14:55:27.631Z info: Fetched items for user 11
+2024-07-31T14:55:34.065Z info: Fetched found items
+2024-07-31T14:55:34.138Z info: Fetched lost items
+2024-07-31T14:55:40.424Z info: User logged in: roma
+2024-07-31T14:55:40.963Z info: Fetched lost items
+2024-07-31T14:55:41.067Z info: Fetched found items
+2024-07-31T14:56:07.794Z info: Image uploaded: http://localhost:3000/uploads/1722437767791-diagram.png
+2024-07-31T14:56:11.431Z info: Fetched lost items
+2024-07-31T14:56:11.505Z info: Fetched found items
+2024-07-31T14:56:16.750Z info: Fetched found items
+2024-07-31T14:56:16.858Z info: Fetched lost items
+2024-07-31T14:56:29.992Z info: Fetched items for user 15
+2024-07-31T14:56:30.080Z info: Fetched items for user 15
+2024-07-31T14:57:06.299Z info: Fetched lost items
+2024-07-31T14:57:06.354Z info: Fetched found items
+2024-07-31T14:57:10.542Z info: User logged in: aboalmrwan
+2024-07-31T14:57:11.428Z info: Fetched found items
+2024-07-31T14:57:11.823Z info: Fetched lost items
+2024-07-31T14:57:21.774Z info: Fetched lost items
+2024-07-31T14:57:21.780Z info: Fetched found items
+2024-07-31T14:57:27.185Z info: User logged in: policeman
+2024-07-31T14:58:30.358Z info: Server is running on http://localhost:3000
+2024-07-31T14:58:49.250Z info: User logged in: roma
+2024-07-31T14:58:50.551Z info: Fetched lost items
+2024-07-31T14:58:50.572Z info: Fetched found items
+2024-07-31T14:58:57.252Z info: User logged in: aboalmrwan
+2024-07-31T14:58:57.936Z info: Fetched lost items
+2024-07-31T14:58:59.223Z info: Fetched found items
+2024-07-31T14:59:21.187Z info: Fetched lost items
+2024-07-31T14:59:21.220Z info: Fetched found items
+2024-07-31T15:07:27.357Z info: Server is running on http://localhost:3000
+2024-07-31T15:07:31.066Z info: User logged in: aboalmrwan
+2024-07-31T15:07:32.222Z info: Fetched found items
+2024-07-31T15:07:32.505Z info: Fetched lost items
+2024-07-31T15:07:54.363Z info: Image uploaded: http://localhost:3000/uploads/1722438474356-diagram.png
+2024-07-31T15:07:56.264Z info: Fetched found items
+2024-07-31T15:07:56.266Z info: Fetched lost items
+2024-07-31T15:07:58.173Z info: Fetched lost items
+2024-07-31T15:07:58.317Z info: Fetched found items
+2024-07-31T15:08:00.081Z info: Fetched items for user 11
+2024-07-31T15:08:00.146Z info: Fetched items for user 11
+2024-07-31T15:08:18.068Z info: User logged in: roma
+2024-07-31T15:08:18.598Z info: Fetched found items
+2024-07-31T15:08:18.999Z info: Fetched lost items
+2024-07-31T15:08:40.592Z info: Image uploaded: http://localhost:3000/uploads/1722438520586-diagram.png
+2024-07-31T15:08:43.413Z info: Fetched lost items
+2024-07-31T15:08:43.633Z info: Fetched found items
+2024-07-31T15:08:45.652Z info: Fetched items for user 15
+2024-07-31T15:08:45.691Z info: Fetched items for user 15
+2024-07-31T15:08:52.671Z info: Fetched lost items
+2024-07-31T15:08:52.727Z info: Fetched found items
+2024-07-31T15:09:03.483Z info: User logged in: policeman
+2024-07-31T15:09:26.789Z info: Fetched lost items
+2024-07-31T15:09:27.179Z info: Fetched found items
+2024-07-31T15:09:31.687Z info: Fetched items for user 14
+2024-07-31T15:09:33.645Z info: Fetched items for user 14
+2024-07-31T15:09:34.466Z info: Fetched found items
+2024-07-31T15:09:34.468Z info: Fetched lost items
+2024-07-31T15:09:39.870Z info: User logged in: policeman
+2024-07-31T15:11:57.723Z info: Server is running on http://localhost:3000
+2024-07-31T15:12:02.905Z info: User logged in: policeman
+2024-07-31T15:12:09.782Z info: User logged in: roma
+2024-07-31T15:12:10.549Z info: Fetched lost items
+2024-07-31T15:12:14.153Z info: Fetched found items
+2024-07-31T15:12:16.781Z info: User logged in: aboalmrwan
+2024-07-31T15:12:19.799Z info: Fetched lost items
+2024-07-31T15:12:20.278Z info: Fetched found items
+2024-07-31T15:12:28.224Z info: Fetched lost items
+2024-07-31T15:12:29.821Z info: Fetched found items
+2024-07-31T15:12:34.184Z info: User logged in: policeman
+2024-07-31T15:15:08.600Z info: Server is running on http://localhost:3000
+2024-07-31T15:15:13.485Z info: User logged in: roma
+2024-07-31T15:15:15.779Z info: Fetched found items
+2024-07-31T15:15:15.780Z info: Fetched lost items
+2024-07-31T15:15:19.486Z info: User logged in: aboalmrwan
+2024-07-31T15:15:20.147Z info: Fetched found items
+2024-07-31T15:15:20.150Z info: Fetched lost items
+2024-07-31T15:15:32.671Z info: Fetched lost items
+2024-07-31T15:15:32.759Z info: Fetched found items
+2024-07-31T15:15:36.695Z info: User logged in: policeman
+2024-07-31T15:16:05.690Z info: Fetching detailed item information with ID: 137
+2024-07-31T15:16:06.413Z info: Claim query results: [{"id":12,"itemId":137,"userId":11,"status":"PendingApproval","claimedAt":"2024-07-31T15:15:30.000Z","securityQuestion":"asd ","securityAnswer":"asd","itemName":"suzi","claimant":"aboalmrwan","action":null,"timestamp":"2024-07-31T05:15:30.000Z"}]
+2024-07-31T15:16:07.080Z info: Additional query results: [{"category":"Electronics","color":"black","foundDate":"2024-07-26T21:00:00.000Z","locationFound":"sakhnin"}]
+2024-07-31T15:16:17.303Z info: Fetched lost items
+2024-07-31T15:16:17.520Z info: Fetched found items
+2024-07-31T15:17:59.348Z info: Server is running on http://localhost:3000
+2024-07-31T15:18:05.393Z info: User logged in: roma
+2024-07-31T15:18:07.125Z info: Fetched lost items
+2024-07-31T15:18:07.148Z info: Fetched found items
+2024-07-31T15:18:14.802Z info: User logged in: aboalmrwan
+2024-07-31T15:18:15.409Z info: Fetched lost items
+2024-07-31T15:18:15.433Z info: Fetched found items
+2024-07-31T15:18:30.975Z info: Fetched lost items
+2024-07-31T15:18:31.031Z info: Fetched found items
+2024-07-31T15:18:36.066Z info: User logged in: policeman
+2024-07-31T16:34:04.972Z info: User logged in: policeman
+2024-07-31T16:34:11.077Z info: Fetching detailed item information with ID: 137
+2024-07-31T16:34:11.603Z info: Claim query results: [{"id":13,"itemId":137,"userId":11,"status":"PendingApproval","claimedAt":"2024-07-31T15:18:28.000Z","securityQuestion":"asd ","securityAnswer":"asd","itemName":"suzi","claimant":"aboalmrwan","action":null,"timestamp":"2024-07-31T05:18:28.000Z"}]
+2024-07-31T16:34:12.280Z info: Additional query results: [{"category":"Electronics","color":"black","foundDate":"2024-07-26T21:00:00.000Z","locationFound":"sakhnin"}]
+2024-07-31T16:48:42.268Z info: Server is running on http://localhost:3000
+2024-07-31T16:48:50.821Z info: User logged in: policeman
+2024-07-31T16:48:55.943Z info: Fetching detailed item information with ID: 137
+2024-07-31T16:48:56.443Z info: Claim query results: [{"id":13,"itemId":137,"userId":11,"status":"PendingApproval","claimedAt":"2024-07-31T15:18:28.000Z","securityQuestion":"asd ","securityAnswer":"asd","itemName":"suzi","claimant":"aboalmrwan","action":null,"timestamp":"2024-07-31T05:18:28.000Z"}]
+2024-07-31T16:48:56.876Z info: Additional query results: [{"category":"Electronics","color":"black","foundDate":"2024-07-26T21:00:00.000Z","locationFound":"sakhnin"}]
+2024-07-31T17:08:45.452Z info: Server is running on http://localhost:3000
+2024-07-31T17:08:51.586Z info: User logged in: aboalmrwan
+2024-07-31T17:08:52.618Z info: Fetched lost items
+2024-07-31T17:08:52.686Z info: Fetched found items
+2024-07-31T17:08:54.657Z info: Fetched lost items
+2024-07-31T17:08:54.678Z info: Fetched found items
+2024-07-31T17:09:16.284Z info: Fetched lost items
+2024-07-31T17:09:16.297Z info: Fetched found items
+2024-07-31T17:09:18.715Z info: Fetched lost items
+2024-07-31T17:09:18.718Z info: Fetched found items
+2024-07-31T17:09:34.710Z info: Fetched found items
+2024-07-31T17:09:34.715Z info: Fetched lost items
+2024-07-31T17:10:08.608Z info: Image uploaded: http://localhost:3000/uploads/1722445808603-diagram.png
+2024-07-31T17:10:10.395Z info: Fetched found items
+2024-07-31T17:10:10.398Z info: Fetched lost items
+2024-07-31T17:10:12.653Z info: Fetched items for user 11
+2024-07-31T17:10:12.657Z info: Fetched items for user 11
+2024-07-31T17:10:22.072Z info: Fetched items for user 11
+2024-07-31T17:10:22.087Z info: Fetched items for user 11
+2024-07-31T17:10:25.961Z info: Fetched items for user 11
+2024-07-31T17:10:25.963Z info: Fetched items for user 11
+2024-07-31T17:10:40.291Z info: User logged in: roma
+2024-07-31T17:10:40.777Z info: Fetched lost items
+2024-07-31T17:10:40.801Z info: Fetched found items
+2024-07-31T17:11:18.889Z info: Image uploaded: http://localhost:3000/uploads/1722445878886-diagram.png
+2024-07-31T17:11:20.275Z info: Received request to send notification email for item found with ID:
+2024-07-31T17:11:20.664Z info: Sending email to: signutre.31@gmail.com for item: shlomo
+2024-07-31T17:11:21.420Z info: API called successfully. Returned data: {"id":8}
+2024-07-31T17:11:21.528Z info: Fetched found items
+2024-07-31T17:11:21.529Z info: Fetched lost items
+2024-07-31T17:11:21.955Z info: Email sent successfully. Returned data: null
+2024-07-31T17:11:23.583Z info: Fetched items for user 15
+2024-07-31T17:11:23.585Z info: Fetched items for user 15
+2024-07-31T17:11:32.895Z error: Error deleting item: ER_ROW_IS_REFERENCED_2: Cannot delete or update a parent row: a foreign key constraint fails (`dbShnkr24stud`.`tbl_123_claim_requests`, CONSTRAINT `tbl_123_claim_requests_ibfk_1` FOREIGN KEY (`itemId`) REFERENCES `tbl_123_founditems` (`id`))
+2024-07-31T17:12:09.007Z error: Error deleting item: ER_ROW_IS_REFERENCED_2: Cannot delete or update a parent row: a foreign key constraint fails (`dbShnkr24stud`.`tbl_123_claim_requests`, CONSTRAINT `tbl_123_claim_requests_ibfk_1` FOREIGN KEY (`itemId`) REFERENCES `tbl_123_founditems` (`id`))
+2024-07-31T17:12:16.828Z info: Fetched items for user 15
+2024-07-31T17:12:16.829Z info: Fetched items for user 15
+2024-07-31T17:12:25.328Z info: Fetched lost items
+2024-07-31T17:12:25.337Z info: Fetched found items
+2024-07-31T17:12:31.949Z info: User logged in: aboalmrwan
+2024-07-31T17:12:32.420Z info: Fetched lost items
+2024-07-31T17:12:32.437Z info: Fetched found items
+2024-07-31T17:21:24.726Z info: Received request to send notification email for item found with ID:
+2024-07-31T17:21:25.497Z info: Sending email to: signutre.31@gmail.com for item: shlomo
+2024-07-31T17:21:26.125Z info: API called successfully. Returned data: {"id":9}
+2024-07-31T17:21:26.680Z info: Email sent successfully. Returned data: null
+2024-07-31T17:27:15.615Z info: Server is running on http://localhost:3000
+2024-07-31T17:27:18.791Z info: User logged in: aboalmrwan
+2024-07-31T17:27:19.715Z info: Fetched found items
+2024-07-31T17:27:19.721Z info: Fetched lost items
+2024-07-31T17:27:45.625Z info: Image uploaded: http://localhost:3000/uploads/1722446865622-diagram.png
+2024-07-31T17:27:47.302Z info: Fetched found items
+2024-07-31T17:27:47.304Z info: Fetched lost items
+2024-07-31T17:27:52.815Z info: User logged in: roma
+2024-07-31T17:27:53.298Z info: Fetched lost items
+2024-07-31T17:27:53.317Z info: Fetched found items
+2024-07-31T17:27:55.566Z info: Fetched lost items
+2024-07-31T17:27:55.571Z info: Fetched found items
+2024-07-31T17:28:00.717Z info: User logged in: liza
+2024-07-31T17:28:01.185Z info: Fetched lost items
+2024-07-31T17:28:01.189Z info: Fetched found items
+2024-07-31T17:28:28.377Z info: Image uploaded: http://localhost:3000/uploads/1722446908376-should-you-become-nurse.jpg
+2024-07-31T17:28:29.541Z info: Received request to send notification email for item found with ID: 145
+2024-07-31T17:28:29.935Z info: Sending email to: signutre.31@gmail.com for item: ameer
+2024-07-31T17:28:30.582Z info: API called successfully. Returned data: {"id":10}
+2024-07-31T17:28:30.607Z info: Fetched lost items
+2024-07-31T17:28:30.609Z info: Fetched found items
+2024-07-31T17:28:31.159Z info: Email sent successfully. Returned data: null
+2024-07-31T17:28:44.558Z info: Fetched lost items
+2024-07-31T17:28:44.561Z info: Fetched found items
+2024-07-31T17:29:03.609Z info: User logged in: aboalmrwan
+2024-07-31T17:29:04.068Z info: Fetched lost items
+2024-07-31T17:29:04.071Z info: Fetched found items
+2024-07-31T17:29:12.565Z info: Fetched found items
+2024-07-31T17:29:12.569Z info: Fetched lost items
+2024-07-31T17:29:18.940Z info: User logged in: policeman
+2024-07-31T17:29:28.990Z info: Fetching detailed item information with ID: 145
+2024-07-31T17:29:29.369Z info: Claim query results: [{"id":16,"itemId":145,"userId":11,"status":"PendingApproval","claimedAt":"2024-07-31T17:29:10.000Z","securityQuestion":"asd","securityAnswer":"asd","itemName":"ameer","claimant":"aboalmrwan","action":null,"timestamp":"2024-07-31T07:29:11.000Z"}]
+2024-07-31T17:29:29.746Z info: Additional query results: [{"category":"Electronics","color":"black","foundDate":"2024-07-26T21:00:00.000Z","locationFound":"sakhnin"}]
+2024-07-31T20:52:15.386Z info: Server is running on http://localhost:3000
+2024-07-31T20:52:24.832Z warn: Invalid username
+2024-08-01T11:37:12.805Z info: Server is running on http://localhost:3000
+2024-08-01T11:37:16.618Z info: User logged in: policeman
+2024-08-01T11:37:32.869Z info: User logged in: ronibuzzaglo
+2024-08-01T11:37:37.823Z info: Fetched lost items
+2024-08-01T11:37:39.663Z info: Fetched found items
+2024-08-01T12:08:46.554Z info: Server is running on http://localhost:3000
+2024-08-01T12:09:03.120Z info: Checking if username roro already exists
+2024-08-01T12:09:04.048Z info: User registered with ID: 103
+2024-08-01T12:09:10.215Z warn: Invalid password
+2024-08-01T12:09:15.384Z info: User logged in: roro
+2024-08-01T12:09:16.310Z info: Fetched lost items
+2024-08-01T12:09:16.333Z info: Fetched found items
+2024-08-01T12:09:41.174Z info: Image uploaded: http://localhost:3000/uploads/1722514181171-WhatsApp Image 2024-08-01 at 14.01.09.jpeg
+2024-08-01T12:09:42.753Z info: Fetched lost items
+2024-08-01T12:09:42.770Z info: Fetched found items
+2024-08-01T12:09:53.603Z info: User logged in: seso
+2024-08-01T12:09:54.410Z info: Fetched lost items
+2024-08-01T12:09:54.413Z info: Fetched found items
+2024-08-01T12:10:20.857Z info: Image uploaded: http://localhost:3000/uploads/1722514220855-WhatsApp Image 2024-08-01 at 14.01.09.jpeg
+2024-08-01T12:10:22.043Z info: Received request to send notification email for item found with ID: 155
+2024-08-01T12:10:22.436Z info: Sending email to: signutre.31@gmail.com for item: roro
+2024-08-01T12:10:23.278Z info: API called successfully. Returned data: {"id":17}
+2024-08-01T12:10:23.919Z info: Email sent successfully. Returned data: null
+2024-08-01T12:10:24.163Z info: Fetched found items
+2024-08-01T12:10:24.167Z info: Fetched lost items
+2024-08-01T12:10:34.147Z info: User logged in: roro
+2024-08-01T12:10:34.603Z info: Fetched lost items
+2024-08-01T12:10:34.607Z info: Fetched found items
+2024-08-01T12:10:42.567Z info: Fetched lost items
+2024-08-01T12:10:42.575Z info: Fetched found items
+2024-08-01T12:16:27.721Z info: Fetched lost items
+2024-08-01T12:16:28.159Z info: Fetched found items
+2024-08-01T12:16:43.161Z warn: Invalid password
+2024-08-01T12:16:50.310Z info: User logged in: seso
+2024-08-01T12:16:51.117Z info: Fetched lost items
+2024-08-01T12:16:51.119Z info: Fetched found items

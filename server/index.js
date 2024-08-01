@@ -1,0 +1,78 @@
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const path = require('path');
+const fs = require('fs');
+const logger = require('./logger');
+
+const authRoutes = require('./routes/auth');
+const itemRoutes = require('./routes/items');
+const graphsRoutes = require('./routes/graphs');
+const countsRoutes = require('./routes/counts');
+const notificationsRouter = require('./routes/notifications');
+const adminRouter = require('./routes/admin');
+const itemDetailsRoutes = require('./routes/itemDetails');
+const emailRoutes = require('./routes/emailRoutes');
+
+const app = express();
+const port = process.env.PORT || 3000;
+
+const allowedOrigins = [
+    'https://lost-and-found-project.onrender.com',
+    'http://localhost:3000',
+    'http://127.0.0.1:5501',
+    'http://se.shenkar.ac.il',
+    'http://se.shenkar.ac.il/students/2023-2024/web1/dev123'
+];
+
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) === -1) {
+            const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+            return callback(new Error(msg), false);
+        }
+        return callback(null, true);
+    }
+}));
+
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
+
+app.use(express.static(path.join(__dirname, '..')));
+
+const uploadsDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir, { recursive: true });
+}
+app.use('/uploads', express.static(uploadsDir));
+
+app.use('/api', authRoutes);
+app.use('/api', itemRoutes);
+app.use('/api', graphsRoutes);
+app.use('/api/notifications', notificationsRouter);
+app.use('/api/admin', adminRouter);
+app.use('/api', countsRoutes);
+app.use('/api', itemDetailsRoutes);
+app.use('/api', emailRoutes);
+
+app.get('/', (req, res) => {
+    res.json({ message: 'Welcome to the Lost and Found API' });
+});
+
+app.use((req, res, next) => {
+    res.status(404).json({ error: 'Not Found' });
+});
+
+app.use((err, req, res, next) => {
+    logger.error(err.stack);
+    res.status(500).json({ error: 'Internal Server Error' });
+});
+
+app.listen(port, () => {
+    const url = process.env.NODE_ENV === 'production' ? 'https://lost-and-found-project.onrender.com' : `http://localhost:${port}`;
+    console.log(`Server is running on ${url}`);
+    logger.info(`Server is running on ${url}`);
+});
+
+module.exports = app;
