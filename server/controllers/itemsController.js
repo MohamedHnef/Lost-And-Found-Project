@@ -493,7 +493,7 @@ const matchFoundItem = async (foundItem) => {
 
     if (Array.isArray(results) && results.length > 0) {
       for (const lostItem of results) {
-        const itemUrl = `${baseUrl}/item.html?id=${foundItem.id}&status=Found`;
+        const itemUrl = `${baseUrl}/item.html?id=${foundItem.id}&status=Found&userId=${lostItem.userId}`;
         const message = `Your lost item "${lostItem.itemName}" might have been found. Check the found items list. <a href="${itemUrl}">View Item</a>`;
         const notification = {
           userId: lostItem.userId,
@@ -517,6 +517,7 @@ const matchFoundItem = async (foundItem) => {
     throw new Error('Error matching found item');
   }
 };
+
 
 module.exports = {
   uploadImage,
