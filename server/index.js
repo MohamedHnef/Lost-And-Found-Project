@@ -13,7 +13,7 @@ const notificationsRouter = require('./routes/notifications');
 const protectedRoutes = require('./routes/protected');
 const adminRouter = require('./routes/admin');
 const itemDetailsRoutes = require('./routes/itemDetails');
-const emailRoutes = require('./routes/emailRoutes'); // Add this line
+const emailRoutes = require('./routes/emailRoutes');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -33,7 +33,8 @@ app.use(cors({
             return callback(new Error(msg), false);
         }
         return callback(null, true);
-    }
+    },
+    credentials: true // This is important for allowing credentials
 }));
 
 app.use(express.json({ limit: '50mb' }));
@@ -56,7 +57,7 @@ app.use('/api', protectedRoutes);
 app.use('/api/admin', adminRouter);
 app.use('/api', countsRoutes);
 app.use('/api', itemDetailsRoutes);
-app.use('/api', emailRoutes);  // Add this line
+app.use('/api', emailRoutes);
 
 app.get('/', (req, res) => {
     res.json({ message: 'Welcome to the Lost and Found API' });
