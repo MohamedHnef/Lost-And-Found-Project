@@ -1,4 +1,3 @@
-// controllers/emailController.js
 
 const SibApiV3Sdk = require('sib-api-v3-sdk');
 const defaultClient = SibApiV3Sdk.ApiClient.instance;
@@ -14,7 +13,7 @@ const emailCampaignsApi = new SibApiV3Sdk.EmailCampaignsApi();
 const sendItemFoundEmail = (req, res) => {
     const { itemId } = req.body;
 
-    logger.info(`Received request to send notification email for item found with ID: ${itemId}`); // Updated logging
+    logger.info(`Received request to send notification email for item found with ID: ${itemId}`); 
 
     if (!itemId) {
         logger.error('Item ID is missing in the request body.');
@@ -46,7 +45,7 @@ const sendItemFoundEmail = (req, res) => {
         const emailCampaign = new SibApiV3Sdk.CreateEmailCampaign();
         emailCampaign.name = "Item Found Notification";
         emailCampaign.subject = "Good News! Your Lost Item Has Been Found";
-        emailCampaign.sender = { name: "Lost and Found Team", email: "amir.kh1232001@gmail.com" }; // Use your verified sender email
+        emailCampaign.sender = { name: "Lost and Found Team", email: "amir.kh1232001@gmail.com" }; 
         emailCampaign.type = "classic";
         emailCampaign.htmlContent = `
             Dear ${lostUsername},<br><br>
@@ -57,7 +56,7 @@ const sendItemFoundEmail = (req, res) => {
             The Lost and Found Team
         `;
 
-        emailCampaign.recipients = { listIds: [2] }; // Ensure this is set to the correct list ID for the recipients
+        emailCampaign.recipients = { listIds: [2] }; 
 
         emailCampaignsApi.createEmailCampaign(emailCampaign).then(function(data) {
             logger.info('API called successfully. Returned data: ' + JSON.stringify(data));

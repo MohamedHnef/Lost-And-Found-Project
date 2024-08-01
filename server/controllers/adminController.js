@@ -1,4 +1,3 @@
-// controllers/adminController.js
 
 const pool = require('../db');
 const logger = require('../logger');

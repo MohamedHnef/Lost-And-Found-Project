@@ -257,3 +257,6 @@
 2024-07-31T17:29:28.990Z info: Fetching detailed item information with ID: 145
 2024-07-31T17:29:29.369Z info: Claim query results: [{"id":16,"itemId":145,"userId":11,"status":"PendingApproval","claimedAt":"2024-07-31T17:29:10.000Z","securityQuestion":"asd","securityAnswer":"asd","itemName":"ameer","claimant":"aboalmrwan","action":null,"timestamp":"2024-07-31T07:29:11.000Z"}]
 2024-07-31T17:29:29.746Z info: Additional query results: [{"category":"Electronics","color":"black","foundDate":"2024-07-26T21:00:00.000Z","locationFound":"sakhnin"}]
+2024-07-31T21:21:44.810Z info: Server is running on http://localhost:3000
+2024-08-01T08:58:59.530Z info: Server is running on http://localhost:3000
+2024-08-01T09:43:18.125Z info: Server is running on https://lost-and-found-project.onrender.com

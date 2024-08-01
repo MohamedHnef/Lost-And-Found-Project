@@ -13,16 +13,21 @@ async function fetchNotifications() {
     }
     
     try {
-        const response = await fetch(`/api/notifications/${userId}`);
-        const data = await response.json();
+        const response = await fetch(`${API_URL}/notifications/${userId}`);
+        const text = await response.text();
+        console.log('Response text:', text);
         
-        if (!Array.isArray(data)) {
-            console.error('Fetched data is not an array:', data);
-            return;
+        if (response.ok) {
+            const data = JSON.parse(text);
+            if (!Array.isArray(data)) {
+                console.error('Fetched data is not an array:', data);
+                return;
+            }
+            console.log('Fetched notifications:', data);
+            displayNotifications(data);
+        } else {
+            console.error('Failed to fetch notifications:', text);
         }
-        
-        console.log('Fetched notifications:', data);
-        displayNotifications(data);
     } catch (error) {
         console.error('Error fetching notifications:', error);
     }
@@ -58,7 +63,7 @@ async function markNotificationsAsRead(notificationIds) {
     }
 
     try {
-        const response = await fetch('/api/notifications/mark-read', {
+        const response = await fetch(`${API_URL}/notifications/mark-read`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

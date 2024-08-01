@@ -1,5 +1,3 @@
-// controllers/notificationsController.js
-
 const pool = require('../db');
 const logger = require('../logger');
 

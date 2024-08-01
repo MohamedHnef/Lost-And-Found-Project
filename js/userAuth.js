@@ -1,5 +1,3 @@
-
-
 document.addEventListener("DOMContentLoaded", () => {
     const role = sessionStorage.getItem('role');
     if (role) {
@@ -30,15 +28,14 @@ function handleLoginFormSubmit(event) {
     if (isLoginSubmitting) return;
     isLoginSubmitting = true;
 
-    console.log('Login form submitted');
-
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
-    fetch('/api/login', {
+    fetch(`${API_URL}/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
+        body: JSON.stringify({ username, password }),
+        credentials: 'include' // Include cookies in the request
     })
     .then(response => response.json())
     .then(data => {
@@ -70,9 +67,10 @@ function handleRegisterFormSubmit(event) {
 
     const formData = new FormData(event.target);
 
-    fetch('/api/register', {
+    fetch(`${API_URL}/register`, {
         method: 'POST',
-        body: formData
+        body: formData,
+        credentials: 'include' // Include cookies in the request
     })
     .then(response => response.json())
     .then(data => {

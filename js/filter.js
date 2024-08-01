@@ -84,7 +84,7 @@ function formatDate(dateString) {
 }
 
 function formatTime(timeString) {
-    if (!timeString) return ''; // Check for undefined or null timeString
+    if (!timeString) return ''; 
     const [hour, minute] = timeString.split(':');
     return `${hour}:${minute}`;
 }
