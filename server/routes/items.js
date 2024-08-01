@@ -1,4 +1,3 @@
-// routes/items.js
 
 const express = require('express');
 const router = express.Router();
@@ -47,4 +46,4 @@ router.get('/admin/dashboard-data', authenticateToken, itemsController.getDashbo
 router.post('/log-activity', authenticateToken, itemsController.logActivity);
 router.get('/recent-activities', authenticateToken, itemsController.getRecentActivities);
 
-module.exports = router;
+module.exports = router;

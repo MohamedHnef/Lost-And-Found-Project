@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 async function fetchNotifications() {
     const userId = sessionStorage.getItem('userId');
     console.log(`Fetched userId from sessionStorage: ${userId}`);
-    
+
     if (!userId) {
         console.error('User ID not found in sessionStorage');
         return;
@@ -23,7 +23,7 @@ async function fetchNotifications() {
                 return;
             }
             console.log('Fetched notifications:', data);
-            displayNotifications(data, userId);
+            displayNotifications(data);
         } else {
             console.error('Failed to fetch notifications:', text);
         }
@@ -32,11 +32,11 @@ async function fetchNotifications() {
     }
 }
 
-function displayNotifications(notifications, userId) {
+function displayNotifications(notifications) {
     console.log('Notifications is an array with length:', notifications.length);
 
     const notificationList = document.getElementById('notificationList');
-    notificationList.innerHTML = ''; // Clear the list before appending new notifications
+    notificationList.innerHTML = '';
 
     if (notifications.length === 0) {
         notificationList.innerHTML = '<p>No notifications</p>';
@@ -48,7 +48,7 @@ function displayNotifications(notifications, userId) {
 
     notifications.forEach(notification => {
         const listItem = document.createElement('li');
-        listItem.innerHTML = notification.message; // Use the stored message with the correct link
+        listItem.innerHTML = notification.message; // Use innerHTML to include the link
         notificationList.appendChild(listItem);
     });
 

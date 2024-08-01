@@ -5,11 +5,11 @@
         const urlParams = new URLSearchParams(window.location.search);
         const selectedItemId = urlParams.get('id');
         const selectedItemStatus = urlParams.get('status');
-        const userId = urlParams.get('userId'); // Get the userId from URL parameters
+        const userId = urlParams.get('userId'); // Get userId from URL parameters
         const role = sessionStorage.getItem('role'); // Get the role from session storage
 
         if (userId) {
-            sessionStorage.setItem('userId', userId); // Set userId in session storage
+            sessionStorage.setItem('userId', userId); // Save userId to sessionStorage
         }
 
         if (selectedItemId && selectedItemStatus) {
@@ -127,20 +127,25 @@
         const answer = document.getElementById('security-answer').value;
         const userId = sessionStorage.getItem('userId');
         const username = sessionStorage.getItem('username');
-        const itemName = document.querySelector('.item-details .item-detail:nth-child(1) span').textContent;
+        const token = sessionStorage.getItem('token');  // Ensure token is retrieved
     
+        const itemName = document.querySelector('.item-details .item-detail:nth-child(1) span').textContent;
+
+        console.log('Token:', token);  // Debugging log
+        console.log('User ID:', userId);  // Debugging log
+
         if (!userId) {
             showNotification('User ID is missing. Please log in again.');
             return;
         }
-    
+
         fetch(`${API_URL}/claim-item/${id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+                'Authorization': `Bearer ${token}`  // Include token in the request
             },
-            body: JSON.stringify({ answer, status, itemName, claimant: username })
+            body: JSON.stringify({ answer, status, itemName, claimant: username, userId })
         })
         .then(response => {
             if (!response.ok) {

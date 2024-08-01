@@ -4,6 +4,7 @@ const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
 const logger = require('./logger');
+const { authenticateToken } = require('./middleware/authMiddleware');
 
 const authRoutes = require('./routes/auth');
 const itemRoutes = require('./routes/items');
@@ -14,6 +15,7 @@ const protectedRoutes = require('./routes/protected');
 const adminRouter = require('./routes/admin');
 const itemDetailsRoutes = require('./routes/itemDetails');
 const emailRoutes = require('./routes/emailRoutes');
+const claimRoutes = require('./routes/claim'); // Import claim routes
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -58,6 +60,7 @@ app.use('/api/admin', adminRouter);
 app.use('/api', countsRoutes);
 app.use('/api', itemDetailsRoutes);
 app.use('/api', emailRoutes);
+app.use('/api/claim-item', authenticateToken, claimRoutes); // Ensure middleware is applied here
 
 app.get('/', (req, res) => {
     res.json({ message: 'Welcome to the Lost and Found API' });

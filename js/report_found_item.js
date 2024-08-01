@@ -1,3 +1,5 @@
+const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
+
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById('reportFoundForm');
     if (form) {
@@ -96,16 +98,15 @@ function sendEmailNotification(itemId) {
     fetch(`${API_URL}/item-found`, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${sessionStorage.getItem('api_key')}` 
         },
         body: JSON.stringify({ itemId })
     })
     .then(response => response.text()) 
     .then(text => {
-        console.log('Notification email response text:', text);
         try {
             const data = JSON.parse(text); 
-            console.log('Notification email sent:', data);
         } catch (error) {
             console.warn('Response is not valid JSON:', text);
         }
@@ -114,6 +115,7 @@ function sendEmailNotification(itemId) {
         console.error('Error sending notification email:', error);
     });
 }
+
 
 function handleResponse(response) {
     if (!response.ok) {

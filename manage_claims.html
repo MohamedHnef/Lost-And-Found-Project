@@ -1,21 +1,16 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Manage Claims</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/config.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/manage_claims.js" defer></script>
     <script src="js/breadcrumps.js" defer></script>
     <script src="js/userLogout.js" defer></script>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
     <header>
         <nav class="navbar navbar-expand-lg bg-white shadow">
@@ -46,7 +41,6 @@
                                 </div>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">My Profile</a></li>
                                 <li><a class="dropdown-item logout-link" href="#logout">Log Out</a></li>
                             </ul>
                         </li>
@@ -79,11 +73,6 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link side" href="#">
-                            <i class="bi bi-person"></i> My Profile
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link side logout-link" href="#logout">
                             <i class="bi bi-box-arrow-right"></i> Log Out
                         </a>
@@ -108,7 +97,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Dynamic content will be loaded here -->
                     </tbody>
                 </table>
             </div>
@@ -119,8 +107,6 @@
             <span class="text-muted">Lost and Found © 2024</span>
         </div>
     </footer>
-
-    <!-- Item Details Modal -->
     <div class="modal fade" id="itemModal" tabindex="-1" aria-labelledby="itemModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
@@ -129,7 +115,6 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" id="itemModalBody">
-                    <!-- Dynamic content will be loaded here -->
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -137,10 +122,6 @@
             </div>
         </div>
     </div>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/manage_claims.js" defer></script>
 </body>
 
 </html>

@@ -321,38 +321,48 @@ const claimItem = async (req, res) => {
   const userId = req.user.id;
 
   try {
+    // Query to get the item details from the appropriate table based on status
+    const itemQuery = status === 'Found' 
+      ? 'SELECT * FROM tbl_123_founditems WHERE id = ?' 
+      : 'SELECT * FROM tbl_123_lostitems WHERE id = ?';
+
     const [item] = await new Promise((resolve, reject) => {
-      pool.query(
-        status === 'Found' ? 'SELECT * FROM tbl_123_founditems WHERE id = ?' : 'SELECT * FROM tbl_123_lostitems WHERE id = ?',
-        [itemId],
-        (err, results) => err ? reject(err) : resolve(results)
-      );
+      pool.query(itemQuery, [itemId], (err, results) => {
+        if (err) return reject(err);
+        resolve(results);
+      });
     });
 
     if (!item) {
       return res.status(404).json({ error: 'Item not found' });
     }
 
-    if (answer === item.securityAnswer) {
-      const claimRequest = {
-        itemId,
-        userId,
-        status: 'PendingApproval',
-        claimedAt: new Date(),
-        securityQuestion: item.securityQuestion,
-        securityAnswer: item.securityAnswer,
-        itemName: itemName || item.itemName,
-        claimant: claimant || req.user.username,
-      };
-
-      await new Promise((resolve, reject) => {
-        pool.query('INSERT INTO tbl_123_claim_requests SET ?', claimRequest, (err) => err ? reject(err) : resolve());
-      });
-
-      res.json({ success: true, message: 'Claim request has been submitted for admin approval.' });
-    } else {
-      res.status(401).json({ error: 'Incorrect answer' });
+    // Verify the provided security answer
+    if (answer !== item.securityAnswer) {
+      return res.status(401).json({ error: 'Incorrect security answer' });
     }
+
+    // Prepare the claim request object
+    const claimRequest = {
+      itemId,
+      userId,
+      status: 'PendingApproval',
+      claimedAt: new Date(),
+      securityQuestion: item.securityQuestion,
+      securityAnswer: item.securityAnswer,
+      itemName: itemName || item.itemName,
+      claimant: claimant || req.user.username,
+    };
+
+    // Insert the claim request into the tbl_123_claim_requests table
+    await new Promise((resolve, reject) => {
+      pool.query('INSERT INTO tbl_123_claim_requests SET ?', claimRequest, (err) => {
+        if (err) return reject(err);
+        resolve();
+      });
+    });
+
+    res.json({ success: true, message: 'Claim request has been submitted for admin approval.' });
   } catch (err) {
     logger.error(`Error handling claim request: ${err.message}`, err);
     res.status(500).json({ error: 'Internal Server Error', details: err.message });
@@ -473,7 +483,7 @@ const getRecentActivities = (req, res) => {
   });
 };
 
-const matchFoundItem = async (foundItem) => {
+const matchFoundItem = async (foundItem, req) => {
   try {
     const query = `
       SELECT * FROM tbl_123_lostitems
@@ -492,6 +502,7 @@ const matchFoundItem = async (foundItem) => {
     });
 
     if (Array.isArray(results) && results.length > 0) {
+      const baseUrl = req.headers.origin || process.env.BASE_URL || 'https://lost-and-found-project.onrender.com';
       for (const lostItem of results) {
         const itemUrl = `${baseUrl}/item.html?id=${foundItem.id}&status=Found&userId=${lostItem.userId}`;
         const message = `Your lost item "${lostItem.itemName}" might have been found. Check the found items list. <a href="${itemUrl}">View Item</a>`;
@@ -517,6 +528,7 @@ const matchFoundItem = async (foundItem) => {
     throw new Error('Error matching found item');
   }
 };
+
 
 
 module.exports = {
