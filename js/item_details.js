@@ -1,4 +1,3 @@
-
 (function() {
     const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://lost-and-found-project.onrender.com/api';
 
@@ -6,7 +5,12 @@
         const urlParams = new URLSearchParams(window.location.search);
         const selectedItemId = urlParams.get('id');
         const selectedItemStatus = urlParams.get('status');
+        const userId = urlParams.get('userId'); // Get the userId from URL parameters
         const role = sessionStorage.getItem('role'); // Get the role from session storage
+
+        if (userId) {
+            sessionStorage.setItem('userId', userId); // Set userId in session storage
+        }
 
         if (selectedItemId && selectedItemStatus) {
             fetchItemDetails(selectedItemId, selectedItemStatus);
