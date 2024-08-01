@@ -259,39 +259,18 @@
 2024-07-31T17:29:29.746Z info: Additional query results: [{"category":"Electronics","color":"black","foundDate":"2024-07-26T21:00:00.000Z","locationFound":"sakhnin"}]
 2024-07-31T20:52:15.386Z info: Server is running on http://localhost:3000
 2024-07-31T20:52:24.832Z warn: Invalid username
-2024-08-01T11:37:12.805Z info: Server is running on http://localhost:3000
-2024-08-01T11:37:16.618Z info: User logged in: policeman
-2024-08-01T11:37:32.869Z info: User logged in: ronibuzzaglo
-2024-08-01T11:37:37.823Z info: Fetched lost items
-2024-08-01T11:37:39.663Z info: Fetched found items
-2024-08-01T12:08:46.554Z info: Server is running on http://localhost:3000
-2024-08-01T12:09:03.120Z info: Checking if username roro already exists
-2024-08-01T12:09:04.048Z info: User registered with ID: 103
-2024-08-01T12:09:10.215Z warn: Invalid password
-2024-08-01T12:09:15.384Z info: User logged in: roro
-2024-08-01T12:09:16.310Z info: Fetched lost items
-2024-08-01T12:09:16.333Z info: Fetched found items
-2024-08-01T12:09:41.174Z info: Image uploaded: http://localhost:3000/uploads/1722514181171-WhatsApp Image 2024-08-01 at 14.01.09.jpeg
-2024-08-01T12:09:42.753Z info: Fetched lost items
-2024-08-01T12:09:42.770Z info: Fetched found items
-2024-08-01T12:09:53.603Z info: User logged in: seso
-2024-08-01T12:09:54.410Z info: Fetched lost items
-2024-08-01T12:09:54.413Z info: Fetched found items
-2024-08-01T12:10:20.857Z info: Image uploaded: http://localhost:3000/uploads/1722514220855-WhatsApp Image 2024-08-01 at 14.01.09.jpeg
-2024-08-01T12:10:22.043Z info: Received request to send notification email for item found with ID: 155
-2024-08-01T12:10:22.436Z info: Sending email to: signutre.31@gmail.com for item: roro
-2024-08-01T12:10:23.278Z info: API called successfully. Returned data: {"id":17}
-2024-08-01T12:10:23.919Z info: Email sent successfully. Returned data: null
-2024-08-01T12:10:24.163Z info: Fetched found items
-2024-08-01T12:10:24.167Z info: Fetched lost items
-2024-08-01T12:10:34.147Z info: User logged in: roro
-2024-08-01T12:10:34.603Z info: Fetched lost items
-2024-08-01T12:10:34.607Z info: Fetched found items
-2024-08-01T12:10:42.567Z info: Fetched lost items
-2024-08-01T12:10:42.575Z info: Fetched found items
-2024-08-01T12:16:27.721Z info: Fetched lost items
-2024-08-01T12:16:28.159Z info: Fetched found items
-2024-08-01T12:16:43.161Z warn: Invalid password
-2024-08-01T12:16:50.310Z info: User logged in: seso
-2024-08-01T12:16:51.117Z info: Fetched lost items
-2024-08-01T12:16:51.119Z info: Fetched found items
+2024-08-01T17:17:04.453Z info: Server is running on http://localhost:3000
+2024-08-01T17:17:12.730Z info: Fetched lost items
+2024-08-01T17:17:13.168Z info: Fetched found items
+2024-08-01T17:23:20.711Z info: Server is running on http://localhost:3000
+2024-08-01T17:23:28.448Z info: User logged in: alo
+2024-08-01T17:23:29.538Z info: Fetched lost items
+2024-08-01T17:23:29.547Z info: Fetched found items
+2024-08-01T17:23:38.385Z info: Fetched found items
+2024-08-01T17:23:38.438Z info: Fetched lost items
+2024-08-01T17:43:05.053Z info: Server is running on https://lost-and-found-project.onrender.com
+2024-08-01T17:48:27.942Z info: Server is running on https://lost-and-found-project.onrender.com
+2024-08-01T17:58:37.629Z info: Server is running on https://lost-and-found-project.onrender.com
+2024-08-01T18:04:36.059Z info: Server is running on https://lost-and-found-project.onrender.com
+2024-08-01T18:15:26.803Z info: Server is running on https://lost-and-found-project.onrender.com
+2024-08-01T18:19:54.015Z info: Server is running on https://lost-and-found-project.onrender.com

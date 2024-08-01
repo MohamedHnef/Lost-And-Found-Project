@@ -1,4 +1,3 @@
-
 // routes/auth.js
 
 const express = require('express');

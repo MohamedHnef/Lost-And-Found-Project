@@ -12,17 +12,16 @@ const countsRoutes = require('./routes/counts');
 const notificationsRouter = require('./routes/notifications');
 const adminRouter = require('./routes/admin');
 const itemDetailsRoutes = require('./routes/itemDetails');
-const emailRoutes = require('./routes/emailRoutes');
+const emailRoutes = require('./routes/emailRoutes'); 
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 const allowedOrigins = [
-    'https://lost-and-found-project.onrender.com',
-    'http://localhost:3000',
-    'http://127.0.0.1:5501',
-    'http://se.shenkar.ac.il',
-    'http://se.shenkar.ac.il/students/2023-2024/web1/dev123'
+    process.env.ALLOWED_ORIGIN_1 || 'https://lost-and-found-project.onrender.com',
+    process.env.ALLOWED_ORIGIN_2 || 'http://localhost:3000',
+    process.env.ALLOWED_ORIGIN_3 || 'http://127.0.0.1:5501',
+    process.env.ALLOWED_ORIGIN_4 || 'http://se.shenkar.ac.il'
 ];
 
 app.use(cors({
@@ -47,6 +46,7 @@ if (!fs.existsSync(uploadsDir)) {
 }
 app.use('/uploads', express.static(uploadsDir));
 
+
 app.use('/api', authRoutes);
 app.use('/api', itemRoutes);
 app.use('/api', graphsRoutes);
@@ -54,15 +54,17 @@ app.use('/api/notifications', notificationsRouter);
 app.use('/api/admin', adminRouter);
 app.use('/api', countsRoutes);
 app.use('/api', itemDetailsRoutes);
-app.use('/api', emailRoutes);
+app.use('/api', emailRoutes);  
 
 app.get('/', (req, res) => {
     res.json({ message: 'Welcome to the Lost and Found API' });
 });
 
+
 app.use((req, res, next) => {
     res.status(404).json({ error: 'Not Found' });
 });
+
 
 app.use((err, req, res, next) => {
     logger.error(err.stack);

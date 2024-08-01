@@ -1,3 +1,5 @@
+// routes/items.js
+
 const express = require('express');
 const router = express.Router();
 const itemsController = require('../controllers/itemsController');
@@ -23,6 +25,9 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
+
+
+
 router.post('/upload', upload.single('image'), itemsController.uploadImage);
 router.get('/lost-items', itemsController.getLostItems);
 router.get('/found-items', itemsController.getFoundItems);
@@ -42,4 +47,4 @@ router.get('/admin/dashboard-data', authenticateToken, itemsController.getDashbo
 router.post('/log-activity', authenticateToken, itemsController.logActivity);
 router.get('/recent-activities', authenticateToken, itemsController.getRecentActivities);
 
-module.exports = router;
+module.exports = router;
